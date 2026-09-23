@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,11 +8,8 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-    <link
-        href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&display=swap"
-        rel="stylesheet"
-    >
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet">
 
     <link rel="stylesheet" href="css/index.css">
 </head>
@@ -24,18 +20,14 @@
          ENCABEZADO
     ====================================================== -->
 
-    <header class="header">
+    <header class="header" id="header">
 
-        <div class="header__inner">
+        <div class="header__content">
 
-            <a href="index.html" class="institution">
-                <img
-                    src="assets/logo.png"
-                    alt="Ministerio de Educación - Gobierno de El Salvador"
-                    class="institution__logo"
-                >
+            <a href="#inicio" class="header__brand">
+                <img src="assets/logo.png"
+                     alt="Ministerio de Educación - Gobierno de El Salvador">
             </a>
-
 
             <nav class="nav" id="nav">
 
@@ -43,31 +35,31 @@
                     Inicio
                 </a>
 
-                <a href="#siscae" class="nav__link">
-                    SISCAE
+                <a href="#acerca" class="nav__link">
+                    Acerca de SISCAE
                 </a>
 
-                <a href="#seguridad" class="nav__link">
-                    Seguridad
+                <a href="#soporte" class="nav__link">
+                    Soporte técnico
                 </a>
 
-                <a href="pages/login.html" class="nav__access">
-                    Ingresar
+                <a href="pages/login.html" class="nav__login">
+                    Iniciar sesión
                 </a>
 
             </nav>
-
 
             <button
                 class="menu-button"
                 id="menuButton"
                 type="button"
                 aria-label="Abrir menú"
-                aria-expanded="false"
-            >
+                aria-expanded="false">
+
                 <span></span>
                 <span></span>
                 <span></span>
+
             </button>
 
         </div>
@@ -75,80 +67,128 @@
     </header>
 
 
-
     <main>
 
         <!-- =====================================================
-             PORTADA
+             INICIO
         ====================================================== -->
 
         <section class="hero" id="inicio">
 
-            <div class="hero__decoration hero__decoration--one"></div>
-            <div class="hero__decoration hero__decoration--two"></div>
+            <!-- AROS DECORATIVOS -->
 
+            <div class="hero__decorations" aria-hidden="true">
 
-            <div class="container hero__content">
+                <span class="ring ring--right-1"></span>
+                <span class="ring ring--right-2"></span>
+                <span class="ring ring--right-3"></span>
 
-                <div class="hero__identity">
-
-                    <div class="hero__name">
-                        SISCAE
-                    </div>
-
-                    <div class="hero__line"></div>
-
-                </div>
-
-
-                <h1>
-                    Sistema Integral de Seguridad y
-                    <span>Control de Activos Editoriales</span>
-                </h1>
-
-
-                <p class="hero__description">
-                    Gestión, protección y trazabilidad de activos editoriales
-                    durante su proceso institucional.
-                </p>
-
-
-                <a href="pages/login.html" class="hero__button">
-
-                    <span>
-                        Acceder al sistema
-                    </span>
-
-                    <svg
-                        viewBox="0 0 24 24"
-                        aria-hidden="true"
-                    >
-                        <path
-                            d="M5 12h14M13 6l6 6-6 6"
-                            fill="none"
-                            stroke="currentColor"
-                            stroke-width="1.8"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                        />
-                    </svg>
-
-                </a>
+                <span class="ring ring--left-1"></span>
+                <span class="ring ring--left-2"></span>
 
             </div>
 
 
-            <div class="hero__bottom">
+            <div class="container hero__content">
 
-                <div class="container hero__bottom-content">
+                <div class="hero__label">
+                    <span></span>
+                    SISCAE
+                    <span></span>
+                </div>
 
+
+                <h1>
+                    Sistema Integral de Seguridad
                     <span>
-                        Plataforma institucional
+                        y Control de Activos Editoriales
                     </span>
+                </h1>
 
-                    <span>
-                        Ministerio de Educación
-                    </span>
+
+                <p class="hero__description">
+                    Plataforma institucional para la gestión,
+                    protección y trazabilidad de activos editoriales
+                    durante su proceso de producción y publicación.
+                </p>
+
+
+                <div class="hero__actions">
+
+                    <a href="pages/login.html"
+                       class="button button--primary">
+
+                        Acceder al sistema
+
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M5 12h14M13 6l6 6-6 6"/>
+                        </svg>
+
+                    </a>
+
+
+                    <a href="#acerca"
+                       class="button button--outline">
+
+                        Conocer más
+
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- RESUMEN INFERIOR -->
+
+            <div class="hero__features">
+
+                <div class="container hero__features-grid">
+
+
+                    <div class="hero-feature">
+
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M12 3l7 3v5c0 4.6-2.8 8.1-7 10-4.2-1.9-7-5.4-7-10V6l7-3z"/>
+                            <path d="M9 12l2 2 4-4"/>
+                        </svg>
+
+                        <span>
+                            Acceso institucional
+                        </span>
+
+                    </div>
+
+
+                    <div class="hero-feature">
+
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M7 3h7l4 4v14H7z"/>
+                            <path d="M14 3v5h5"/>
+                            <path d="M10 13h5M10 17h5"/>
+                        </svg>
+
+                        <span>
+                            Gestión y control editorial
+                        </span>
+
+                    </div>
+
+
+                    <div class="hero-feature">
+
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <circle cx="9" cy="8" r="3"/>
+                            <circle cx="17" cy="9" r="2.5"/>
+                            <path d="M3 20v-2c0-3 2.5-5 6-5s6 2 6 5v2"/>
+                            <path d="M15 14c3.3 0 6 1.6 6 4.5V20"/>
+                        </svg>
+
+                        <span>
+                            Protección de la información
+                        </span>
+
+                    </div>
 
                 </div>
 
@@ -157,210 +197,259 @@
         </section>
 
 
-
         <!-- =====================================================
-             SOBRE SISCAE
+             ACERCA DE SISCAE
         ====================================================== -->
 
-        <section class="about" id="siscae">
+        <section class="about section" id="acerca">
+
+            <div class="container about__grid">
+
+                <!-- CONTENIDO -->
+
+                <div class="about__content">
+
+                    <div class="section-label">
+                        <span></span>
+                        Acerca de SISCAE
+                    </div>
+
+                    <h2>
+                        Gestión editorial con
+                        seguridad y confianza
+                    </h2>
+
+                    <p class="about__lead">
+                        SISCAE centraliza la administración y el control
+                        de los activos editoriales institucionales.
+                    </p>
+
+                    <p>
+                        El sistema permite gestionar los recursos durante
+                        las diferentes etapas del proceso editorial,
+                        manteniendo control sobre los accesos,
+                        modificaciones, revisiones y versiones.
+                    </p>
+
+                    <a href="#funcionalidades"
+                       class="text-button">
+
+                        Conocer las funcionalidades
+
+                        <svg viewBox="0 0 24 24">
+                            <path d="M5 12h14M13 6l6 6-6 6"/>
+                        </svg>
+
+                    </a>
+
+                </div>
+
+
+                <!-- COMPOSICIÓN VISUAL -->
+
+                <div class="about__visual">
+
+                    <div class="visual-document">
+
+                        <div class="visual-document__top">
+
+                            <div class="visual-document__mark">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </div>
+
+                            <span>
+                                SISCAE
+                            </span>
+
+                        </div>
+
+
+                        <div class="visual-document__body">
+
+                            <span class="visual-document__small">
+                                ACTIVO EDITORIAL
+                            </span>
+
+                            <strong>
+                                Gestión segura
+                                de contenidos
+                            </strong>
+
+                            <div class="visual-document__lines">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="visual-info">
+
+                        <span>
+                            CONTROL EDITORIAL
+                        </span>
+
+                        <strong>
+                            Protección durante
+                            todo el proceso
+                        </strong>
+
+                        <p>
+                            Acceso, seguimiento,
+                            integridad y auditoría.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             FUNCIONALIDADES
+        ====================================================== -->
+
+        <section class="features section"
+                 id="funcionalidades">
 
             <div class="container">
 
                 <div class="section-label">
                     <span></span>
-                    SISCAE
+                    Funcionalidades principales
                 </div>
 
 
-                <div class="about__grid">
-
-                    <div class="about__heading">
-
-                        <h2>
-                            Protección y control
-                            del proceso editorial
-                        </h2>
-
-                    </div>
-
-
-                    <div class="about__information">
-
-                        <p class="about__lead">
-                            Un entorno centralizado para gestionar el acceso,
-                            seguimiento y protección de los activos editoriales.
-                        </p>
-
-                        <p>
-                            SISCAE permite mantener el control de los recursos
-                            durante las diferentes etapas del proceso editorial,
-                            registrando las intervenciones realizadas y
-                            fortaleciendo la seguridad de la información.
-                        </p>
-
-                        <a href="#seguridad" class="text-link">
-
-                            Conocer las capacidades del sistema
-
-                            <svg
-                                viewBox="0 0 24 24"
-                                aria-hidden="true"
-                            >
-                                <path
-                                    d="M5 12h14M13 6l6 6-6 6"
-                                    fill="none"
-                                    stroke="currentColor"
-                                    stroke-width="1.8"
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                />
-                            </svg>
-
-                        </a>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-
-        <!-- =====================================================
-             FRANJA INSTITUCIONAL
-        ====================================================== -->
-
-        <section class="institutional-band">
-
-            <div class="container institutional-band__content">
-
-                <div class="institutional-band__title">
-
-                    <span>
-                        Gestión editorial
-                    </span>
-
-                    <strong>
-                        Seguridad integrada en cada etapa
-                    </strong>
-
-                </div>
-
-
-                <p>
-                    Desde el acceso al sistema hasta la publicación,
-                    SISCAE mantiene un registro continuo de las acciones
-                    realizadas sobre los activos editoriales.
-                </p>
-
-            </div>
-
-        </section>
-
-
-
-        <!-- =====================================================
-             CAPACIDADES
-        ====================================================== -->
-
-        <section class="capabilities" id="seguridad">
-
-            <div class="container">
-
-                <div class="capabilities__header">
-
-                    <div class="section-label">
-                        <span></span>
-                        Seguridad y control
-                    </div>
+                <div class="section-heading">
 
                     <h2>
-                        Capacidades principales
+                        Herramientas para un
+                        proceso editorial seguro
                     </h2>
 
                     <p>
-                        Componentes orientados a mantener el control,
-                        integridad y seguimiento de la información.
+                        Funciones orientadas al control,
+                        protección y seguimiento de
+                        los activos institucionales.
                     </p>
 
                 </div>
 
 
-                <div class="capabilities__grid">
+                <div class="features__grid">
 
+                    <!-- CONTROL -->
 
-                    <!-- ACCESO -->
+                    <article class="feature-card">
 
-                    <article class="capability">
+                        <div class="feature-card__icon">
 
-                        <div class="capability__accent"></div>
+                            <svg viewBox="0 0 24 24">
+                                <path d="M3 7h7l2 2h9v10H3z"/>
+                                <path d="M3 7V5h7l2 2"/>
+                                <rect x="14" y="13" width="5" height="5" rx="1"/>
+                                <path d="M15 13v-1a1.5 1.5 0 013 0v1"/>
+                            </svg>
+
+                        </div>
 
                         <h3>
                             Control de acceso
                         </h3>
 
                         <p>
-                            Acceso institucional y permisos definidos
-                            según las funciones asignadas a cada usuario.
+                            Gestión de usuarios, roles y permisos
+                            de acuerdo con las funciones asignadas.
                         </p>
 
                     </article>
 
 
-
                     <!-- TRAZABILIDAD -->
 
-                    <article class="capability">
+                    <article class="feature-card">
 
-                        <div class="capability__accent"></div>
+                        <div class="feature-card__icon">
+
+                            <svg viewBox="0 0 24 24">
+                                <path d="M6 3h9l4 4v14H6z"/>
+                                <path d="M15 3v5h5"/>
+                                <path d="M9 12h7M9 16h5"/>
+                            </svg>
+
+                        </div>
 
                         <h3>
                             Trazabilidad
                         </h3>
 
                         <p>
-                            Registro de las acciones e intervenciones
-                            realizadas durante el proceso editorial.
+                            Registro de intervenciones,
+                            cambios y versiones realizadas
+                            durante el proceso editorial.
                         </p>
 
                     </article>
 
 
-
                     <!-- INTEGRIDAD -->
 
-                    <article class="capability">
+                    <article class="feature-card">
 
-                        <div class="capability__accent"></div>
+                        <div class="feature-card__icon">
+
+                            <svg viewBox="0 0 24 24">
+                                <path d="M12 3l9 5-9 5-9-5 9-5z"/>
+                                <path d="M3 12l9 5 9-5"/>
+                                <path d="M3 16l9 5 9-5"/>
+                            </svg>
+
+                        </div>
 
                         <h3>
                             Integridad
                         </h3>
 
                         <p>
-                            Verificación y seguimiento de los archivos
-                            y sus diferentes versiones.
+                            Verificación y seguimiento
+                            de los archivos y sus diferentes
+                            versiones.
                         </p>
 
                     </article>
 
 
-
                     <!-- AUDITORÍA -->
 
-                    <article class="capability">
+                    <article class="feature-card">
 
-                        <div class="capability__accent"></div>
+                        <div class="feature-card__icon">
+
+                            <svg viewBox="0 0 24 24">
+                                <path d="M5 20V11"/>
+                                <path d="M10 20V5"/>
+                                <path d="M15 20v-7"/>
+                                <path d="M20 20V8"/>
+                            </svg>
+
+                        </div>
 
                         <h3>
                             Auditoría
                         </h3>
 
                         <p>
-                            Registro de accesos y operaciones relevantes
-                            realizadas dentro del sistema.
+                            Consulta de registros y seguimiento
+                            de acciones relevantes realizadas
+                            en el sistema.
                         </p>
 
                     </article>
@@ -372,52 +461,362 @@
         </section>
 
 
-
         <!-- =====================================================
-             ACCESO
+             PROCESO EDITORIAL
         ====================================================== -->
 
-        <section class="access-section">
+        <section class="process section">
 
-            <div class="container access-section__content">
+            <div class="container">
 
-                <div>
+                <div class="process__header">
 
-                    <span class="access-section__small">
-                        Acceso institucional
-                    </span>
+                    <div>
 
-                    <h2>
-                        Ingrese a SISCAE
-                    </h2>
+                        <div class="section-label">
+                            <span></span>
+                            Proceso editorial
+                        </div>
+
+                        <h2>
+                            Del recurso a la publicación
+                        </h2>
+
+                    </div>
 
                     <p>
-                        Utilice su cuenta institucional autorizada
-                        para acceder a la plataforma.
+                        SISCAE acompaña las diferentes etapas
+                        del proceso editorial, manteniendo
+                        seguimiento sobre los recursos
+                        institucionales.
                     </p>
 
                 </div>
 
 
-                <a href="pages/login.html" class="access-section__button">
+                <div class="process__steps">
 
-                    Iniciar sesión
+                    <!-- PASO 1 -->
 
-                    <svg
-                        viewBox="0 0 24 24"
-                        aria-hidden="true"
-                    >
-                        <path
-                            d="M5 12h14M13 6l6 6-6 6"
-                            fill="none"
-                            stroke="currentColor"
-                            stroke-width="1.8"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                        />
-                    </svg>
+                    <article class="process-step">
 
-                </a>
+                        <div class="process-step__top">
+
+                            <span class="process-step__number">
+                                01
+                            </span>
+
+                            <div class="process-step__icon">
+
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M6 3h9l4 4v14H6z"/>
+                                    <path d="M15 3v5h5"/>
+                                    <path d="M12 12v6M9 15h6"/>
+                                </svg>
+
+                            </div>
+
+                        </div>
+
+                        <h3>Ingreso</h3>
+
+                        <p>
+                            Incorporación del activo
+                            editorial al sistema.
+                        </p>
+
+                    </article>
+
+
+                    <!-- CONECTOR -->
+
+                    <div class="process__connector"></div>
+
+
+                    <!-- PASO 2 -->
+
+                    <article class="process-step">
+
+                        <div class="process-step__top">
+
+                            <span class="process-step__number">
+                                02
+                            </span>
+
+                            <div class="process-step__icon">
+
+                                <svg viewBox="0 0 24 24">
+                                    <circle cx="10" cy="10" r="6"/>
+                                    <path d="M15 15l5 5"/>
+                                </svg>
+
+                            </div>
+
+                        </div>
+
+                        <h3>Revisión</h3>
+
+                        <p>
+                            Validación y seguimiento
+                            de las intervenciones.
+                        </p>
+
+                    </article>
+
+
+                    <div class="process__connector"></div>
+
+
+                    <!-- PASO 3 -->
+
+                    <article class="process-step">
+
+                        <div class="process-step__top">
+
+                            <span class="process-step__number">
+                                03
+                            </span>
+
+                            <div class="process-step__icon">
+
+                                <svg viewBox="0 0 24 24">
+                                    <circle cx="12" cy="12" r="8"/>
+                                    <path d="M8.5 12l2.3 2.3 4.8-5"/>
+                                </svg>
+
+                            </div>
+
+                        </div>
+
+                        <h3>Aprobación</h3>
+
+                        <p>
+                            Validación del recurso
+                            antes de su publicación.
+                        </p>
+
+                    </article>
+
+
+                    <div class="process__connector"></div>
+
+
+                    <!-- PASO 4 -->
+
+                    <article class="process-step">
+
+                        <div class="process-step__top">
+
+                            <span class="process-step__number process-step__number--yellow">
+                                04
+                            </span>
+
+                            <div class="process-step__icon">
+
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M3 11l18-8-8 18-2-8-8-2z"/>
+                                    <path d="M11 13L21 3"/>
+                                </svg>
+
+                            </div>
+
+                        </div>
+
+                        <h3>Publicación</h3>
+
+                        <p>
+                            Disponibilidad del contenido
+                            en los canales autorizados.
+                        </p>
+
+                    </article>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             BLOQUE INSTITUCIONAL
+        ====================================================== -->
+
+        <section class="institutional">
+
+            <div class="institutional__visual">
+
+                <div class="institutional__pattern">
+
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+
+                </div>
+
+            </div>
+
+
+            <div class="institutional__content">
+
+                <div>
+
+                    <span class="institutional__line"></span>
+
+                    <h2>
+                        Protección del patrimonio
+                        editorial institucional
+                    </h2>
+
+                    <p>
+                        SISCAE contribuye a una gestión
+                        organizada de los activos editoriales,
+                        fortaleciendo su protección,
+                        seguimiento e integridad.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             SOPORTE
+        ====================================================== -->
+
+        <section class="support section"
+                 id="soporte">
+
+            <div class="container">
+
+                <div class="support__grid">
+
+                    <!-- INFORMACIÓN -->
+
+                    <div class="support__intro">
+
+                        <div class="section-label">
+                            <span></span>
+                            Soporte técnico
+                        </div>
+
+                        <h2>
+                            ¿Necesita asistencia?
+                        </h2>
+
+                        <p>
+                            Consulte las preguntas frecuentes
+                            relacionadas con el acceso,
+                            los permisos y el uso general
+                            de SISCAE.
+                        </p>
+
+
+                        <div class="support__notice">
+
+                            <div class="support__notice-icon">
+
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M4 12a8 8 0 0116 0"/>
+                                    <path d="M4 12v5h3v-6H4"/>
+                                    <path d="M20 12v5h-3v-6h3"/>
+                                    <path d="M17 19c-1 1-2.5 1.5-4 1.5"/>
+                                </svg>
+
+                            </div>
+
+                            <div>
+                                <strong>
+                                    Asistencia institucional
+                                </strong>
+
+                                <span>
+                                    Si el inconveniente continúa,
+                                    comuníquese con el responsable
+                                    técnico del sistema.
+                                </span>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- FAQ -->
+
+                    <div class="faq">
+
+                        <details class="faq__item">
+
+                            <summary>
+                                ¿Cómo ingreso con mi cuenta institucional?
+                                <span></span>
+                            </summary>
+
+                            <p>
+                                El acceso se realiza mediante
+                                una cuenta institucional autorizada
+                                del dominio @clases.edu.sv.
+                            </p>
+
+                        </details>
+
+
+                        <details class="faq__item">
+
+                            <summary>
+                                ¿Por qué no puedo visualizar un proyecto?
+                                <span></span>
+                            </summary>
+
+                            <p>
+                                La visualización depende de los
+                                proyectos y permisos asignados
+                                a su cuenta dentro de SISCAE.
+                            </p>
+
+                        </details>
+
+
+                        <details class="faq__item">
+
+                            <summary>
+                                ¿Qué sucede cuando vence mi acceso?
+                                <span></span>
+                            </summary>
+
+                            <p>
+                                Algunos permisos pueden estar asociados
+                                a un período determinado. Una vez
+                                finalizado, el acceso correspondiente
+                                deja de estar disponible.
+                            </p>
+
+                        </details>
+
+
+                        <details class="faq__item">
+
+                            <summary>
+                                ¿Qué hago si no puedo iniciar sesión?
+                                <span></span>
+                            </summary>
+
+                            <p>
+                                Verifique que utiliza su cuenta
+                                institucional autorizada. Si el problema
+                                continúa, solicite asistencia al
+                                responsable técnico del sistema.
+                            </p>
+
+                        </details>
+
+                    </div>
+
+                </div>
 
             </div>
 
@@ -426,35 +825,62 @@
     </main>
 
 
-
     <!-- =====================================================
          FOOTER
     ====================================================== -->
 
     <footer class="footer">
 
-        <div class="container footer__content">
+        <div class="container footer__main">
 
-            <div class="footer__left">
+            <div class="footer__brand">
 
-                <img
-                    src="assets/logo.png"
-                    alt="Ministerio de Educación"
-                    class="footer__logo"
-                >
+                <img src="assets/logo.png"
+                     alt="Ministerio de Educación">
 
             </div>
 
 
-            <div class="footer__right">
+            <div class="footer__divider"></div>
+
+
+            <div class="footer__system">
 
                 <strong>
                     SISCAE
                 </strong>
 
                 <span>
-                    Sistema Integral de Seguridad y Control
-                    de Activos Editoriales
+                    Sistema Integral de Seguridad
+                    y Control de Activos Editoriales
+                </span>
+
+            </div>
+
+
+            <a href="#inicio"
+               class="footer__top"
+               aria-label="Volver al inicio">
+
+                <svg viewBox="0 0 24 24">
+                    <path d="M12 19V5M6 11l6-6 6 6"/>
+                </svg>
+
+            </a>
+
+        </div>
+
+
+        <div class="footer__bottom">
+
+            <div class="container footer__bottom-content">
+
+                <span>
+                    Ministerio de Educación
+                </span>
+
+                <span>
+                    El Salvador
                 </span>
 
             </div>
@@ -467,5 +893,4 @@
     <script src="js/index.js"></script>
 
 </body>
-
 </html>

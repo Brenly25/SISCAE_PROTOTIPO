@@ -1,122 +1,35 @@
-/* =====================================================
+/* =========================================================
    SISCAE
-   VISTA PRINCIPAL
-===================================================== */
+   PÁGINA PRINCIPAL
+========================================================= */
 
-const menuButton = document.getElementById("menuButton");
-const nav = document.getElementById("nav");
+document.addEventListener("DOMContentLoaded", () => {
 
-const navLinks = document.querySelectorAll(
-    '.nav__link[href^="#"]'
-);
+    const header =
+        document.getElementById("header");
 
-const sections = document.querySelectorAll(
-    "main section[id]"
-);
+    const menuButton =
+        document.getElementById("menuButton");
 
+    const nav =
+        document.getElementById("nav");
 
-/* =====================================================
-   MENÚ MÓVIL
-===================================================== */
-
-menuButton.addEventListener("click", () => {
-
-    const isOpen =
-        nav.classList.toggle("open");
-
-    menuButton.setAttribute(
-        "aria-expanded",
-        isOpen
-    );
-
-    document.body.classList.toggle(
-        "menu-open",
-        isOpen
-    );
-
-});
-
-
-/* =====================================================
-   CERRAR MENÚ
-===================================================== */
-
-navLinks.forEach(link => {
-
-    link.addEventListener("click", () => {
-
-        nav.classList.remove("open");
-
-        menuButton.setAttribute(
-            "aria-expanded",
-            "false"
+    const navLinks =
+        document.querySelectorAll(
+            '.nav__link[href^="#"]'
         );
 
-        document.body.classList.remove(
-            "menu-open"
+    const sections =
+        document.querySelectorAll(
+            "#inicio, #acerca, #soporte"
         );
 
-    });
 
-});
+    /* =====================================================
+       MENÚ MÓVIL
+    ====================================================== */
 
-
-/* =====================================================
-   NAVEGACIÓN ACTIVA
-===================================================== */
-
-function updateNavigation() {
-
-    let currentSection = "inicio";
-
-    sections.forEach(section => {
-
-        const sectionTop =
-            section.offsetTop - 180;
-
-        if (
-            window.scrollY >= sectionTop
-        ) {
-
-            currentSection =
-                section.getAttribute("id");
-
-        }
-
-    });
-
-
-    navLinks.forEach(link => {
-
-        link.classList.remove("active");
-
-        if (
-            link.getAttribute("href") ===
-            `#${currentSection}`
-        ) {
-
-            link.classList.add("active");
-
-        }
-
-    });
-
-}
-
-
-window.addEventListener(
-    "scroll",
-    updateNavigation
-);
-
-
-/* =====================================================
-   CERRAR MENÚ AL CAMBIAR TAMAÑO
-===================================================== */
-
-window.addEventListener("resize", () => {
-
-    if (window.innerWidth > 760) {
+    function closeMenu() {
 
         nav.classList.remove("open");
 
@@ -127,11 +40,280 @@ window.addEventListener("resize", () => {
         menuButton.setAttribute(
             "aria-expanded",
             "false"
+        );
+
+        menuButton.setAttribute(
+            "aria-label",
+            "Abrir menú"
         );
 
     }
 
+
+    menuButton.addEventListener("click", () => {
+
+        const isOpen =
+            nav.classList.toggle("open");
+
+        document.body.classList.toggle(
+            "menu-open",
+            isOpen
+        );
+
+        menuButton.setAttribute(
+            "aria-expanded",
+            String(isOpen)
+        );
+
+        menuButton.setAttribute(
+            "aria-label",
+            isOpen
+                ? "Cerrar menú"
+                : "Abrir menú"
+        );
+
+    });
+
+
+    /* =====================================================
+       CERRAR MENÚ AL SELECCIONAR
+    ====================================================== */
+
+    nav.querySelectorAll("a").forEach(link => {
+
+        link.addEventListener("click", () => {
+
+            if (window.innerWidth <= 780) {
+                closeMenu();
+            }
+
+        });
+
+    });
+
+
+    /* =====================================================
+       HEADER AL HACER SCROLL
+    ====================================================== */
+
+    function updateHeader() {
+
+        if (window.scrollY > 35) {
+
+            header.classList.add(
+                "scrolled"
+            );
+
+        } else {
+
+            header.classList.remove(
+                "scrolled"
+            );
+
+        }
+
+    }
+
+
+    /* =====================================================
+       PESTAÑA ACTIVA
+    ====================================================== */
+
+    function updateNavigation() {
+
+        let currentSection =
+            "inicio";
+
+        sections.forEach(section => {
+
+            const position =
+                section.getBoundingClientRect();
+
+            if (position.top <= 190) {
+
+                currentSection =
+                    section.id;
+
+            }
+
+        });
+
+
+        const bottomReached =
+            window.innerHeight +
+            window.scrollY >=
+            document.documentElement
+                .scrollHeight - 80;
+
+
+        if (bottomReached) {
+
+            currentSection =
+                "soporte";
+
+        }
+
+
+        navLinks.forEach(link => {
+
+            const target =
+                link.getAttribute("href");
+
+            const active =
+                target ===
+                `#${currentSection}`;
+
+            link.classList.toggle(
+                "active",
+                active
+            );
+
+
+            if (active) {
+
+                link.setAttribute(
+                    "aria-current",
+                    "location"
+                );
+
+            } else {
+
+                link.removeAttribute(
+                    "aria-current"
+                );
+
+            }
+
+        });
+
+    }
+
+
+    /* =====================================================
+       FAQ
+       SOLO UNA PREGUNTA ABIERTA
+    ====================================================== */
+
+    const faqItems =
+        document.querySelectorAll(
+            ".faq__item"
+        );
+
+
+    faqItems.forEach(item => {
+
+        item.addEventListener(
+            "toggle",
+            () => {
+
+                if (!item.open) {
+                    return;
+                }
+
+
+                faqItems.forEach(
+                    otherItem => {
+
+                        if (
+                            otherItem !== item
+                        ) {
+
+                            otherItem.open =
+                                false;
+
+                        }
+
+                    }
+                );
+
+            }
+        );
+
+    });
+
+
+    /* =====================================================
+       ESCAPE
+    ====================================================== */
+
+    document.addEventListener(
+        "keydown",
+        event => {
+
+            if (
+                event.key === "Escape"
+            ) {
+
+                closeMenu();
+
+            }
+
+        }
+    );
+
+
+    /* =====================================================
+       RESIZE
+    ====================================================== */
+
+    window.addEventListener(
+        "resize",
+        () => {
+
+            if (
+                window.innerWidth > 780
+            ) {
+
+                closeMenu();
+
+            }
+
+        }
+    );
+
+
+    /* =====================================================
+       SCROLL OPTIMIZADO
+    ====================================================== */
+
+    let ticking = false;
+
+
+    window.addEventListener(
+        "scroll",
+        () => {
+
+            if (!ticking) {
+
+                window.requestAnimationFrame(
+                    () => {
+
+                        updateHeader();
+
+                        updateNavigation();
+
+                        ticking = false;
+
+                    }
+                );
+
+                ticking = true;
+
+            }
+
+        },
+        {
+            passive: true
+        }
+    );
+
+
+    /* =====================================================
+       INICIO
+    ====================================================== */
+
+    updateHeader();
+
+    updateNavigation();
+
 });
-
-
-updateNavigation();

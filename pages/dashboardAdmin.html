@@ -1,0 +1,1222 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Panel de Administración | SISCAE</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <link rel="stylesheet" href="../css/dashboardAdmin.css">
+</head>
+
+<body>
+
+    <div class="app">
+
+        <!-- =====================================================
+             SIDEBAR
+        ====================================================== -->
+
+        <aside class="sidebar" id="sidebar">
+
+            <!-- LOGO -->
+
+            <div class="sidebar__header">
+
+                <a href="dashboardAdmin.html" class="sidebar__brand">
+
+                    <img
+                        src="../assets/logo.png"
+                        alt="Ministerio de Educación"
+                    >
+
+                </a>
+
+                <button
+                    class="sidebar__close"
+                    id="sidebarClose"
+                    type="button"
+                    aria-label="Cerrar menú"
+                >
+                    <svg viewBox="0 0 24 24">
+                        <path d="M6 6l12 12M18 6L6 18"/>
+                    </svg>
+                </button>
+
+            </div>
+
+
+            <!-- IDENTIFICACIÓN DEL SISTEMA -->
+
+            <div class="sidebar__system">
+
+                <span class="sidebar__system-name">
+                    SISCAE
+                </span>
+
+                <span class="sidebar__system-description">
+                    Gestión de activos editoriales
+                </span>
+
+            </div>
+
+
+            <!-- NAVEGACIÓN -->
+
+            <nav class="sidebar__nav">
+
+                <span class="sidebar__section-title">
+                    Administración
+                </span>
+
+
+                <!-- INICIO -->
+
+                <a
+                    href="dashboardAdmin.html"
+                    class="sidebar__link active"
+                >
+
+                    <span class="sidebar__icon">
+
+                        <svg viewBox="0 0 24 24">
+                            <path d="M4 4h6v6H4z"/>
+                            <path d="M14 4h6v6h-6z"/>
+                            <path d="M4 14h6v6H4z"/>
+                            <path d="M14 14h6v6h-6z"/>
+                        </svg>
+
+                    </span>
+
+                    <span>Inicio</span>
+
+                </a>
+
+
+                <!-- ACTIVOS -->
+
+                <a
+                    href="#activos"
+                    class="sidebar__link"
+                    data-section="activos"
+                >
+
+                    <span class="sidebar__icon">
+
+                        <svg viewBox="0 0 24 24">
+                            <path d="M3 7h7l2 2h9v10H3z"/>
+                            <path d="M3 7V5h7l2 2"/>
+                        </svg>
+
+                    </span>
+
+                    <span>Activos editoriales</span>
+
+                </a>
+
+
+                <!-- USUARIOS -->
+
+                <a
+                    href="#usuarios"
+                    class="sidebar__link"
+                    data-section="usuarios"
+                >
+
+                    <span class="sidebar__icon">
+
+                        <svg viewBox="0 0 24 24">
+                            <circle cx="9" cy="8" r="3"/>
+                            <path d="M3 20v-2c0-3 2.5-5 6-5s6 2 6 5v2"/>
+                            <circle cx="17" cy="9" r="2.5"/>
+                            <path d="M15 14c3.3 0 6 1.6 6 4.5V20"/>
+                        </svg>
+
+                    </span>
+
+                    <span>Usuarios</span>
+
+                </a>
+
+
+                <!-- ROLES -->
+
+                <a
+                    href="#roles"
+                    class="sidebar__link"
+                    data-section="roles"
+                >
+
+                    <span class="sidebar__icon">
+
+                        <svg viewBox="0 0 24 24">
+                            <path d="M12 3l7 3v5c0 4.6-2.8 8.1-7 10-4.2-1.9-7-5.4-7-10V6l7-3z"/>
+                            <path d="M9 12l2 2 4-4"/>
+                        </svg>
+
+                    </span>
+
+                    <span>Roles y permisos</span>
+
+                </a>
+
+
+                <div class="sidebar__separator"></div>
+
+                <span class="sidebar__section-title">
+                    Supervisión
+                </span>
+
+
+                <!-- AUDITORÍA -->
+
+                <a
+                    href="#auditoria"
+                    class="sidebar__link"
+                    data-section="auditoria"
+                >
+
+                    <span class="sidebar__icon">
+
+                        <svg viewBox="0 0 24 24">
+                            <path d="M6 3h9l4 4v14H6z"/>
+                            <path d="M15 3v5h5"/>
+                            <path d="M9 12h7M9 16h5"/>
+                        </svg>
+
+                    </span>
+
+                    <span>Auditoría</span>
+
+                </a>
+
+
+                <!-- ALERTAS -->
+
+                <a
+                    href="#alertas"
+                    class="sidebar__link"
+                    data-section="alertas"
+                >
+
+                    <span class="sidebar__icon">
+
+                        <svg viewBox="0 0 24 24">
+                            <path d="M12 3L2.8 20h18.4L12 3z"/>
+                            <path d="M12 9v5"/>
+                            <path d="M12 17.5v.5"/>
+                        </svg>
+
+                    </span>
+
+                    <span>Alertas</span>
+
+                    <span class="sidebar__badge">
+                        3
+                    </span>
+
+                </a>
+
+            </nav>
+
+
+            <!-- PARTE INFERIOR -->
+
+            <div class="sidebar__footer">
+
+                <a
+                    href="#configuracion"
+                    class="sidebar__link sidebar__link--footer"
+                >
+
+                    <span class="sidebar__icon">
+
+                        <svg viewBox="0 0 24 24">
+                            <circle cx="12" cy="12" r="3"/>
+                            <path d="M19.4 15a1.7 1.7 0 00.3 1.9l.1.1-2.8 2.8-.1-.1a1.7 1.7 0 00-1.9-.3 1.7 1.7 0 00-1 1.6v.2h-4V21a1.7 1.7 0 00-1-1.6 1.7 1.7 0 00-1.9.3l-.1.1L4.2 17l.1-.1a1.7 1.7 0 00.3-1.9A1.7 1.7 0 003 14H2.8v-4H3a1.7 1.7 0 001.6-1 1.7 1.7 0 00-.3-1.9L4.2 7 7 4.2l.1.1a1.7 1.7 0 001.9.3A1.7 1.7 0 0010 3V2.8h4V3a1.7 1.7 0 001 1.6 1.7 1.7 0 001.9-.3l.1-.1L19.8 7l-.1.1a1.7 1.7 0 00-.3 1.9 1.7 1.7 0 001.6 1h.2v4H21a1.7 1.7 0 00-1.6 1z"/>
+                        </svg>
+
+                    </span>
+
+                    <span>Configuración</span>
+
+                </a>
+
+
+                <div class="sidebar__user">
+
+                    <div class="sidebar__avatar">
+                        AD
+                    </div>
+
+                    <div class="sidebar__user-info">
+
+                        <strong>
+                            Administrador
+                        </strong>
+
+                        <span>
+                            Cuenta institucional
+                        </span>
+
+                    </div>
+
+                    <button
+                        class="sidebar__logout"
+                        type="button"
+                        id="logoutButton"
+                        aria-label="Cerrar sesión"
+                        title="Cerrar sesión"
+                    >
+
+                        <svg viewBox="0 0 24 24">
+                            <path d="M10 4H5v16h5"/>
+                            <path d="M14 8l4 4-4 4"/>
+                            <path d="M18 12H9"/>
+                        </svg>
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </aside>
+
+
+        <!-- =====================================================
+             ÁREA PRINCIPAL
+        ====================================================== -->
+
+        <div class="main">
+
+            <!-- TOPBAR -->
+
+            <header class="topbar">
+
+                <div class="topbar__left">
+
+                    <button
+                        class="topbar__menu"
+                        id="sidebarOpen"
+                        type="button"
+                        aria-label="Abrir menú"
+                    >
+
+                        <svg viewBox="0 0 24 24">
+                            <path d="M4 7h16M4 12h16M4 17h16"/>
+                        </svg>
+
+                    </button>
+
+
+                    <div class="topbar__location">
+
+                        <span>
+                            SISCAE
+                        </span>
+
+                        <svg viewBox="0 0 24 24">
+                            <path d="M9 6l6 6-6 6"/>
+                        </svg>
+
+                        <strong>
+                            Administración
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="topbar__right">
+
+                    <!-- NOTIFICACIONES -->
+
+                    <button
+                        class="topbar__notification"
+                        type="button"
+                        id="notificationButton"
+                        aria-label="Notificaciones"
+                    >
+
+                        <svg viewBox="0 0 24 24">
+                            <path d="M18 8a6 6 0 00-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9"/>
+                            <path d="M10 21h4"/>
+                        </svg>
+
+                        <span class="notification-dot"></span>
+
+                    </button>
+
+
+                    <!-- USUARIO -->
+
+                    <div class="user-menu">
+
+                        <button
+                            class="user-menu__button"
+                            id="userMenuButton"
+                            type="button"
+                        >
+
+                            <div class="user-menu__avatar">
+                                AD
+                            </div>
+
+                            <div class="user-menu__text">
+
+                                <strong>
+                                    Administrador
+                                </strong>
+
+                                <span>
+                                    Administrador del sistema
+                                </span>
+
+                            </div>
+
+                            <svg
+                                class="user-menu__arrow"
+                                viewBox="0 0 24 24"
+                            >
+                                <path d="M6 9l6 6 6-6"/>
+                            </svg>
+
+                        </button>
+
+
+                        <div
+                            class="user-menu__dropdown"
+                            id="userDropdown"
+                        >
+
+                            <a href="#perfil">
+                                Mi perfil
+                            </a>
+
+                            <a href="#configuracion">
+                                Configuración
+                            </a>
+
+                            <button
+                                type="button"
+                                id="dropdownLogout"
+                            >
+                                Cerrar sesión
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </header>
+
+
+            <!-- =================================================
+                 CONTENIDO
+            ================================================== -->
+
+            <main class="content">
+
+                <!-- ENCABEZADO -->
+
+                <section class="page-heading">
+
+                    <div>
+
+                        <span class="page-heading__label">
+                            Panel administrativo
+                        </span>
+
+                        <h1>
+                            Resumen general
+                        </h1>
+
+                        <p>
+                            Supervise la actividad, los activos
+                            editoriales y los accesos del sistema.
+                        </p>
+
+                    </div>
+
+
+                    <div class="page-heading__date">
+
+                        <svg viewBox="0 0 24 24">
+                            <rect x="3" y="5" width="18" height="16" rx="2"/>
+                            <path d="M8 3v4M16 3v4M3 10h18"/>
+                        </svg>
+
+                        <span id="currentDate">
+                            --
+                        </span>
+
+                    </div>
+
+                </section>
+
+
+                <!-- =================================================
+                     RESUMEN
+                ================================================== -->
+
+                <section class="stats">
+
+                    <!-- ACTIVOS -->
+
+                    <article class="stat-card">
+
+                        <div class="stat-card__top">
+
+                            <div class="stat-card__icon">
+
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M3 7h7l2 2h9v10H3z"/>
+                                    <path d="M3 7V5h7l2 2"/>
+                                </svg>
+
+                            </div>
+
+                            <span class="stat-card__status">
+                                Total
+                            </span>
+
+                        </div>
+
+                        <strong class="stat-card__number">
+                            24
+                        </strong>
+
+                        <span class="stat-card__title">
+                            Activos editoriales
+                        </span>
+
+                        <a href="#activos">
+                            Ver activos
+
+                            <svg viewBox="0 0 24 24">
+                                <path d="M5 12h14M13 6l6 6-6 6"/>
+                            </svg>
+                        </a>
+
+                    </article>
+
+
+                    <!-- USUARIOS -->
+
+                    <article class="stat-card">
+
+                        <div class="stat-card__top">
+
+                            <div class="stat-card__icon">
+
+                                <svg viewBox="0 0 24 24">
+                                    <circle cx="9" cy="8" r="3"/>
+                                    <path d="M3 20v-2c0-3 2.5-5 6-5s6 2 6 5v2"/>
+                                    <circle cx="17" cy="9" r="2.5"/>
+                                    <path d="M15 14c3.3 0 6 1.6 6 4.5V20"/>
+                                </svg>
+
+                            </div>
+
+                            <span class="stat-card__status">
+                                Activos
+                            </span>
+
+                        </div>
+
+                        <strong class="stat-card__number">
+                            18
+                        </strong>
+
+                        <span class="stat-card__title">
+                            Usuarios registrados
+                        </span>
+
+                        <a href="#usuarios">
+                            Administrar usuarios
+
+                            <svg viewBox="0 0 24 24">
+                                <path d="M5 12h14M13 6l6 6-6 6"/>
+                            </svg>
+                        </a>
+
+                    </article>
+
+
+                    <!-- REVISIONES -->
+
+                    <article class="stat-card">
+
+                        <div class="stat-card__top">
+
+                            <div class="stat-card__icon">
+
+                                <svg viewBox="0 0 24 24">
+                                    <circle cx="10" cy="10" r="6"/>
+                                    <path d="M15 15l5 5"/>
+                                    <path d="M7.5 10l1.7 1.7 3.5-3.7"/>
+                                </svg>
+
+                            </div>
+
+                            <span class="stat-card__status stat-card__status--warning">
+                                Pendientes
+                            </span>
+
+                        </div>
+
+                        <strong class="stat-card__number">
+                            6
+                        </strong>
+
+                        <span class="stat-card__title">
+                            Activos en revisión
+                        </span>
+
+                        <a href="#activos">
+                            Consultar activos
+
+                            <svg viewBox="0 0 24 24">
+                                <path d="M5 12h14M13 6l6 6-6 6"/>
+                            </svg>
+                        </a>
+
+                    </article>
+
+
+                    <!-- ALERTAS -->
+
+                    <article class="stat-card stat-card--alert">
+
+                        <div class="stat-card__top">
+
+                            <div class="stat-card__icon">
+
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M12 3L2.8 20h18.4L12 3z"/>
+                                    <path d="M12 9v5"/>
+                                    <path d="M12 17.5v.5"/>
+                                </svg>
+
+                            </div>
+
+                            <span class="stat-card__status stat-card__status--danger">
+                                Atención
+                            </span>
+
+                        </div>
+
+                        <strong class="stat-card__number">
+                            3
+                        </strong>
+
+                        <span class="stat-card__title">
+                            Alertas activas
+                        </span>
+
+                        <a href="#alertas">
+                            Revisar alertas
+
+                            <svg viewBox="0 0 24 24">
+                                <path d="M5 12h14M13 6l6 6-6 6"/>
+                            </svg>
+                        </a>
+
+                    </article>
+
+                </section>
+
+
+                <!-- =================================================
+                     ACTIVIDAD Y ALERTAS
+                ================================================== -->
+
+                <section class="dashboard-grid">
+
+                    <!-- ACTIVIDAD RECIENTE -->
+
+                    <article class="panel panel--activity">
+
+                        <div class="panel__header">
+
+                            <div>
+
+                                <span class="panel__eyebrow">
+                                    Supervisión
+                                </span>
+
+                                <h2>
+                                    Actividad reciente
+                                </h2>
+
+                            </div>
+
+                            <a href="#auditoria" class="panel__link">
+                                Ver auditoría
+
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M5 12h14M13 6l6 6-6 6"/>
+                                </svg>
+                            </a>
+
+                        </div>
+
+
+                        <div class="table-wrapper">
+
+                            <table class="activity-table">
+
+                                <thead>
+
+                                    <tr>
+                                        <th>Usuario</th>
+                                        <th>Acción</th>
+                                        <th>Activo editorial</th>
+                                        <th>Fecha</th>
+                                    </tr>
+
+                                </thead>
+
+                                <tbody>
+
+                                    <tr>
+
+                                        <td>
+
+                                            <div class="table-user">
+
+                                                <span class="table-avatar">
+                                                    AM
+                                                </span>
+
+                                                <div>
+                                                    <strong>
+                                                        Ana Martínez
+                                                    </strong>
+                                                    <span>
+                                                        Editor
+                                                    </span>
+                                                </div>
+
+                                            </div>
+
+                                        </td>
+
+                                        <td>
+                                            <span class="action-tag">
+                                                Modificación
+                                            </span>
+                                        </td>
+
+                                        <td>
+                                            Libro de Matemática
+                                        </td>
+
+                                        <td class="table-date">
+                                            Hoy, 10:42
+                                        </td>
+
+                                    </tr>
+
+
+                                    <tr>
+
+                                        <td>
+
+                                            <div class="table-user">
+
+                                                <span class="table-avatar">
+                                                    CP
+                                                </span>
+
+                                                <div>
+                                                    <strong>
+                                                        Carlos Pérez
+                                                    </strong>
+                                                    <span>
+                                                        Revisor
+                                                    </span>
+                                                </div>
+
+                                            </div>
+
+                                        </td>
+
+                                        <td>
+                                            <span class="action-tag action-tag--review">
+                                                Revisión
+                                            </span>
+                                        </td>
+
+                                        <td>
+                                            Guía docente
+                                        </td>
+
+                                        <td class="table-date">
+                                            Hoy, 09:15
+                                        </td>
+
+                                    </tr>
+
+
+                                    <tr>
+
+                                        <td>
+
+                                            <div class="table-user">
+
+                                                <span class="table-avatar">
+                                                    LR
+                                                </span>
+
+                                                <div>
+                                                    <strong>
+                                                        Laura Ramos
+                                                    </strong>
+                                                    <span>
+                                                        Autor
+                                                    </span>
+                                                </div>
+
+                                            </div>
+
+                                        </td>
+
+                                        <td>
+                                            <span class="action-tag action-tag--upload">
+                                                Carga
+                                            </span>
+                                        </td>
+
+                                        <td>
+                                            Portada Unidad 4
+                                        </td>
+
+                                        <td class="table-date">
+                                            Ayer, 15:30
+                                        </td>
+
+                                    </tr>
+
+
+                                    <tr>
+
+                                        <td>
+
+                                            <div class="table-user">
+
+                                                <span class="table-avatar">
+                                                    JM
+                                                </span>
+
+                                                <div>
+                                                    <strong>
+                                                        José Mejía
+                                                    </strong>
+                                                    <span>
+                                                        Editor
+                                                    </span>
+                                                </div>
+
+                                            </div>
+
+                                        </td>
+
+                                        <td>
+                                            <span class="action-tag action-tag--access">
+                                                Acceso
+                                            </span>
+                                        </td>
+
+                                        <td>
+                                            Ciencias Naturales
+                                        </td>
+
+                                        <td class="table-date">
+                                            Ayer, 11:08
+                                        </td>
+
+                                    </tr>
+
+                                </tbody>
+
+                            </table>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- ALERTAS -->
+
+                    <article class="panel panel--alerts">
+
+                        <div class="panel__header">
+
+                            <div>
+
+                                <span class="panel__eyebrow">
+                                    Sistema
+                                </span>
+
+                                <h2>
+                                    Alertas
+                                </h2>
+
+                            </div>
+
+                            <a href="#alertas" class="panel__link">
+                                Ver todas
+                            </a>
+
+                        </div>
+
+
+                        <div class="alerts-list">
+
+                            <!-- ALERTA 1 -->
+
+                            <div class="alert-item alert-item--warning">
+
+                                <div class="alert-item__icon">
+
+                                    <svg viewBox="0 0 24 24">
+                                        <path d="M12 3L2.8 20h18.4L12 3z"/>
+                                        <path d="M12 9v5"/>
+                                        <path d="M12 17.5v.5"/>
+                                    </svg>
+
+                                </div>
+
+                                <div class="alert-item__content">
+
+                                    <strong>
+                                        Acceso próximo a vencer
+                                    </strong>
+
+                                    <p>
+                                        Un usuario tiene permisos
+                                        próximos a finalizar.
+                                    </p>
+
+                                    <span>
+                                        Hace 20 min
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+
+                            <!-- ALERTA 2 -->
+
+                            <div class="alert-item">
+
+                                <div class="alert-item__icon">
+
+                                    <svg viewBox="0 0 24 24">
+                                        <path d="M6 3h9l4 4v14H6z"/>
+                                        <path d="M15 3v5h5"/>
+                                        <path d="M9 13h6"/>
+                                    </svg>
+
+                                </div>
+
+                                <div class="alert-item__content">
+
+                                    <strong>
+                                        Nueva versión registrada
+                                    </strong>
+
+                                    <p>
+                                        Se registró una nueva versión
+                                        de un activo editorial.
+                                    </p>
+
+                                    <span>
+                                        Hace 1 hora
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+
+                            <!-- ALERTA 3 -->
+
+                            <div class="alert-item alert-item--info">
+
+                                <div class="alert-item__icon">
+
+                                    <svg viewBox="0 0 24 24">
+                                        <circle cx="12" cy="12" r="9"/>
+                                        <path d="M12 11v6M12 7.5v.5"/>
+                                    </svg>
+
+                                </div>
+
+                                <div class="alert-item__content">
+
+                                    <strong>
+                                        Actividad registrada
+                                    </strong>
+
+                                    <p>
+                                        Se detectaron nuevas acciones
+                                        en el registro de auditoría.
+                                    </p>
+
+                                    <span>
+                                        Hace 2 horas
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+                </section>
+
+
+                <!-- =================================================
+                     ACTIVOS RECIENTES
+                ================================================== -->
+
+                <section class="panel recent-assets" id="activos">
+
+                    <div class="panel__header">
+
+                        <div>
+
+                            <span class="panel__eyebrow">
+                                Contenido institucional
+                            </span>
+
+                            <h2>
+                                Activos editoriales recientes
+                            </h2>
+
+                        </div>
+
+                        <a href="#activos" class="panel__link">
+                            Ver todos los activos
+
+                            <svg viewBox="0 0 24 24">
+                                <path d="M5 12h14M13 6l6 6-6 6"/>
+                            </svg>
+                        </a>
+
+                    </div>
+
+
+                    <div class="assets-grid">
+
+                        <!-- ACTIVO 1 -->
+
+                        <article class="asset-card">
+
+                            <div class="asset-card__type asset-card__type--book">
+
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M4 4h6a4 4 0 014 4v12a4 4 0 00-4-4H4z"/>
+                                    <path d="M20 4h-6a4 4 0 00-4 4"/>
+                                </svg>
+
+                            </div>
+
+                            <div class="asset-card__content">
+
+                                <span class="asset-card__category">
+                                    Libro
+                                </span>
+
+                                <h3>
+                                    Libro de Matemática
+                                </h3>
+
+                                <p>
+                                    Última modificación:
+                                    hoy, 10:42
+                                </p>
+
+                            </div>
+
+                            <span class="asset-status asset-status--review">
+                                En revisión
+                            </span>
+
+                        </article>
+
+
+                        <!-- ACTIVO 2 -->
+
+                        <article class="asset-card">
+
+                            <div class="asset-card__type">
+
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M6 3h9l4 4v14H6z"/>
+                                    <path d="M15 3v5h5"/>
+                                    <path d="M9 12h7M9 16h5"/>
+                                </svg>
+
+                            </div>
+
+                            <div class="asset-card__content">
+
+                                <span class="asset-card__category">
+                                    Documento
+                                </span>
+
+                                <h3>
+                                    Guía docente
+                                </h3>
+
+                                <p>
+                                    Última modificación:
+                                    hoy, 09:15
+                                </p>
+
+                            </div>
+
+                            <span class="asset-status asset-status--progress">
+                                En edición
+                            </span>
+
+                        </article>
+
+
+                        <!-- ACTIVO 3 -->
+
+                        <article class="asset-card">
+
+                            <div class="asset-card__type">
+
+                                <svg viewBox="0 0 24 24">
+                                    <rect x="3" y="4" width="18" height="16" rx="2"/>
+                                    <circle cx="8" cy="9" r="2"/>
+                                    <path d="M4 17l5-5 4 4 3-3 4 4"/>
+                                </svg>
+
+                            </div>
+
+                            <div class="asset-card__content">
+
+                                <span class="asset-card__category">
+                                    Imagen
+                                </span>
+
+                                <h3>
+                                    Portada Unidad 4
+                                </h3>
+
+                                <p>
+                                    Última modificación:
+                                    ayer, 15:30
+                                </p>
+
+                            </div>
+
+                            <span class="asset-status asset-status--approved">
+                                Aprobado
+                            </span>
+
+                        </article>
+
+                    </div>
+
+                </section>
+
+            </main>
+
+        </div>
+
+    </div>
+
+
+    <!-- OVERLAY MÓVIL -->
+
+    <div
+        class="sidebar-overlay"
+        id="sidebarOverlay"
+    ></div>
+
+
+    <!-- =====================================================
+         MODAL CERRAR SESIÓN
+    ====================================================== -->
+
+    <div
+        class="modal"
+        id="logoutModal"
+        aria-hidden="true"
+    >
+
+        <div class="modal__backdrop"></div>
+
+        <div class="modal__box">
+
+            <div class="modal__icon">
+
+                <svg viewBox="0 0 24 24">
+                    <path d="M10 4H5v16h5"/>
+                    <path d="M14 8l4 4-4 4"/>
+                    <path d="M18 12H9"/>
+                </svg>
+
+            </div>
+
+            <h2>
+                Cerrar sesión
+            </h2>
+
+            <p>
+                ¿Desea salir del panel de administración
+                de SISCAE?
+            </p>
+
+            <div class="modal__actions">
+
+                <button
+                    type="button"
+                    class="modal__cancel"
+                    id="cancelLogout"
+                >
+                    Cancelar
+                </button>
+
+                <button
+                    type="button"
+                    class="modal__confirm"
+                    id="confirmLogout"
+                >
+                    Cerrar sesión
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <script src="../js/dashboardAdmin.js"></script>
+
+</body>
+
+</html>

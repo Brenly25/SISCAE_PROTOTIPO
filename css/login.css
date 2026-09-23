@@ -1,0 +1,462 @@
+/* ==============================
+   GENERAL
+============================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: #f5f6f8;
+    color: #17233d;
+
+    display: flex;
+    flex-direction: column;
+}
+
+
+/* ==============================
+   HEADER
+============================== */
+
+.header {
+    height: 88px;
+    background: #17233d;
+    border-bottom: 4px solid #c6a04a;
+}
+
+.header-container {
+    width: min(1180px, 92%);
+    height: 100%;
+    margin: auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+}
+
+.brand img {
+    width: 235px;
+    max-height: 60px;
+    object-fit: contain;
+}
+
+
+/* SISCAE HEADER */
+
+.system-name {
+    padding-left: 25px;
+    border-left: 1px solid rgba(255, 255, 255, 0.18);
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.system-name span {
+    color: white;
+    font-size: 19px;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.system-name small {
+    color: #aeb8c9;
+    font-size: 10px;
+    letter-spacing: 1.2px;
+    margin-top: 3px;
+    text-transform: uppercase;
+}
+
+
+/* ==============================
+   MAIN
+============================== */
+
+.login-main {
+    flex: 1;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 50px 20px;
+}
+
+.login-wrapper {
+    width: min(1050px, 100%);
+    min-height: 480px;
+
+    display: grid;
+    grid-template-columns: 1fr 0.8fr;
+
+    background: white;
+
+    border: 1px solid #e0e4ea;
+
+    box-shadow:
+        0 18px 45px rgba(23, 35, 61, 0.08);
+}
+
+
+/* ==============================
+   LADO IZQUIERDO
+============================== */
+
+.login-intro {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+
+    padding: 65px;
+
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            135deg,
+            #f9fafb 0%,
+            #f3f5f8 100%
+        );
+}
+
+.intro-content {
+    position: relative;
+    z-index: 2;
+
+    max-width: 500px;
+}
+
+
+/* Línea dorada */
+
+.intro-line {
+    width: 42px;
+    height: 4px;
+
+    background: #c6a04a;
+
+    margin-bottom: 17px;
+}
+
+
+/* Etiqueta */
+
+.institutional {
+    display: block;
+
+    color: #687588;
+
+    font-size: 11px;
+    font-weight: 700;
+
+    letter-spacing: 1.8px;
+
+    margin-bottom: 17px;
+}
+
+
+/* SISCAE */
+
+.intro-content h1 {
+    color: #1e4f8f;
+
+    font-size: 51px;
+    font-weight: 750;
+
+    letter-spacing: 2px;
+
+    margin-bottom: 12px;
+}
+
+
+/* Nombre completo */
+
+.intro-content h2 {
+    color: #17233d;
+
+    font-size: 24px;
+    line-height: 1.35;
+
+    font-weight: 500;
+
+    max-width: 480px;
+
+    margin-bottom: 20px;
+}
+
+
+/* Texto */
+
+.intro-content p {
+    color: #727d8c;
+
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+
+/* ==============================
+   DECORACIÓN
+============================== */
+
+.decorative-circle {
+    position: absolute;
+
+    border-radius: 50%;
+
+    pointer-events: none;
+}
+
+.circle-one {
+    width: 260px;
+    height: 260px;
+
+    border: 45px solid rgba(31, 79, 143, 0.035);
+
+    top: -140px;
+    right: -100px;
+}
+
+.circle-two {
+    width: 150px;
+    height: 150px;
+
+    border: 27px solid rgba(198, 160, 74, 0.06);
+
+    bottom: -80px;
+    left: -60px;
+}
+
+
+/* ==============================
+   LOGIN DERECHO
+============================== */
+
+.login-section {
+    background: #eef1f5;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 55px 50px;
+
+    border-left: 1px solid #e0e4ea;
+}
+
+.login-content {
+    width: 100%;
+    max-width: 340px;
+}
+
+
+/* Icono */
+
+.login-icon {
+    width: 50px;
+    height: 50px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #17233d;
+    color: white;
+
+    font-size: 18px;
+
+    border-bottom: 4px solid #c6a04a;
+
+    margin-bottom: 24px;
+}
+
+
+/* Título */
+
+.login-content h2 {
+    color: #17233d;
+
+    font-size: 28px;
+    font-weight: 700;
+
+    margin-bottom: 10px;
+}
+
+
+/* Texto */
+
+.login-text {
+    color: #707b8b;
+
+    font-size: 14px;
+    line-height: 1.55;
+
+    margin-bottom: 27px;
+}
+
+
+/* ==============================
+   GOOGLE
+============================== */
+
+.google-button {
+    width: 100%;
+    height: 55px;
+
+    background: white;
+
+    border: 1px solid #cbd1da;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 13px;
+
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 600;
+
+    color: #263247;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+}
+
+.google-button svg {
+    width: 20px;
+    height: 20px;
+}
+
+.google-button:hover {
+    border-color: #1e4f8f;
+
+    box-shadow:
+        0 6px 16px rgba(23, 35, 61, 0.09);
+
+    transform: translateY(-1px);
+}
+
+
+/* ==============================
+   CUENTA INSTITUCIONAL
+============================== */
+
+.institutional-access {
+    margin-top: 18px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 8px;
+
+    color: #687486;
+
+    font-size: 11px;
+}
+
+.institutional-access i {
+    color: #a3853e;
+}
+
+.institutional-access strong {
+    color: #39475d;
+}
+
+
+/* ==============================
+   FOOTER
+============================== */
+
+.footer {
+    min-height: 58px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: white;
+
+    border-top: 1px solid #e1e4e8;
+}
+
+.footer p {
+    color: #858d98;
+    font-size: 11px;
+}
+
+
+/* ==============================
+   RESPONSIVE
+============================== */
+
+@media (max-width: 800px) {
+
+    .login-wrapper {
+        grid-template-columns: 1fr;
+    }
+
+    .login-intro {
+        padding: 45px 40px;
+    }
+
+    .login-section {
+        border-left: none;
+        border-top: 1px solid #e0e4ea;
+
+        padding: 45px 40px;
+    }
+
+    .login-content {
+        max-width: 450px;
+    }
+}
+
+
+@media (max-width: 550px) {
+
+    .header {
+        height: 78px;
+    }
+
+    .brand img {
+        width: 190px;
+    }
+
+    .system-name {
+        display: none;
+    }
+
+    .login-main {
+        padding: 20px 15px;
+    }
+
+    .login-intro {
+        padding: 38px 28px;
+    }
+
+    .intro-content h1 {
+        font-size: 40px;
+    }
+
+    .intro-content h2 {
+        font-size: 20px;
+    }
+
+    .login-section {
+        padding: 40px 28px;
+    }
+}

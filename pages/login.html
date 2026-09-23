@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Iniciar sesión | SISCAE</title>
+
+    <link rel="stylesheet" href="../css/login.css">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+
+<body>
+
+    <!-- ENCABEZADO -->
+    <header class="header">
+        <div class="header-container">
+
+            <a href="../index.html" class="brand">
+                <img src="../assets/logo.png" alt="MINEDUCYT">
+            </a>
+
+            <div class="system-name">
+                <span>SISCAE</span>
+                <small>Sistema Institucional</small>
+            </div>
+
+        </div>
+    </header>
+
+
+    <!-- LOGIN -->
+    <main class="login-main">
+
+        <div class="login-wrapper">
+
+            <!-- LADO IZQUIERDO -->
+            <section class="login-intro">
+
+                <div class="intro-content">
+
+                    <div class="intro-line"></div>
+
+                    <span class="institutional">
+                        PLATAFORMA INSTITUCIONAL
+                    </span>
+
+                    <h1>SISCAE</h1>
+
+                    <h2>
+                        Sistema Integral de Seguridad y
+                        Control de Activos Editoriales
+                    </h2>
+
+                    <p>
+                        Acceso seguro para usuarios institucionales autorizados.
+                    </p>
+
+                </div>
+
+                <div class="decorative-circle circle-one"></div>
+                <div class="decorative-circle circle-two"></div>
+
+            </section>
+
+
+            <!-- LADO DERECHO -->
+            <section class="login-section">
+
+                <div class="login-content">
+
+                    <div class="login-icon">
+                        <i class="fa-solid fa-user-lock"></i>
+                    </div>
+
+                    <h2>Iniciar sesión</h2>
+
+                    <p class="login-text">
+                        Ingresa con tu cuenta institucional para continuar.
+                    </p>
+
+
+                    <button class="google-button" id="googleLogin">
+
+                        <svg viewBox="0 0 24 24"
+                             xmlns="http://www.w3.org/2000/svg">
+
+                            <path fill="#4285F4"
+                                  d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.76h3.57c2.08-1.92 3.27-4.74 3.27-8.09z"/>
+
+                            <path fill="#34A853"
+                                  d="M12 23c2.97 0 5.46-.98 7.29-2.66l-3.57-2.76c-.98.66-2.24 1.06-3.72 1.06-2.87 0-5.3-1.94-6.17-4.54H2.14v2.84A11 11 0 0 0 12 23z"/>
+
+                            <path fill="#FBBC05"
+                                  d="M5.83 14.1A6.6 6.6 0 0 1 5.48 12c0-.73.13-1.43.35-2.1V7.06H2.14A11 11 0 0 0 1 12c0 1.77.42 3.44 1.14 4.94l3.69-2.84z"/>
+
+                            <path fill="#EA4335"
+                                  d="M12 5.36c1.62 0 3.06.56 4.2 1.64l3.15-3.15C17.45 2.08 14.97 1 12 1a11 11 0 0 0-9.86 6.06L5.83 9.9C6.7 7.3 9.13 5.36 12 5.36z"/>
+
+                        </svg>
+
+                        <span>Continuar con Google</span>
+
+                    </button>
+
+
+                    <div class="institutional-access">
+                        <i class="fa-solid fa-shield-halved"></i>
+
+                        <span>
+                            Acceso exclusivo con cuenta
+                            <strong>@clases.edu.sv</strong>
+                        </span>
+                    </div>
+
+                </div>
+
+            </section>
+
+        </div>
+
+    </main>
+
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <p>
+            © 2026 Ministerio de Educación, Ciencia y Tecnología
+        </p>
+    </footer>
+
+
+    <script>
+        document.getElementById("googleLogin").addEventListener("click", () => {
+            console.log("Inicio de sesión");
+        });
+    </script>
+
+</body>
+</html>

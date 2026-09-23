@@ -1,0 +1,1238 @@
+/* =========================================================
+   SISCAE
+   VISTA PRINCIPAL
+========================================================= */
+
+
+/* =========================================================
+   FUENTES
+========================================================= */
+
+@font-face {
+    font-family: "Coolvetica";
+    src: local("Coolvetica");
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Louis George Cafe";
+    src: local("Louis George Cafe");
+    font-display: swap;
+}
+
+
+/* =========================================================
+   VARIABLES
+========================================================= */
+
+:root {
+
+    --azul-principal: #0637B7;
+    --azul-oscuro: #06246A;
+    --azul-secundario: #155EEF;
+    --azul-claro: #EEF4FF;
+
+    --amarillo: #F4C430;
+
+    --texto: #172033;
+    --texto-secundario: #667085;
+
+    --fondo: #F7F9FC;
+    --blanco: #FFFFFF;
+
+    --borde: #DCE3E8;
+
+    --container: 1180px;
+}
+
+
+/* =========================================================
+   RESET
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Roboto", Arial, sans-serif;
+    background: var(--blanco);
+    color: var(--texto);
+    line-height: 1.6;
+}
+
+body.menu-open {
+    overflow: hidden;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button {
+    font: inherit;
+}
+
+.container {
+    width: min(88%, var(--container));
+    margin: 0 auto;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.header {
+    width: 100%;
+    height: 92px;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    z-index: 1000;
+
+    background: transparent;
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.header__inner {
+    width: min(92%, 1320px);
+    height: 100%;
+
+    margin: 0 auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+/* LOGO */
+
+.institution {
+    display: flex;
+    align-items: center;
+}
+
+.institution__logo {
+    display: block;
+
+    width: 285px;
+    height: 64px;
+
+    object-fit: contain;
+    object-position: left center;
+}
+
+
+/* =========================================================
+   NAVEGACIÓN
+========================================================= */
+
+.nav {
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+
+    gap: 35px;
+}
+
+.nav__link {
+    height: 100%;
+
+    position: relative;
+
+    display: flex;
+    align-items: center;
+
+    color: rgba(255, 255, 255, 0.78);
+
+    font-size: 13px;
+    font-weight: 500;
+
+    transition: color 0.2s ease;
+}
+
+.nav__link:hover,
+.nav__link.active {
+    color: #FFFFFF;
+}
+
+.nav__link.active::after {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    bottom: -1px;
+
+    width: 100%;
+    height: 3px;
+
+    background: var(--amarillo);
+}
+
+
+/* BOTÓN DE ACCESO */
+
+.nav__access {
+    min-width: 102px;
+
+    padding: 10px 18px;
+
+    text-align: center;
+
+    color: var(--azul-oscuro);
+    background: #FFFFFF;
+
+    border: 1px solid #FFFFFF;
+    border-radius: 4px;
+
+    font-size: 13px;
+    font-weight: 600;
+
+    transition:
+        background 0.2s ease,
+        color 0.2s ease;
+}
+
+.nav__access:hover {
+    background: var(--amarillo);
+    border-color: var(--amarillo);
+}
+
+
+/* =========================================================
+   BOTÓN MENÚ
+========================================================= */
+
+.menu-button {
+    width: 40px;
+    height: 40px;
+
+    display: none;
+
+    padding: 8px;
+
+    border: 0;
+
+    background: transparent;
+
+    cursor: pointer;
+}
+
+.menu-button span {
+    width: 100%;
+    height: 2px;
+
+    display: block;
+
+    margin: 5px 0;
+
+    background: #FFFFFF;
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero {
+    min-height: 700px;
+
+    position: relative;
+
+    display: flex;
+    align-items: center;
+
+    overflow: hidden;
+
+    color: #FFFFFF;
+
+    background: var(--azul-oscuro);
+}
+
+
+/* DETALLE DE FONDO */
+
+.hero::before {
+    content: "";
+
+    width: 560px;
+    height: 560px;
+
+    position: absolute;
+
+    top: 50%;
+    right: -270px;
+
+    transform: translateY(-50%);
+
+    border: 1px solid rgba(255, 255, 255, 0.08);
+
+    border-radius: 50%;
+}
+
+.hero::after {
+    content: "";
+
+    width: 380px;
+    height: 380px;
+
+    position: absolute;
+
+    top: 50%;
+    right: -180px;
+
+    transform: translateY(-50%);
+
+    border: 1px solid rgba(255, 255, 255, 0.07);
+
+    border-radius: 50%;
+}
+
+
+/* DECORACIÓN MUY DISCRETA */
+
+.hero__decoration {
+    position: absolute;
+
+    border-radius: 50%;
+
+    pointer-events: none;
+}
+
+.hero__decoration--one {
+    width: 220px;
+    height: 220px;
+
+    top: 165px;
+    left: -170px;
+
+    border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.hero__decoration--two {
+    width: 110px;
+    height: 110px;
+
+    top: 220px;
+    left: -65px;
+
+    border: 1px solid rgba(244, 196, 48, 0.18);
+}
+
+
+/* CONTENIDO */
+
+.hero__content {
+    position: relative;
+    z-index: 2;
+
+    padding-top: 75px;
+
+    text-align: center;
+}
+
+
+/* SISCAE */
+
+.hero__identity {
+    margin-bottom: 28px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.hero__name {
+    font-family:
+        "Louis George Cafe",
+        "Roboto",
+        sans-serif;
+
+    font-size: 15px;
+    font-weight: 600;
+
+    letter-spacing: 5px;
+
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.hero__line {
+    width: 42px;
+    height: 3px;
+
+    margin-top: 13px;
+
+    background: var(--amarillo);
+}
+
+
+/* TÍTULO */
+
+.hero h1 {
+    max-width: 850px;
+
+    margin: 0 auto;
+
+    font-family:
+        "Coolvetica",
+        "Roboto",
+        sans-serif;
+
+    font-size: clamp(42px, 5vw, 66px);
+    font-weight: 500;
+
+    line-height: 1.08;
+
+    letter-spacing: -0.8px;
+}
+
+.hero h1 span {
+    display: block;
+
+    color: #FFFFFF;
+}
+
+
+/* DESCRIPCIÓN */
+
+.hero__description {
+    max-width: 620px;
+
+    margin: 27px auto 0;
+
+    color: rgba(255, 255, 255, 0.70);
+
+    font-size: 15px;
+    font-weight: 300;
+
+    line-height: 1.75;
+}
+
+
+/* BOTÓN */
+
+.hero__button {
+    min-width: 190px;
+
+    margin-top: 35px;
+    padding: 13px 21px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 15px;
+
+    color: var(--azul-oscuro);
+    background: #FFFFFF;
+
+    border-radius: 4px;
+
+    font-size: 13px;
+    font-weight: 600;
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease;
+}
+
+.hero__button svg {
+    width: 18px;
+    height: 18px;
+}
+
+.hero__button:hover {
+    background: var(--amarillo);
+    transform: translateY(-1px);
+}
+
+
+/* PARTE INFERIOR DEL HERO */
+
+.hero__bottom {
+    width: 100%;
+
+    position: absolute;
+
+    bottom: 0;
+    left: 0;
+
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.hero__bottom-content {
+    min-height: 58px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    color: rgba(255, 255, 255, 0.50);
+
+    font-size: 10px;
+    font-weight: 500;
+
+    text-transform: uppercase;
+
+    letter-spacing: 1.2px;
+}
+
+
+/* =========================================================
+   ETIQUETAS DE SECCIÓN
+========================================================= */
+
+.section-label {
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+
+    color: var(--azul-principal);
+
+    font-size: 11px;
+    font-weight: 700;
+
+    text-transform: uppercase;
+
+    letter-spacing: 1.6px;
+}
+
+.section-label span {
+    width: 27px;
+    height: 2px;
+
+    display: block;
+
+    background: var(--amarillo);
+}
+
+
+/* =========================================================
+   SOBRE SISCAE
+========================================================= */
+
+.about {
+    padding: 110px 0 120px;
+
+    background: #FFFFFF;
+}
+
+.about__grid {
+    margin-top: 35px;
+
+    display: grid;
+
+    grid-template-columns: 0.9fr 1.1fr;
+
+    gap: 120px;
+}
+
+.about__heading h2 {
+    max-width: 470px;
+
+    font-family:
+        "Coolvetica",
+        "Roboto",
+        sans-serif;
+
+    color: var(--texto);
+
+    font-size: 44px;
+    font-weight: 500;
+
+    line-height: 1.15;
+
+    letter-spacing: -0.5px;
+}
+
+.about__information {
+    max-width: 570px;
+}
+
+.about__lead {
+    margin-bottom: 22px;
+
+    color: var(--texto);
+
+    font-family:
+        "Louis George Cafe",
+        "Roboto",
+        sans-serif;
+
+    font-size: 20px;
+    font-weight: 500;
+
+    line-height: 1.55;
+}
+
+.about__information > p:not(.about__lead) {
+    color: var(--texto-secundario);
+
+    font-size: 14px;
+
+    line-height: 1.85;
+}
+
+
+/* ENLACE */
+
+.text-link {
+    margin-top: 28px;
+
+    display: inline-flex;
+    align-items: center;
+
+    gap: 12px;
+
+    color: var(--azul-principal);
+
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.text-link svg {
+    width: 17px;
+    height: 17px;
+
+    transition: transform 0.2s ease;
+}
+
+.text-link:hover svg {
+    transform: translateX(4px);
+}
+
+
+/* =========================================================
+   FRANJA INSTITUCIONAL
+========================================================= */
+
+.institutional-band {
+    background: var(--azul-claro);
+
+    border-top: 1px solid #E1E9F5;
+    border-bottom: 1px solid #E1E9F5;
+}
+
+.institutional-band__content {
+    min-height: 165px;
+
+    display: grid;
+
+    grid-template-columns: 0.9fr 1.1fr;
+
+    gap: 120px;
+
+    align-items: center;
+}
+
+.institutional-band__title {
+    display: flex;
+    flex-direction: column;
+
+    gap: 7px;
+}
+
+.institutional-band__title span {
+    color: var(--azul-principal);
+
+    font-size: 11px;
+    font-weight: 700;
+
+    text-transform: uppercase;
+
+    letter-spacing: 1.4px;
+}
+
+.institutional-band__title strong {
+    color: var(--azul-oscuro);
+
+    font-family:
+        "Louis George Cafe",
+        "Roboto",
+        sans-serif;
+
+    font-size: 21px;
+    font-weight: 600;
+}
+
+.institutional-band p {
+    max-width: 580px;
+
+    color: #526273;
+
+    font-size: 13px;
+
+    line-height: 1.8;
+}
+
+
+/* =========================================================
+   CAPACIDADES
+========================================================= */
+
+.capabilities {
+    padding: 110px 0 120px;
+
+    background: #FFFFFF;
+}
+
+.capabilities__header {
+    max-width: 650px;
+
+    margin-bottom: 60px;
+}
+
+.capabilities__header h2 {
+    margin-top: 22px;
+
+    font-family:
+        "Coolvetica",
+        "Roboto",
+        sans-serif;
+
+    color: var(--texto);
+
+    font-size: 42px;
+    font-weight: 500;
+
+    line-height: 1.15;
+}
+
+.capabilities__header > p {
+    max-width: 540px;
+
+    margin-top: 16px;
+
+    color: var(--texto-secundario);
+
+    font-size: 14px;
+
+    line-height: 1.8;
+}
+
+
+/* GRID */
+
+.capabilities__grid {
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    border-top: 1px solid var(--borde);
+    border-bottom: 1px solid var(--borde);
+}
+
+
+/* CAPACIDAD */
+
+.capability {
+    min-height: 220px;
+
+    position: relative;
+
+    padding: 38px 30px 35px;
+
+    border-right: 1px solid var(--borde);
+}
+
+.capability:first-child {
+    padding-left: 0;
+}
+
+.capability:last-child {
+    border-right: none;
+}
+
+.capability__accent {
+    width: 28px;
+    height: 3px;
+
+    margin-bottom: 28px;
+
+    background: var(--azul-principal);
+}
+
+.capability:nth-child(3) .capability__accent {
+    background: var(--amarillo);
+}
+
+.capability h3 {
+    margin-bottom: 13px;
+
+    font-family:
+        "Louis George Cafe",
+        "Roboto",
+        sans-serif;
+
+    color: var(--texto);
+
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.capability p {
+    color: var(--texto-secundario);
+
+    font-size: 13px;
+
+    line-height: 1.75;
+}
+
+
+/* =========================================================
+   ACCESO INSTITUCIONAL
+========================================================= */
+
+.access-section {
+    padding: 70px 0;
+
+    background: var(--fondo);
+
+    border-top: 1px solid var(--borde);
+}
+
+.access-section__content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 60px;
+}
+
+.access-section__small {
+    display: block;
+
+    margin-bottom: 8px;
+
+    color: var(--azul-principal);
+
+    font-size: 10px;
+    font-weight: 700;
+
+    text-transform: uppercase;
+
+    letter-spacing: 1.5px;
+}
+
+.access-section h2 {
+    font-family:
+        "Coolvetica",
+        "Roboto",
+        sans-serif;
+
+    color: var(--texto);
+
+    font-size: 32px;
+    font-weight: 500;
+}
+
+.access-section p {
+    margin-top: 7px;
+
+    color: var(--texto-secundario);
+
+    font-size: 13px;
+}
+
+
+/* BOTÓN */
+
+.access-section__button {
+    min-width: 170px;
+
+    padding: 13px 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 14px;
+
+    color: #FFFFFF;
+    background: var(--azul-principal);
+
+    border-radius: 4px;
+
+    font-size: 13px;
+    font-weight: 600;
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease;
+}
+
+.access-section__button svg {
+    width: 17px;
+    height: 17px;
+}
+
+.access-section__button:hover {
+    background: var(--azul-oscuro);
+    transform: translateY(-1px);
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.footer {
+    padding: 38px 0;
+
+    background: #041B48;
+
+    border-top: 3px solid var(--amarillo);
+}
+
+.footer__content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 60px;
+}
+
+.footer__logo {
+    width: 245px;
+    height: 58px;
+
+    display: block;
+
+    object-fit: contain;
+    object-position: left center;
+}
+
+.footer__right {
+    max-width: 360px;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: flex-end;
+
+    text-align: right;
+}
+
+.footer__right strong {
+    color: #FFFFFF;
+
+    font-family:
+        "Louis George Cafe",
+        "Roboto",
+        sans-serif;
+
+    font-size: 15px;
+
+    letter-spacing: 2px;
+}
+
+.footer__right span {
+    margin-top: 5px;
+
+    color: rgba(255, 255, 255, 0.55);
+
+    font-size: 10px;
+
+    line-height: 1.5;
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 960px) {
+
+    .institution__logo {
+        width: 235px;
+    }
+
+    .nav {
+        gap: 22px;
+    }
+
+    .about__grid,
+    .institutional-band__content {
+        gap: 65px;
+    }
+
+    .capabilities__grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .capability {
+        border-bottom: 1px solid var(--borde);
+    }
+
+    .capability:nth-child(2) {
+        border-right: none;
+    }
+
+    .capability:nth-child(3),
+    .capability:nth-child(4) {
+        border-bottom: none;
+    }
+
+    .capability:first-child {
+        padding-left: 30px;
+    }
+}
+
+
+/* =========================================================
+   MÓVIL
+========================================================= */
+
+@media (max-width: 760px) {
+
+    .container {
+        width: min(88%, 600px);
+    }
+
+
+    /* HEADER */
+
+    .header {
+        height: 78px;
+    }
+
+    .header__inner {
+        width: 90%;
+    }
+
+    .institution__logo {
+        width: 210px;
+        height: 52px;
+    }
+
+    .menu-button {
+        display: block;
+    }
+
+
+    /* MENÚ */
+
+    .nav {
+        width: 100%;
+        height: auto;
+
+        position: absolute;
+
+        top: 78px;
+        left: 0;
+
+        padding: 25px 6% 30px;
+
+        display: none;
+
+        flex-direction: column;
+        align-items: flex-start;
+
+        gap: 0;
+
+        background: var(--azul-oscuro);
+
+        border-top:
+            1px solid
+            rgba(255, 255, 255, 0.12);
+
+        box-shadow:
+            0 15px 30px
+            rgba(0, 0, 0, 0.15);
+    }
+
+    .nav.open {
+        display: flex;
+    }
+
+    .nav__link {
+        width: 100%;
+        height: auto;
+
+        padding: 15px 0;
+
+        border-bottom:
+            1px solid
+            rgba(255, 255, 255, 0.10);
+    }
+
+    .nav__link.active::after {
+        display: none;
+    }
+
+    .nav__access {
+        width: 100%;
+
+        margin-top: 22px;
+
+        padding: 12px 18px;
+    }
+
+
+    /* HERO */
+
+    .hero {
+        min-height: 660px;
+    }
+
+    .hero__content {
+        padding-top: 60px;
+    }
+
+    .hero h1 {
+        font-size: clamp(39px, 11vw, 52px);
+    }
+
+    .hero__description {
+        max-width: 480px;
+
+        font-size: 14px;
+    }
+
+    .hero__bottom-content {
+        justify-content: center;
+    }
+
+    .hero__bottom-content span:last-child {
+        display: none;
+    }
+
+
+    /* ABOUT */
+
+    .about {
+        padding: 80px 0;
+    }
+
+    .about__grid {
+        margin-top: 27px;
+
+        grid-template-columns: 1fr;
+
+        gap: 35px;
+    }
+
+    .about__heading h2 {
+        font-size: 36px;
+    }
+
+
+    /* FRANJA */
+
+    .institutional-band {
+        padding: 45px 0;
+    }
+
+    .institutional-band__content {
+        min-height: auto;
+
+        grid-template-columns: 1fr;
+
+        gap: 22px;
+    }
+
+
+    /* CAPACIDADES */
+
+    .capabilities {
+        padding: 80px 0;
+    }
+
+    .capabilities__header h2 {
+        font-size: 35px;
+    }
+
+    .capabilities__grid {
+        grid-template-columns: 1fr;
+    }
+
+    .capability,
+    .capability:first-child {
+        min-height: auto;
+
+        padding: 32px 0;
+
+        border-right: none;
+        border-bottom: 1px solid var(--borde);
+    }
+
+    .capability:nth-child(3) {
+        border-bottom: 1px solid var(--borde);
+    }
+
+    .capability:last-child {
+        border-bottom: none;
+    }
+
+
+    /* ACCESO */
+
+    .access-section__content {
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 30px;
+    }
+
+    .access-section__button {
+        width: 100%;
+    }
+
+
+    /* FOOTER */
+
+    .footer__content {
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 25px;
+    }
+
+    .footer__right {
+        align-items: flex-start;
+
+        text-align: left;
+    }
+}
+
+
+/* =========================================================
+   PANTALLAS MUY PEQUEÑAS
+========================================================= */
+
+@media (max-width: 430px) {
+
+    .institution__logo {
+        width: 185px;
+    }
+
+    .hero h1 {
+        font-size: 38px;
+    }
+
+    .hero__name {
+        font-size: 13px;
+    }
+
+    .about__heading h2,
+    .capabilities__header h2 {
+        font-size: 32px;
+    }
+}

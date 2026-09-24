@@ -1,0 +1,325 @@
+/* =========================================================
+   SISCAE - DASHBOARD USUARIO
+
+   Se carga DESPUÉS de dashboardAdmin.css. Sidebar, topbar,
+   resumen, tarjetas, tabla de actividad, footer y modales
+   vienen de ahí. Aquí solo va lo propio de esta vista.
+========================================================= */
+
+
+/* =========================================================
+   SEPARACIÓN ENTRE PANELES DE TABLA
+========================================================= */
+
+.activity-panel + .activity-panel {
+    margin-top: 48px;
+}
+
+.administrative-overview {
+    margin-bottom: 48px;
+}
+
+
+/* =========================================================
+   ENLACE EN LA TARJETA DE PERMISOS
+========================================================= */
+
+.overview-action {
+    color: var(--blue-3);
+    font-weight: 600;
+}
+
+.overview-action:hover {
+    color: var(--navy);
+    text-decoration: underline;
+}
+
+
+/* UNIDAD PEQUEÑA JUNTO AL NÚMERO ("3 días") */
+
+.indicator-value small {
+    margin-left: 4px;
+
+    color: #77859A;
+
+    font-size: 8px;
+    font-weight: 500;
+}
+
+
+/* =========================================================
+   HERRAMIENTAS DEL PANEL: FILTROS + BOTÓN
+========================================================= */
+
+.activity-tools {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 12px;
+}
+
+.filter-tabs {
+    padding: 3px;
+
+    display: inline-flex;
+    gap: 2px;
+
+    background: #F1F5FB;
+    border: 1px solid var(--border);
+    border-radius: 3px;
+}
+
+.filter-tab {
+    padding: 7px 11px;
+
+    color: var(--text-secondary);
+    background: transparent;
+
+    border: 0;
+    border-radius: 2px;
+
+    font-size: 8px;
+    font-weight: 500;
+
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.filter-tab:hover {
+    color: var(--navy);
+}
+
+.filter-tab.active {
+    color: var(--navy);
+    background: #FFFFFF;
+
+    box-shadow: 0 1px 3px rgba(6, 36, 106, .1);
+
+    font-weight: 600;
+}
+
+/* btn-primary del admin tiene flex: 1 (pensado para el modal) */
+.btn-inline {
+    flex: none;
+
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+}
+
+.btn-inline svg {
+    width: 13px;
+    height: 13px;
+
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+}
+
+.filter-tab:focus-visible,
+.btn-primary:focus-visible,
+.btn-secondary:focus-visible,
+.form-field input:focus-visible,
+.form-field select:focus-visible {
+    outline: 2px solid var(--blue-5);
+    outline-offset: 2px;
+}
+
+
+/* =========================================================
+   TABLA
+   Las columnas del admin suman más de 900px; en pantallas
+   medianas la tabla hace scroll dentro del panel en lugar
+   de cortarse.
+========================================================= */
+
+.activity-table {
+    overflow-x: auto;
+}
+
+/* Estados con la misma lógica de color del sistema */
+
+.status-pill {
+    width: fit-content;
+    padding: 5px 9px;
+
+    display: inline-block;
+
+    font-size: 7px;
+    font-weight: 600;
+    letter-spacing: .2px;
+
+    border-left: 2px solid;
+}
+
+.status-pill--edicion {
+    color: var(--blue-3);
+    background: #EDF4FF;
+    border-color: var(--blue-4);
+}
+
+.status-pill--revision {
+    color: #775500;
+    background: rgba(245, 206, 50, .18);
+    border-color: var(--yellow);
+}
+
+.status-pill--aprobado {
+    color: #087A50;
+    background: #EAF8F1;
+    border-color: var(--green);
+}
+
+.activity-empty {
+    padding: 40px 28px;
+
+    color: var(--text-secondary);
+
+    font-size: 9px;
+    text-align: center;
+}
+
+
+/* =========================================================
+   FORMULARIO DEL MODAL
+========================================================= */
+
+.asset-form {
+    margin-top: 18px;
+
+    display: grid;
+    gap: 13px;
+}
+
+.form-field {
+    display: grid;
+    gap: 5px;
+}
+
+.form-field > span {
+    color: var(--text);
+
+    font-size: 8px;
+    font-weight: 600;
+}
+
+.form-field input,
+.form-field select {
+    min-height: 38px;
+    padding: 0 11px;
+
+    color: var(--text);
+    background: #FFFFFF;
+
+    border: 1px solid var(--border);
+    border-radius: 3px;
+
+    font: inherit;
+    font-size: 9px;
+}
+
+.form-field input[type="file"] {
+    padding: 9px 11px;
+}
+
+.form-field input.invalid {
+    border-color: var(--red);
+}
+
+.form-error {
+    min-height: 11px;
+
+    color: var(--red);
+
+    font-size: 7px;
+}
+
+.asset-form .modal-actions {
+    margin-top: 8px;
+}
+
+
+/* =========================================================
+   AVISO
+========================================================= */
+
+.toast {
+    position: fixed;
+    right: 24px;
+    bottom: 24px;
+    z-index: 3100;
+
+    padding: 13px 17px;
+
+    color: #FFFFFF;
+    background: var(--navy);
+
+    border-left: 3px solid var(--yellow);
+    box-shadow: 0 14px 32px rgba(6, 36, 106, .25);
+
+    font-size: 9px;
+
+    opacity: 0;
+    transform: translateY(10px);
+    pointer-events: none;
+
+    transition:
+        opacity .2s ease,
+        transform .2s ease;
+}
+
+.toast.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 1100px) {
+
+    .activity-header {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .activity-tools {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+}
+
+@media (max-width: 800px) {
+
+    /* en móvil las filas se apilan (regla del admin),
+       así que ya no hace falta el scroll horizontal */
+    .activity-table {
+        overflow-x: visible;
+    }
+
+}
+
+@media (max-width: 560px) {
+
+    .filter-tabs {
+        width: 100%;
+        overflow-x: auto;
+    }
+
+    .btn-inline {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .toast {
+        right: 14px;
+        left: 14px;
+    }
+
+}

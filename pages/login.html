@@ -3,43 +3,52 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
     <title>Iniciar sesión | SISCAE</title>
 
     <!-- ROBOTO -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
 
     <link
         href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
 
-    <!-- CSS GENERAL DEL SITIO -->
-    <link rel="stylesheet" href="../css/index.css">
-
-    <!-- CSS DEL LOGIN -->
-    <link rel="stylesheet" href="../css/login.css">
-
     <!-- FONT AWESOME -->
     <link
         rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <!-- CSS LOGIN -->
+    <link rel="stylesheet"
+          href="../css/login.css">
+
 </head>
 
 
-<body>
+<body id="top">
+
 
     <!-- =====================================================
-         NAVBAR
+         HEADER
     ====================================================== -->
 
-    <header class="header" id="header">
+    <header class="login-header">
 
-        <div class="header__content">
+        <div class="login-header__content">
+
 
             <!-- LOGO -->
-            <a href="../index.html" class="header__brand">
+
+            <a href="../index.html"
+               class="login-header__brand">
 
                 <img
                     src="../assets/logo.png"
@@ -48,34 +57,36 @@
             </a>
 
 
-            <!-- NAVEGACIÓN -->
-            <nav class="nav" id="nav">
 
-                <a
-                    href="../index.html#inicio"
-                    class="nav__link">
+            <!-- NAVEGACIÓN -->
+
+            <nav class="login-nav"
+                 id="loginNav">
+
+                <a href="../index.html#inicio"
+                   class="login-nav__link">
                     Inicio
                 </a>
 
-                <a
-                    href="../index.html#acerca"
-                    class="nav__link">
+                <a href="../index.html#acerca"
+                   class="login-nav__link">
                     Acerca de SISCAE
                 </a>
 
-                <a
-                    href="../index.html#soporte"
-                    class="nav__link">
+                <a href="../index.html#soporte"
+                   class="login-nav__link">
                     Soporte técnico
                 </a>
 
             </nav>
 
 
-            <!-- BOTÓN MENÚ MÓVIL -->
+
+            <!-- MENÚ MÓVIL -->
+
             <button
-                class="menu-button"
-                id="menuButton"
+                class="login-menu-button"
+                id="loginMenuButton"
                 type="button"
                 aria-label="Abrir menú"
                 aria-expanded="false">
@@ -86,6 +97,7 @@
 
             </button>
 
+
         </div>
 
     </header>
@@ -93,36 +105,13 @@
 
 
     <!-- =====================================================
-         LOGIN
+         CONTENIDO LOGIN
     ====================================================== -->
 
-    <main class="login-main" id="login">
+    <main class="login-main">
+
 
         <div class="login-wrapper">
-
-
-            <!-- =============================================
-                 DECORACIÓN GENERAL
-            ============================================== -->
-
-            <div
-                class="login-decoration"
-                aria-hidden="true">
-
-                <span class="login-ring login-ring--top"></span>
-
-                <span class="login-ring login-ring--bottom"></span>
-
-                <span class="login-deco-line login-deco-line--1"></span>
-                <span class="login-deco-line login-deco-line--2"></span>
-                <span class="login-deco-line login-deco-line--3"></span>
-
-                <span class="login-dot login-dot--1"></span>
-                <span class="login-dot login-dot--2"></span>
-                <span class="login-dot login-dot--3"></span>
-
-            </div>
-
 
 
             <!-- =============================================
@@ -131,40 +120,9 @@
 
             <section class="login-intro">
 
-                <div class="login-intro__content">
-
-                    <!-- Línea dorada -->
-                    <span class="login-intro__line"></span>
-
-
-                    <!-- Etiqueta -->
-                    <span class="login-intro__label">
-                        PLATAFORMA INSTITUCIONAL
-                    </span>
-
-
-                    <!-- Nombre corto -->
-                    <h1>
-                        SISCAE
-                    </h1>
-
-
-                    <!-- Nombre completo -->
-                    <h2>
-                        Sistema Integral de Seguridad y Control
-                        de Activos Editoriales
-                    </h2>
-
-
-                    <!-- Descripción -->
-                    <p>
-                        Acceso seguro para usuarios institucionales autorizados.
-                    </p>
-
-                </div>
-
 
                 <!-- Decoración -->
+
                 <span
                     class="intro-ring intro-ring--top"
                     aria-hidden="true">
@@ -174,6 +132,54 @@
                     class="intro-ring intro-ring--bottom"
                     aria-hidden="true">
                 </span>
+
+
+
+                <div class="login-intro__content">
+
+
+                    <!-- Línea -->
+
+                    <span class="login-intro__line"></span>
+
+
+                    <!-- Etiqueta -->
+
+                    <span class="login-intro__label">
+
+                        PLATAFORMA INSTITUCIONAL
+
+                    </span>
+
+
+                    <!-- SISCAE -->
+
+                    <h1>
+                        SISCAE
+                    </h1>
+
+
+                    <!-- Nombre completo -->
+
+                    <h2>
+
+                        Sistema Integral de Seguridad y Control
+                        de Activos Editoriales
+
+                    </h2>
+
+
+                    <!-- Texto -->
+
+                    <p>
+
+                        Acceso seguro para usuarios institucionales autorizados.
+
+                    </p>
+
+
+                </div>
+
 
             </section>
 
@@ -187,15 +193,28 @@
 
 
                 <!-- Decoración -->
+
                 <div
-                    class="access-decoration"
+                    class="login-access__decoration"
                     aria-hidden="true">
+
 
                     <span class="access-ring"></span>
 
+
                     <span class="access-line access-line--1"></span>
+
                     <span class="access-line access-line--2"></span>
+
                     <span class="access-line access-line--3"></span>
+
+
+                    <span class="access-dot access-dot--1"></span>
+
+                    <span class="access-dot access-dot--2"></span>
+
+                    <span class="access-dot access-dot--3"></span>
+
 
                 </div>
 
@@ -204,7 +223,8 @@
                 <div class="login-access__content">
 
 
-                    <!-- Icono -->
+                    <!-- ICONO -->
+
                     <div class="login-icon">
 
                         <i class="fa-solid fa-user-lock"></i>
@@ -212,20 +232,29 @@
                     </div>
 
 
-                    <!-- Título -->
+
+                    <!-- TÍTULO -->
+
                     <h2>
+
                         Iniciar sesión
+
                     </h2>
 
 
-                    <!-- Descripción -->
+
+                    <!-- TEXTO -->
+
                     <p class="login-access__description">
+
                         Ingresa con tu cuenta institucional para continuar.
+
                     </p>
 
 
 
                     <!-- BOTÓN GOOGLE -->
+
                     <button
                         class="google-button"
                         id="googleLogin"
@@ -233,30 +262,36 @@
 
 
                         <!-- LOGO GOOGLE -->
+
                         <svg
                             viewBox="0 0 24 24"
                             xmlns="http://www.w3.org/2000/svg"
                             aria-hidden="true">
+
 
                             <path
                                 fill="#4285F4"
                                 d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.76h3.57c2.08-1.92 3.27-4.74 3.27-8.09z">
                             </path>
 
+
                             <path
                                 fill="#34A853"
                                 d="M12 23c2.97 0 5.46-.98 7.29-2.66l-3.57-2.76c-.98.66-2.24 1.06-3.72 1.06-2.87 0-5.3-1.94-6.17-4.54H2.14v2.84A11 11 0 0 0 12 23z">
                             </path>
+
 
                             <path
                                 fill="#FBBC05"
                                 d="M5.83 14.1A6.6 6.6 0 0 1 5.48 12c0-.73.13-1.43.35-2.1V7.06H2.14A11 11 0 0 0 1 12c0 1.77.42 3.44 1.14 4.94l3.69-2.84z">
                             </path>
 
+
                             <path
                                 fill="#EA4335"
                                 d="M12 5.36c1.62 0 3.06.56 4.2 1.64l3.15-3.15C17.45 2.08 14.97 1 12 1a11 11 0 0 0-9.86 6.06L5.83 9.9C6.7 7.3 9.13 5.36 12 5.36z">
                             </path>
+
 
                         </svg>
 
@@ -265,27 +300,41 @@
                             Continuar con Google
                         </span>
 
+
                     </button>
 
 
 
                     <!-- CUENTA INSTITUCIONAL -->
+
                     <div class="institutional-access">
+
 
                         <i class="fa-solid fa-shield-halved"></i>
 
+
                         <span>
+
                             Acceso exclusivo con cuenta
-                            <strong>@clases.edu.sv</strong>
+
+                            <strong>
+                                @clases.edu.sv
+                            </strong>
+
                         </span>
+
 
                     </div>
 
+
                 </div>
+
 
             </section>
 
+
         </div>
+
 
     </main>
 
@@ -295,13 +344,17 @@
          FOOTER
     ====================================================== -->
 
-    <footer class="footer">
+    <footer class="login-footer">
 
-        <div class="container footer__main">
+
+        <!-- PARTE PRINCIPAL -->
+
+        <div class="login-footer__main">
 
 
             <!-- LOGO -->
-            <div class="footer__brand">
+
+            <div class="login-footer__brand">
 
                 <img
                     src="../assets/logo.png"
@@ -310,58 +363,82 @@
             </div>
 
 
+
             <!-- DIVISOR -->
-            <div class="footer__divider"></div>
+
+            <div class="login-footer__divider"></div>
+
 
 
             <!-- SISTEMA -->
-            <div class="footer__system">
+
+            <div class="login-footer__system">
 
                 <strong>
                     SISCAE
                 </strong>
 
                 <span>
+
                     Sistema Integral de Seguridad
                     y Control de Activos Editoriales
+
                 </span>
 
             </div>
 
 
+
             <!-- VOLVER ARRIBA -->
+
             <a
-                href="#login"
-                class="footer__top"
+                href="#top"
+                class="login-footer__top"
                 aria-label="Volver arriba">
 
+
                 <svg viewBox="0 0 24 24">
+
                     <path d="M12 19V5M6 11l6-6 6 6"/>
+
                 </svg>
 
+
             </a>
+
 
         </div>
 
 
 
         <!-- PARTE INFERIOR -->
-        <div class="footer__bottom">
 
-            <div class="container footer__bottom-content">
+        <div class="login-footer__bottom">
+
+
+            <div class="login-footer__bottom-content">
+
 
                 <span>
+
                     © 2026 Ministerio de Educación, Ciencia y Tecnología.
                     Todos los derechos reservados.
+
                 </span>
 
+
                 <span>
+
                     El Salvador
+
                 </span>
+
 
             </div>
 
+
         </div>
+
 
     </footer>
 
@@ -373,39 +450,48 @@
 
     <script>
 
-        /* MENÚ MÓVIL */
+        /* ==========================================
+           MENÚ MÓVIL
+        ========================================== */
 
         const menuButton =
-            document.getElementById("menuButton");
+            document.getElementById("loginMenuButton");
 
         const nav =
-            document.getElementById("nav");
+            document.getElementById("loginNav");
 
 
         if (menuButton && nav) {
 
-            menuButton.addEventListener("click", function () {
+            menuButton.addEventListener(
+                "click",
+                function () {
 
-                nav.classList.toggle("active");
+                    nav.classList.toggle("active");
 
-                menuButton.classList.toggle("active");
+                    menuButton.classList.toggle("active");
 
-                const expanded =
-                    menuButton.getAttribute("aria-expanded") === "true";
 
-                menuButton.setAttribute(
-                    "aria-expanded",
-                    String(!expanded)
-                );
+                    const expanded =
+                        menuButton.getAttribute("aria-expanded") === "true";
 
-            });
+
+                    menuButton.setAttribute(
+                        "aria-expanded",
+                        String(!expanded)
+                    );
+
+                }
+            );
 
         }
 
 
 
-        /* BOTÓN GOOGLE
-           Temporal hasta integrar Firebase */
+        /* ==========================================
+           BOTÓN GOOGLE
+           Temporal hasta Firebase
+        ========================================== */
 
         const googleLogin =
             document.getElementById("googleLogin");
@@ -413,17 +499,21 @@
 
         if (googleLogin) {
 
-            googleLogin.addEventListener("click", function () {
+            googleLogin.addEventListener(
+                "click",
+                function () {
 
-                console.log(
-                    "Inicio de sesión institucional con Google"
-                );
+                    console.log(
+                        "Inicio de sesión institucional con Google"
+                    );
 
-            });
+                }
+            );
 
         }
 
     </script>
+
 
 </body>
 

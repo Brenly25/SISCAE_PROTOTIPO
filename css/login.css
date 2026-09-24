@@ -1,7 +1,194 @@
 /* ==========================================================
-   LOGIN - SISCAE
-   Navbar y Footer provienen de index.css
+   SISCAE - LOGIN
 ========================================================== */
+
+
+/* ==========================================================
+   GENERAL
+========================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+body {
+    min-height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+
+    font-family: "Roboto", Arial, sans-serif;
+
+    background: #f5f6f8;
+
+    color: #172b4d;
+}
+
+
+a {
+    text-decoration: none;
+}
+
+
+button {
+    font-family: inherit;
+}
+
+
+
+/* ==========================================================
+   HEADER
+========================================================== */
+
+.login-header {
+    width: 100%;
+    height: 100px;
+
+    position: relative;
+    z-index: 100;
+
+    flex-shrink: 0;
+
+    background: #183a78;
+
+    border-bottom: 3px solid #c99d36;
+}
+
+
+
+/* CONTENIDO HEADER */
+
+.login-header__content {
+    width: min(1400px, 88%);
+    height: 100%;
+
+    margin: 0 auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+
+/* ==========================================================
+   LOGO HEADER
+========================================================== */
+
+.login-header__brand {
+    display: flex;
+    align-items: center;
+}
+
+
+.login-header__brand img {
+    width: 185px;
+    height: auto;
+
+    display: block;
+    object-fit: contain;
+}
+
+
+
+/* ==========================================================
+   NAVEGACIÓN
+========================================================== */
+
+.login-nav {
+    display: flex;
+    align-items: center;
+
+    gap: 52px;
+}
+
+
+.login-nav__link {
+    position: relative;
+
+    padding: 10px 0;
+
+    color: rgba(255, 255, 255, 0.82);
+
+    font-size: 15px;
+    font-weight: 600;
+
+    transition:
+        color 0.2s ease;
+}
+
+
+.login-nav__link::after {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    bottom: 2px;
+
+    width: 0;
+    height: 2px;
+
+    background: #d2a33a;
+
+    transition:
+        width 0.25s ease;
+}
+
+
+.login-nav__link:hover {
+    color: #ffffff;
+}
+
+
+.login-nav__link:hover::after {
+    width: 100%;
+}
+
+
+
+/* ==========================================================
+   BOTÓN MENÚ
+========================================================== */
+
+.login-menu-button {
+    width: 42px;
+    height: 42px;
+
+    display: none;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    gap: 5px;
+
+    border: none;
+
+    background: transparent;
+
+    cursor: pointer;
+}
+
+
+.login-menu-button span {
+    width: 24px;
+    height: 2px;
+
+    display: block;
+
+    background: #ffffff;
+
+    transition: 0.25s ease;
+}
+
 
 
 /* ==========================================================
@@ -11,36 +198,31 @@
 .login-main {
     width: 100%;
 
+    flex: 1;
+
     /*
-       El header del index es fijo.
-       Por eso dejamos espacio arriba para que
-       el login NO quede debajo del navbar.
+       AQUÍ CONTROLAMOS EL ESPACIO REAL
+       ENTRE NAVBAR - LOGIN - FOOTER
     */
-    padding: 145px 32px 70px;
 
-    background: #f5f6f8;
-
-    font-family: "Roboto", Arial, sans-serif;
+    padding: 70px 32px;
 
     display: flex;
     align-items: center;
     justify-content: center;
 
-    position: relative;
-
-    z-index: 1;
+    background: #f5f6f8;
 }
 
 
+
 /* ==========================================================
-   CONTENEDOR PRINCIPAL
+   CONTENEDOR LOGIN
 ========================================================== */
 
 .login-wrapper {
     width: min(1120px, 100%);
     min-height: 500px;
-
-    position: relative;
 
     display: grid;
 
@@ -53,134 +235,12 @@
     border: 1px solid #e0e5eb;
 
     box-shadow:
-        0 20px 50px rgba(17, 37, 70, 0.10);
+        0 20px 50px
+        rgba(17, 37, 70, 0.10);
 
     overflow: hidden;
 }
 
-
-/* ==========================================================
-   DECORACIÓN GENERAL
-========================================================== */
-
-.login-decoration {
-    position: absolute;
-
-    inset: 0;
-
-    overflow: hidden;
-
-    pointer-events: none;
-
-    z-index: 0;
-}
-
-
-/* ==========================================================
-   AROS GENERALES
-========================================================== */
-
-.login-ring {
-    position: absolute;
-
-    border-radius: 50%;
-}
-
-
-.login-ring--top {
-    width: 320px;
-    height: 320px;
-
-    top: -230px;
-    left: 38%;
-
-    border:
-        48px solid
-        rgba(31, 79, 143, 0.025);
-}
-
-
-.login-ring--bottom {
-    width: 210px;
-    height: 210px;
-
-    right: -135px;
-    bottom: -130px;
-
-    border:
-        32px solid
-        rgba(198, 160, 74, 0.035);
-}
-
-
-/* ==========================================================
-   LÍNEAS GENERALES
-========================================================== */
-
-.login-deco-line {
-    position: absolute;
-
-    width: 160px;
-    height: 1px;
-
-    background:
-        rgba(30, 79, 143, 0.05);
-
-    transform: rotate(-35deg);
-}
-
-
-.login-deco-line--1 {
-    right: -40px;
-    bottom: 100px;
-}
-
-
-.login-deco-line--2 {
-    right: -30px;
-    bottom: 130px;
-}
-
-
-.login-deco-line--3 {
-    right: -20px;
-    bottom: 160px;
-}
-
-
-/* ==========================================================
-   PUNTOS
-========================================================== */
-
-.login-dot {
-    position: absolute;
-
-    width: 5px;
-    height: 5px;
-
-    border-radius: 50%;
-
-    background:
-        rgba(198, 160, 74, 0.32);
-}
-
-
-.login-dot--1 {
-    right: 55px;
-    top: 65px;
-}
-
-
-.login-dot--2 {
-    right: 72px;
-    top: 82px;
-}
-
-
-.login-dot--3 {
-    right: 55px;
-    top: 99px;
-}
 
 
 /* ==========================================================
@@ -188,13 +248,11 @@
 ========================================================== */
 
 .login-intro {
-    position: relative;
-
-    z-index: 1;
-
     min-height: 500px;
 
-    padding: 70px 70px;
+    position: relative;
+
+    padding: 70px;
 
     display: flex;
     align-items: center;
@@ -210,39 +268,38 @@
 }
 
 
+
 /* ==========================================================
    CONTENIDO IZQUIERDO
 ========================================================== */
 
 .login-intro__content {
+    width: 100%;
+    max-width: 520px;
+
     position: relative;
 
     z-index: 2;
-
-    width: 100%;
-    max-width: 520px;
 }
 
 
-/* ==========================================================
-   LÍNEA DORADA
-========================================================== */
+
+/* LÍNEA DORADA */
 
 .login-intro__line {
-    display: block;
-
     width: 45px;
     height: 4px;
 
+    display: block;
+
     margin-bottom: 18px;
 
-    background: #c89e3d;
+    background: #c99d36;
 }
 
 
-/* ==========================================================
-   PLATAFORMA INSTITUCIONAL
-========================================================== */
+
+/* PLATAFORMA */
 
 .login-intro__label {
     display: block;
@@ -258,12 +315,11 @@
 }
 
 
-/* ==========================================================
-   SISCAE
-========================================================== */
+
+/* SISCAE */
 
 .login-intro h1 {
-    margin: 0 0 20px;
+    margin-bottom: 20px;
 
     color: #24599a;
 
@@ -276,14 +332,13 @@
 }
 
 
-/* ==========================================================
-   NOMBRE DEL SISTEMA
-========================================================== */
+
+/* NOMBRE COMPLETO */
 
 .login-intro h2 {
     max-width: 500px;
 
-    margin: 0 0 25px;
+    margin-bottom: 25px;
 
     color: #172b4d;
 
@@ -294,13 +349,10 @@
 }
 
 
-/* ==========================================================
-   DESCRIPCIÓN
-========================================================== */
+
+/* TEXTO */
 
 .login-intro p {
-    margin: 0;
-
     color: #6f7e91;
 
     font-size: 14px;
@@ -308,6 +360,7 @@
 
     line-height: 1.7;
 }
+
 
 
 /* ==========================================================
@@ -323,8 +376,6 @@
 }
 
 
-/* Aro superior */
-
 .intro-ring--top {
     width: 285px;
     height: 285px;
@@ -337,8 +388,6 @@
         rgba(31, 79, 143, 0.035);
 }
 
-
-/* Aro inferior */
 
 .intro-ring--bottom {
     width: 150px;
@@ -353,16 +402,15 @@
 }
 
 
+
 /* ==========================================================
    LADO DERECHO
 ========================================================== */
 
 .login-access {
-    position: relative;
-
-    z-index: 1;
-
     min-height: 500px;
+
+    position: relative;
 
     padding: 65px 55px;
 
@@ -379,25 +427,27 @@
 }
 
 
+
 /* ==========================================================
    CONTENIDO DERECHO
 ========================================================== */
 
 .login-access__content {
+    width: 100%;
+    max-width: 370px;
+
     position: relative;
 
     z-index: 2;
-
-    width: 100%;
-    max-width: 370px;
 }
+
 
 
 /* ==========================================================
    DECORACIÓN DERECHA
 ========================================================== */
 
-.access-decoration {
+.login-access__decoration {
     position: absolute;
 
     inset: 0;
@@ -410,13 +460,14 @@
 }
 
 
-/* Aro */
+
+/* ARO */
 
 .access-ring {
-    position: absolute;
-
     width: 245px;
     height: 245px;
+
+    position: absolute;
 
     top: -155px;
     right: -130px;
@@ -429,22 +480,22 @@
 }
 
 
-/* ==========================================================
-   LÍNEAS DERECHA
-========================================================== */
+
+/* LÍNEAS */
 
 .access-line {
-    position: absolute;
-
     width: 155px;
     height: 1px;
+
+    position: absolute;
 
     right: -40px;
 
     background:
         rgba(31, 79, 143, 0.07);
 
-    transform: rotate(-35deg);
+    transform:
+        rotate(-35deg);
 }
 
 
@@ -461,6 +512,41 @@
 .access-line--3 {
     bottom: 165px;
 }
+
+
+
+/* PUNTOS */
+
+.access-dot {
+    width: 5px;
+    height: 5px;
+
+    position: absolute;
+
+    border-radius: 50%;
+
+    background:
+        rgba(198, 160, 74, 0.38);
+}
+
+
+.access-dot--1 {
+    top: 80px;
+    right: 60px;
+}
+
+
+.access-dot--2 {
+    top: 98px;
+    right: 78px;
+}
+
+
+.access-dot--3 {
+    top: 116px;
+    right: 60px;
+}
+
 
 
 /* ==========================================================
@@ -484,16 +570,17 @@
     font-size: 19px;
 
     border-bottom:
-        4px solid #c89e3d;
+        4px solid #c99d36;
 }
 
 
+
 /* ==========================================================
-   INICIAR SESIÓN
+   TÍTULO LOGIN
 ========================================================== */
 
 .login-access__content h2 {
-    margin: 0 0 12px;
+    margin-bottom: 12px;
 
     color: #172b4d;
 
@@ -504,20 +591,21 @@
 }
 
 
+
 /* ==========================================================
-   TEXTO LOGIN
+   DESCRIPCIÓN
 ========================================================== */
 
 .login-access__description {
-    margin: 0 0 30px;
+    margin-bottom: 30px;
 
     color: #718095;
 
     font-size: 14px;
-    font-weight: 400;
 
     line-height: 1.6;
 }
+
 
 
 /* ==========================================================
@@ -545,11 +633,6 @@
 
     color: #172b4d;
 
-    font-family:
-        "Roboto",
-        Arial,
-        sans-serif;
-
     font-size: 14px;
     font-weight: 600;
 
@@ -562,12 +645,9 @@
     transition:
         border-color 0.2s ease,
         box-shadow 0.2s ease,
-        transform 0.2s ease,
-        background-color 0.2s ease;
+        transform 0.2s ease;
 }
 
-
-/* Logo Google */
 
 .google-button svg {
     width: 21px;
@@ -577,11 +657,7 @@
 }
 
 
-/* Hover */
-
 .google-button:hover {
-    background: #ffffff;
-
     border-color: #24599a;
 
     box-shadow:
@@ -593,19 +669,11 @@
 }
 
 
-/* Click */
-
 .google-button:active {
     transform:
         translateY(0);
-
-    box-shadow:
-        0 3px 8px
-        rgba(23, 43, 77, 0.08);
 }
 
-
-/* Accesibilidad */
 
 .google-button:focus-visible {
     outline:
@@ -616,8 +684,9 @@
 }
 
 
+
 /* ==========================================================
-   ACCESO INSTITUCIONAL
+   CUENTA INSTITUCIONAL
 ========================================================== */
 
 .institutional-access {
@@ -632,13 +701,10 @@
     color: #69798e;
 
     font-size: 11px;
-    font-weight: 400;
 
     text-align: center;
 }
 
-
-/* Escudo */
 
 .institutional-access i {
     color: #b38d32;
@@ -647,13 +713,212 @@
 }
 
 
-/* Dominio */
-
 .institutional-access strong {
     color: #334b70;
 
     font-weight: 700;
 }
+
+
+
+/* ==========================================================
+   FOOTER
+========================================================== */
+
+.login-footer {
+    width: 100%;
+
+    flex-shrink: 0;
+
+    background: #082b61;
+
+    color: #ffffff;
+
+    border-top: 3px solid #d3a32f;
+}
+
+
+
+/* ==========================================================
+   FOOTER PRINCIPAL
+========================================================== */
+
+.login-footer__main {
+    width: min(1400px, 92%);
+
+    min-height: 135px;
+
+    margin: 0 auto;
+
+    display: flex;
+    align-items: center;
+
+    position: relative;
+}
+
+
+
+/* ==========================================================
+   LOGO FOOTER
+========================================================== */
+
+.login-footer__brand {
+    display: flex;
+    align-items: center;
+}
+
+
+.login-footer__brand img {
+    width: 205px;
+    height: auto;
+
+    display: block;
+}
+
+
+
+/* ==========================================================
+   DIVISOR
+========================================================== */
+
+.login-footer__divider {
+    width: 1px;
+    height: 60px;
+
+    margin:
+        0
+        35px;
+
+    background:
+        rgba(255, 255, 255, 0.30);
+}
+
+
+
+/* ==========================================================
+   SISTEMA FOOTER
+========================================================== */
+
+.login-footer__system {
+    display: flex;
+    flex-direction: column;
+
+    gap: 7px;
+}
+
+
+.login-footer__system strong {
+    color: #ffffff;
+
+    font-size: 16px;
+    font-weight: 700;
+
+    letter-spacing: 1px;
+}
+
+
+.login-footer__system span {
+    color:
+        rgba(255, 255, 255, 0.72);
+
+    font-size: 11px;
+}
+
+
+
+/* ==========================================================
+   BOTÓN VOLVER ARRIBA
+========================================================== */
+
+.login-footer__top {
+    width: 46px;
+    height: 46px;
+
+    margin-left: auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.20);
+
+    border-radius: 50%;
+
+    background:
+        rgba(255, 255, 255, 0.06);
+
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.2s ease;
+}
+
+
+.login-footer__top svg {
+    width: 20px;
+    height: 20px;
+
+    fill: none;
+
+    stroke: #ffffff;
+
+    stroke-width: 1.8;
+
+    stroke-linecap: round;
+
+    stroke-linejoin: round;
+}
+
+
+.login-footer__top:hover {
+    background:
+        rgba(255, 255, 255, 0.12);
+
+    border-color:
+        rgba(255, 255, 255, 0.40);
+
+    transform:
+        translateY(-2px);
+}
+
+
+
+/* ==========================================================
+   FOOTER INFERIOR
+========================================================== */
+
+.login-footer__bottom {
+    border-top:
+        1px solid
+        rgba(255, 255, 255, 0.10);
+}
+
+
+.login-footer__bottom-content {
+    width: min(1400px, 92%);
+
+    min-height: 52px;
+
+    margin: 0 auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 20px;
+
+    color:
+        rgba(255, 255, 255, 0.52);
+
+    font-size: 10px;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.6px;
+}
+
 
 
 /* ==========================================================
@@ -662,11 +927,64 @@
 
 @media (max-width: 900px) {
 
+    /* HEADER */
+
+    .login-header__content {
+        width: 90%;
+    }
+
+
+    .login-menu-button {
+        display: flex;
+    }
+
+
+    .login-nav {
+        width: 100%;
+
+        position: absolute;
+
+        top: 100%;
+        left: 0;
+
+        padding: 25px;
+
+        display: none;
+        flex-direction: column;
+
+        gap: 10px;
+
+        background: #183a78;
+
+        border-top:
+            1px solid
+            rgba(255, 255, 255, 0.12);
+
+        box-shadow:
+            0 10px 20px
+            rgba(0, 0, 0, 0.12);
+    }
+
+
+    .login-nav.active {
+        display: flex;
+    }
+
+
+    .login-nav__link {
+        width: 100%;
+
+        padding: 12px 5%;
+
+        text-align: center;
+    }
+
+
+
+    /* LOGIN */
+
     .login-main {
-        padding:
-            125px
-            20px
-            55px;
+        padding: 55px 20px;
     }
 
 
@@ -680,18 +998,14 @@
     .login-intro {
         min-height: auto;
 
-        padding:
-            55px
-            50px;
+        padding: 55px 50px;
     }
 
 
     .login-access {
         min-height: auto;
 
-        padding:
-            55px
-            50px;
+        padding: 55px 50px;
 
         border-left: none;
 
@@ -705,12 +1019,27 @@
     }
 
 
-    .login-ring--top {
-        left: auto;
-        right: -100px;
+
+    /* FOOTER */
+
+    .login-footer__main {
+        min-height: 125px;
+    }
+
+
+    .login-footer__brand img {
+        width: 175px;
+    }
+
+
+    .login-footer__divider {
+        margin:
+            0
+            25px;
     }
 
 }
+
 
 
 /* ==========================================================
@@ -719,18 +1048,31 @@
 
 @media (max-width: 600px) {
 
-    .login-main {
-        padding:
-            105px
-            15px
-            40px;
+    /* HEADER */
+
+    .login-header {
+        height: 82px;
     }
 
 
+    .login-header__brand img {
+        width: 150px;
+    }
+
+
+
+    /* MAIN */
+
+    .login-main {
+        padding: 35px 15px;
+    }
+
+
+
+    /* IZQUIERDA */
+
     .login-intro {
-        padding:
-            42px
-            30px;
+        padding: 42px 30px;
     }
 
 
@@ -748,8 +1090,6 @@
 
     .login-intro h2 {
         font-size: 20px;
-
-        line-height: 1.4;
     }
 
 
@@ -758,10 +1098,11 @@
     }
 
 
+
+    /* DERECHA */
+
     .login-access {
-        padding:
-            45px
-            30px;
+        padding: 45px 30px;
     }
 
 
@@ -783,6 +1124,9 @@
     }
 
 
+
+    /* GOOGLE */
+
     .google-button {
         height: 54px;
 
@@ -795,73 +1139,76 @@
 
 
     .institutional-access {
-        align-items: flex-start;
+        line-height: 1.5;
+    }
+
+
+
+    /* FOOTER */
+
+    .login-footer__main {
+        min-height: auto;
+
+        padding:
+            35px
+            0;
+
+        flex-direction: column;
+
+        justify-content: center;
+
+        text-align: center;
+
+        gap: 22px;
+    }
+
+
+    .login-footer__brand img {
+        width: 175px;
+    }
+
+
+    .login-footer__divider {
+        width: 70px;
+        height: 1px;
+
+        margin: 0;
+    }
+
+
+    .login-footer__system {
+        align-items: center;
+    }
+
+
+    .login-footer__system span {
+        max-width: 300px;
 
         line-height: 1.5;
     }
 
 
-    .login-deco-line,
-    .login-dot {
-        display: none;
-    }
-
-}
-
-
-/* ==========================================================
-   LAPTOPS CON MENOR ALTURA
-========================================================== */
-
-@media (max-height: 800px) and (min-width: 901px) {
-
-    .login-main {
-        padding:
-            125px
-            32px
-            55px;
+    .login-footer__top {
+        margin-left: 0;
     }
 
 
-    .login-wrapper {
-        min-height: 455px;
-    }
-
-
-    .login-intro {
-        min-height: 455px;
+    .login-footer__bottom-content {
+        min-height: auto;
 
         padding:
-            55px
-            65px;
-    }
+            20px
+            0;
 
+        flex-direction: column;
 
-    .login-access {
-        min-height: 455px;
+        justify-content: center;
 
-        padding:
-            52px;
-    }
+        gap: 8px;
 
+        text-align: center;
 
-    .login-intro h1 {
-        font-size: 47px;
-    }
-
-
-    .login-intro h2 {
-        font-size: 23px;
-    }
-
-
-    .login-icon {
-        margin-bottom: 23px;
-    }
-
-
-    .login-access__description {
-        margin-bottom: 25px;
+        line-height: 1.5;
     }
 
 }

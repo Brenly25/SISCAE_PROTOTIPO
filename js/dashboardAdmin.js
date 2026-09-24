@@ -7,38 +7,32 @@ document.addEventListener("DOMContentLoaded", () => {
     const sidebar =
         document.getElementById("sidebar");
 
-    const sidebarOpen =
-        document.getElementById("sidebarOpen");
+    const menuButton =
+        document.getElementById("menuButton");
 
-    const sidebarClose =
-        document.getElementById("sidebarClose");
+    const mobileOverlay =
+        document.getElementById("mobileOverlay");
 
-    const sidebarOverlay =
-        document.getElementById("sidebarOverlay");
+    const profile =
+        document.getElementById("profile");
 
+    const profileButton =
+        document.getElementById("profileButton");
 
-    const userMenu =
-        document.querySelector(".user-menu");
-
-    const userMenuButton =
-        document.getElementById("userMenuButton");
-
-
-    const logoutButton =
-        document.getElementById("logoutButton");
-
-    const dropdownLogout =
-        document.getElementById("dropdownLogout");
+    const notificationButton =
+        document.getElementById("notificationButton");
 
     const logoutModal =
         document.getElementById("logoutModal");
 
-    const cancelLogout =
-        document.getElementById("cancelLogout");
+    const sidebarLogout =
+        document.getElementById("sidebarLogout");
+
+    const profileLogout =
+        document.getElementById("profileLogout");
 
     const confirmLogout =
         document.getElementById("confirmLogout");
-
 
     const currentDate =
         document.getElementById("currentDate");
@@ -48,142 +42,181 @@ document.addEventListener("DOMContentLoaded", () => {
        FECHA ACTUAL
     ====================================================== */
 
-    function showCurrentDate() {
+    if (currentDate) {
 
-        if (!currentDate) {
-            return;
-        }
-
-        const today =
-            new Date();
-
+        const today = new Date();
 
         const formattedDate =
             new Intl.DateTimeFormat(
                 "es-SV",
                 {
-                    weekday: "long",
                     day: "numeric",
                     month: "long",
                     year: "numeric"
                 }
             ).format(today);
 
-
         currentDate.textContent =
-            formattedDate
-                .charAt(0)
-                .toUpperCase() +
-            formattedDate.slice(1);
-
+            formattedDate;
     }
 
 
-    showCurrentDate();
-
-
     /* =====================================================
-       SIDEBAR MOBILE
+       MENÚ MOBILE
     ====================================================== */
 
     function openSidebar() {
 
+        if (!sidebar) return;
+
         sidebar.classList.add("open");
 
-        sidebarOverlay.classList.add(
-            "active"
-        );
+        if (mobileOverlay) {
+            mobileOverlay.classList.add("active");
+        }
 
-        document.body.classList.add(
-            "no-scroll"
-        );
-
+        document.body.classList.add("locked");
     }
 
 
     function closeSidebar() {
 
+        if (!sidebar) return;
+
         sidebar.classList.remove("open");
 
-        sidebarOverlay.classList.remove(
-            "active"
-        );
+        if (mobileOverlay) {
+            mobileOverlay.classList.remove("active");
+        }
 
-        document.body.classList.remove(
-            "no-scroll"
-        );
-
+        document.body.classList.remove("locked");
     }
 
 
-    if (sidebarOpen) {
+    if (menuButton) {
 
-        sidebarOpen.addEventListener(
+        menuButton.addEventListener(
             "click",
-            openSidebar
-        );
+            () => {
 
+                if (
+                    sidebar.classList.contains("open")
+                ) {
+
+                    closeSidebar();
+
+                } else {
+
+                    openSidebar();
+
+                }
+
+            }
+        );
     }
 
 
-    if (sidebarClose) {
+    if (mobileOverlay) {
 
-        sidebarClose.addEventListener(
+        mobileOverlay.addEventListener(
             "click",
             closeSidebar
         );
-
-    }
-
-
-    if (sidebarOverlay) {
-
-        sidebarOverlay.addEventListener(
-            "click",
-            closeSidebar
-        );
-
     }
 
 
     /* =====================================================
-       USER DROPDOWN
+       CERRAR SIDEBAR AL NAVEGAR
+    ====================================================== */
+
+    const navItems =
+        document.querySelectorAll(
+            ".sidebar-nav .nav-item"
+        );
+
+    navItems.forEach((item) => {
+
+        item.addEventListener(
+            "click",
+            () => {
+
+                if (
+                    window.innerWidth <= 950
+                ) {
+
+                    closeSidebar();
+
+                }
+
+            }
+        );
+
+    });
+
+
+    /* =====================================================
+       PERFIL
     ====================================================== */
 
     if (
-        userMenu &&
-        userMenuButton
+        profile &&
+        profileButton
     ) {
 
-        userMenuButton.addEventListener(
+        profileButton.addEventListener(
             "click",
-            event => {
+            (event) => {
 
                 event.stopPropagation();
 
-                userMenu.classList.toggle(
+                profile.classList.toggle(
                     "open"
                 );
 
             }
         );
 
+    }
 
-        document.addEventListener(
+
+    /* =====================================================
+       CERRAR PERFIL AL HACER CLICK FUERA
+    ====================================================== */
+
+    document.addEventListener(
+        "click",
+        (event) => {
+
+            if (!profile) return;
+
+            if (
+                !profile.contains(
+                    event.target
+                )
+            ) {
+
+                profile.classList.remove(
+                    "open"
+                );
+
+            }
+
+        }
+    );
+
+
+    /* =====================================================
+       NOTIFICACIONES
+    ====================================================== */
+
+    if (notificationButton) {
+
+        notificationButton.addEventListener(
             "click",
-            event => {
+            () => {
 
-                if (
-                    !userMenu.contains(
-                        event.target
-                    )
-                ) {
-
-                    userMenu.classList.remove(
-                        "open"
-                    );
-
-                }
+                window.location.href =
+                    "alertas.html";
 
             }
         );
@@ -197,27 +230,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function openLogoutModal() {
 
-        if (!logoutModal) {
-            return;
-        }
+        if (!logoutModal) return;
 
         logoutModal.classList.add(
             "active"
         );
 
-        logoutModal.setAttribute(
-            "aria-hidden",
-            "false"
-        );
-
         document.body.classList.add(
-            "no-scroll"
+            "locked"
         );
 
+        if (profile) {
 
-        if (userMenu) {
-
-            userMenu.classList.remove(
+            profile.classList.remove(
                 "open"
             );
 
@@ -228,29 +253,22 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function closeLogoutModal() {
 
-        if (!logoutModal) {
-            return;
-        }
+        if (!logoutModal) return;
 
         logoutModal.classList.remove(
             "active"
         );
 
-        logoutModal.setAttribute(
-            "aria-hidden",
-            "true"
-        );
-
         document.body.classList.remove(
-            "no-scroll"
+            "locked"
         );
 
     }
 
 
-    if (logoutButton) {
+    if (sidebarLogout) {
 
-        logoutButton.addEventListener(
+        sidebarLogout.addEventListener(
             "click",
             openLogoutModal
         );
@@ -258,49 +276,39 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    if (dropdownLogout) {
+    if (profileLogout) {
 
-        dropdownLogout.addEventListener(
+        profileLogout.addEventListener(
             "click",
             openLogoutModal
-        );
-
-    }
-
-
-    if (cancelLogout) {
-
-        cancelLogout.addEventListener(
-            "click",
-            closeLogoutModal
-        );
-
-    }
-
-
-    const modalBackdrop =
-        logoutModal
-            ?.querySelector(
-                ".modal__backdrop"
-            );
-
-
-    if (modalBackdrop) {
-
-        modalBackdrop.addEventListener(
-            "click",
-            closeLogoutModal
         );
 
     }
 
 
     /* =====================================================
-       CONFIRMAR CIERRE DE SESIÓN
+       CERRAR MODAL
+    ====================================================== */
 
-       Como este es un prototipo, simplemente regresamos
-       al login. Cuando conecten Firebase Auth, aquí se
-       sustituirá por signOut().
+    const closeModalButtons =
+        document.querySelectorAll(
+            "[data-close-modal]"
+        );
+
+    closeModalButtons.forEach(
+        (button) => {
+
+            button.addEventListener(
+                "click",
+                closeLogoutModal
+            );
+
+        }
+    );
+
+
+    /* =====================================================
+       CONFIRMAR CIERRE
     ====================================================== */
 
     if (confirmLogout) {
@@ -319,107 +327,62 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /* =====================================================
-       ESCAPE
+       TECLA ESCAPE
     ====================================================== */
 
     document.addEventListener(
         "keydown",
-        event => {
+        (event) => {
 
-            if (event.key !== "Escape") {
+            if (
+                event.key !== "Escape"
+            ) {
+
                 return;
+
             }
 
-            closeSidebar();
 
-            closeLogoutModal();
+            if (
+                logoutModal &&
+                logoutModal.classList.contains(
+                    "active"
+                )
+            ) {
+
+                closeLogoutModal();
+
+            }
 
 
-            if (userMenu) {
+            if (
+                profile &&
+                profile.classList.contains(
+                    "open"
+                )
+            ) {
 
-                userMenu.classList.remove(
+                profile.classList.remove(
                     "open"
                 );
 
             }
 
+
+            if (
+                sidebar &&
+                sidebar.classList.contains(
+                    "open"
+                ) &&
+                window.innerWidth <= 950
+            ) {
+
+                closeSidebar();
+
+            }
+
         }
     );
-
-
-    /* =====================================================
-       SIDEBAR LINKS
-
-       Por ahora las demás vistas todavía no existen.
-       Dejamos el dashboard navegable únicamente hacia
-       las secciones presentes en esta demostración.
-    ====================================================== */
-
-    const sidebarLinks =
-        document.querySelectorAll(
-            ".sidebar__link"
-        );
-
-
-    sidebarLinks.forEach(link => {
-
-        link.addEventListener(
-            "click",
-            () => {
-
-                if (
-                    window.innerWidth <=
-                    900
-                ) {
-
-                    closeSidebar();
-
-                }
-
-            }
-        );
-
-    });
-
-
-    /* =====================================================
-       NOTIFICACIONES
-
-       En este dashboard de demostración, al tocar la
-       campana llevamos al bloque de alertas.
-    ====================================================== */
-
-    const notificationButton =
-        document.getElementById(
-            "notificationButton"
-        );
-
-
-    if (notificationButton) {
-
-        notificationButton.addEventListener(
-            "click",
-            () => {
-
-                const alertsPanel =
-                    document.querySelector(
-                        ".panel--alerts"
-                    );
-
-
-                if (alertsPanel) {
-
-                    alertsPanel.scrollIntoView({
-                        behavior: "smooth",
-                        block: "center"
-                    });
-
-                }
-
-            }
-        );
-
-    }
 
 
     /* =====================================================
@@ -431,7 +394,7 @@ document.addEventListener("DOMContentLoaded", () => {
         () => {
 
             if (
-                window.innerWidth > 900
+                window.innerWidth > 950
             ) {
 
                 closeSidebar();

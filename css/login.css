@@ -1,216 +1,320 @@
-/* ==============================
-   GENERAL
-============================== */
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    min-height: 100vh;
-    font-family: "Segoe UI", Arial, sans-serif;
-    background: #f5f6f8;
-    color: #17233d;
-
-    display: flex;
-    flex-direction: column;
-}
+/* ==========================================================
+   LOGIN - SISCAE
+   Navbar y Footer provienen de index.css
+========================================================== */
 
 
-/* ==============================
-   HEADER
-============================== */
-
-.header {
-    height: 88px;
-    background: #17233d;
-    border-bottom: 4px solid #c6a04a;
-}
-
-.header-container {
-    width: min(1180px, 92%);
-    height: 100%;
-    margin: auto;
-
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.brand {
-    display: flex;
-    align-items: center;
-}
-
-.brand img {
-    width: 235px;
-    max-height: 60px;
-    object-fit: contain;
-}
-
-
-/* SISCAE HEADER */
-
-.system-name {
-    padding-left: 25px;
-    border-left: 1px solid rgba(255, 255, 255, 0.18);
-
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-}
-
-.system-name span {
-    color: white;
-    font-size: 19px;
-    font-weight: 700;
-    letter-spacing: 2px;
-}
-
-.system-name small {
-    color: #aeb8c9;
-    font-size: 10px;
-    letter-spacing: 1.2px;
-    margin-top: 3px;
-    text-transform: uppercase;
-}
-
-
-/* ==============================
+/* ==========================================================
    MAIN
-============================== */
+========================================================== */
 
 .login-main {
-    flex: 1;
+    width: 100%;
+
+    /*
+       El header del index es fijo.
+       Por eso dejamos espacio arriba para que
+       el login NO quede debajo del navbar.
+    */
+    padding: 145px 32px 70px;
+
+    background: #f5f6f8;
+
+    font-family: "Roboto", Arial, sans-serif;
 
     display: flex;
     align-items: center;
     justify-content: center;
 
-    padding: 50px 20px;
+    position: relative;
+
+    z-index: 1;
 }
+
+
+/* ==========================================================
+   CONTENEDOR PRINCIPAL
+========================================================== */
 
 .login-wrapper {
-    width: min(1050px, 100%);
-    min-height: 480px;
+    width: min(1120px, 100%);
+    min-height: 500px;
+
+    position: relative;
 
     display: grid;
-    grid-template-columns: 1fr 0.8fr;
 
-    background: white;
+    grid-template-columns:
+        1.12fr
+        0.88fr;
 
-    border: 1px solid #e0e4ea;
+    background: #ffffff;
+
+    border: 1px solid #e0e5eb;
 
     box-shadow:
-        0 18px 45px rgba(23, 35, 61, 0.08);
+        0 20px 50px rgba(17, 37, 70, 0.10);
+
+    overflow: hidden;
 }
 
 
-/* ==============================
+/* ==========================================================
+   DECORACIÓN GENERAL
+========================================================== */
+
+.login-decoration {
+    position: absolute;
+
+    inset: 0;
+
+    overflow: hidden;
+
+    pointer-events: none;
+
+    z-index: 0;
+}
+
+
+/* ==========================================================
+   AROS GENERALES
+========================================================== */
+
+.login-ring {
+    position: absolute;
+
+    border-radius: 50%;
+}
+
+
+.login-ring--top {
+    width: 320px;
+    height: 320px;
+
+    top: -230px;
+    left: 38%;
+
+    border:
+        48px solid
+        rgba(31, 79, 143, 0.025);
+}
+
+
+.login-ring--bottom {
+    width: 210px;
+    height: 210px;
+
+    right: -135px;
+    bottom: -130px;
+
+    border:
+        32px solid
+        rgba(198, 160, 74, 0.035);
+}
+
+
+/* ==========================================================
+   LÍNEAS GENERALES
+========================================================== */
+
+.login-deco-line {
+    position: absolute;
+
+    width: 160px;
+    height: 1px;
+
+    background:
+        rgba(30, 79, 143, 0.05);
+
+    transform: rotate(-35deg);
+}
+
+
+.login-deco-line--1 {
+    right: -40px;
+    bottom: 100px;
+}
+
+
+.login-deco-line--2 {
+    right: -30px;
+    bottom: 130px;
+}
+
+
+.login-deco-line--3 {
+    right: -20px;
+    bottom: 160px;
+}
+
+
+/* ==========================================================
+   PUNTOS
+========================================================== */
+
+.login-dot {
+    position: absolute;
+
+    width: 5px;
+    height: 5px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(198, 160, 74, 0.32);
+}
+
+
+.login-dot--1 {
+    right: 55px;
+    top: 65px;
+}
+
+
+.login-dot--2 {
+    right: 72px;
+    top: 82px;
+}
+
+
+.login-dot--3 {
+    right: 55px;
+    top: 99px;
+}
+
+
+/* ==========================================================
    LADO IZQUIERDO
-============================== */
+========================================================== */
 
 .login-intro {
     position: relative;
 
+    z-index: 1;
+
+    min-height: 500px;
+
+    padding: 70px 70px;
+
     display: flex;
     align-items: center;
-
-    padding: 65px;
 
     overflow: hidden;
 
     background:
         linear-gradient(
             135deg,
-            #f9fafb 0%,
-            #f3f5f8 100%
+            #fbfcfd 0%,
+            #f7f9fb 100%
         );
 }
 
-.intro-content {
+
+/* ==========================================================
+   CONTENIDO IZQUIERDO
+========================================================== */
+
+.login-intro__content {
     position: relative;
+
     z-index: 2;
 
-    max-width: 500px;
+    width: 100%;
+    max-width: 520px;
 }
 
 
-/* Línea dorada */
+/* ==========================================================
+   LÍNEA DORADA
+========================================================== */
 
-.intro-line {
-    width: 42px;
-    height: 4px;
-
-    background: #c6a04a;
-
-    margin-bottom: 17px;
-}
-
-
-/* Etiqueta */
-
-.institutional {
+.login-intro__line {
     display: block;
 
-    color: #687588;
+    width: 45px;
+    height: 4px;
 
-    font-size: 11px;
-    font-weight: 700;
+    margin-bottom: 18px;
 
-    letter-spacing: 1.8px;
-
-    margin-bottom: 17px;
+    background: #c89e3d;
 }
 
 
-/* SISCAE */
+/* ==========================================================
+   PLATAFORMA INSTITUCIONAL
+========================================================== */
 
-.intro-content h1 {
-    color: #1e4f8f;
-
-    font-size: 51px;
-    font-weight: 750;
-
-    letter-spacing: 2px;
-
-    margin-bottom: 12px;
-}
-
-
-/* Nombre completo */
-
-.intro-content h2 {
-    color: #17233d;
-
-    font-size: 24px;
-    line-height: 1.35;
-
-    font-weight: 500;
-
-    max-width: 480px;
+.login-intro__label {
+    display: block;
 
     margin-bottom: 20px;
+
+    color: #62738a;
+
+    font-size: 12px;
+    font-weight: 600;
+
+    letter-spacing: 2px;
 }
 
 
-/* Texto */
+/* ==========================================================
+   SISCAE
+========================================================== */
 
-.intro-content p {
-    color: #727d8c;
+.login-intro h1 {
+    margin: 0 0 20px;
+
+    color: #24599a;
+
+    font-size: 52px;
+    font-weight: 700;
+
+    line-height: 1;
+
+    letter-spacing: 2px;
+}
+
+
+/* ==========================================================
+   NOMBRE DEL SISTEMA
+========================================================== */
+
+.login-intro h2 {
+    max-width: 500px;
+
+    margin: 0 0 25px;
+
+    color: #172b4d;
+
+    font-size: 25px;
+    font-weight: 500;
+
+    line-height: 1.45;
+}
+
+
+/* ==========================================================
+   DESCRIPCIÓN
+========================================================== */
+
+.login-intro p {
+    margin: 0;
+
+    color: #6f7e91;
 
     font-size: 14px;
-    line-height: 1.6;
+    font-weight: 400;
+
+    line-height: 1.7;
 }
 
 
-/* ==============================
-   DECORACIÓN
-============================== */
+/* ==========================================================
+   DECORACIÓN IZQUIERDA
+========================================================== */
 
-.decorative-circle {
+.intro-ring {
     position: absolute;
 
     border-radius: 50%;
@@ -218,144 +322,306 @@ body {
     pointer-events: none;
 }
 
-.circle-one {
-    width: 260px;
-    height: 260px;
 
-    border: 45px solid rgba(31, 79, 143, 0.035);
+/* Aro superior */
 
-    top: -140px;
-    right: -100px;
+.intro-ring--top {
+    width: 285px;
+    height: 285px;
+
+    top: -190px;
+    right: -90px;
+
+    border:
+        43px solid
+        rgba(31, 79, 143, 0.035);
 }
 
-.circle-two {
+
+/* Aro inferior */
+
+.intro-ring--bottom {
     width: 150px;
     height: 150px;
 
-    border: 27px solid rgba(198, 160, 74, 0.06);
+    left: -82px;
+    bottom: -85px;
 
-    bottom: -80px;
-    left: -60px;
+    border:
+        27px solid
+        rgba(198, 160, 74, 0.055);
 }
 
 
-/* ==============================
-   LOGIN DERECHO
-============================== */
+/* ==========================================================
+   LADO DERECHO
+========================================================== */
 
-.login-section {
-    background: #eef1f5;
+.login-access {
+    position: relative;
+
+    z-index: 1;
+
+    min-height: 500px;
+
+    padding: 65px 55px;
 
     display: flex;
     align-items: center;
     justify-content: center;
 
-    padding: 55px 50px;
+    overflow: hidden;
 
-    border-left: 1px solid #e0e4ea;
+    background: #eef2f6;
+
+    border-left:
+        1px solid #e0e5eb;
 }
 
-.login-content {
+
+/* ==========================================================
+   CONTENIDO DERECHO
+========================================================== */
+
+.login-access__content {
+    position: relative;
+
+    z-index: 2;
+
     width: 100%;
-    max-width: 340px;
+    max-width: 370px;
 }
 
 
-/* Icono */
+/* ==========================================================
+   DECORACIÓN DERECHA
+========================================================== */
+
+.access-decoration {
+    position: absolute;
+
+    inset: 0;
+
+    overflow: hidden;
+
+    pointer-events: none;
+
+    z-index: 0;
+}
+
+
+/* Aro */
+
+.access-ring {
+    position: absolute;
+
+    width: 245px;
+    height: 245px;
+
+    top: -155px;
+    right: -130px;
+
+    border-radius: 50%;
+
+    border:
+        35px solid
+        rgba(31, 79, 143, 0.025);
+}
+
+
+/* ==========================================================
+   LÍNEAS DERECHA
+========================================================== */
+
+.access-line {
+    position: absolute;
+
+    width: 155px;
+    height: 1px;
+
+    right: -40px;
+
+    background:
+        rgba(31, 79, 143, 0.07);
+
+    transform: rotate(-35deg);
+}
+
+
+.access-line--1 {
+    bottom: 105px;
+}
+
+
+.access-line--2 {
+    bottom: 135px;
+}
+
+
+.access-line--3 {
+    bottom: 165px;
+}
+
+
+/* ==========================================================
+   ICONO LOGIN
+========================================================== */
 
 .login-icon {
-    width: 50px;
-    height: 50px;
+    width: 54px;
+    height: 54px;
+
+    margin-bottom: 28px;
 
     display: flex;
     align-items: center;
     justify-content: center;
 
-    background: #17233d;
-    color: white;
+    background: #172b4d;
 
-    font-size: 18px;
+    color: #ffffff;
 
-    border-bottom: 4px solid #c6a04a;
+    font-size: 19px;
 
-    margin-bottom: 24px;
+    border-bottom:
+        4px solid #c89e3d;
 }
 
 
-/* Título */
+/* ==========================================================
+   INICIAR SESIÓN
+========================================================== */
 
-.login-content h2 {
-    color: #17233d;
+.login-access__content h2 {
+    margin: 0 0 12px;
 
-    font-size: 28px;
+    color: #172b4d;
+
+    font-size: 31px;
     font-weight: 700;
 
-    margin-bottom: 10px;
+    line-height: 1.2;
 }
 
 
-/* Texto */
+/* ==========================================================
+   TEXTO LOGIN
+========================================================== */
 
-.login-text {
-    color: #707b8b;
+.login-access__description {
+    margin: 0 0 30px;
+
+    color: #718095;
 
     font-size: 14px;
-    line-height: 1.55;
+    font-weight: 400;
 
-    margin-bottom: 27px;
+    line-height: 1.6;
 }
 
 
-/* ==============================
-   GOOGLE
-============================== */
+/* ==========================================================
+   BOTÓN GOOGLE
+========================================================== */
 
 .google-button {
     width: 100%;
-    height: 55px;
+    height: 58px;
 
-    background: white;
-
-    border: 1px solid #cbd1da;
+    padding: 0 24px;
 
     display: flex;
     align-items: center;
     justify-content: center;
 
-    gap: 13px;
+    gap: 14px;
 
-    font-family: inherit;
+    background: #ffffff;
+
+    border:
+        1px solid #ccd4de;
+
+    border-radius: 10px;
+
+    color: #172b4d;
+
+    font-family:
+        "Roboto",
+        Arial,
+        sans-serif;
+
     font-size: 14px;
     font-weight: 600;
 
-    color: #263247;
-
     cursor: pointer;
 
-    transition: 0.2s ease;
+    box-shadow:
+        0 2px 4px
+        rgba(23, 43, 77, 0.025);
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        transform 0.2s ease,
+        background-color 0.2s ease;
 }
+
+
+/* Logo Google */
 
 .google-button svg {
-    width: 20px;
-    height: 20px;
+    width: 21px;
+    height: 21px;
+
+    flex-shrink: 0;
 }
+
+
+/* Hover */
 
 .google-button:hover {
-    border-color: #1e4f8f;
+    background: #ffffff;
+
+    border-color: #24599a;
 
     box-shadow:
-        0 6px 16px rgba(23, 35, 61, 0.09);
+        0 7px 18px
+        rgba(23, 43, 77, 0.10);
 
-    transform: translateY(-1px);
+    transform:
+        translateY(-1px);
 }
 
 
-/* ==============================
-   CUENTA INSTITUCIONAL
-============================== */
+/* Click */
+
+.google-button:active {
+    transform:
+        translateY(0);
+
+    box-shadow:
+        0 3px 8px
+        rgba(23, 43, 77, 0.08);
+}
+
+
+/* Accesibilidad */
+
+.google-button:focus-visible {
+    outline:
+        3px solid
+        rgba(36, 89, 154, 0.18);
+
+    outline-offset: 3px;
+}
+
+
+/* ==========================================================
+   ACCESO INSTITUCIONAL
+========================================================== */
 
 .institutional-access {
-    margin-top: 18px;
+    margin-top: 20px;
 
     display: flex;
     align-items: center;
@@ -363,100 +629,239 @@ body {
 
     gap: 8px;
 
-    color: #687486;
+    color: #69798e;
 
     font-size: 11px;
+    font-weight: 400;
+
+    text-align: center;
 }
+
+
+/* Escudo */
 
 .institutional-access i {
-    color: #a3853e;
+    color: #b38d32;
+
+    font-size: 12px;
 }
+
+
+/* Dominio */
 
 .institutional-access strong {
-    color: #39475d;
+    color: #334b70;
+
+    font-weight: 700;
 }
 
 
-/* ==============================
-   FOOTER
-============================== */
+/* ==========================================================
+   TABLET
+========================================================== */
 
-.footer {
-    min-height: 58px;
+@media (max-width: 900px) {
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    .login-main {
+        padding:
+            125px
+            20px
+            55px;
+    }
 
-    background: white;
-
-    border-top: 1px solid #e1e4e8;
-}
-
-.footer p {
-    color: #858d98;
-    font-size: 11px;
-}
-
-
-/* ==============================
-   RESPONSIVE
-============================== */
-
-@media (max-width: 800px) {
 
     .login-wrapper {
+        max-width: 700px;
+
         grid-template-columns: 1fr;
     }
 
+
     .login-intro {
-        padding: 45px 40px;
+        min-height: auto;
+
+        padding:
+            55px
+            50px;
     }
 
-    .login-section {
+
+    .login-access {
+        min-height: auto;
+
+        padding:
+            55px
+            50px;
+
         border-left: none;
-        border-top: 1px solid #e0e4ea;
 
-        padding: 45px 40px;
+        border-top:
+            1px solid #e0e5eb;
     }
 
-    .login-content {
-        max-width: 450px;
+
+    .login-access__content {
+        max-width: 470px;
     }
+
+
+    .login-ring--top {
+        left: auto;
+        right: -100px;
+    }
+
 }
 
 
-@media (max-width: 550px) {
+/* ==========================================================
+   MÓVIL
+========================================================== */
 
-    .header {
-        height: 78px;
+@media (max-width: 600px) {
+
+    .login-main {
+        padding:
+            105px
+            15px
+            40px;
     }
 
-    .brand img {
-        width: 190px;
+
+    .login-intro {
+        padding:
+            42px
+            30px;
     }
 
-    .system-name {
+
+    .login-intro__label {
+        font-size: 10px;
+
+        letter-spacing: 1.5px;
+    }
+
+
+    .login-intro h1 {
+        font-size: 41px;
+    }
+
+
+    .login-intro h2 {
+        font-size: 20px;
+
+        line-height: 1.4;
+    }
+
+
+    .login-intro p {
+        font-size: 13px;
+    }
+
+
+    .login-access {
+        padding:
+            45px
+            30px;
+    }
+
+
+    .login-icon {
+        width: 50px;
+        height: 50px;
+
+        margin-bottom: 23px;
+    }
+
+
+    .login-access__content h2 {
+        font-size: 27px;
+    }
+
+
+    .login-access__description {
+        font-size: 13px;
+    }
+
+
+    .google-button {
+        height: 54px;
+
+        padding: 0 18px;
+
+        font-size: 13px;
+
+        border-radius: 9px;
+    }
+
+
+    .institutional-access {
+        align-items: flex-start;
+
+        line-height: 1.5;
+    }
+
+
+    .login-deco-line,
+    .login-dot {
         display: none;
     }
 
+}
+
+
+/* ==========================================================
+   LAPTOPS CON MENOR ALTURA
+========================================================== */
+
+@media (max-height: 800px) and (min-width: 901px) {
+
     .login-main {
-        padding: 20px 15px;
+        padding:
+            125px
+            32px
+            55px;
     }
+
+
+    .login-wrapper {
+        min-height: 455px;
+    }
+
 
     .login-intro {
-        padding: 38px 28px;
+        min-height: 455px;
+
+        padding:
+            55px
+            65px;
     }
 
-    .intro-content h1 {
-        font-size: 40px;
+
+    .login-access {
+        min-height: 455px;
+
+        padding:
+            52px;
     }
 
-    .intro-content h2 {
-        font-size: 20px;
+
+    .login-intro h1 {
+        font-size: 47px;
     }
 
-    .login-section {
-        padding: 40px 28px;
+
+    .login-intro h2 {
+        font-size: 23px;
     }
+
+
+    .login-icon {
+        margin-bottom: 23px;
+    }
+
+
+    .login-access__description {
+        margin-bottom: 25px;
+    }
+
 }

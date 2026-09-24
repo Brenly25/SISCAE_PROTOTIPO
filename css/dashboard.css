@@ -1,15 +1,15 @@
 /* =========================================================
-   SISCAE - DASHBOARD USUARIO
+   SISCAE - DASHBOARD AUTOR / EDITOR
 
    Se carga DESPUÉS de dashboardAdmin.css. Sidebar, topbar,
-   resumen, tarjetas, tabla de actividad, footer y modales
-   vienen de ahí. Aquí solo va lo propio de esta vista.
+   resumen, tarjetas, tablas, footer y modales vienen de ahí.
+   Aquí solo va lo propio de esta vista: acciones sobre
+   activos, versiones, firma e integridad.
 ========================================================= */
 
-
-/* =========================================================
-   SEPARACIÓN ENTRE PANELES DE TABLA
-========================================================= */
+[hidden] {
+    display: none !important;
+}
 
 .activity-panel + .activity-panel {
     margin-top: 48px;
@@ -19,9 +19,14 @@
     margin-bottom: 48px;
 }
 
+code {
+    font-family: "Consolas", "SFMono-Regular", "Courier New", monospace;
+    word-break: break-all;
+}
+
 
 /* =========================================================
-   ENLACE EN LA TARJETA DE PERMISOS
+   TARJETAS DE SITUACIÓN
 ========================================================= */
 
 .overview-action {
@@ -34,16 +39,34 @@
     text-decoration: underline;
 }
 
-
-/* UNIDAD PEQUEÑA JUNTO AL NÚMERO ("3 días") */
-
 .indicator-value small {
     margin-left: 4px;
-
     color: #77859A;
-
     font-size: 8px;
     font-weight: 500;
+}
+
+.indicator-row > div {
+    min-width: 0;
+}
+
+.indicator-link {
+    margin-top: 7px;
+    padding: 0;
+
+    color: var(--blue-3);
+    background: none;
+    border: 0;
+
+    font-size: 8px;
+    font-weight: 600;
+
+    cursor: pointer;
+}
+
+.indicator-link:hover {
+    color: var(--navy);
+    text-decoration: underline;
 }
 
 
@@ -71,11 +94,10 @@
 }
 
 .filter-tab {
-    padding: 7px 11px;
+    padding: 7px 10px;
 
     color: var(--text-secondary);
     background: transparent;
-
     border: 0;
     border-radius: 2px;
 
@@ -93,16 +115,13 @@
 .filter-tab.active {
     color: var(--navy);
     background: #FFFFFF;
-
     box-shadow: 0 1px 3px rgba(6, 36, 106, .1);
-
     font-weight: 600;
 }
 
 /* btn-primary del admin tiene flex: 1 (pensado para el modal) */
 .btn-inline {
     flex: none;
-
     display: inline-flex;
     align-items: center;
     gap: 7px;
@@ -111,35 +130,47 @@
 .btn-inline svg {
     width: 13px;
     height: 13px;
-
     fill: none;
     stroke: currentColor;
     stroke-width: 2;
     stroke-linecap: round;
 }
 
+.btn-primary:disabled {
+    opacity: .45;
+    cursor: not-allowed;
+}
+
 .filter-tab:focus-visible,
+.row-action:focus-visible,
+.indicator-link:focus-visible,
 .btn-primary:focus-visible,
 .btn-secondary:focus-visible,
+.check-field input:focus-visible,
 .form-field input:focus-visible,
-.form-field select:focus-visible {
+.form-field select:focus-visible,
+.form-field textarea:focus-visible {
     outline: 2px solid var(--blue-5);
     outline-offset: 2px;
 }
 
 
 /* =========================================================
-   TABLA
-   Las columnas del admin suman más de 900px; en pantallas
-   medianas la tabla hace scroll dentro del panel en lugar
-   de cortarse.
+   TABLA DE ACTIVOS
 ========================================================= */
 
 .activity-table {
     overflow-x: auto;
 }
 
-/* Estados con la misma lógica de color del sistema */
+.activity-table--assets .activity-table-header,
+.activity-table--assets .activity-row {
+    grid-template-columns:
+        minmax(250px, 1.35fr)
+        minmax(140px, .7fr)
+        minmax(150px, .75fr)
+        minmax(270px, 1.2fr);
+}
 
 .status-pill {
     width: fit-content;
@@ -150,6 +181,7 @@
     font-size: 7px;
     font-weight: 600;
     letter-spacing: .2px;
+    white-space: nowrap;
 
     border-left: 2px solid;
 }
@@ -158,6 +190,12 @@
     color: var(--blue-3);
     background: #EDF4FF;
     border-color: var(--blue-4);
+}
+
+.status-pill--cambios {
+    color: #B42318;
+    background: #FEF0EF;
+    border-color: var(--red);
 }
 
 .status-pill--revision {
@@ -172,25 +210,146 @@
     border-color: var(--green);
 }
 
+
+/* VERSIÓN VIGENTE */
+
+.version-cell {
+    display: grid;
+    gap: 3px;
+}
+
+.version-cell strong {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+
+    color: var(--navy);
+
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.signed-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+
+    color: #087A50;
+
+    font-size: 7px;
+    font-weight: 600;
+}
+
+.signed-tag svg {
+    width: 11px;
+    height: 11px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.version-cell small {
+    color: #98A2B3;
+    font-family: "Consolas", "Courier New", monospace;
+    font-size: 7px;
+}
+
+
+/* ACCIONES */
+
+.row-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.row-action {
+    min-height: 30px;
+    padding: 0 10px;
+
+    color: var(--blue-3);
+    background: #FFFFFF;
+    border: 1px solid #C7D6EA;
+    border-radius: 3px;
+
+    font-size: 8px;
+    font-weight: 600;
+    white-space: nowrap;
+
+    cursor: pointer;
+
+    transition:
+        background .2s ease,
+        border-color .2s ease;
+}
+
+.row-action:hover {
+    background: #EDF4FF;
+    border-color: var(--blue-4);
+}
+
+.row-action--primary {
+    color: #FFFFFF;
+    background: linear-gradient(90deg, var(--navy), var(--blue-3));
+    border-color: transparent;
+}
+
+.row-action--primary:hover {
+    background: var(--navy);
+}
+
+.row-action--ghost {
+    color: var(--text-secondary);
+    border-color: var(--border);
+}
+
 .activity-empty {
     padding: 40px 28px;
-
     color: var(--text-secondary);
-
     font-size: 9px;
     text-align: center;
 }
 
+/* Intentos fallidos resaltados en la trazabilidad */
+
+.event-icon--alert {
+    color: #B42318;
+    background: #FEF0EF;
+    border-color: #F6CFCB;
+}
+
+.event-icon--alert::after {
+    background: var(--red);
+}
+
 
 /* =========================================================
-   FORMULARIO DEL MODAL
+   MODALES ANCHOS (formularios, firma, historial)
 ========================================================= */
+
+.modal-dialog--wide {
+    width: min(100%, 580px);
+    max-height: calc(100vh - 40px);
+    overflow-y: auto;
+}
+
+.modal-dialog--wide > .section-label {
+    margin-bottom: 5px;
+}
 
 .asset-form {
     margin-top: 18px;
-
     display: grid;
     gap: 13px;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    align-items: start;
+    gap: 12px;
 }
 
 .form-field {
@@ -200,19 +359,18 @@
 
 .form-field > span {
     color: var(--text);
-
     font-size: 8px;
     font-weight: 600;
 }
 
 .form-field input,
-.form-field select {
+.form-field select,
+.form-field textarea {
     min-height: 38px;
     padding: 0 11px;
 
     color: var(--text);
     background: #FFFFFF;
-
     border: 1px solid var(--border);
     border-radius: 3px;
 
@@ -220,24 +378,342 @@
     font-size: 9px;
 }
 
+.form-field textarea {
+    padding: 10px 11px;
+    line-height: 1.5;
+    resize: vertical;
+}
+
 .form-field input[type="file"] {
     padding: 9px 11px;
 }
 
-.form-field input.invalid {
+.form-field .invalid {
     border-color: var(--red);
 }
 
 .form-error {
     min-height: 11px;
-
     color: var(--red);
+    font-size: 7px;
+}
 
+.form-error:empty {
+    min-height: 0;
+}
+
+.form-hint {
+    color: #98A2B3;
     font-size: 7px;
 }
 
 .asset-form .modal-actions {
-    margin-top: 8px;
+    margin-top: 6px;
+}
+
+
+/* OBSERVACIONES DENTRO DEL MODAL */
+
+.observation-box {
+    padding: 12px 14px;
+
+    background: #FEF6F5;
+    border-left: 3px solid var(--red);
+}
+
+.observation-box strong {
+    color: #7A271A;
+    font-size: 8px;
+    font-weight: 600;
+}
+
+.observation-box ul {
+    margin-top: 6px;
+    padding-left: 16px;
+
+    color: #475467;
+
+    font-size: 8px;
+    line-height: 1.6;
+}
+
+
+/* =========================================================
+   FIRMA
+========================================================= */
+
+.sign-summary {
+    margin-top: 18px;
+
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1px;
+
+    background: #E5EAF1;
+    border: 1px solid #E5EAF1;
+}
+
+.sign-summary > div {
+    padding: 10px 12px;
+    background: #FFFFFF;
+}
+
+.sign-summary > div.full {
+    grid-column: 1 / -1;
+}
+
+.sign-summary dt {
+    color: #98A2B3;
+    font-size: 7px;
+    letter-spacing: .4px;
+}
+
+.sign-summary dd {
+    margin-top: 3px;
+    color: var(--text);
+    font-size: 9px;
+    font-weight: 500;
+    overflow-wrap: anywhere;
+}
+
+.sign-summary code {
+    color: var(--blue-2);
+    font-size: 8px;
+}
+
+.hash-box {
+    margin-top: 12px;
+    padding: 12px 14px;
+
+    background: #F4F8FE;
+    border: 1px dashed #B9CCE8;
+}
+
+.hash-box span {
+    display: block;
+
+    color: #77859A;
+
+    font-size: 7px;
+    font-weight: 600;
+    letter-spacing: .4px;
+}
+
+.hash-box code {
+    margin-top: 5px;
+    display: block;
+
+    color: #98A2B3;
+
+    font-size: 9px;
+}
+
+.hash-box code.ready {
+    color: var(--navy);
+}
+
+.check-field {
+    padding: 11px 12px;
+
+    display: flex;
+    align-items: flex-start;
+    gap: 9px;
+
+    background: #FBFCFE;
+    border: 1px solid var(--border);
+
+    cursor: pointer;
+}
+
+.check-field input {
+    width: 15px;
+    height: 15px;
+    margin-top: 1px;
+    flex-shrink: 0;
+    accent-color: var(--blue-3);
+}
+
+.check-field span {
+    color: #475467;
+    font-size: 8px;
+    line-height: 1.55;
+}
+
+#signPin {
+    max-width: 180px;
+    letter-spacing: 6px;
+    font-size: 13px;
+}
+
+
+/* COMPROBANTE */
+
+.receipt {
+    border-top-color: var(--green);
+}
+
+.receipt-head {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.receipt-head .section-label {
+    margin-bottom: 3px;
+    color: #087A50;
+}
+
+.receipt-seal {
+    width: 48px;
+    height: 48px;
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: #087A50;
+    background: #EAF8F1;
+    border: 1px solid #BFE8D3;
+    border-radius: 50%;
+}
+
+.receipt-seal svg {
+    width: 24px;
+    height: 24px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.6;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.modal-dialog p.receipt-note {
+    margin-top: 12px;
+    color: #98A2B3;
+    font-size: 7px;
+}
+
+
+/* =========================================================
+   HISTORIAL E INTEGRIDAD
+========================================================= */
+
+.version-list {
+    margin-top: 16px;
+    list-style: none;
+    border-top: 1px solid #E5EAF1;
+}
+
+.version-item {
+    padding: 12px 0;
+
+    display: grid;
+    grid-template-columns: 38px minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 12px;
+
+    border-bottom: 1px solid #E5EAF1;
+}
+
+.version-badge {
+    width: 36px;
+    height: 36px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: var(--blue-3);
+    background: #EDF4FF;
+    border: 1px solid #D2DEEE;
+    border-radius: 6px;
+
+    font-size: 10px;
+    font-weight: 600;
+}
+
+.version-item:first-child .version-badge {
+    color: #FFFFFF;
+    background: linear-gradient(145deg, var(--navy), var(--blue-3));
+    border-color: transparent;
+}
+
+.version-info strong {
+    display: block;
+    color: var(--text);
+    font-size: 9px;
+    font-weight: 600;
+}
+
+.version-info span {
+    margin-top: 3px;
+    display: block;
+    color: #77859A;
+    font-size: 7px;
+}
+
+.version-info code {
+    margin-top: 3px;
+    display: block;
+    color: #98A2B3;
+    font-size: 7px;
+}
+
+.verify-box {
+    margin-top: 18px;
+    padding: 14px;
+
+    display: grid;
+    gap: 8px;
+
+    background: #F7F9FC;
+    border: 1px solid var(--border);
+}
+
+.verify-box strong {
+    color: var(--navy);
+    font-size: 10px;
+    font-weight: 600;
+}
+
+.modal-dialog .verify-box p {
+    margin-top: 0;
+    font-size: 8px;
+}
+
+.verify-box input {
+    font-size: 8px;
+}
+
+.verify-result {
+    padding: 10px 12px;
+
+    color: #475467;
+    background: #FFFFFF;
+    border-left: 3px solid var(--border);
+
+    font-size: 8px;
+    line-height: 1.55;
+}
+
+.verify-result code {
+    margin-top: 5px;
+    display: block;
+    color: #98A2B3;
+    font-size: 7px;
+}
+
+.verify-result--ok {
+    color: #065F3E;
+    background: #EAF8F1;
+    border-color: var(--green);
+}
+
+.verify-result--fail {
+    color: #7A271A;
+    background: #FEF0EF;
+    border-color: var(--red);
 }
 
 
@@ -246,6 +722,8 @@
 ========================================================= */
 
 .toast {
+    max-width: 360px;
+
     position: fixed;
     right: 24px;
     bottom: 24px;
@@ -255,11 +733,11 @@
 
     color: #FFFFFF;
     background: var(--navy);
-
     border-left: 3px solid var(--yellow);
     box-shadow: 0 14px 32px rgba(6, 36, 106, .25);
 
     font-size: 9px;
+    line-height: 1.5;
 
     opacity: 0;
     transform: translateY(10px);
@@ -297,10 +775,19 @@
 
 @media (max-width: 800px) {
 
-    /* en móvil las filas se apilan (regla del admin),
-       así que ya no hace falta el scroll horizontal */
+    /* En móvil las filas se apilan como en el admin */
+
     .activity-table {
         overflow-x: visible;
+    }
+
+    .activity-table--assets .activity-table-header {
+        display: none;
+    }
+
+    .activity-table--assets .activity-row {
+        grid-template-columns: 1fr;
+        gap: 10px;
     }
 
 }
@@ -317,9 +804,24 @@
         justify-content: center;
     }
 
+    .form-grid,
+    .sign-summary {
+        grid-template-columns: 1fr;
+    }
+
+    .version-item {
+        grid-template-columns: 38px minmax(0, 1fr);
+    }
+
+    .version-item .row-action {
+        grid-column: 2;
+        justify-self: start;
+    }
+
     .toast {
         right: 14px;
         left: 14px;
+        max-width: none;
     }
 
 }

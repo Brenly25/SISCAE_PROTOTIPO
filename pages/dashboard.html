@@ -11,7 +11,7 @@
     <!-- Base compartida con el panel de administración -->
     <link rel="stylesheet" href="../css/dashboardAdmin.css">
 
-    <!-- Solo los componentes propios de la vista de usuario -->
+    <!-- Componentes propios de la vista Autor / Editor -->
     <link rel="stylesheet" href="../css/dashboard.css">
 
 </head>
@@ -25,10 +25,7 @@
     <aside class="sidebar" id="sidebar">
 
         <div class="sidebar-logo">
-            <img
-                src="../assets/logo.png"
-                alt="Ministerio de Educación"
-            >
+            <img src="../assets/logo.png" alt="Ministerio de Educación">
         </div>
 
         <nav class="sidebar-nav">
@@ -58,19 +55,16 @@
             </a>
 
 
-            <span class="nav-title nav-title-space">
-                MI CUENTA
-            </span>
+            <span class="nav-title nav-title-space">MI TRABAJO</span>
 
-            <a href="#mi-situacion" class="nav-item">
+            <a href="#observaciones" class="nav-item">
                 <span class="nav-icon">
                     <svg viewBox="0 0 24 24">
-                        <rect x="5" y="11" width="14" height="10" rx="2"></rect>
-                        <path d="M8 11V7a4 4 0 0 1 8 0v4"></path>
+                        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
                     </svg>
                 </span>
-                <span>Mis permisos</span>
-                <span class="nav-count">1</span>
+                <span>Observaciones</span>
+                <span class="nav-count" data-stat="observaciones">0</span>
             </a>
 
             <a href="#mi-actividad" class="nav-item">
@@ -80,7 +74,20 @@
                         <polyline points="12 7 12 12 15 14"></polyline>
                     </svg>
                 </span>
-                <span>Mi actividad</span>
+                <span>Mis intervenciones</span>
+            </a>
+
+
+            <span class="nav-title nav-title-space">MI CUENTA</span>
+
+            <a href="#mis-permisos" class="nav-item">
+                <span class="nav-icon">
+                    <svg viewBox="0 0 24 24">
+                        <rect x="5" y="11" width="14" height="10" rx="2"></rect>
+                        <path d="M8 11V7a4 4 0 0 1 8 0v4"></path>
+                    </svg>
+                </span>
+                <span>Mis permisos</span>
             </a>
 
         </nav>
@@ -90,21 +97,14 @@
 
             <div class="sidebar-user">
 
-                <div class="sidebar-avatar">
-                    AM
-                </div>
+                <div class="sidebar-avatar">AM</div>
 
                 <div class="sidebar-user-info">
                     <strong>Ana Martínez</strong>
-                    <span>Editor</span>
+                    <span>Autor / Editor</span>
                 </div>
 
-                <button
-                    class="logout-icon"
-                    id="sidebarLogout"
-                    type="button"
-                    aria-label="Cerrar sesión"
-                >
+                <button class="logout-icon" id="sidebarLogout" type="button" aria-label="Cerrar sesión">
                     <svg viewBox="0 0 24 24">
                         <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
                         <polyline points="16 17 21 12 16 7"></polyline>
@@ -119,10 +119,7 @@
     </aside>
 
 
-    <div
-        class="mobile-overlay"
-        id="mobileOverlay"
-    ></div>
+    <div class="mobile-overlay" id="mobileOverlay"></div>
 
 
     <!-- =====================================================
@@ -130,8 +127,6 @@
     ====================================================== -->
 
     <main class="main">
-
-        <!-- FONDO DECORATIVO (mismo del admin) -->
 
         <div class="dashboard-decoration" aria-hidden="true">
 
@@ -157,20 +152,13 @@
         </div>
 
 
-        <!-- =================================================
-             TOPBAR
-        ================================================== -->
+        <!-- TOPBAR -->
 
         <header class="topbar">
 
             <div class="topbar-left">
 
-                <button
-                    class="menu-button"
-                    id="menuButton"
-                    type="button"
-                    aria-label="Abrir menú"
-                >
+                <button class="menu-button" id="menuButton" type="button" aria-label="Abrir menú">
                     <svg viewBox="0 0 24 24">
                         <line x1="3" y1="6" x2="21" y2="6"></line>
                         <line x1="3" y1="12" x2="21" y2="12"></line>
@@ -191,51 +179,30 @@
 
             <div class="topbar-right">
 
-                <button
-                    class="notification"
-                    id="notificationButton"
-                    type="button"
-                    aria-label="Ver pendientes"
-                >
+                <button class="notification" id="notificationButton" type="button" aria-label="Ver observaciones">
                     <svg viewBox="0 0 24 24">
                         <path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9"></path>
                         <path d="M10 21h4"></path>
                     </svg>
-                    <span>2</span>
+                    <span data-stat="observaciones">0</span>
                 </button>
-
 
                 <div class="profile" id="profile">
 
-                    <button
-                        class="profile-button"
-                        id="profileButton"
-                        type="button"
-                    >
-                        <div class="profile-avatar">
-                            AM
-                        </div>
-
+                    <button class="profile-button" id="profileButton" type="button">
+                        <div class="profile-avatar">AM</div>
                         <div class="profile-info">
                             <strong>Ana Martínez</strong>
-                            <span>Editor</span>
+                            <span>Autor / Editor</span>
                         </div>
-
                         <svg class="profile-arrow" viewBox="0 0 24 24">
                             <polyline points="6 9 12 15 18 9"></polyline>
                         </svg>
                     </button>
 
                     <div class="profile-menu">
-
-                        <a href="configuracion.html">
-                            Configuración
-                        </a>
-
-                        <button type="button" id="profileLogout">
-                            Cerrar sesión
-                        </button>
-
+                        <a href="configuracion.html">Configuración</a>
+                        <button type="button" id="profileLogout">Cerrar sesión</button>
                     </div>
 
                 </div>
@@ -245,9 +212,7 @@
         </header>
 
 
-        <!-- =================================================
-             CONTENIDO
-        ================================================== -->
+        <!-- CONTENIDO -->
 
         <div class="content">
 
@@ -256,26 +221,16 @@
             <section class="page-header">
 
                 <div>
-
-                    <span class="section-label">
-                        ESPACIO DE TRABAJO
-                    </span>
-
-                    <h1 id="greeting">
-                        Hola, Ana
-                    </h1>
-
+                    <span class="section-label">AUTOR / EDITOR</span>
+                    <h1 id="greeting">Hola, Ana</h1>
                     <p>
-                        Consulte los activos editoriales asignados a su
-                        cuenta, la vigencia de sus permisos y su actividad.
+                        Registre sus activos editoriales, genere y firme nuevas
+                        versiones y dé seguimiento a las observaciones del revisor.
                     </p>
-
                 </div>
 
                 <div class="current-date">
-
                     <div class="date-line"></div>
-
                     <div class="date-icon">
                         <svg viewBox="0 0 24 24">
                             <rect x="3" y="5" width="18" height="16" rx="2"></rect>
@@ -284,12 +239,10 @@
                             <line x1="3" y1="11" x2="21" y2="11"></line>
                         </svg>
                     </div>
-
                     <div>
                         <span>FECHA ACTUAL</span>
                         <strong id="currentDate"></strong>
                     </div>
-
                 </div>
 
             </section>
@@ -302,23 +255,15 @@
             <section class="summary-panel">
 
                 <div class="panel-heading">
-
                     <div>
-                        <span class="section-label">
-                            MI RESUMEN
-                        </span>
-                        <h2>
-                            Estado de mi trabajo
-                        </h2>
+                        <span class="section-label">MI RESUMEN</span>
+                        <h2>Estado de mi trabajo</h2>
                     </div>
-
                     <div class="system-status">
                         <span></span>
-                        Cuenta vigente
+                        Firma habilitada
                     </div>
-
                 </div>
-
 
                 <div class="summary-grid">
 
@@ -330,9 +275,9 @@
                             </svg>
                         </div>
                         <div class="summary-info">
-                            <span>Activos asignados</span>
+                            <span>Mis activos</span>
                             <strong data-stat="total">0</strong>
-                            <small>A mi cargo</small>
+                            <small>Registrados a mi cargo</small>
                         </div>
                     </article>
 
@@ -346,39 +291,36 @@
                         <div class="summary-info">
                             <span>En edición</span>
                             <strong data-stat="edicion">0</strong>
-                            <small>Trabajo en curso</small>
+                            <small>Listos para enviar a revisión</small>
                         </div>
                     </article>
 
                     <article class="summary-item">
                         <div class="summary-icon">
                             <svg viewBox="0 0 24 24">
-                                <circle cx="11" cy="11" r="7"></circle>
-                                <line x1="21" y1="21" x2="16" y2="16"></line>
+                                <path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path>
+                                <path d="m9 12 2 2 4-4"></path>
                             </svg>
                         </div>
                         <div class="summary-info">
-                            <span>En revisión</span>
-                            <strong data-stat="revision">0</strong>
-                            <small>Esperando al revisor</small>
+                            <span>Versiones firmadas</span>
+                            <strong data-stat="firmas">0</strong>
+                            <small>Con huella SHA-256</small>
                         </div>
                     </article>
 
                     <article class="summary-item">
                         <div class="summary-icon">
                             <svg viewBox="0 0 24 24">
-                                <rect x="5" y="11" width="14" height="10" rx="2"></rect>
-                                <path d="M8 11V7a4 4 0 0 1 8 0v4"></path>
+                                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
                             </svg>
                         </div>
                         <div class="summary-info">
-                            <span>Accesos por vencer</span>
-                            <strong>1</strong>
-                            <small>En los próximos 7 días</small>
+                            <span>Cambios solicitados</span>
+                            <strong data-stat="cambios">0</strong>
+                            <small>Requieren nueva versión</small>
                         </div>
-                        <div class="summary-warning">
-                            Atención
-                        </div>
+                        <div class="summary-warning">Atención</div>
                     </article>
 
                 </div>
@@ -390,71 +332,71 @@
                  MI SITUACIÓN
             ================================================== -->
 
-            <section class="administrative-overview" id="mi-situacion">
+            <section class="administrative-overview">
 
                 <div class="section-header">
-
-                    <span class="section-label">
-                        CONTROL DE ACCESO
-                    </span>
-
-                    <h2>
-                        Mi situación actual
-                    </h2>
-
-                    <p>
-                        Permisos vigentes sobre sus activos y
-                        lo que requiere su atención.
-                    </p>
-
+                    <span class="section-label">FLUJO EDITORIAL</span>
+                    <h2>Mi situación actual</h2>
+                    <p>Observaciones pendientes del revisor y vigencia de sus permisos.</p>
                 </div>
-
 
                 <div class="overview-grid">
 
-                    <!-- PERMISOS -->
+                    <!-- OBSERVACIONES -->
 
-                    <article class="overview-card">
+                    <article class="overview-card" id="observaciones">
 
                         <div class="overview-card-top">
-
                             <div class="overview-title">
+                                <div class="overview-icon">
+                                    <svg viewBox="0 0 24 24">
+                                        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <span class="overview-category">REVISIÓN</span>
+                                    <h3>Observaciones del revisor</h3>
+                                </div>
+                            </div>
+                            <span class="overview-reference">Cambios solicitados</span>
+                        </div>
 
+                        <!-- Se llena desde js/dashboard.js -->
+                        <div class="indicator-list" id="observationsList"></div>
+
+                    </article>
+
+
+                    <!-- PERMISOS -->
+
+                    <article class="overview-card" id="mis-permisos">
+
+                        <div class="overview-card-top">
+                            <div class="overview-title">
                                 <div class="overview-icon">
                                     <svg viewBox="0 0 24 24">
                                         <circle cx="12" cy="12" r="9"></circle>
                                         <polyline points="12 7 12 12 15 14"></polyline>
                                     </svg>
                                 </div>
-
                                 <div>
-                                    <span class="overview-category">
-                                        MIS PERMISOS
-                                    </span>
-                                    <h3>
-                                        Vigencia de mis accesos
-                                    </h3>
+                                    <span class="overview-category">MIS PERMISOS</span>
+                                    <h3>Vigencia de mis accesos</h3>
                                 </div>
-
                             </div>
-
                             <a href="#solicitar" class="overview-reference overview-action" id="requestAccess">
                                 Solicitar acceso
                             </a>
-
                         </div>
-
 
                         <div class="indicator-list">
 
-                            <div class="indicator-row indicator-warning">
+                            <div class="indicator-row">
                                 <div>
                                     <strong>Ciencias Naturales</strong>
                                     <span>Edición · otorgado por Administración</span>
                                 </div>
-                                <span class="indicator-value">
-                                    3<small>días</small>
-                                </span>
+                                <span class="indicator-value">3<small>días</small></span>
                             </div>
 
                             <div class="indicator-row">
@@ -462,89 +404,15 @@
                                     <strong>Libro de Matemática</strong>
                                     <span>Edición · otorgado por Administración</span>
                                 </div>
-                                <span class="indicator-value">
-                                    45<small>días</small>
-                                </span>
+                                <span class="indicator-value">45<small>días</small></span>
                             </div>
 
                             <div class="indicator-row">
                                 <div>
                                     <strong>Guía docente</strong>
-                                    <span>Edición · otorgado por Carlos Pérez</span>
+                                    <span>Edición · otorgado por Administración</span>
                                 </div>
-                                <span class="indicator-value">
-                                    60<small>días</small>
-                                </span>
-                            </div>
-
-                        </div>
-
-                    </article>
-
-
-                    <!-- PENDIENTES -->
-
-                    <article class="overview-card" id="pendientes">
-
-                        <div class="overview-card-top">
-
-                            <div class="overview-title">
-
-                                <div class="overview-icon">
-                                    <svg viewBox="0 0 24 24">
-                                        <path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9"></path>
-                                        <path d="M10 21h4"></path>
-                                    </svg>
-                                </div>
-
-                                <div>
-                                    <span class="overview-category">
-                                        PENDIENTES
-                                    </span>
-                                    <h3>
-                                        Requiere mi atención
-                                    </h3>
-                                </div>
-
-                            </div>
-
-                            <span class="overview-reference">
-                                Seguimiento editorial
-                            </span>
-
-                        </div>
-
-
-                        <div class="indicator-list">
-
-                            <div class="indicator-row">
-                                <div>
-                                    <strong>Observaciones del revisor</strong>
-                                    <span>Guía docente · Carlos Pérez</span>
-                                </div>
-                                <span class="indicator-value">
-                                    4
-                                </span>
-                            </div>
-
-                            <div class="indicator-row">
-                                <div>
-                                    <strong>Listos para enviar a revisión</strong>
-                                    <span>Activos en edición sin cambios pendientes</span>
-                                </div>
-                                <span class="indicator-value" data-stat="edicion">
-                                    0
-                                </span>
-                            </div>
-
-                            <div class="indicator-row">
-                                <div>
-                                    <strong>Aprobados</strong>
-                                    <span>Publicados como versión oficial</span>
-                                </div>
-                                <span class="indicator-value" data-stat="aprobado">
-                                    0
-                                </span>
+                                <span class="indicator-value">60<small>días</small></span>
                             </div>
 
                         </div>
@@ -565,40 +433,22 @@
                 <div class="activity-header">
 
                     <div>
-                        <span class="section-label">
-                            CONTENIDO ASIGNADO
-                        </span>
-                        <h2>
-                            Mis activos editoriales
-                        </h2>
-                        <p>
-                            Recursos sobre los que tiene algún permiso.
-                        </p>
+                        <span class="section-label">CONTENIDO A MI CARGO</span>
+                        <h2>Mis activos editoriales</h2>
+                        <p>Cada versión queda firmada y con su huella de integridad.</p>
                     </div>
 
                     <div class="activity-tools">
 
                         <div class="filter-tabs" role="tablist" aria-label="Filtrar por estado">
-
-                            <button type="button" class="filter-tab active" data-filter="todos" role="tab" aria-selected="true">
-                                Todos
-                            </button>
-
-                            <button type="button" class="filter-tab" data-filter="edicion" role="tab" aria-selected="false">
-                                En edición
-                            </button>
-
-                            <button type="button" class="filter-tab" data-filter="revision" role="tab" aria-selected="false">
-                                En revisión
-                            </button>
-
-                            <button type="button" class="filter-tab" data-filter="aprobado" role="tab" aria-selected="false">
-                                Aprobados
-                            </button>
-
+                            <button type="button" class="filter-tab active" data-filter="todos" role="tab" aria-selected="true">Todos</button>
+                            <button type="button" class="filter-tab" data-filter="edicion" role="tab" aria-selected="false">En edición</button>
+                            <button type="button" class="filter-tab" data-filter="cambios" role="tab" aria-selected="false">Con cambios</button>
+                            <button type="button" class="filter-tab" data-filter="revision" role="tab" aria-selected="false">En revisión</button>
+                            <button type="button" class="filter-tab" data-filter="aprobado" role="tab" aria-selected="false">Aprobados</button>
                         </div>
 
-                        <button type="button" class="btn-primary btn-inline" id="openAssetModal">
+                        <button type="button" class="btn-primary btn-inline" id="openRegister">
                             <svg viewBox="0 0 24 24">
                                 <line x1="12" y1="5" x2="12" y2="19"></line>
                                 <line x1="5" y1="12" x2="19" y2="12"></line>
@@ -610,14 +460,13 @@
 
                 </div>
 
-
-                <div class="activity-table">
+                <div class="activity-table activity-table--assets">
 
                     <div class="activity-table-header">
                         <span>ACTIVO</span>
                         <span>ESTADO</span>
-                        <span>MI PERMISO</span>
-                        <span>ÚLTIMA MODIFICACIÓN</span>
+                        <span>VERSIÓN VIGENTE</span>
+                        <span>ACCIONES</span>
                     </div>
 
                     <!-- Se llena desde js/dashboard.js -->
@@ -629,38 +478,26 @@
 
 
             <!-- =================================================
-                 MI ACTIVIDAD
+                 MIS INTERVENCIONES
             ================================================== -->
 
             <section class="activity-panel" id="mi-actividad">
 
                 <div class="activity-header">
-
                     <div>
-                        <span class="section-label">
-                            TRAZABILIDAD
-                        </span>
-                        <h2>
-                            Mi actividad reciente
-                        </h2>
-                        <p>
-                            Acciones registradas con su cuenta.
-                        </p>
+                        <span class="section-label">TRAZABILIDAD</span>
+                        <h2>Mis intervenciones</h2>
+                        <p>Registro de las acciones realizadas con su cuenta.</p>
                     </div>
-
-                    <span class="activity-reference">
-                        Últimos registros
-                    </span>
-
+                    <span class="activity-reference">Últimos registros</span>
                 </div>
-
 
                 <div class="activity-table">
 
                     <div class="activity-table-header">
                         <span>ACCIÓN</span>
                         <span>RECURSO</span>
-                        <span>ORIGEN</span>
+                        <span>DETALLE</span>
                         <span>FECHA Y HORA</span>
                     </div>
 
@@ -672,22 +509,12 @@
             </section>
 
 
-            <!-- FOOTER -->
-
             <footer class="page-footer">
-
                 <div>
                     <strong>SISCAE</strong>
-                    <span>
-                        Sistema Integral de Seguridad y Control
-                        de Activos Editoriales
-                    </span>
+                    <span>Sistema Integral de Seguridad y Control de Activos Editoriales</span>
                 </div>
-
-                <span>
-                    Ministerio de Educación
-                </span>
-
+                <span>Ministerio de Educación</span>
             </footer>
 
         </div>
@@ -696,59 +523,63 @@
 
 
     <!-- =====================================================
-         MODAL REGISTRAR ACTIVO
+         MODAL 1: REGISTRAR ACTIVO / NUEVA VERSIÓN
+         El mismo formulario sirve para ambos casos.
     ====================================================== -->
 
-    <div class="modal" id="assetModal">
+    <div class="modal" id="uploadModal">
 
         <div class="modal-overlay" data-close-modal></div>
 
-        <div class="modal-dialog" role="dialog" aria-labelledby="assetModalTitle">
+        <div class="modal-dialog modal-dialog--wide" role="dialog" aria-labelledby="uploadTitle">
 
-            <h2 id="assetModalTitle">Registrar activo</h2>
-
-            <p>
-                El activo quedará en edición y a su cargo
-                hasta que lo envíe a revisión.
+            <span class="section-label" id="uploadStep">PASO 1 DE 2 · ARCHIVO</span>
+            <h2 id="uploadTitle">Registrar activo</h2>
+            <p id="uploadDescription">
+                Suba el archivo y describa su intervención.
+                En el siguiente paso firmará la versión.
             </p>
 
-            <form class="asset-form" id="assetForm" novalidate>
+            <form class="asset-form" id="uploadForm" novalidate>
 
-                <label class="form-field">
-                    <span>Nombre del activo</span>
-                    <input
-                        type="text"
-                        id="assetName"
-                        placeholder="Ej. Cuaderno de ejercicios 5.° grado"
-                        autocomplete="off"
-                    >
-                    <small class="form-error" id="assetNameError"></small>
-                </label>
+                <div class="form-grid" id="newAssetFields">
 
-                <label class="form-field">
-                    <span>Tipo</span>
-                    <select id="assetType">
-                        <option value="Libro">Libro</option>
-                        <option value="Documento">Documento</option>
-                        <option value="Imagen">Imagen</option>
-                    </select>
-                </label>
+                    <label class="form-field">
+                        <span>Nombre del activo</span>
+                        <input type="text" id="assetName" placeholder="Ej. Cuaderno de ejercicios 5.° grado" autocomplete="off">
+                        <small class="form-error" data-error="assetName"></small>
+                    </label>
+
+                    <label class="form-field">
+                        <span>Tipo</span>
+                        <select id="assetType">
+                            <option value="Libro">Libro</option>
+                            <option value="Documento">Documento</option>
+                            <option value="Imagen">Imagen</option>
+                            <option value="Multimedia">Multimedia</option>
+                        </select>
+                    </label>
+
+                </div>
+
+                <!-- Solo visible al atender observaciones -->
+                <div class="observation-box" id="uploadObservations" hidden></div>
 
                 <label class="form-field">
                     <span>Archivo</span>
                     <input type="file" id="assetFile">
+                    <small class="form-error" data-error="assetFile"></small>
+                </label>
+
+                <label class="form-field">
+                    <span>Descripción de la intervención</span>
+                    <textarea id="assetNote" rows="3" placeholder="Ej. Se corrigieron los ejercicios de la unidad 2 según las observaciones."></textarea>
+                    <small class="form-error" data-error="assetNote"></small>
                 </label>
 
                 <div class="modal-actions">
-
-                    <button class="btn-secondary" type="button" data-close-modal>
-                        Cancelar
-                    </button>
-
-                    <button class="btn-primary" type="submit">
-                        Registrar activo
-                    </button>
-
+                    <button class="btn-secondary" type="button" data-close-modal>Cancelar</button>
+                    <button class="btn-primary" type="submit">Continuar a la firma</button>
                 </div>
 
             </form>
@@ -759,31 +590,96 @@
 
 
     <!-- =====================================================
-         MODAL CERRAR SESIÓN
+         MODAL 2: FIRMAR VERSIÓN
     ====================================================== -->
 
-    <div class="modal" id="logoutModal">
+    <div class="modal" id="signModal">
 
         <div class="modal-overlay" data-close-modal></div>
 
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-dialog--wide" role="dialog" aria-labelledby="signTitle">
 
-            <h2>Cerrar sesión</h2>
-
+            <span class="section-label">PASO 2 DE 2 · FIRMA</span>
+            <h2 id="signTitle">Firmar versión</h2>
             <p>
-                ¿Desea finalizar su sesión actual en SISCAE?
+                La firma vincula su identidad con la huella exacta del archivo.
+                Si el archivo cambia después, la huella deja de coincidir.
+            </p>
+
+            <dl class="sign-summary" id="signSummary">
+                <!-- Se llena desde js/dashboard.js -->
+            </dl>
+
+            <div class="hash-box">
+                <span>Huella SHA-256 del archivo</span>
+                <code id="signHash">Calculando…</code>
+            </div>
+
+            <form class="asset-form" id="signForm" novalidate>
+
+                <label class="check-field">
+                    <input type="checkbox" id="signConsent">
+                    <span>
+                        Declaro que este archivo corresponde a mi intervención y
+                        asumo la responsabilidad de la versión que registro.
+                    </span>
+                </label>
+
+                <label class="form-field">
+                    <span>PIN de firma</span>
+                    <input type="password" id="signPin" inputmode="numeric" maxlength="6" placeholder="••••••" autocomplete="off">
+                    <small class="form-hint">Prototipo: el PIN de demostración es 123456.</small>
+                    <small class="form-error" data-error="signPin"></small>
+                </label>
+
+                <div class="modal-actions">
+                    <button class="btn-secondary" type="button" data-close-modal>Cancelar</button>
+                    <button class="btn-primary" type="submit" id="signSubmit" disabled>Firmar y registrar versión</button>
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         MODAL 3: COMPROBANTE DE FIRMA
+    ====================================================== -->
+
+    <div class="modal" id="receiptModal">
+
+        <div class="modal-overlay" data-close-modal></div>
+
+        <div class="modal-dialog modal-dialog--wide receipt" role="dialog" aria-labelledby="receiptTitle">
+
+            <div class="receipt-head">
+                <div class="receipt-seal" aria-hidden="true">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path>
+                        <path d="m9 12 2 2 4-4"></path>
+                    </svg>
+                </div>
+                <div>
+                    <span class="section-label">COMPROBANTE DE FIRMA</span>
+                    <h2 id="receiptTitle">Versión firmada</h2>
+                </div>
+            </div>
+
+            <dl class="sign-summary" id="receiptBody">
+                <!-- Se llena desde js/dashboard.js -->
+            </dl>
+
+            <p class="receipt-note">
+                Firma simulada para fines de demostración. En producción se
+                generará con la llave privada del usuario y se validará con su
+                certificado.
             </p>
 
             <div class="modal-actions">
-
-                <button class="btn-secondary" type="button" data-close-modal>
-                    Cancelar
-                </button>
-
-                <button class="btn-primary" type="button" id="confirmLogout">
-                    Cerrar sesión
-                </button>
-
+                <button class="btn-secondary" type="button" id="downloadReceipt">Descargar comprobante</button>
+                <button class="btn-primary" type="button" data-close-modal>Listo</button>
             </div>
 
         </div>
@@ -791,10 +687,63 @@
     </div>
 
 
-    <!-- AVISO -->
+    <!-- =====================================================
+         MODAL 4: HISTORIAL DE VERSIONES E INTEGRIDAD
+    ====================================================== -->
+
+    <div class="modal" id="historyModal">
+
+        <div class="modal-overlay" data-close-modal></div>
+
+        <div class="modal-dialog modal-dialog--wide" role="dialog" aria-labelledby="historyTitle">
+
+            <span class="section-label">HISTORIAL DE VERSIONES</span>
+            <h2 id="historyTitle">Activo</h2>
+            <p id="historyMeta"></p>
+
+            <!-- Se llena desde js/dashboard.js -->
+            <ol class="version-list" id="versionList"></ol>
+
+            <div class="verify-box">
+                <strong>Verificar integridad</strong>
+                <p>
+                    Seleccione una copia del archivo. Se calculará su huella y se
+                    comparará con las versiones firmadas.
+                </p>
+                <input type="file" id="verifyFile">
+                <div class="verify-result" id="verifyResult" hidden></div>
+            </div>
+
+            <div class="modal-actions">
+                <button class="btn-primary" type="button" data-close-modal>Cerrar</button>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         MODAL 5: CERRAR SESIÓN
+    ====================================================== -->
+
+    <div class="modal" id="logoutModal">
+
+        <div class="modal-overlay" data-close-modal></div>
+
+        <div class="modal-dialog">
+            <h2>Cerrar sesión</h2>
+            <p>¿Desea finalizar su sesión actual en SISCAE?</p>
+            <div class="modal-actions">
+                <button class="btn-secondary" type="button" data-close-modal>Cancelar</button>
+                <button class="btn-primary" type="button" id="confirmLogout">Cerrar sesión</button>
+            </div>
+        </div>
+
+    </div>
+
 
     <div class="toast" id="toast" role="status" aria-live="polite"></div>
-
 
     <script src="../js/dashboard.js"></script>
 

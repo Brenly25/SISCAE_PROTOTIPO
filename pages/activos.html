@@ -1,0 +1,1082 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Activos editoriales | SISCAE</title>
+
+    <link rel="stylesheet" href="../css/activos.css">
+</head>
+
+<body>
+
+    <!-- =====================================================
+         SIDEBAR
+    ====================================================== -->
+
+    <aside class="sidebar" id="sidebar">
+
+        <div class="sidebar-logo">
+            <img src="../assets/logo.png" alt="Ministerio de Educación">
+        </div>
+
+        <nav class="sidebar-nav">
+
+            <span class="nav-title">GENERAL</span>
+
+            <a href="dashboardAdmin.html" class="nav-item">
+                <span class="nav-icon">
+                    <svg viewBox="0 0 24 24">
+                        <rect x="3" y="3" width="7" height="7"></rect>
+                        <rect x="14" y="3" width="7" height="7"></rect>
+                        <rect x="3" y="14" width="7" height="7"></rect>
+                        <rect x="14" y="14" width="7" height="7"></rect>
+                    </svg>
+                </span>
+                <span>Inicio</span>
+            </a>
+
+            <a href="activos.html" class="nav-item active">
+                <span class="nav-icon">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M3 7h6l2 2h10v10H3z"></path>
+                        <path d="M3 7V5h6l2 2"></path>
+                    </svg>
+                </span>
+                <span>Activos editoriales</span>
+            </a>
+
+
+            <span class="nav-title nav-title-space">
+                ADMINISTRACIÓN
+            </span>
+
+            <a href="usuarios.html" class="nav-item">
+                <span class="nav-icon">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="9" cy="7" r="4"></circle>
+                        <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
+                        <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                    </svg>
+                </span>
+                <span>Usuarios</span>
+            </a>
+
+            <a href="roles.html" class="nav-item">
+                <span class="nav-icon">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                        <path d="m9 12 2 2 4-4"></path>
+                    </svg>
+                </span>
+                <span>Roles y permisos</span>
+            </a>
+
+
+            <span class="nav-title nav-title-space">
+                SUPERVISIÓN
+            </span>
+
+            <a href="auditoria.html" class="nav-item">
+                <span class="nav-icon">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                        <polyline points="14 2 14 8 20 8"></polyline>
+                        <line x1="8" y1="13" x2="16" y2="13"></line>
+                        <line x1="8" y1="17" x2="16" y2="17"></line>
+                    </svg>
+                </span>
+                <span>Auditoría</span>
+            </a>
+
+            <a href="alertas.html" class="nav-item">
+                <span class="nav-icon">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9"></path>
+                        <path d="M10 21h4"></path>
+                    </svg>
+                </span>
+                <span>Alertas</span>
+
+                <span class="nav-count">3</span>
+            </a>
+
+        </nav>
+
+
+        <div class="sidebar-footer">
+
+            <div class="sidebar-user">
+
+                <div class="sidebar-avatar">
+                    AD
+                </div>
+
+                <div class="sidebar-user-info">
+                    <strong>Administrador</strong>
+                    <span>Cuenta institucional</span>
+                </div>
+
+                <button
+                    class="logout-icon"
+                    id="sidebarLogout"
+                    type="button"
+                    aria-label="Cerrar sesión"
+                >
+                    <svg viewBox="0 0 24 24">
+                        <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                        <polyline points="16 17 21 12 16 7"></polyline>
+                        <line x1="21" y1="12" x2="9" y2="12"></line>
+                    </svg>
+                </button>
+
+            </div>
+
+        </div>
+
+    </aside>
+
+
+    <div class="mobile-overlay" id="mobileOverlay"></div>
+
+
+    <!-- =====================================================
+         MAIN
+    ====================================================== -->
+
+    <main class="main">
+
+        <!-- FONDO DECORATIVO -->
+
+        <div class="dashboard-decoration" aria-hidden="true">
+
+            <div class="ring-group ring-group-one">
+                <span class="ring ring-a"></span>
+                <span class="ring ring-b"></span>
+                <span class="ring ring-c"></span>
+                <span class="ring ring-d"></span>
+            </div>
+
+            <div class="ring-group ring-group-two">
+                <span class="ring ring-a"></span>
+                <span class="ring ring-b"></span>
+                <span class="ring ring-c"></span>
+            </div>
+
+            <div class="ring-group ring-group-three">
+                <span class="ring ring-a"></span>
+                <span class="ring ring-b"></span>
+                <span class="ring ring-yellow"></span>
+            </div>
+
+        </div>
+
+
+        <!-- =================================================
+             TOPBAR
+        ================================================== -->
+
+        <header class="topbar">
+
+            <div class="topbar-left">
+
+                <button
+                    class="menu-button"
+                    id="menuButton"
+                    type="button"
+                    aria-label="Abrir menú"
+                >
+                    <svg viewBox="0 0 24 24">
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                </button>
+
+                <div class="breadcrumb">
+                    <span>SISCAE</span>
+
+                    <svg viewBox="0 0 24 24">
+                        <polyline points="9 18 15 12 9 6"></polyline>
+                    </svg>
+
+                    <strong>Activos editoriales</strong>
+                </div>
+
+            </div>
+
+
+            <div class="topbar-right">
+
+                <button
+                    class="notification"
+                    id="notificationButton"
+                    type="button"
+                    aria-label="Ver alertas"
+                >
+                    <svg viewBox="0 0 24 24">
+                        <path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9"></path>
+                        <path d="M10 21h4"></path>
+                    </svg>
+
+                    <span>3</span>
+                </button>
+
+
+                <div class="profile" id="profile">
+
+                    <button
+                        class="profile-button"
+                        id="profileButton"
+                        type="button"
+                    >
+
+                        <div class="profile-avatar">
+                            AD
+                        </div>
+
+                        <div class="profile-info">
+                            <strong>Administrador</strong>
+                            <span>Administrador del sistema</span>
+                        </div>
+
+                        <svg class="profile-arrow" viewBox="0 0 24 24">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+
+                    </button>
+
+
+                    <div class="profile-menu">
+
+                        <a href="configuracion.html">
+                            Configuración
+                        </a>
+
+                        <button
+                            type="button"
+                            id="profileLogout"
+                        >
+                            Cerrar sesión
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- =================================================
+             CONTENIDO
+        ================================================== -->
+
+        <div class="content">
+
+
+            <!-- ENCABEZADO -->
+
+            <section class="page-header">
+
+                <div>
+
+                    <span class="section-label">
+                        GESTIÓN EDITORIAL
+                    </span>
+
+                    <h1>Activos editoriales</h1>
+
+                    <p>
+                        Consulta y supervisión de los recursos editoriales
+                        registrados dentro de SISCAE.
+                    </p>
+
+                </div>
+
+
+                <button class="primary-action" id="newAssetButton" type="button">
+
+                    <svg viewBox="0 0 24 24">
+                        <line x1="12" y1="5" x2="12" y2="19"></line>
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                    </svg>
+
+                    Registrar activo
+
+                </button>
+
+            </section>
+
+
+            <!-- =================================================
+                 RESUMEN
+            ================================================== -->
+
+            <section class="asset-summary">
+
+                <article class="asset-stat">
+
+                    <div class="stat-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M3 7h6l2 2h10v10H3z"></path>
+                            <path d="M3 7V5h6l2 2"></path>
+                        </svg>
+                    </div>
+
+                    <div>
+                        <span>Total de activos</span>
+                        <strong>148</strong>
+                        <small>Recursos registrados</small>
+                    </div>
+
+                </article>
+
+
+                <article class="asset-stat">
+
+                    <div class="stat-icon">
+                        <svg viewBox="0 0 24 24">
+                            <circle cx="12" cy="12" r="9"></circle>
+                            <polyline points="12 7 12 12 15 14"></polyline>
+                        </svg>
+                    </div>
+
+                    <div>
+                        <span>En revisión</span>
+                        <strong>12</strong>
+                        <small>Proceso editorial activo</small>
+                    </div>
+
+                </article>
+
+
+                <article class="asset-stat">
+
+                    <div class="stat-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M20 6 9 17l-5-5"></path>
+                        </svg>
+                    </div>
+
+                    <div>
+                        <span>Aprobados</span>
+                        <strong>40</strong>
+                        <small>Listos para publicación</small>
+                    </div>
+
+                </article>
+
+
+                <article class="asset-stat">
+
+                    <div class="stat-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M12 2v13"></path>
+                            <polyline points="7 10 12 15 17 10"></polyline>
+                            <path d="M5 22h14"></path>
+                        </svg>
+                    </div>
+
+                    <div>
+                        <span>Publicados</span>
+                        <strong>96</strong>
+                        <small>Proceso finalizado</small>
+                    </div>
+
+                </article>
+
+            </section>
+
+
+            <!-- =================================================
+                 PANEL PRINCIPAL
+            ================================================== -->
+
+            <section class="assets-panel">
+
+                <div class="assets-panel-header">
+
+                    <div>
+                        <span class="section-label">
+                            RECURSOS REGISTRADOS
+                        </span>
+
+                        <h2>Listado de activos</h2>
+
+                        <p>
+                            Localice y consulte los activos incorporados al sistema.
+                        </p>
+                    </div>
+
+                    <div class="result-count">
+                        <strong id="resultCount">6</strong>
+                        <span>resultados mostrados</span>
+                    </div>
+
+                </div>
+
+
+                <!-- FILTROS -->
+
+                <div class="filters">
+
+                    <div class="search-box">
+
+                        <svg viewBox="0 0 24 24">
+                            <circle cx="11" cy="11" r="7"></circle>
+                            <line x1="20" y1="20" x2="16.65" y2="16.65"></line>
+                        </svg>
+
+                        <input
+                            type="text"
+                            id="assetSearch"
+                            placeholder="Buscar por nombre o responsable..."
+                        >
+
+                    </div>
+
+
+                    <div class="select-wrapper">
+
+                        <select id="statusFilter">
+                            <option value="all">Todos los estados</option>
+                            <option value="revision">En revisión</option>
+                            <option value="aprobado">Aprobado</option>
+                            <option value="publicado">Publicado</option>
+                        </select>
+
+                        <svg viewBox="0 0 24 24">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+
+                    </div>
+
+
+                    <div class="select-wrapper">
+
+                        <select id="typeFilter">
+                            <option value="all">Todos los tipos</option>
+                            <option value="libro">Libro</option>
+                            <option value="guia">Guía</option>
+                            <option value="material">Material educativo</option>
+                        </select>
+
+                        <svg viewBox="0 0 24 24">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+
+                    </div>
+
+
+                    <button
+                        class="clear-filters"
+                        id="clearFilters"
+                        type="button"
+                    >
+                        Limpiar filtros
+                    </button>
+
+                </div>
+
+
+                <!-- CABECERA TABLA -->
+
+                <div class="asset-table-header">
+
+                    <span>ACTIVO EDITORIAL</span>
+                    <span>TIPO</span>
+                    <span>VERSIÓN</span>
+                    <span>RESPONSABLE</span>
+                    <span>ESTADO</span>
+                    <span>ACTUALIZACIÓN</span>
+                    <span></span>
+
+                </div>
+
+
+                <!-- LISTADO -->
+
+                <div class="asset-list" id="assetList">
+
+
+                    <!-- ACTIVO 1 -->
+
+                    <article
+                        class="asset-row"
+                        data-status="revision"
+                        data-type="libro"
+                        data-search="libro de ciencias naturales maría lópez"
+                    >
+
+                        <div class="asset-name">
+
+                            <div class="file-icon">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                    <polyline points="14 2 14 8 20 8"></polyline>
+                                </svg>
+                            </div>
+
+                            <div>
+                                <strong>Libro de Ciencias Naturales</strong>
+                                <span>Educación Básica</span>
+                            </div>
+
+                        </div>
+
+                        <span>Libro</span>
+
+                        <strong class="version">v3.2</strong>
+
+                        <div class="responsible">
+                            <span class="user-initials">ML</span>
+                            <span>María López</span>
+                        </div>
+
+                        <span class="status status-review">
+                            En revisión
+                        </span>
+
+                        <span>24 sep. 2026</span>
+
+                        <button
+                            class="row-action"
+                            type="button"
+                            aria-label="Ver activo"
+                            data-view-asset="Libro de Ciencias Naturales"
+                        >
+                            <svg viewBox="0 0 24 24">
+                                <polyline points="9 18 15 12 9 6"></polyline>
+                            </svg>
+                        </button>
+
+                    </article>
+
+
+                    <!-- ACTIVO 2 -->
+
+                    <article
+                        class="asset-row"
+                        data-status="publicado"
+                        data-type="guia"
+                        data-search="guía metodológica carlos hernández"
+                    >
+
+                        <div class="asset-name">
+
+                            <div class="file-icon">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                    <polyline points="14 2 14 8 20 8"></polyline>
+                                </svg>
+                            </div>
+
+                            <div>
+                                <strong>Guía metodológica</strong>
+                                <span>Formación docente</span>
+                            </div>
+
+                        </div>
+
+                        <span>Guía</span>
+
+                        <strong class="version">v2.0</strong>
+
+                        <div class="responsible">
+                            <span class="user-initials">CH</span>
+                            <span>Carlos Hernández</span>
+                        </div>
+
+                        <span class="status status-published">
+                            Publicado
+                        </span>
+
+                        <span>23 sep. 2026</span>
+
+                        <button
+                            class="row-action"
+                            type="button"
+                            aria-label="Ver activo"
+                            data-view-asset="Guía metodológica"
+                        >
+                            <svg viewBox="0 0 24 24">
+                                <polyline points="9 18 15 12 9 6"></polyline>
+                            </svg>
+                        </button>
+
+                    </article>
+
+
+                    <!-- ACTIVO 3 -->
+
+                    <article
+                        class="asset-row"
+                        data-status="aprobado"
+                        data-type="material"
+                        data-search="material de apoyo matemática ana martínez"
+                    >
+
+                        <div class="asset-name">
+
+                            <div class="file-icon">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                    <polyline points="14 2 14 8 20 8"></polyline>
+                                </svg>
+                            </div>
+
+                            <div>
+                                <strong>Material de apoyo de Matemática</strong>
+                                <span>Educación Básica</span>
+                            </div>
+
+                        </div>
+
+                        <span>Material educativo</span>
+
+                        <strong class="version">v1.4</strong>
+
+                        <div class="responsible">
+                            <span class="user-initials">AM</span>
+                            <span>Ana Martínez</span>
+                        </div>
+
+                        <span class="status status-approved">
+                            Aprobado
+                        </span>
+
+                        <span>22 sep. 2026</span>
+
+                        <button
+                            class="row-action"
+                            type="button"
+                            aria-label="Ver activo"
+                            data-view-asset="Material de apoyo de Matemática"
+                        >
+                            <svg viewBox="0 0 24 24">
+                                <polyline points="9 18 15 12 9 6"></polyline>
+                            </svg>
+                        </button>
+
+                    </article>
+
+
+                    <!-- ACTIVO 4 -->
+
+                    <article
+                        class="asset-row"
+                        data-status="revision"
+                        data-type="guia"
+                        data-search="guía de estudios sociales josé ramírez"
+                    >
+
+                        <div class="asset-name">
+
+                            <div class="file-icon">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                    <polyline points="14 2 14 8 20 8"></polyline>
+                                </svg>
+                            </div>
+
+                            <div>
+                                <strong>Guía de Estudios Sociales</strong>
+                                <span>Segundo Ciclo</span>
+                            </div>
+
+                        </div>
+
+                        <span>Guía</span>
+
+                        <strong class="version">v1.7</strong>
+
+                        <div class="responsible">
+                            <span class="user-initials">JR</span>
+                            <span>José Ramírez</span>
+                        </div>
+
+                        <span class="status status-review">
+                            En revisión
+                        </span>
+
+                        <span>21 sep. 2026</span>
+
+                        <button
+                            class="row-action"
+                            type="button"
+                            aria-label="Ver activo"
+                            data-view-asset="Guía de Estudios Sociales"
+                        >
+                            <svg viewBox="0 0 24 24">
+                                <polyline points="9 18 15 12 9 6"></polyline>
+                            </svg>
+                        </button>
+
+                    </article>
+
+
+                    <!-- ACTIVO 5 -->
+
+                    <article
+                        class="asset-row"
+                        data-status="publicado"
+                        data-type="libro"
+                        data-search="libro de lenguaje sofía castro"
+                    >
+
+                        <div class="asset-name">
+
+                            <div class="file-icon">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                    <polyline points="14 2 14 8 20 8"></polyline>
+                                </svg>
+                            </div>
+
+                            <div>
+                                <strong>Libro de Lenguaje</strong>
+                                <span>Primer Ciclo</span>
+                            </div>
+
+                        </div>
+
+                        <span>Libro</span>
+
+                        <strong class="version">v4.1</strong>
+
+                        <div class="responsible">
+                            <span class="user-initials">SC</span>
+                            <span>Sofía Castro</span>
+                        </div>
+
+                        <span class="status status-published">
+                            Publicado
+                        </span>
+
+                        <span>19 sep. 2026</span>
+
+                        <button
+                            class="row-action"
+                            type="button"
+                            aria-label="Ver activo"
+                            data-view-asset="Libro de Lenguaje"
+                        >
+                            <svg viewBox="0 0 24 24">
+                                <polyline points="9 18 15 12 9 6"></polyline>
+                            </svg>
+                        </button>
+
+                    </article>
+
+
+                    <!-- ACTIVO 6 -->
+
+                    <article
+                        class="asset-row"
+                        data-status="aprobado"
+                        data-type="material"
+                        data-search="cuaderno de actividades laura gómez"
+                    >
+
+                        <div class="asset-name">
+
+                            <div class="file-icon">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                    <polyline points="14 2 14 8 20 8"></polyline>
+                                </svg>
+                            </div>
+
+                            <div>
+                                <strong>Cuaderno de actividades</strong>
+                                <span>Primera Infancia</span>
+                            </div>
+
+                        </div>
+
+                        <span>Material educativo</span>
+
+                        <strong class="version">v2.3</strong>
+
+                        <div class="responsible">
+                            <span class="user-initials">LG</span>
+                            <span>Laura Gómez</span>
+                        </div>
+
+                        <span class="status status-approved">
+                            Aprobado
+                        </span>
+
+                        <span>18 sep. 2026</span>
+
+                        <button
+                            class="row-action"
+                            type="button"
+                            aria-label="Ver activo"
+                            data-view-asset="Cuaderno de actividades"
+                        >
+                            <svg viewBox="0 0 24 24">
+                                <polyline points="9 18 15 12 9 6"></polyline>
+                            </svg>
+                        </button>
+
+                    </article>
+
+                </div>
+
+
+                <!-- SIN RESULTADOS -->
+
+                <div class="empty-state" id="emptyState">
+
+                    <div class="empty-icon">
+                        <svg viewBox="0 0 24 24">
+                            <circle cx="11" cy="11" r="7"></circle>
+                            <line x1="20" y1="20" x2="16.65" y2="16.65"></line>
+                        </svg>
+                    </div>
+
+                    <strong>No se encontraron activos</strong>
+
+                    <span>
+                        Modifique los criterios de búsqueda o los filtros seleccionados.
+                    </span>
+
+                </div>
+
+            </section>
+
+
+            <!-- FOOTER -->
+
+            <footer class="page-footer">
+
+                <div>
+                    <strong>SISCAE</strong>
+
+                    <span>
+                        Sistema Integral de Seguridad y Control
+                        de Activos Editoriales
+                    </span>
+                </div>
+
+                <span>Ministerio de Educación</span>
+
+            </footer>
+
+        </div>
+
+    </main>
+
+
+    <!-- =====================================================
+         MODAL REGISTRAR ACTIVO
+    ====================================================== -->
+
+    <div class="modal" id="assetModal">
+
+        <div class="modal-overlay" data-close-asset-modal></div>
+
+        <div class="modal-dialog asset-modal-dialog">
+
+            <div class="modal-heading">
+
+                <div>
+                    <span class="section-label">
+                        NUEVO REGISTRO
+                    </span>
+
+                    <h2>Registrar activo editorial</h2>
+                </div>
+
+                <button
+                    class="modal-close"
+                    type="button"
+                    data-close-asset-modal
+                    aria-label="Cerrar"
+                >
+                    ×
+                </button>
+
+            </div>
+
+            <p class="modal-description">
+                Complete la información general del recurso editorial.
+            </p>
+
+            <form id="assetForm">
+
+                <div class="form-group">
+                    <label for="assetName">Nombre del activo</label>
+
+                    <input
+                        type="text"
+                        id="assetName"
+                        placeholder="Ej. Libro de Ciencias Naturales"
+                        required
+                    >
+                </div>
+
+                <div class="form-row">
+
+                    <div class="form-group">
+                        <label for="assetType">Tipo</label>
+
+                        <select id="assetType" required>
+                            <option value="">Seleccionar</option>
+                            <option>Libro</option>
+                            <option>Guía</option>
+                            <option>Material educativo</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="assetVersion">Versión</label>
+
+                        <input
+                            type="text"
+                            id="assetVersion"
+                            placeholder="Ej. v1.0"
+                            required
+                        >
+                    </div>
+
+                </div>
+
+                <div class="form-group">
+                    <label for="assetResponsible">
+                        Responsable
+                    </label>
+
+                    <input
+                        type="text"
+                        id="assetResponsible"
+                        placeholder="Nombre del responsable"
+                        required
+                    >
+                </div>
+
+                <div class="modal-actions">
+
+                    <button
+                        class="btn-secondary"
+                        type="button"
+                        data-close-asset-modal
+                    >
+                        Cancelar
+                    </button>
+
+                    <button
+                        class="btn-primary"
+                        type="submit"
+                    >
+                        Registrar activo
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         MODAL DETALLE
+    ====================================================== -->
+
+    <div class="modal" id="detailModal">
+
+        <div class="modal-overlay" data-close-detail-modal></div>
+
+        <div class="modal-dialog detail-dialog">
+
+            <div class="detail-icon">
+                <svg viewBox="0 0 24 24">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                    <polyline points="14 2 14 8 20 8"></polyline>
+                </svg>
+            </div>
+
+            <span class="section-label">
+                ACTIVO EDITORIAL
+            </span>
+
+            <h2 id="detailAssetName">
+                Recurso editorial
+            </h2>
+
+            <p>
+                Esta vista permitirá consultar la información,
+                versiones, trazabilidad y acciones asociadas al activo.
+            </p>
+
+            <div class="modal-actions">
+
+                <button
+                    class="btn-primary"
+                    type="button"
+                    data-close-detail-modal
+                >
+                    Cerrar
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         MODAL CERRAR SESIÓN
+    ====================================================== -->
+
+    <div class="modal" id="logoutModal">
+
+        <div class="modal-overlay" data-close-logout-modal></div>
+
+        <div class="modal-dialog">
+
+            <h2>Cerrar sesión</h2>
+
+            <p class="modal-description">
+                ¿Desea finalizar su sesión actual en SISCAE?
+            </p>
+
+            <div class="modal-actions">
+
+                <button
+                    class="btn-secondary"
+                    type="button"
+                    data-close-logout-modal
+                >
+                    Cancelar
+                </button>
+
+                <button
+                    class="btn-primary"
+                    type="button"
+                    id="confirmLogout"
+                >
+                    Cerrar sesión
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <script src="../js/activos.js"></script>
+
+</body>
+
+</html>

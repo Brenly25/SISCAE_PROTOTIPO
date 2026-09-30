@@ -1,3 +1,7 @@
+<!-- =====================================================
+        PÁGINA DE INICIO
+    ====================================================== -->
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -11,55 +15,18 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/pages/index.css">
+    <link rel="stylesheet" href="css/components/navbar_home.css">
+    <link rel="stylesheet" href="css/components/footer.css">
 </head>
 
 <body>
 
     <!-- =====================================================
-         ENCABEZADO
-    ====================================================== -->
+        HEADER 
+    ===================================================== -->
 
-    <header class="header" id="header">
-
-        <div class="header__content">
-
-            <a href="#inicio" class="header__brand">
-                <img src="assets/logo.png" alt="Ministerio de Educación - Gobierno de El Salvador">
-            </a>
-
-            <nav class="nav" id="nav">
-
-                <a href="#inicio" class="nav__link active">
-                    Inicio
-                </a>
-
-                <a href="#acerca" class="nav__link">
-                    Acerca de SISCAE
-                </a>
-
-                <a href="#soporte" class="nav__link">
-                    Soporte técnico
-                </a>
-
-                <a href="pages/login.html" class="nav__login">
-                    Iniciar sesión
-                </a>
-
-            </nav>
-
-            <button class="menu-button" id="menuButton" type="button" aria-label="Abrir menú" aria-expanded="false">
-
-                <span></span>
-                <span></span>
-                <span></span>
-
-            </button>
-
-        </div>
-
-    </header>
-
+    <div id="header-component"></div>
 
     <main>
 
@@ -818,64 +785,9 @@
          FOOTER
     ====================================================== -->
 
-    <footer class="footer">
+    <div id="footer-component"></div>
 
-        <div class="container footer__main">
-
-            <div class="footer__brand">
-
-                <img src="assets/logo.png" alt="Ministerio de Educación">
-
-            </div>
-
-
-            <div class="footer__divider"></div>
-
-
-            <div class="footer__system">
-
-                <strong>
-                    SISCAE
-                </strong>
-
-                <span>
-                    Sistema Integral de Seguridad
-                    y Control de Activos Editoriales
-                </span>
-
-            </div>
-
-
-            <a href="#inicio" class="footer__top" aria-label="Volver al inicio">
-
-                <svg viewBox="0 0 24 24">
-                    <path d="M12 19V5M6 11l6-6 6 6" />
-                </svg>
-
-            </a>
-
-        </div>
-
-
-        <div class="footer__bottom">
-
-            <div class="container footer__bottom-content">
-
-                <span>
-                    © 2026 Ministerio de Educación, Ciencia y Tecnología. Todos los derechos reservados.
-                </span>
-
-                <span>
-                    El Salvador
-                </span>
-
-            </div>
-
-        </div>
-
-    </footer>
-
-
+    <script src="js/components.js"></script>
     <script src="js/index.js"></script>
 
 </body>

@@ -1,0 +1,230 @@
+    /* =========================================================
+   SISCAE
+   COMPONENTE FOOTER
+========================================================= */
+
+
+/* =========================================================
+   VARIABLES NECESARIAS
+========================================================= */
+
+:root {
+    --blue: #0637B7;
+    --yellow: #F4C430;
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.footer {
+    color: #FFFFFF;
+
+    background: #041B48;
+
+    border-top:
+        3px solid
+        var(--yellow);
+}
+
+
+/* =========================================================
+   CONTENIDO PRINCIPAL
+========================================================= */
+
+.footer__main {
+    width: min(88%, 1180px);
+
+    min-height: 140px;
+
+    margin: 0 auto;
+
+    display: flex;
+    align-items: center;
+
+    gap: 32px;
+}
+
+
+/* =========================================================
+   LOGO
+========================================================= */
+
+.footer__brand img {
+    width: 190px;
+    height: 70px;
+
+    object-fit: contain;
+    object-position: left center;
+}
+
+
+/* =========================================================
+   DIVISOR
+========================================================= */
+
+.footer__divider {
+    width: 1px;
+    height: 55px;
+
+    background:
+        rgba(255, 255, 255, .23);
+}
+
+
+/* =========================================================
+   INFORMACIÓN SISCAE
+========================================================= */
+
+.footer__system {
+    max-width: 290px;
+
+    display: flex;
+    flex-direction: column;
+}
+
+
+.footer__system strong {
+    font-size: 14px;
+
+    letter-spacing: 1.5px;
+}
+
+
+.footer__system span {
+    margin-top: 4px;
+
+    color:
+        rgba(255, 255, 255, .56);
+
+    font-size: 10px;
+
+    line-height: 1.5;
+}
+
+
+/* =========================================================
+   BOTÓN VOLVER ARRIBA
+========================================================= */
+
+.footer__top {
+    width: 40px;
+    height: 40px;
+
+    margin-left: auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: #FFFFFF;
+
+    background:
+        rgba(255, 255, 255, .08);
+
+    border:
+        1px solid
+        rgba(255, 255, 255, .18);
+
+    border-radius: 50%;
+
+    transition:
+        background .2s ease;
+}
+
+
+.footer__top:hover {
+    background: var(--blue);
+}
+
+
+.footer__top svg {
+    width: 17px;
+    height: 17px;
+
+    fill: none;
+
+    stroke: currentColor;
+
+    stroke-width: 1.7;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+
+/* =========================================================
+   PARTE INFERIOR
+========================================================= */
+
+.footer__bottom {
+    border-top:
+        1px solid
+        rgba(255, 255, 255, .09);
+}
+
+
+.footer__bottom-content {
+    width: min(88%, 1180px);
+
+    min-height: 48px;
+
+    margin: 0 auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    color:
+        rgba(255, 255, 255, .38);
+
+    font-size: 9px;
+
+    text-transform: uppercase;
+
+    letter-spacing: .9px;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 780px) {
+
+    .footer__main {
+        padding: 35px 0;
+
+        flex-wrap: wrap;
+    }
+
+
+    .footer__divider {
+        display: none;
+    }
+
+
+    .footer__system {
+        width: 100%;
+        max-width: none;
+    }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 470px) {
+
+    .footer__bottom-content {
+        padding: 14px 0;
+
+        flex-direction: column;
+        align-items: flex-start;
+
+        gap: 4px;
+    }
+
+}

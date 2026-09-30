@@ -298,3 +298,227 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
 
 });
+
+
+/* =====================================================
+   SISCAE - SIDEBAR ADMIN
+===================================================== */
+
+async function loadAdminSidebar() {
+
+    const sidebarContainer =
+        document.getElementById("sidebar-component");
+
+    if (!sidebarContainer) {
+        return;
+    }
+
+    try {
+
+        const response = await fetch(
+            "../components/sidebar_admin.txt"
+        );
+
+        if (!response.ok) {
+            throw new Error(
+                `No se pudo cargar el sidebar. Error ${response.status}`
+            );
+        }
+
+        const html = await response.text();
+
+        sidebarContainer.innerHTML = html;
+
+
+        /* =============================================
+           LOGO
+        ============================================= */
+
+        const sidebarLogo =
+            document.getElementById("sidebarLogo");
+
+        if (sidebarLogo) {
+            sidebarLogo.src =
+                "../assets/img/logo.png";
+        }
+
+
+        /* =============================================
+           ENLACES
+        ============================================= */
+
+        const sidebarLinks =
+            sidebarContainer.querySelectorAll(
+                "[data-page]"
+            );
+
+        sidebarLinks.forEach(link => {
+            link.href = link.dataset.page;
+        });
+
+
+        /* =============================================
+           PÁGINA ACTIVA
+        ============================================= */
+
+        const currentPage =
+            window.location.pathname
+                .split("/")
+                .pop();
+
+        sidebarLinks.forEach(link => {
+
+            link.classList.toggle(
+                "active",
+                link.dataset.page === currentPage
+            );
+
+        });
+
+
+        /* =============================================
+           FUNCIONALIDAD MÓVIL
+        ============================================= */
+
+        const sidebar =
+            document.getElementById("sidebar");
+
+        const menuButton =
+            document.getElementById("menuButton");
+
+        const mobileOverlay =
+            document.getElementById("mobileOverlay");
+
+
+        function openSidebar() {
+
+            if (!sidebar) return;
+
+            sidebar.classList.add("open");
+
+            if (mobileOverlay) {
+                mobileOverlay.classList.add("active");
+            }
+
+            document.body.classList.add("locked");
+        }
+
+
+        function closeSidebar() {
+
+            if (!sidebar) return;
+
+            sidebar.classList.remove("open");
+
+            if (mobileOverlay) {
+                mobileOverlay.classList.remove("active");
+            }
+
+            document.body.classList.remove("locked");
+        }
+
+
+        if (menuButton && sidebar) {
+
+            menuButton.addEventListener(
+                "click",
+                () => {
+
+                    if (
+                        sidebar.classList.contains("open")
+                    ) {
+                        closeSidebar();
+                    } else {
+                        openSidebar();
+                    }
+
+                }
+            );
+
+        }
+
+
+        if (mobileOverlay) {
+
+            mobileOverlay.addEventListener(
+                "click",
+                closeSidebar
+            );
+
+        }
+
+
+        /* CERRAR AL NAVEGAR EN MÓVIL */
+
+        const navItems =
+            sidebarContainer.querySelectorAll(
+                ".nav-item"
+            );
+
+        navItems.forEach(item => {
+
+            item.addEventListener(
+                "click",
+                () => {
+
+                    if (
+                        window.innerWidth <= 950
+                    ) {
+                        closeSidebar();
+                    }
+
+                }
+            );
+
+        });
+
+
+        /* ESC */
+
+        document.addEventListener(
+            "keydown",
+            event => {
+
+                if (
+                    event.key === "Escape" &&
+                    sidebar &&
+                    sidebar.classList.contains("open") &&
+                    window.innerWidth <= 950
+                ) {
+                    closeSidebar();
+                }
+
+            }
+        );
+
+
+        /* RESIZE */
+
+        window.addEventListener(
+            "resize",
+            () => {
+
+                if (
+                    window.innerWidth > 950
+                ) {
+                    closeSidebar();
+                }
+
+            }
+        );
+
+
+        console.log(
+            "Sidebar cargado correctamente"
+        );
+
+    } catch (error) {
+
+        console.error(
+            "Error cargando sidebar:",
+            error
+        );
+
+    }
+
+}

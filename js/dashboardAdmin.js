@@ -1,122 +1,15 @@
 /* =====================================================
-   INICIAR DASHBOARD
+   SISCAE - DASHBOARD ADMINISTRADOR
 ===================================================== */
 
 document.addEventListener(
     "DOMContentLoaded",
     async () => {
 
-        /* =================================================
-           CARGAR SIDEBAR ADMIN
-        ================================================= */
+        /* Primero carga el componente reutilizable */
+        await loadAdminSidebar();
 
-        const sidebarContainer =
-            document.getElementById(
-                "sidebar-component"
-            );
-
-        if (sidebarContainer) {
-
-            try {
-
-                const response =
-                    await fetch(
-                        "../components/sidebar_admin.txt"
-                    );
-
-                if (!response.ok) {
-
-                    throw new Error(
-                        `No se pudo cargar el sidebar. Error ${response.status}`
-                    );
-
-                }
-
-                const html =
-                    await response.text();
-
-                sidebarContainer.innerHTML =
-                    html;
-
-
-                /* =========================================
-                   LOGO
-                ========================================= */
-
-                const sidebarLogo =
-                    document.getElementById(
-                        "sidebarLogo"
-                    );
-
-                if (sidebarLogo) {
-
-                    sidebarLogo.src =
-                        "../assets/img/logo.png";
-
-                }
-
-
-                /* =========================================
-                   ENLACES
-                ========================================= */
-
-                const sidebarLinks =
-                    sidebarContainer.querySelectorAll(
-                        "[data-page]"
-                    );
-
-                sidebarLinks.forEach(
-                    link => {
-
-                        link.href =
-                            link.dataset.page;
-
-                    }
-                );
-
-
-                /* =========================================
-                   PÁGINA ACTIVA
-                ========================================= */
-
-                const currentPage =
-                    window.location.pathname
-                        .split("/")
-                        .pop();
-
-                sidebarLinks.forEach(
-                    link => {
-
-                        link.classList.toggle(
-                            "active",
-                            link.dataset.page ===
-                                currentPage
-                        );
-
-                    }
-                );
-
-
-                console.log(
-                    "Sidebar cargado correctamente"
-                );
-
-            } catch (error) {
-
-                console.error(
-                    "Error cargando sidebar:",
-                    error
-                );
-
-            }
-
-        }
-
-
-        /* =================================================
-           INICIAR FUNCIONES DEL DASHBOARD
-        ================================================= */
-
+        /* Después inicia lo propio del dashboard */
         initDashboard();
 
     }
@@ -129,64 +22,29 @@ document.addEventListener(
 
 function initDashboard() {
 
-    /* =================================================
-       ELEMENTOS DEL DASHBOARD
-    ================================================= */
-
-    const sidebar =
-        document.getElementById(
-            "sidebar"
-        );
-
-    const menuButton =
-        document.getElementById(
-            "menuButton"
-        );
-
-    const mobileOverlay =
-        document.getElementById(
-            "mobileOverlay"
-        );
-
     const sidebarLogout =
-        document.getElementById(
-            "sidebarLogout"
-        );
+        document.getElementById("sidebarLogout");
 
     const profile =
-        document.getElementById(
-            "profile"
-        );
+        document.getElementById("profile");
 
     const profileButton =
-        document.getElementById(
-            "profileButton"
-        );
+        document.getElementById("profileButton");
 
     const notificationButton =
-        document.getElementById(
-            "notificationButton"
-        );
+        document.getElementById("notificationButton");
 
     const logoutModal =
-        document.getElementById(
-            "logoutModal"
-        );
+        document.getElementById("logoutModal");
 
     const profileLogout =
-        document.getElementById(
-            "profileLogout"
-        );
+        document.getElementById("profileLogout");
 
     const confirmLogout =
-        document.getElementById(
-            "confirmLogout"
-        );
+        document.getElementById("confirmLogout");
 
     const currentDate =
-        document.getElementById(
-            "currentDate"
-        );
+        document.getElementById("currentDate");
 
 
     /* =================================================
@@ -195,8 +53,7 @@ function initDashboard() {
 
     if (currentDate) {
 
-        const today =
-            new Date();
+        const today = new Date();
 
         const formattedDate =
             new Intl.DateTimeFormat(
@@ -210,142 +67,6 @@ function initDashboard() {
 
         currentDate.textContent =
             formattedDate;
-
-    }
-
-
-    /* =================================================
-       ABRIR SIDEBAR
-    ================================================= */
-
-    function openSidebar() {
-
-        if (!sidebar) return;
-
-        sidebar.classList.add(
-            "open"
-        );
-
-        if (mobileOverlay) {
-
-            mobileOverlay.classList.add(
-                "active"
-            );
-
-        }
-
-        document.body.classList.add(
-            "locked"
-        );
-
-    }
-
-
-    /* =================================================
-       CERRAR SIDEBAR
-    ================================================= */
-
-    function closeSidebar() {
-
-        if (!sidebar) return;
-
-        sidebar.classList.remove(
-            "open"
-        );
-
-        if (mobileOverlay) {
-
-            mobileOverlay.classList.remove(
-                "active"
-            );
-
-        }
-
-        document.body.classList.remove(
-            "locked"
-        );
-
-    }
-
-
-    /* =================================================
-       BOTÓN HAMBURGUESA
-    ================================================= */
-
-    if (
-        menuButton &&
-        sidebar
-    ) {
-
-        menuButton.addEventListener(
-            "click",
-            () => {
-
-                if (
-                    sidebar.classList.contains(
-                        "open"
-                    )
-                ) {
-
-                    closeSidebar();
-
-                } else {
-
-                    openSidebar();
-
-                }
-
-            }
-        );
-
-    }
-
-
-    /* =================================================
-       OVERLAY SIDEBAR
-    ================================================= */
-
-    if (mobileOverlay) {
-
-        mobileOverlay.addEventListener(
-            "click",
-            closeSidebar
-        );
-
-    }
-
-
-    /* =================================================
-       CERRAR SIDEBAR AL NAVEGAR
-    ================================================= */
-
-    if (sidebar) {
-
-        const navItems =
-            sidebar.querySelectorAll(
-                ".nav-item"
-            );
-
-        navItems.forEach(
-            item => {
-
-                item.addEventListener(
-                    "click",
-                    () => {
-
-                        if (
-                            window.innerWidth <= 950
-                        ) {
-
-                            closeSidebar();
-
-                        }
-
-                    }
-                );
-
-            }
-        );
 
     }
 
@@ -541,11 +262,8 @@ function initDashboard() {
             if (
                 event.key !== "Escape"
             ) {
-
                 return;
-
             }
-
 
             if (
                 logoutModal &&
@@ -558,7 +276,6 @@ function initDashboard() {
 
             }
 
-
             if (
                 profile &&
                 profile.classList.contains(
@@ -569,39 +286,6 @@ function initDashboard() {
                 profile.classList.remove(
                     "open"
                 );
-
-            }
-
-
-            if (
-                sidebar &&
-                sidebar.classList.contains(
-                    "open"
-                ) &&
-                window.innerWidth <= 950
-            ) {
-
-                closeSidebar();
-
-            }
-
-        }
-    );
-
-
-    /* =================================================
-       RESIZE
-    ================================================= */
-
-    window.addEventListener(
-        "resize",
-        () => {
-
-            if (
-                window.innerWidth > 950
-            ) {
-
-                closeSidebar();
 
             }
 

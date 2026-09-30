@@ -1,17 +1,7 @@
-    /* =========================================================
+/* =========================================================
    SISCAE
    COMPONENTE FOOTER
 ========================================================= */
-
-
-/* =========================================================
-   VARIABLES NECESARIAS
-========================================================= */
-
-:root {
-    --blue: #0637B7;
-    --yellow: #F4C430;
-}
 
 
 /* =========================================================
@@ -19,7 +9,7 @@
 ========================================================= */
 
 .footer {
-    color: #FFFFFF;
+    color: var(--white);
 
     background: #041B48;
 
@@ -34,7 +24,7 @@
 ========================================================= */
 
 .footer__main {
-    width: min(88%, 1180px);
+    width: min(88%, var(--container));
 
     min-height: 140px;
 
@@ -86,6 +76,8 @@
 
 
 .footer__system strong {
+    font-weight: var(--font-bold);
+
     font-size: 14px;
 
     letter-spacing: 1.5px;
@@ -97,6 +89,8 @@
 
     color:
         rgba(255, 255, 255, .56);
+
+    font-weight: var(--font-regular);
 
     font-size: 10px;
 
@@ -118,7 +112,7 @@
     align-items: center;
     justify-content: center;
 
-    color: #FFFFFF;
+    color: var(--white);
 
     background:
         rgba(255, 255, 255, .08);
@@ -130,7 +124,7 @@
     border-radius: 50%;
 
     transition:
-        background .2s ease;
+        background var(--transition-fast);
 }
 
 
@@ -165,7 +159,7 @@
 
 
 .footer__bottom-content {
-    width: min(88%, 1180px);
+    width: min(88%, var(--container));
 
     min-height: 48px;
 
@@ -177,6 +171,8 @@
 
     color:
         rgba(255, 255, 255, .38);
+
+    font-weight: var(--font-regular);
 
     font-size: 9px;
 

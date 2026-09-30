@@ -1,0 +1,455 @@
+/* =========================================================
+   ESTILOS GLOBALES
+========================================================= */
+
+
+/* =========================================================
+   FUENTE ROBOTO
+========================================================= */
+
+/* LIGHT — 300 */
+
+@font-face {
+    font-family: "Roboto";
+    src: url("../assets/fonts/Roboto-Light.ttf") format("truetype");
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+
+/* REGULAR — 400 */
+
+@font-face {
+    font-family: "Roboto";
+    src: url("../assets/fonts/Roboto-Regular.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+
+/* MEDIUM — 500 */
+
+@font-face {
+    font-family: "Roboto";
+    src: url("../assets/fonts/Roboto-Medium.ttf") format("truetype");
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+
+/* BOLD — 700 */
+
+@font-face {
+    font-family: "Roboto";
+    src: url("../assets/fonts/Roboto-Bold.ttf") format("truetype");
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+
+/* =========================================================
+   VARIABLES GLOBALES
+========================================================= */
+
+:root {
+
+    /* =====================================================
+       TIPOGRAFÍA
+    ===================================================== */
+
+    --font-primary: "Roboto", Arial, sans-serif;
+
+    --font-light: 300;
+    --font-regular: 400;
+    --font-medium: 500;
+    --font-bold: 700;
+
+
+    /* =====================================================
+       COLORES INSTITUCIONALES
+    ===================================================== */
+
+    --blue: #0637B7;
+
+    --blue-dark: #06246A;
+
+    --blue-header: #102B68;
+
+    --blue-secondary: #155EEF;
+
+    --blue-light: #EEF4FF;
+
+    --yellow: #F4C430;
+
+
+    /* =====================================================
+       COLORES DE TEXTO
+    ===================================================== */
+
+    --text: #172033;
+
+    --text-secondary: #667085;
+
+    --text-muted: #98A2B3;
+
+
+    /* =====================================================
+       FONDOS
+    ===================================================== */
+
+    --background: #F7F9FC;
+
+    --background-secondary: #F2F5F9;
+
+    --white: #FFFFFF;
+
+
+    /* =====================================================
+       BORDES
+    ===================================================== */
+
+    --border: #DCE3E8;
+
+    --border-light: #EAECF0;
+
+
+    /* =====================================================
+       ESTADOS
+    ===================================================== */
+
+    --success: #16A36A;
+
+    --warning: #E9A008;
+
+    --error: #DC3545;
+
+    --info: #2970FF;
+
+
+    /* =====================================================
+       CONTENEDORES
+    ===================================================== */
+
+    --container: 1180px;
+
+
+    /* =====================================================
+       TRANSICIONES
+    ===================================================== */
+
+    --transition-fast: 0.2s ease;
+
+    --transition-normal: 0.3s ease;
+
+
+    /* =====================================================
+       SOMBRAS
+    ===================================================== */
+
+    --shadow-small:
+        0 2px 8px rgba(16, 24, 40, 0.06);
+
+    --shadow-medium:
+        0 8px 24px rgba(16, 24, 40, 0.08);
+
+    --shadow-large:
+        0 18px 45px rgba(16, 24, 40, 0.12);
+
+
+    /* =====================================================
+       RADIOS
+    ===================================================== */
+
+    --radius-small: 4px;
+
+    --radius-medium: 6px;
+
+    --radius-large: 10px;
+
+}
+
+
+/* =========================================================
+   RESET GLOBAL
+========================================================= */
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+
+    box-sizing: border-box;
+}
+
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+body {
+
+    min-height: 100vh;
+
+    font-family: var(--font-primary);
+
+    font-size: 16px;
+
+    font-weight: var(--font-regular);
+
+    line-height: 1.6;
+
+    color: var(--text);
+
+    background: var(--white);
+
+    -webkit-font-smoothing: antialiased;
+
+    -moz-osx-font-smoothing: grayscale;
+}
+
+
+/* =========================================================
+   ELEMENTOS BASE
+========================================================= */
+
+a {
+    color: inherit;
+
+    text-decoration: none;
+}
+
+
+button,
+input,
+textarea,
+select {
+    font: inherit;
+}
+
+
+button {
+    border: 0;
+
+    cursor: pointer;
+}
+
+
+img {
+    max-width: 100%;
+
+    display: block;
+}
+
+
+svg {
+    display: block;
+}
+
+
+ul,
+ol {
+    list-style: none;
+}
+
+
+/* =========================================================
+   TIPOGRAFÍA
+========================================================= */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: var(--font-primary);
+
+    color: var(--text);
+
+    line-height: 1.2;
+}
+
+
+/* TÍTULOS PRINCIPALES */
+
+h1 {
+    font-weight: var(--font-bold);
+}
+
+
+/* TÍTULOS DE SECCIÓN */
+
+h2 {
+    font-weight: var(--font-bold);
+}
+
+
+/* SUBTÍTULOS */
+
+h3,
+h4 {
+    font-weight: var(--font-medium);
+}
+
+
+/* TÍTULOS MENORES */
+
+h5,
+h6 {
+    font-weight: var(--font-medium);
+}
+
+
+/* TEXTO */
+
+p {
+    font-weight: var(--font-regular);
+}
+
+
+/* TEXTO SECUNDARIO */
+
+small {
+    font-weight: var(--font-regular);
+
+    color: var(--text-secondary);
+}
+
+
+/* =========================================================
+   CLASES TIPOGRÁFICAS
+========================================================= */
+
+.font-light {
+    font-weight: var(--font-light);
+}
+
+
+.font-regular {
+    font-weight: var(--font-regular);
+}
+
+
+.font-medium {
+    font-weight: var(--font-medium);
+}
+
+
+.font-bold {
+    font-weight: var(--font-bold);
+}
+
+
+/* =========================================================
+   CONTENEDOR GLOBAL
+========================================================= */
+
+.container {
+
+    width: min(
+        88%,
+        var(--container)
+    );
+
+    margin-left: auto;
+
+    margin-right: auto;
+}
+
+
+/* =========================================================
+   SELECCIÓN DE TEXTO
+========================================================= */
+
+::selection {
+
+    color: var(--white);
+
+    background: var(--blue);
+}
+
+
+/* =========================================================
+   FOCUS / ACCESIBILIDAD
+========================================================= */
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+
+    outline:
+        3px solid
+        rgba(21, 94, 239, 0.28);
+
+    outline-offset: 3px;
+}
+
+
+/* =========================================================
+   SCROLLBAR
+========================================================= */
+
+::-webkit-scrollbar {
+    width: 9px;
+    height: 9px;
+}
+
+
+::-webkit-scrollbar-track {
+    background: #F1F3F6;
+}
+
+
+::-webkit-scrollbar-thumb {
+
+    background: #BCC5D1;
+
+    border-radius: 20px;
+
+    border:
+        2px solid
+        #F1F3F6;
+}
+
+
+::-webkit-scrollbar-thumb:hover {
+    background: #98A2B3;
+}
+
+
+/* =========================================================
+   MOVIMIENTO REDUCIDO
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    html {
+        scroll-behavior: auto;
+    }
+
+
+    *,
+    *::before,
+    *::after {
+
+        scroll-behavior: auto !important;
+
+        transition-duration:
+            0.01ms !important;
+
+        animation-duration:
+            0.01ms !important;
+
+        animation-iteration-count:
+            1 !important;
+    }
+
+}

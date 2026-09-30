@@ -1,0 +1,378 @@
+<!-- =====================================================
+     SIDEBAR SISCAE
+====================================================== -->
+
+<aside class="sidebar" id="sidebar">
+
+    <!-- =================================================
+         LOGO
+    ================================================== -->
+
+    <div class="sidebar-logo">
+
+        <img
+            src=""
+            alt="Ministerio de Educación"
+            id="sidebarLogo"
+        >
+
+    </div>
+
+    
+    <!-- =================================================
+         NAVEGACIÓN
+    ================================================== -->
+
+    <nav class="sidebar-nav">
+
+
+        <!-- ================= GENERAL ================= -->
+
+        <span class="nav-title">
+            GENERAL
+        </span>
+
+
+        <!-- INICIO -->
+
+        <a
+            href=""
+            class="nav-item"
+            data-page="dashboardAdmin.html"
+        >
+
+            <span class="nav-icon">
+
+                <svg
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                >
+                    <rect
+                        x="3"
+                        y="3"
+                        width="7"
+                        height="7"
+                    ></rect>
+
+                    <rect
+                        x="14"
+                        y="3"
+                        width="7"
+                        height="7"
+                    ></rect>
+
+                    <rect
+                        x="3"
+                        y="14"
+                        width="7"
+                        height="7"
+                    ></rect>
+
+                    <rect
+                        x="14"
+                        y="14"
+                        width="7"
+                        height="7"
+                    ></rect>
+                </svg>
+
+            </span>
+
+            <span>
+                Inicio
+            </span>
+
+        </a>
+
+
+        <!-- ACTIVOS EDITORIALES -->
+
+        <a
+            href=""
+            class="nav-item"
+            data-page="activos.html"
+        >
+
+            <span class="nav-icon">
+
+                <svg
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                >
+                    <path
+                        d="M3 7h6l2 2h10v10H3z"
+                    ></path>
+
+                    <path
+                        d="M3 7V5h6l2 2"
+                    ></path>
+                </svg>
+
+            </span>
+
+            <span>
+                Activos editoriales
+            </span>
+
+        </a>
+
+
+        <!-- ================= ADMINISTRACIÓN ================= -->
+
+        <span class="nav-title nav-title-space">
+            ADMINISTRACIÓN
+        </span>
+
+
+        <!-- USUARIOS -->
+
+        <a
+            href=""
+            class="nav-item"
+            data-page="usuarios.html"
+        >
+
+            <span class="nav-icon">
+
+                <svg
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                >
+
+                    <path
+                        d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"
+                    ></path>
+
+                    <circle
+                        cx="9"
+                        cy="7"
+                        r="4"
+                    ></circle>
+
+                    <path
+                        d="M22 21v-2a4 4 0 0 0-3-3.87"
+                    ></path>
+
+                    <path
+                        d="M16 3.13a4 4 0 0 1 0 7.75"
+                    ></path>
+
+                </svg>
+
+            </span>
+
+            <span>
+                Usuarios
+            </span>
+
+        </a>
+
+
+        <!-- ROLES Y PERMISOS -->
+
+        <a
+            href=""
+            class="nav-item"
+            data-page="roles.html"
+        >
+
+            <span class="nav-icon">
+
+                <svg
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                >
+
+                    <path
+                        d="M12 3l7 3v5c0 4.6-2.8 8.1-7 10-4.2-1.9-7-5.4-7-10V6l7-3z"
+                    ></path>
+
+                    <path
+                        d="M9 12l2 2 4-4"
+                    ></path>
+
+                </svg>
+
+            </span>
+
+            <span>
+                Roles y permisos
+            </span>
+
+        </a>
+
+
+        <!-- ================= SUPERVISIÓN ================= -->
+
+        <span class="nav-title nav-title-space">
+            SUPERVISIÓN
+        </span>
+
+
+        <!-- AUDITORÍA -->
+
+        <a
+            href=""
+            class="nav-item"
+            data-page="auditoria.html"
+        >
+
+            <span class="nav-icon">
+
+                <svg
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                >
+
+                    <path
+                        d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"
+                    ></path>
+
+                    <polyline
+                        points="14 2 14 8 20 8"
+                    ></polyline>
+
+                    <line
+                        x1="8"
+                        y1="13"
+                        x2="16"
+                        y2="13"
+                    ></line>
+
+                    <line
+                        x1="8"
+                        y1="17"
+                        x2="16"
+                        y2="17"
+                    ></line>
+
+                </svg>
+
+            </span>
+
+            <span>
+                Auditoría
+            </span>
+
+        </a>
+
+
+        <!-- ALERTAS -->
+
+        <a
+            href=""
+            class="nav-item"
+            data-page="alertas.html"
+        >
+
+            <span class="nav-icon">
+
+                <svg
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                >
+
+                    <path
+                        d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9"
+                    ></path>
+
+                    <path
+                        d="M10 21h4"
+                    ></path>
+
+                </svg>
+
+            </span>
+
+            <span>
+                Alertas
+            </span>
+
+            <span class="nav-count">
+                3
+            </span>
+
+        </a>
+
+    </nav>
+
+
+    <!-- =================================================
+         USUARIO
+    ================================================== -->
+
+    <div class="sidebar-footer">
+
+        <div class="sidebar-user">
+
+
+            <!-- AVATAR -->
+
+            <div class="sidebar-avatar">
+                AD
+            </div>
+
+
+            <!-- INFORMACIÓN -->
+
+            <div class="sidebar-user-info">
+
+                <strong>
+                    Administrador
+                </strong>
+
+                <span>
+                    Cuenta institucional
+                </span>
+
+            </div>
+
+
+            <!-- CERRAR SESIÓN -->
+
+            <button
+                class="logout-icon"
+                id="sidebarLogout"
+                type="button"
+                aria-label="Cerrar sesión"
+            >
+
+                <svg
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                >
+
+                    <path
+                        d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"
+                    ></path>
+
+                    <polyline
+                        points="16 17 21 12 16 7"
+                    ></polyline>
+
+                    <line
+                        x1="21"
+                        y1="12"
+                        x2="9"
+                        y2="12"
+                    ></line>
+
+                </svg>
+
+            </button>
+
+        </div>
+
+    </div>
+
+</aside>
+
+
+<!-- =====================================================
+     OVERLAY MÓVIL
+====================================================== -->
+
+<div
+    class="mobile-overlay"
+    id="mobileOverlay"
+></div>

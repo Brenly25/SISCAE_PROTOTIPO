@@ -1,50 +1,202 @@
-document.addEventListener("DOMContentLoaded", () => {
+/* =====================================================
+   INICIAR DASHBOARD
+===================================================== */
 
-    /* =====================================================
-       ELEMENTOS
-    ====================================================== */
+document.addEventListener(
+    "DOMContentLoaded",
+    async () => {
+
+        /* =================================================
+           CARGAR SIDEBAR ADMIN
+        ================================================= */
+
+        const sidebarContainer =
+            document.getElementById(
+                "sidebar-component"
+            );
+
+        if (sidebarContainer) {
+
+            try {
+
+                const response =
+                    await fetch(
+                        "../components/sidebar_admin.txt"
+                    );
+
+                if (!response.ok) {
+
+                    throw new Error(
+                        `No se pudo cargar el sidebar. Error ${response.status}`
+                    );
+
+                }
+
+                const html =
+                    await response.text();
+
+                sidebarContainer.innerHTML =
+                    html;
+
+
+                /* =========================================
+                   LOGO
+                ========================================= */
+
+                const sidebarLogo =
+                    document.getElementById(
+                        "sidebarLogo"
+                    );
+
+                if (sidebarLogo) {
+
+                    sidebarLogo.src =
+                        "../assets/img/logo.png";
+
+                }
+
+
+                /* =========================================
+                   ENLACES
+                ========================================= */
+
+                const sidebarLinks =
+                    sidebarContainer.querySelectorAll(
+                        "[data-page]"
+                    );
+
+                sidebarLinks.forEach(
+                    link => {
+
+                        link.href =
+                            link.dataset.page;
+
+                    }
+                );
+
+
+                /* =========================================
+                   PÁGINA ACTIVA
+                ========================================= */
+
+                const currentPage =
+                    window.location.pathname
+                        .split("/")
+                        .pop();
+
+                sidebarLinks.forEach(
+                    link => {
+
+                        link.classList.toggle(
+                            "active",
+                            link.dataset.page ===
+                                currentPage
+                        );
+
+                    }
+                );
+
+
+                console.log(
+                    "Sidebar cargado correctamente"
+                );
+
+            } catch (error) {
+
+                console.error(
+                    "Error cargando sidebar:",
+                    error
+                );
+
+            }
+
+        }
+
+
+        /* =================================================
+           INICIAR FUNCIONES DEL DASHBOARD
+        ================================================= */
+
+        initDashboard();
+
+    }
+);
+
+
+/* =====================================================
+   DASHBOARD
+===================================================== */
+
+function initDashboard() {
+
+    /* =================================================
+       ELEMENTOS DEL DASHBOARD
+    ================================================= */
 
     const sidebar =
-        document.getElementById("sidebar");
+        document.getElementById(
+            "sidebar"
+        );
 
     const menuButton =
-        document.getElementById("menuButton");
+        document.getElementById(
+            "menuButton"
+        );
 
     const mobileOverlay =
-        document.getElementById("mobileOverlay");
-
-    const profile =
-        document.getElementById("profile");
-
-    const profileButton =
-        document.getElementById("profileButton");
-
-    const notificationButton =
-        document.getElementById("notificationButton");
-
-    const logoutModal =
-        document.getElementById("logoutModal");
+        document.getElementById(
+            "mobileOverlay"
+        );
 
     const sidebarLogout =
-        document.getElementById("sidebarLogout");
+        document.getElementById(
+            "sidebarLogout"
+        );
+
+    const profile =
+        document.getElementById(
+            "profile"
+        );
+
+    const profileButton =
+        document.getElementById(
+            "profileButton"
+        );
+
+    const notificationButton =
+        document.getElementById(
+            "notificationButton"
+        );
+
+    const logoutModal =
+        document.getElementById(
+            "logoutModal"
+        );
 
     const profileLogout =
-        document.getElementById("profileLogout");
+        document.getElementById(
+            "profileLogout"
+        );
 
     const confirmLogout =
-        document.getElementById("confirmLogout");
+        document.getElementById(
+            "confirmLogout"
+        );
 
     const currentDate =
-        document.getElementById("currentDate");
+        document.getElementById(
+            "currentDate"
+        );
 
 
-    /* =====================================================
+    /* =================================================
        FECHA ACTUAL
-    ====================================================== */
+    ================================================= */
 
     if (currentDate) {
 
-        const today = new Date();
+        const today =
+            new Date();
 
         const formattedDate =
             new Intl.DateTimeFormat(
@@ -58,49 +210,81 @@ document.addEventListener("DOMContentLoaded", () => {
 
         currentDate.textContent =
             formattedDate;
+
     }
 
 
-    /* =====================================================
-       MENÚ MOBILE
-    ====================================================== */
+    /* =================================================
+       ABRIR SIDEBAR
+    ================================================= */
 
     function openSidebar() {
 
         if (!sidebar) return;
 
-        sidebar.classList.add("open");
+        sidebar.classList.add(
+            "open"
+        );
 
         if (mobileOverlay) {
-            mobileOverlay.classList.add("active");
+
+            mobileOverlay.classList.add(
+                "active"
+            );
+
         }
 
-        document.body.classList.add("locked");
+        document.body.classList.add(
+            "locked"
+        );
+
     }
 
+
+    /* =================================================
+       CERRAR SIDEBAR
+    ================================================= */
 
     function closeSidebar() {
 
         if (!sidebar) return;
 
-        sidebar.classList.remove("open");
+        sidebar.classList.remove(
+            "open"
+        );
 
         if (mobileOverlay) {
-            mobileOverlay.classList.remove("active");
+
+            mobileOverlay.classList.remove(
+                "active"
+            );
+
         }
 
-        document.body.classList.remove("locked");
+        document.body.classList.remove(
+            "locked"
+        );
+
     }
 
 
-    if (menuButton) {
+    /* =================================================
+       BOTÓN HAMBURGUESA
+    ================================================= */
+
+    if (
+        menuButton &&
+        sidebar
+    ) {
 
         menuButton.addEventListener(
             "click",
             () => {
 
                 if (
-                    sidebar.classList.contains("open")
+                    sidebar.classList.contains(
+                        "open"
+                    )
                 ) {
 
                     closeSidebar();
@@ -113,8 +297,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
             }
         );
+
     }
 
+
+    /* =================================================
+       OVERLAY SIDEBAR
+    ================================================= */
 
     if (mobileOverlay) {
 
@@ -122,41 +311,48 @@ document.addEventListener("DOMContentLoaded", () => {
             "click",
             closeSidebar
         );
+
     }
 
 
-    /* =====================================================
+    /* =================================================
        CERRAR SIDEBAR AL NAVEGAR
-    ====================================================== */
+    ================================================= */
 
-    const navItems =
-        document.querySelectorAll(
-            ".sidebar-nav .nav-item"
-        );
+    if (sidebar) {
 
-    navItems.forEach((item) => {
+        const navItems =
+            sidebar.querySelectorAll(
+                ".nav-item"
+            );
 
-        item.addEventListener(
-            "click",
-            () => {
+        navItems.forEach(
+            item => {
 
-                if (
-                    window.innerWidth <= 950
-                ) {
+                item.addEventListener(
+                    "click",
+                    () => {
 
-                    closeSidebar();
+                        if (
+                            window.innerWidth <= 950
+                        ) {
 
-                }
+                            closeSidebar();
+
+                        }
+
+                    }
+                );
 
             }
         );
 
-    });
+    }
 
 
-    /* =====================================================
+    /* =================================================
        PERFIL
-    ====================================================== */
+    ================================================= */
 
     if (
         profile &&
@@ -179,9 +375,9 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    /* =====================================================
+    /* =================================================
        CERRAR PERFIL AL HACER CLICK FUERA
-    ====================================================== */
+    ================================================= */
 
     document.addEventListener(
         "click",
@@ -205,9 +401,9 @@ document.addEventListener("DOMContentLoaded", () => {
     );
 
 
-    /* =====================================================
+    /* =================================================
        NOTIFICACIONES
-    ====================================================== */
+    ================================================= */
 
     if (notificationButton) {
 
@@ -224,9 +420,9 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    /* =====================================================
+    /* =================================================
        MODAL CERRAR SESIÓN
-    ====================================================== */
+    ================================================= */
 
     function openLogoutModal() {
 
@@ -266,6 +462,10 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
+    /* =================================================
+       LOGOUT DESDE SIDEBAR
+    ================================================= */
+
     if (sidebarLogout) {
 
         sidebarLogout.addEventListener(
@@ -275,6 +475,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
     }
 
+
+    /* =================================================
+       LOGOUT DESDE PERFIL
+    ================================================= */
 
     if (profileLogout) {
 
@@ -286,9 +490,9 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    /* =====================================================
+    /* =================================================
        CERRAR MODAL
-    ====================================================== */
+    ================================================= */
 
     const closeModalButtons =
         document.querySelectorAll(
@@ -296,7 +500,7 @@ document.addEventListener("DOMContentLoaded", () => {
         );
 
     closeModalButtons.forEach(
-        (button) => {
+        button => {
 
             button.addEventListener(
                 "click",
@@ -307,9 +511,9 @@ document.addEventListener("DOMContentLoaded", () => {
     );
 
 
-    /* =====================================================
-       CONFIRMAR CIERRE
-    ====================================================== */
+    /* =================================================
+       CONFIRMAR CIERRE DE SESIÓN
+    ================================================= */
 
     if (confirmLogout) {
 
@@ -326,9 +530,9 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    /* =====================================================
+    /* =================================================
        TECLA ESCAPE
-    ====================================================== */
+    ================================================= */
 
     document.addEventListener(
         "keydown",
@@ -385,9 +589,9 @@ document.addEventListener("DOMContentLoaded", () => {
     );
 
 
-    /* =====================================================
+    /* =================================================
        RESIZE
-    ====================================================== */
+    ================================================= */
 
     window.addEventListener(
         "resize",
@@ -404,4 +608,4 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     );
 
-});
+}

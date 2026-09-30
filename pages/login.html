@@ -8,20 +8,13 @@
 
     <title>Iniciar sesión | SISCAE</title>
 
-    <!-- ROBOTO -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-    <!-- FONT AWESOME -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-
     <!-- CSS LOGIN -->
-    <link rel="stylesheet" href="../css/page/login.css">
+     <link rel="stylesheet" href="../css/global.css">
+
+    <link rel="stylesheet" href="../css/pages/login.css">
     <!-- CSS DEL FOOTER -->
-    <link rel="stylesheet" href="../css/components/footer.css">
+     <link rel="stylesheet" href="../css/components/navbar_home.css">
+    <link rel="stylesheet" href="../css/components/footer_home.css">
 
 </head>
 
@@ -33,58 +26,7 @@
          HEADER
     ====================================================== -->
 
-    <header class="login-header">
-
-        <div class="login-header__content">
-
-
-            <!-- LOGO -->
-
-            <a href="../index.html" class="login-header__brand">
-
-                <img src="../assets/img/logo.png" alt="Ministerio de Educación - Gobierno de El Salvador">
-
-            </a>
-
-
-
-            <!-- NAVEGACIÓN -->
-
-            <nav class="login-nav" id="loginNav">
-
-                <a href="../index.html#inicio" class="login-nav__link">
-                    Inicio
-                </a>
-
-                <a href="../index.html#acerca" class="login-nav__link">
-                    Acerca de SISCAE
-                </a>
-
-                <a href="../index.html#soporte" class="login-nav__link">
-                    Soporte técnico
-                </a>
-
-            </nav>
-
-
-
-            <!-- MENÚ MÓVIL -->
-
-            <button class="login-menu-button" id="loginMenuButton" type="button" aria-label="Abrir menú"
-                aria-expanded="false">
-
-                <span></span>
-                <span></span>
-                <span></span>
-
-            </button>
-
-
-        </div>
-
-    </header>
-
-
+    <div id="login-header-component"></div>
 
     <!-- =====================================================
          CONTENIDO LOGIN
@@ -203,7 +145,12 @@
 
                     <div class="login-icon">
 
-                        <i class="fa-solid fa-user-lock"></i>
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <rect x="4" y="10" width="16" height="11" rx="2"></rect>
+                            <path d="M8 10V7a4 4 0 0 1 8 0v3"></path>
+                            <circle cx="12" cy="15" r="1"></circle>
+                            <path d="M12 16v2"></path>
+                        </svg>
 
                     </div>
 
@@ -276,7 +223,10 @@
                     <div class="institutional-access">
 
 
-                        <i class="fa-solid fa-shield-halved"></i>
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M12 3 19 6v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6z"></path>
+                            <path d="m9 12 2 2 4-4"></path>
+                        </svg>
 
 
                         <span>

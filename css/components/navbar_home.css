@@ -1,29 +1,40 @@
+/* ==========================================================
+   NAVBAR - INICIO
+   Usa las variables y la tipografía de global.css
+========================================================== */
+
 
 /* ==========================================================
    HEADER
 ========================================================== */
 
-.login-header {
+.header {
     width: 100%;
-    height: 100px;
+    height: 115px;
 
-    position: relative;
-    z-index: 100;
+    position: fixed;
+    top: 0;
+    left: 0;
 
-    flex-shrink: 0;
+    z-index: 1000;
 
-    background: #183a78;
+    background: var(--blue-header);
 
-    border-bottom: 3px solid #c99d36;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+
+    transition:
+        height var(--transition-normal),
+        box-shadow var(--transition-normal);
 }
 
+.header.scrolled {
+    height: 92px;
 
-/* ==========================================================
-   CONTENIDO HEADER
-========================================================== */
+    box-shadow: 0 8px 24px rgba(0, 17, 55, 0.17);
+}
 
-.login-header__content {
-    width: min(1400px, 88%);
+.header__content {
+    width: min(89%, 1680px);
     height: 100%;
 
     margin: 0 auto;
@@ -31,6 +42,8 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+
+    gap: 40px;
 }
 
 
@@ -38,19 +51,18 @@
    LOGO
 ========================================================== */
 
-.login-header__brand {
+.header__brand {
     display: flex;
     align-items: center;
+    flex-shrink: 0;
 }
 
-
-.login-header__brand img {
-    width: 185px;
-    height: auto;
-
-    display: block;
+.header__brand img {
+    width: 180px;
+    height: 75px;
 
     object-fit: contain;
+    object-position: left center;
 }
 
 
@@ -58,89 +70,118 @@
    NAVEGACIÓN
 ========================================================== */
 
-.login-nav {
+.nav {
+    height: 100%;
+
     display: flex;
     align-items: center;
 
-    gap: 52px;
+    gap: 42px;
 }
 
+.nav__link {
+    height: 100%;
 
-.login-nav__link {
     position: relative;
 
-    padding: 10px 0;
+    display: flex;
+    align-items: center;
 
-    color: rgba(255, 255, 255, 0.82);
+    color: rgba(255, 255, 255, 0.85);
 
-    font-size: 15px;
-    font-weight: 600;
+    font-size: 16px;
+    font-weight: var(--font-medium);
 
-    transition:
-        color 0.2s ease;
+    transition: color var(--transition-fast);
 }
 
-
-.login-nav__link::after {
+.nav__link::after {
     content: "";
+
+    width: 0;
+    height: 3px;
 
     position: absolute;
 
     left: 0;
-    bottom: 2px;
+    bottom: 0;
 
-    width: 0;
-    height: 2px;
+    background: var(--yellow);
 
-    background: #d2a33a;
-
-    transition:
-        width 0.25s ease;
+    transition: width var(--transition-normal);
 }
 
-
-.login-nav__link:hover {
-    color: #ffffff;
+.nav__link:hover,
+.nav__link.active {
+    color: var(--white);
 }
 
-
-.login-nav__link:hover::after {
+.nav__link:hover::after,
+.nav__link.active::after {
     width: 100%;
 }
 
 
 /* ==========================================================
-   BOTÓN MENÚ
+   BOTÓN INICIAR SESIÓN
 ========================================================== */
 
-.login-menu-button {
+.nav__login {
+    min-width: 150px;
+    min-height: 48px;
+
+    padding: 12px 24px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    color: var(--blue-dark);
+    background: var(--white);
+
+    border-radius: var(--radius-small);
+
+    font-size: 15px;
+    font-weight: var(--font-bold);
+
+    transition:
+        background var(--transition-fast),
+        transform var(--transition-fast);
+}
+
+.nav__login:hover {
+    background: var(--yellow);
+
+    transform: translateY(-2px);
+}
+
+
+/* ==========================================================
+   BOTÓN MENÚ (MÓVIL)
+========================================================== */
+
+.menu-button {
     width: 42px;
     height: 42px;
 
     display: none;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
 
-    gap: 5px;
-
-    border: none;
+    padding: 7px;
 
     background: transparent;
-
-    cursor: pointer;
 }
 
-
-.login-menu-button span {
-    width: 24px;
+.menu-button span {
+    width: 100%;
     height: 2px;
 
     display: block;
 
-    background: #ffffff;
+    margin: 6px 0;
 
-    transition: 0.25s ease;
+    background: var(--white);
+
+    border-radius: 2px;
 }
 
 
@@ -148,56 +189,23 @@
    TABLET
 ========================================================== */
 
-@media (max-width: 900px) {
+@media (max-width: 1050px) {
 
-    .login-header__content {
-        width: 90%;
+    .header__brand img {
+        width: 160px;
     }
 
-
-    .login-menu-button {
-        display: flex;
+    .nav {
+        gap: 25px;
     }
 
-
-    .login-nav {
-        width: 100%;
-
-        position: absolute;
-
-        top: 100%;
-        left: 0;
-
-        padding: 25px;
-
-        display: none;
-        flex-direction: column;
-
-        gap: 10px;
-
-        background: #183a78;
-
-        border-top:
-            1px solid
-            rgba(255, 255, 255, 0.12);
-
-        box-shadow:
-            0 10px 20px
-            rgba(0, 0, 0, 0.12);
+    .nav__link,
+    .nav__login {
+        font-size: 14px;
     }
 
-
-    .login-nav.active {
-        display: flex;
-    }
-
-
-    .login-nav__link {
-        width: 100%;
-
-        padding: 12px 5%;
-
-        text-align: center;
+    .nav__login {
+        min-width: 135px;
     }
 
 }
@@ -207,15 +215,72 @@
    MÓVIL
 ========================================================== */
 
-@media (max-width: 600px) {
+@media (max-width: 780px) {
 
-    .login-header {
-        height: 82px;
+    .header,
+    .header.scrolled {
+        height: 76px;
     }
 
+    .header__content {
+        width: 90%;
+    }
 
-    .login-header__brand img {
+    .header__brand img {
         width: 150px;
+        height: 55px;
+    }
+
+    .menu-button {
+        display: block;
+    }
+
+    .nav {
+        width: 100%;
+        height: auto;
+
+        position: absolute;
+
+        top: 76px;
+        left: 0;
+
+        display: none;
+
+        padding: 15px 6% 27px;
+
+        flex-direction: column;
+        align-items: stretch;
+
+        gap: 0;
+
+        background: var(--blue-header);
+
+        border-top: 1px solid rgba(255, 255, 255, 0.10);
+
+        box-shadow: 0 18px 30px rgba(0, 0, 0, 0.16);
+    }
+
+    .nav.open {
+        display: flex;
+    }
+
+    .nav__link {
+        height: auto;
+
+        padding: 15px 0;
+
+        border-bottom: 1px solid rgba(255, 255, 255, 0.10);
+    }
+
+    .nav__link::after,
+    .nav__link.active::after {
+        display: none;
+    }
+
+    .nav__login {
+        margin-top: 18px;
+
+        padding: 13px 20px;
     }
 
 }

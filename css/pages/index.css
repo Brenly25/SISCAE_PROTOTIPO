@@ -1,94 +1,18 @@
 /* =========================================================
-   SISCAE
    PÁGINA PRINCIPAL
 ========================================================= */
-
-@font-face {
-    font-family: "Coolvetica";
-    src: local("Coolvetica");
-    font-display: swap;
-}
-
-@font-face {
-    font-family: "Louis George Cafe";
-    src: local("Louis George Cafe");
-    font-display: swap;
-}
-
-
-/* =========================================================
-   VARIABLES
-========================================================= */
-
-:root {
-
-    --blue: #0637B7;
-    --blue-dark: #06246A;
-    --blue-header: #102B68;
-    --blue-secondary: #155EEF;
-    --blue-light: #EEF4FF;
-
-    --yellow: #F4C430;
-
-    --text: #172033;
-    --text-secondary: #667085;
-
-    --background: #F7F9FC;
-    --white: #FFFFFF;
-
-    --border: #DCE3E8;
-
-    --success: #16A36A;
-    --warning: #E9A008;
-    --error: #DC3545;
-    --info: #2970FF;
-
-    --container: 1180px;
-}
 
 
 /* =========================================================
    GENERAL
 ========================================================= */
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
 html {
-    scroll-behavior: smooth;
     scroll-padding-top: 115px;
-}
-
-body {
-    font-family: "Roboto", Arial, sans-serif;
-    color: var(--text);
-    background: var(--white);
-    line-height: 1.6;
 }
 
 body.menu-open {
     overflow: hidden;
-}
-
-a {
-    color: inherit;
-    text-decoration: none;
-}
-
-button {
-    font: inherit;
-}
-
-svg {
-    display: block;
-}
-
-.container {
-    width: min(88%, var(--container));
-    margin: 0 auto;
 }
 
 .section {
@@ -112,19 +36,17 @@ svg {
 
     background: var(--blue-header);
 
-    border-bottom:
-        1px solid rgba(255, 255, 255, .15);
+    border-bottom: 1px solid rgba(255, 255, 255, .15);
 
     transition:
-        height .25s ease,
-        box-shadow .25s ease;
+        height var(--transition-normal),
+        box-shadow var(--transition-normal);
 }
 
 .header.scrolled {
     height: 92px;
 
-    box-shadow:
-        0 8px 24px rgba(0, 17, 55, .17);
+    box-shadow: 0 8px 24px rgba(0, 17, 55, .17);
 }
 
 .header__content {
@@ -156,86 +78,6 @@ svg {
 
 
 /* =========================================================
-   NAV
-========================================================= */
-
-.nav {
-    height: 100%;
-
-    display: flex;
-    align-items: center;
-
-    gap: 47px;
-}
-
-.nav__link {
-    height: 100%;
-
-    position: relative;
-
-    display: flex;
-    align-items: center;
-
-    color: rgba(255, 255, 255, .72);
-
-    font-size: 16px;
-    font-weight: 600;
-
-    white-space: nowrap;
-
-    transition: color .2s ease;
-}
-
-.nav__link:hover,
-.nav__link.active {
-    color: #FFFFFF;
-}
-
-.nav__link.active::after {
-    content: "";
-
-    position: absolute;
-
-    left: 0;
-    bottom: -1px;
-
-    width: 100%;
-    height: 4px;
-
-    background: var(--yellow);
-}
-
-.nav__login {
-    min-width: 160px;
-
-    padding: 17px 23px;
-
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-
-    color: var(--blue-header);
-    background: #FFFFFF;
-
-    border-radius: 5px;
-
-    font-size: 16px;
-    font-weight: 700;
-
-    white-space: nowrap;
-
-    transition:
-        background .2s ease,
-        transform .2s ease;
-}
-
-.nav__login:hover {
-    background: var(--yellow);
-    transform: translateY(-1px);
-}
-
-
-/* =========================================================
    MENU MOBILE
 ========================================================= */
 
@@ -247,10 +89,7 @@ svg {
 
     padding: 7px;
 
-    border: 0;
     background: transparent;
-
-    cursor: pointer;
 }
 
 .menu-button span {
@@ -261,7 +100,7 @@ svg {
 
     margin: 6px 0;
 
-    background: #FFFFFF;
+    background: var(--white);
 
     border-radius: 2px;
 }
@@ -276,16 +115,14 @@ svg {
 
     position: relative;
 
-    padding:
-        190px 0
-        115px;
+    padding: 190px 0 115px;
 
     display: flex;
     align-items: center;
 
     overflow: hidden;
 
-    color: #FFFFFF;
+    color: var(--white);
 
     background:
         linear-gradient(
@@ -326,9 +163,7 @@ svg {
     top: -20px;
     right: -355px;
 
-    border:
-        78px solid
-        rgba(73, 125, 210, .19);
+    border: 78px solid rgba(73, 125, 210, .19);
 }
 
 .ring--right-2 {
@@ -338,9 +173,7 @@ svg {
     top: 95px;
     right: -230px;
 
-    border:
-        45px solid
-        rgba(205, 216, 232, .14);
+    border: 45px solid rgba(205, 216, 232, .14);
 }
 
 .ring--right-3 {
@@ -350,9 +183,7 @@ svg {
     top: 195px;
     right: -125px;
 
-    border:
-        29px solid
-        rgba(244, 196, 48, .53);
+    border: 29px solid rgba(244, 196, 48, .53);
 }
 
 
@@ -365,9 +196,7 @@ svg {
     top: 180px;
     left: -310px;
 
-    border:
-        52px solid
-        rgba(104, 151, 222, .16);
+    border: 52px solid rgba(104, 151, 222, .16);
 }
 
 .ring--left-2 {
@@ -377,9 +206,7 @@ svg {
     top: 290px;
     left: -145px;
 
-    border:
-        23px solid
-        rgba(205, 215, 231, .14);
+    border: 23px solid rgba(205, 215, 231, .14);
 }
 
 
@@ -404,7 +231,7 @@ svg {
     color: rgba(255, 255, 255, .90);
 
     font-size: 13px;
-    font-weight: 700;
+    font-weight: var(--font-bold);
 
     letter-spacing: 5px;
 }
@@ -418,20 +245,16 @@ svg {
     background: var(--yellow);
 }
 
+/* El color se define aquí porque global.css asigna color a h1–h6 */
 .hero h1 {
     max-width: 920px;
 
     margin: 0 auto;
 
-    font-family:
-        "Coolvetica",
-        "Roboto",
-        sans-serif;
+    color: var(--white);
 
-    font-size:
-        clamp(45px, 4.8vw, 66px);
-
-    font-weight: 500;
+    font-size: clamp(45px, 4.8vw, 66px);
+    font-weight: var(--font-medium);
 
     line-height: 1.10;
 
@@ -444,11 +267,11 @@ svg {
 
 .hero__description {
     max-width: 660px;
+    
 
     margin: 27px auto 0;
 
-    color:
-        rgba(255, 255, 255, .76);
+    color: rgba(255, 255, 255, .76);
 
     font-size: 15px;
 
@@ -479,15 +302,15 @@ svg {
 
     gap: 14px;
 
-    border-radius: 4px;
+    border-radius: var(--radius-small);
 
     font-size: 13px;
-    font-weight: 700;
+    font-weight: var(--font-bold);
 
     transition:
-        transform .2s ease,
-        background .2s ease,
-        border-color .2s ease;
+        transform var(--transition-fast),
+        background var(--transition-fast),
+        border-color var(--transition-fast);
 }
 
 .button:hover {
@@ -508,9 +331,9 @@ svg {
 
 .button--primary {
     color: var(--blue-dark);
-    background: #FFFFFF;
+    background: var(--white);
 
-    border: 1px solid #FFFFFF;
+    border: 1px solid var(--white);
 }
 
 .button--primary:hover {
@@ -519,19 +342,15 @@ svg {
 }
 
 .button--outline {
-    color: #FFFFFF;
+    color: var(--white);
 
-    background:
-        rgba(255, 255, 255, .03);
+    background: rgba(255, 255, 255, .03);
 
-    border:
-        1px solid
-        rgba(255, 255, 255, .37);
+    border: 1px solid rgba(255, 255, 255, .37);
 }
 
 .button--outline:hover {
-    background:
-        rgba(255, 255, 255, .10);
+    background: rgba(255, 255, 255, .10);
 }
 
 
@@ -547,12 +366,9 @@ svg {
 
     z-index: 4;
 
-    border-top:
-        1px solid
-        rgba(255, 255, 255, .14);
+    border-top: 1px solid rgba(255, 255, 255, .14);
 
-    background:
-        rgba(1, 17, 55, .11);
+    background: rgba(1, 17, 55, .11);
 }
 
 .hero__features-grid {
@@ -560,8 +376,7 @@ svg {
 
     display: grid;
 
-    grid-template-columns:
-        repeat(3, 1fr);
+    grid-template-columns: repeat(3, 1fr);
 }
 
 .hero-feature {
@@ -571,15 +386,12 @@ svg {
 
     gap: 14px;
 
-    border-right:
-        1px solid
-        rgba(255, 255, 255, .15);
+    border-right: 1px solid rgba(255, 255, 255, .15);
 
-    color:
-        rgba(255, 255, 255, .80);
+    color: rgba(255, 255, 255, .80);
 
     font-size: 12px;
-    font-weight: 500;
+    font-weight: var(--font-medium);
 }
 
 .hero-feature:last-child {
@@ -612,7 +424,7 @@ svg {
     color: var(--blue);
 
     font-size: 11px;
-    font-weight: 700;
+    font-weight: var(--font-bold);
 
     text-transform: uppercase;
 
@@ -634,14 +446,13 @@ svg {
 ========================================================= */
 
 .about {
-    background: #FFFFFF;
+    background: var(--white);
 }
 
 .about__grid {
     display: grid;
 
-    grid-template-columns:
-        .9fr 1.1fr;
+    grid-template-columns: .9fr 1.1fr;
 
     align-items: center;
 
@@ -655,13 +466,8 @@ svg {
 
     color: var(--blue-dark);
 
-    font-family:
-        "Coolvetica",
-        "Roboto",
-        sans-serif;
-
     font-size: 46px;
-    font-weight: 500;
+    font-weight: var(--font-medium);
 
     line-height: 1.12;
 }
@@ -683,7 +489,7 @@ svg {
     color: #38465A;
 
     font-size: 15px;
-    font-weight: 500;
+    font-weight: var(--font-medium);
 }
 
 .text-button {
@@ -698,12 +504,10 @@ svg {
 
     color: var(--blue);
 
-    border-bottom:
-        1px solid
-        rgba(6, 55, 183, .30);
+    border-bottom: 1px solid rgba(6, 55, 183, .30);
 
     font-size: 12px;
-    font-weight: 700;
+    font-weight: var(--font-bold);
 }
 
 .text-button svg {
@@ -735,13 +539,11 @@ svg {
     background:
         linear-gradient(
             135deg,
-            #EEF4FF,
-            #F8FAFD
+            var(--blue-light),
+            var(--background)
         );
 
-    border:
-        1px solid
-        #DFE6F0;
+    border: 1px solid var(--border);
 }
 
 .about__visual::before {
@@ -755,9 +557,7 @@ svg {
     top: -150px;
     right: -120px;
 
-    border:
-        38px solid
-        rgba(21, 94, 239, .07);
+    border: 38px solid rgba(21, 94, 239, .07);
 
     border-radius: 50%;
 }
@@ -777,9 +577,7 @@ svg {
 
     background: var(--blue-dark);
 
-    box-shadow:
-        0 24px 45px
-        rgba(6, 36, 106, .19);
+    box-shadow: 0 24px 45px rgba(6, 36, 106, .19);
 }
 
 .visual-document__top {
@@ -791,15 +589,12 @@ svg {
     align-items: center;
     justify-content: space-between;
 
-    color:
-        rgba(255, 255, 255, .74);
+    color: rgba(255, 255, 255, .74);
 
-    border-bottom:
-        1px solid
-        rgba(255, 255, 255, .15);
+    border-bottom: 1px solid rgba(255, 255, 255, .15);
 
     font-size: 9px;
-    font-weight: 700;
+    font-weight: var(--font-bold);
 
     letter-spacing: 1.4px;
 }
@@ -828,8 +623,7 @@ svg {
 .visual-document__small {
     display: block;
 
-    color:
-        rgba(255, 255, 255, .54);
+    color: rgba(255, 255, 255, .54);
 
     font-size: 8px;
 
@@ -843,15 +637,10 @@ svg {
 
     display: block;
 
-    color: #FFFFFF;
-
-    font-family:
-        "Louis George Cafe",
-        "Roboto",
-        sans-serif;
+    color: var(--white);
 
     font-size: 27px;
-    font-weight: 600;
+    font-weight: var(--font-bold);
 
     line-height: 1.15;
 }
@@ -868,8 +657,7 @@ svg {
 
     margin-top: 9px;
 
-    background:
-        rgba(255, 255, 255, .17);
+    background: rgba(255, 255, 255, .17);
 }
 
 .visual-document__lines span:nth-child(2) {
@@ -894,22 +682,18 @@ svg {
 
     padding: 30px 27px;
 
-    background: #FFFFFF;
+    background: var(--white);
 
-    border-left:
-        4px solid
-        var(--yellow);
+    border-left: 4px solid var(--yellow);
 
-    box-shadow:
-        0 15px 35px
-        rgba(21, 37, 69, .12);
+    box-shadow: var(--shadow-medium);
 }
 
 .visual-info > span {
     color: var(--blue);
 
     font-size: 8px;
-    font-weight: 700;
+    font-weight: var(--font-bold);
 
     letter-spacing: 1.2px;
 }
@@ -918,11 +702,6 @@ svg {
     margin-top: 9px;
 
     display: block;
-
-    font-family:
-        "Louis George Cafe",
-        "Roboto",
-        sans-serif;
 
     font-size: 18px;
 
@@ -963,13 +742,8 @@ svg {
 
     color: var(--blue-dark);
 
-    font-family:
-        "Coolvetica",
-        "Roboto",
-        sans-serif;
-
     font-size: 40px;
-    font-weight: 500;
+    font-weight: var(--font-medium);
 
     line-height: 1.15;
 }
@@ -992,8 +766,7 @@ svg {
 
     display: grid;
 
-    grid-template-columns:
-        repeat(4, 1fr);
+    grid-template-columns: repeat(4, 1fr);
 
     gap: 14px;
 }
@@ -1003,25 +776,21 @@ svg {
 
     padding: 31px 27px;
 
-    background: #FFFFFF;
+    background: var(--white);
 
-    border:
-        1px solid
-        #DCE5F2;
+    border: 1px solid var(--border);
 
-    border-radius: 5px;
+    border-radius: var(--radius-medium);
 
     transition:
-        transform .2s ease,
-        box-shadow .2s ease;
+        transform var(--transition-fast),
+        box-shadow var(--transition-fast);
 }
 
 .feature-card:hover {
     transform: translateY(-4px);
 
-    box-shadow:
-        0 12px 30px
-        rgba(6, 36, 106, .08);
+    box-shadow: var(--shadow-medium);
 }
 
 .feature-card__icon {
@@ -1050,15 +819,8 @@ svg {
 .feature-card h3 {
     margin-top: 20px;
 
-    color: var(--text);
-
-    font-family:
-        "Louis George Cafe",
-        "Roboto",
-        sans-serif;
-
     font-size: 17px;
-    font-weight: 600;
+    font-weight: var(--font-bold);
 }
 
 .feature-card p {
@@ -1077,7 +839,7 @@ svg {
 ========================================================= */
 
 .process {
-    background: #FFFFFF;
+    background: var(--white);
 }
 
 .process__header {
@@ -1093,13 +855,8 @@ svg {
 
     color: var(--blue-dark);
 
-    font-family:
-        "Coolvetica",
-        "Roboto",
-        sans-serif;
-
     font-size: 42px;
-    font-weight: 500;
+    font-weight: var(--font-medium);
 }
 
 .process__header > p {
@@ -1146,13 +903,13 @@ svg {
 
     flex-shrink: 0;
 
-    color: #FFFFFF;
+    color: var(--white);
     background: var(--blue-dark);
 
     border-radius: 50%;
 
     font-size: 12px;
-    font-weight: 700;
+    font-weight: var(--font-bold);
 }
 
 .process-step__number--yellow {
@@ -1179,13 +936,8 @@ svg {
 .process-step h3 {
     margin-top: 18px;
 
-    font-family:
-        "Louis George Cafe",
-        "Roboto",
-        sans-serif;
-
     font-size: 16px;
-    font-weight: 600;
+    font-weight: var(--font-bold);
 }
 
 .process-step p {
@@ -1205,11 +957,9 @@ svg {
 
     flex: 1;
 
-    margin:
-        27px 18px 0;
+    margin: 27px 18px 0;
 
-    background:
-        #BFCFEA;
+    background: #BFCFEA;
 }
 
 
@@ -1222,8 +972,7 @@ svg {
 
     display: grid;
 
-    grid-template-columns:
-        1fr 1fr;
+    grid-template-columns: 1fr 1fr;
 }
 
 .institutional__visual {
@@ -1255,15 +1004,11 @@ svg {
         translate(-50%, -50%)
         rotate(-5deg);
 
-    background: #FFFFFF;
+    background: var(--white);
 
-    border:
-        1px solid
-        #CCD8E9;
+    border: 1px solid #CCD8E9;
 
-    box-shadow:
-        25px 25px 0
-        rgba(6, 55, 183, .08);
+    box-shadow: 25px 25px 0 rgba(6, 55, 183, .08);
 }
 
 .institutional__pattern::before {
@@ -1277,7 +1022,7 @@ svg {
     color: var(--blue-dark);
 
     font-size: 11px;
-    font-weight: 700;
+    font-weight: var(--font-bold);
 
     letter-spacing: 1px;
 }
@@ -1293,7 +1038,7 @@ svg {
     color: var(--blue);
 
     font-size: 9px;
-    font-weight: 700;
+    font-weight: var(--font-bold);
 
     letter-spacing: 1.3px;
 }
@@ -1341,13 +1086,13 @@ svg {
     display: flex;
     align-items: center;
 
-    color: #FFFFFF;
+    color: var(--white);
 
     background:
         linear-gradient(
             135deg,
-            #06246A,
-            #0637B7
+            var(--blue-dark),
+            var(--blue)
         );
 }
 
@@ -1366,14 +1111,12 @@ svg {
     background: var(--yellow);
 }
 
+/* El color se define aquí porque global.css asigna color a h1–h6 */
 .institutional__content h2 {
-    font-family:
-        "Coolvetica",
-        "Roboto",
-        sans-serif;
+    color: var(--white);
 
     font-size: 38px;
-    font-weight: 500;
+    font-weight: var(--font-medium);
 
     line-height: 1.15;
 }
@@ -1381,8 +1124,7 @@ svg {
 .institutional__content p {
     margin-top: 20px;
 
-    color:
-        rgba(255, 255, 255, .73);
+    color: rgba(255, 255, 255, .73);
 
     font-size: 13px;
 
@@ -1395,14 +1137,13 @@ svg {
 ========================================================= */
 
 .support {
-    background: #FFFFFF;
+    background: var(--white);
 }
 
 .support__grid {
     display: grid;
 
-    grid-template-columns:
-        .8fr 1.2fr;
+    grid-template-columns: .8fr 1.2fr;
 
     gap: 100px;
 }
@@ -1412,13 +1153,8 @@ svg {
 
     color: var(--blue-dark);
 
-    font-family:
-        "Coolvetica",
-        "Roboto",
-        sans-serif;
-
     font-size: 42px;
-    font-weight: 500;
+    font-weight: var(--font-medium);
 }
 
 .support__intro > p {
@@ -1445,16 +1181,13 @@ svg {
 
     display: grid;
 
-    grid-template-columns:
-        43px 1fr;
+    grid-template-columns: 43px 1fr;
 
     gap: 16px;
 
     background: var(--blue-light);
 
-    border-left:
-        3px solid
-        var(--yellow);
+    border-left: 3px solid var(--yellow);
 }
 
 .support__notice-icon {
@@ -1506,15 +1239,11 @@ svg {
 ========================================================= */
 
 .faq {
-    border-top:
-        1px solid
-        var(--border);
+    border-top: 1px solid var(--border);
 }
 
 .faq__item {
-    border-bottom:
-        1px solid
-        var(--border);
+    border-bottom: 1px solid var(--border);
 }
 
 .faq__item summary {
@@ -1533,7 +1262,7 @@ svg {
     list-style: none;
 
     font-size: 13px;
-    font-weight: 600;
+    font-weight: var(--font-medium);
 
     cursor: pointer;
 }
@@ -1567,165 +1296,32 @@ svg {
     width: 13px;
     height: 1.5px;
 
-    transform:
-        translate(-50%, -50%);
+    transform: translate(-50%, -50%);
 }
 
 .faq__item summary span::after {
     width: 1.5px;
     height: 13px;
 
-    transform:
-        translate(-50%, -50%);
+    transform: translate(-50%, -50%);
 
-    transition: transform .2s ease;
+    transition: transform var(--transition-fast);
 }
 
-.faq__item[open]
-summary span::after {
+.faq__item[open] summary span::after {
     transform:
         translate(-50%, -50%)
         rotate(90deg);
 }
 
 .faq__item p {
-    padding:
-        0 45px
-        23px 5px;
+    padding: 0 45px 23px 5px;
 
     color: var(--text-secondary);
 
     font-size: 12px;
 
     line-height: 1.75;
-}
-
-
-/* =========================================================
-   FOOTER
-========================================================= */
-
-.footer {
-    color: #FFFFFF;
-
-    background: #041B48;
-
-    border-top:
-        3px solid
-        var(--yellow);
-}
-
-.footer__main {
-    min-height: 140px;
-
-    display: flex;
-    align-items: center;
-
-    gap: 32px;
-}
-
-.footer__brand img {
-    width: 190px;
-    height: 70px;
-
-    object-fit: contain;
-    object-position: left center;
-}
-
-.footer__divider {
-    width: 1px;
-    height: 55px;
-
-    background:
-        rgba(255, 255, 255, .23);
-}
-
-.footer__system {
-    max-width: 290px;
-
-    display: flex;
-    flex-direction: column;
-}
-
-.footer__system strong {
-    font-size: 14px;
-
-    letter-spacing: 1.5px;
-}
-
-.footer__system span {
-    margin-top: 4px;
-
-    color:
-        rgba(255, 255, 255, .56);
-
-    font-size: 10px;
-
-    line-height: 1.5;
-}
-
-.footer__top {
-    width: 40px;
-    height: 40px;
-
-    margin-left: auto;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    color: #FFFFFF;
-
-    background:
-        rgba(255, 255, 255, .08);
-
-    border:
-        1px solid
-        rgba(255, 255, 255, .18);
-
-    border-radius: 50%;
-
-    transition:
-        background .2s ease;
-}
-
-.footer__top:hover {
-    background: var(--blue);
-}
-
-.footer__top svg {
-    width: 17px;
-    height: 17px;
-
-    fill: none;
-    stroke: currentColor;
-
-    stroke-width: 1.7;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-}
-
-.footer__bottom {
-    border-top:
-        1px solid
-        rgba(255, 255, 255, .09);
-}
-
-.footer__bottom-content {
-    min-height: 48px;
-
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    color:
-        rgba(255, 255, 255, .38);
-
-    font-size: 9px;
-
-    text-transform: uppercase;
-
-    letter-spacing: .9px;
 }
 
 
@@ -1739,33 +1335,18 @@ summary span::after {
         width: 160px;
     }
 
-    .nav {
-        gap: 25px;
-    }
-
-    .nav__link,
-    .nav__login {
-        font-size: 14px;
-    }
-
-    .nav__login {
-        min-width: 135px;
-    }
-
     .about__grid {
         gap: 50px;
     }
 
     .features__grid {
-        grid-template-columns:
-            repeat(2, 1fr);
+        grid-template-columns: repeat(2, 1fr);
     }
 
     .process__steps {
         display: grid;
 
-        grid-template-columns:
-            repeat(2, 1fr);
+        grid-template-columns: repeat(2, 1fr);
 
         gap: 45px;
     }
@@ -1827,9 +1408,7 @@ summary span::after {
 
         display: none;
 
-        padding:
-            15px 6%
-            27px;
+        padding: 15px 6% 27px;
 
         flex-direction: column;
         align-items: stretch;
@@ -1838,13 +1417,9 @@ summary span::after {
 
         background: var(--blue-header);
 
-        border-top:
-            1px solid
-            rgba(255, 255, 255, .10);
+        border-top: 1px solid rgba(255, 255, 255, .10);
 
-        box-shadow:
-            0 18px 30px
-            rgba(0, 0, 0, .16);
+        box-shadow: 0 18px 30px rgba(0, 0, 0, .16);
     }
 
     .nav.open {
@@ -1856,9 +1431,7 @@ summary span::after {
 
         padding: 15px 0;
 
-        border-bottom:
-            1px solid
-            rgba(255, 255, 255, .10);
+        border-bottom: 1px solid rgba(255, 255, 255, .10);
     }
 
     .nav__link.active::after {
@@ -1877,14 +1450,11 @@ summary span::after {
     .hero {
         min-height: 750px;
 
-        padding:
-            135px 0
-            170px;
+        padding: 135px 0 170px;
     }
 
     .hero h1 {
-        font-size:
-            clamp(37px, 9vw, 50px);
+        font-size: clamp(37px, 9vw, 50px);
     }
 
     .hero__description {
@@ -1894,8 +1464,7 @@ summary span::after {
     .hero__actions {
         max-width: 310px;
 
-        margin:
-            30px auto 0;
+        margin: 30px auto 0;
 
         flex-direction: column;
     }
@@ -2056,9 +1625,7 @@ summary span::after {
     .process-step {
         padding-bottom: 25px;
 
-        border-bottom:
-            1px solid
-            var(--border);
+        border-bottom: 1px solid var(--border);
     }
 
 
@@ -2078,8 +1645,7 @@ summary span::after {
     }
 
     .institutional__content {
-        padding:
-            60px 8%;
+        padding: 60px 8%;
     }
 
     .institutional__content h2 {
@@ -2097,24 +1663,6 @@ summary span::after {
 
     .support__intro h2 {
         font-size: 35px;
-    }
-
-
-    /* FOOTER */
-
-    .footer__main {
-        padding: 35px 0;
-
-        flex-wrap: wrap;
-    }
-
-    .footer__divider {
-        display: none;
-    }
-
-    .footer__system {
-        width: 100%;
-        max-width: none;
     }
 
 }
@@ -2164,32 +1712,5 @@ summary span::after {
         right: 12px;
     }
 
-    .footer__bottom-content {
-        padding: 14px 0;
-
-        flex-direction: column;
-        align-items: flex-start;
-
-        gap: 4px;
-    }
-
-}
-
-
-/* =========================================================
-   ACCESIBILIDAD
-========================================================= */
-
-@media (prefers-reduced-motion: reduce) {
-
-    html {
-        scroll-behavior: auto;
-    }
-
-    *,
-    *::before,
-    *::after {
-        transition: none !important;
-    }
 
 }

@@ -9,8 +9,9 @@
     <title>Mi espacio | SISCAE</title>
 
     <!-- Base compartida con el panel de administración -->
+    
+    <link rel="stylesheet" href="../css/components/sidebar_admin.css">
     <link rel="stylesheet" href="../css/pages/dashboardAdmin.css">
-
     <!-- Componentes propios de la vista Autor / Editor -->
     <link rel="stylesheet" href="../css/pages/dashboard.css">
 
@@ -22,104 +23,15 @@
          SIDEBAR
     ====================================================== -->
 
-    <aside class="sidebar" id="sidebar">
-
-        <div class="sidebar-logo">
-            <img src="../assets/img/logo.png" alt="Ministerio de Educación">
-        </div>
-
-        <nav class="sidebar-nav">
-
-            <span class="nav-title">GENERAL</span>
-
-            <a href="dashboard.html" class="nav-item active">
-                <span class="nav-icon">
-                    <svg viewBox="0 0 24 24">
-                        <rect x="3" y="3" width="7" height="7"></rect>
-                        <rect x="14" y="3" width="7" height="7"></rect>
-                        <rect x="3" y="14" width="7" height="7"></rect>
-                        <rect x="14" y="14" width="7" height="7"></rect>
-                    </svg>
-                </span>
-                <span>Inicio</span>
-            </a>
-
-            <a href="#mis-activos" class="nav-item">
-                <span class="nav-icon">
-                    <svg viewBox="0 0 24 24">
-                        <path d="M3 7h6l2 2h10v10H3z"></path>
-                        <path d="M3 7V5h6l2 2"></path>
-                    </svg>
-                </span>
-                <span>Mis activos</span>
-            </a>
-
-
-            <span class="nav-title nav-title-space">MI TRABAJO</span>
-
-            <a href="#observaciones" class="nav-item">
-                <span class="nav-icon">
-                    <svg viewBox="0 0 24 24">
-                        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-                    </svg>
-                </span>
-                <span>Observaciones</span>
-                <span class="nav-count" data-stat="observaciones">0</span>
-            </a>
-
-            <a href="#mi-actividad" class="nav-item">
-                <span class="nav-icon">
-                    <svg viewBox="0 0 24 24">
-                        <circle cx="12" cy="12" r="9"></circle>
-                        <polyline points="12 7 12 12 15 14"></polyline>
-                    </svg>
-                </span>
-                <span>Mis intervenciones</span>
-            </a>
-
-
-            <span class="nav-title nav-title-space">MI CUENTA</span>
-
-            <a href="#mis-permisos" class="nav-item">
-                <span class="nav-icon">
-                    <svg viewBox="0 0 24 24">
-                        <rect x="5" y="11" width="14" height="10" rx="2"></rect>
-                        <path d="M8 11V7a4 4 0 0 1 8 0v4"></path>
-                    </svg>
-                </span>
-                <span>Mis permisos</span>
-            </a>
-
-        </nav>
-
-
-        <div class="sidebar-footer">
-
-            <div class="sidebar-user">
-
-                <div class="sidebar-avatar">AM</div>
-
-                <div class="sidebar-user-info">
-                    <strong>Ana Martínez</strong>
-                    <span>Autor / Editor</span>
-                </div>
-
-                <button class="logout-icon" id="sidebarLogout" type="button" aria-label="Cerrar sesión">
-                    <svg viewBox="0 0 24 24">
-                        <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
-                        <polyline points="16 17 21 12 16 7"></polyline>
-                        <line x1="21" y1="12" x2="9" y2="12"></line>
-                    </svg>
-                </button>
-
-            </div>
-
-        </div>
-
-    </aside>
+    
 
 
     <div class="mobile-overlay" id="mobileOverlay"></div>
+    <!-- =====================================================
+         SIDEBAR
+    ====================================================== -->
+
+    <div id="sidebar-component"></div>
 
 
     <!-- =====================================================
@@ -745,6 +657,7 @@
 
     <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
+    <script src="../js/components.js"></script>
     <script src="../js/dashboard.js"></script>
 
 </body>

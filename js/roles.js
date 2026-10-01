@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
 
+
     /* =====================================================
        DATOS SIMULADOS DE ROLES
     ====================================================== */
@@ -18,6 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
             protected: true,
 
             permissions: {
+
                 viewUsers: true,
                 manageUsers: true,
                 manageRoles: true,
@@ -32,6 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 viewIntegrity: true,
                 manageAlerts: true,
                 registerIntervention: true
+
             }
 
         },
@@ -49,6 +52,7 @@ document.addEventListener("DOMContentLoaded", () => {
             protected: false,
 
             permissions: {
+
                 viewUsers: false,
                 manageUsers: false,
                 manageRoles: false,
@@ -63,6 +67,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 viewIntegrity: true,
                 manageAlerts: false,
                 registerIntervention: true
+
             }
 
         },
@@ -80,6 +85,7 @@ document.addEventListener("DOMContentLoaded", () => {
             protected: false,
 
             permissions: {
+
                 viewUsers: false,
                 manageUsers: false,
                 manageRoles: false,
@@ -94,6 +100,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 viewIntegrity: true,
                 manageAlerts: false,
                 registerIntervention: true
+
             }
 
         },
@@ -111,6 +118,7 @@ document.addEventListener("DOMContentLoaded", () => {
             protected: false,
 
             permissions: {
+
                 viewUsers: true,
                 manageUsers: false,
                 manageRoles: false,
@@ -125,6 +133,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 viewIntegrity: true,
                 manageAlerts: false,
                 registerIntervention: false
+
             }
 
         }
@@ -145,66 +154,127 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /* =====================================================
-       ELEMENTOS
+       ELEMENTOS PRINCIPALES
     ====================================================== */
 
     const roleTabs =
         document.querySelectorAll(".role-tab");
 
+
     const permissionInputs =
         document.querySelectorAll("[data-permission]");
+
 
     const selectedRoleName =
         document.getElementById("selectedRoleName");
 
+
     const selectedRoleDescription =
-        document.getElementById("selectedRoleDescription");
+        document.getElementById(
+            "selectedRoleDescription"
+        );
+
 
     const selectedUserCount =
-        document.getElementById("selectedUserCount");
+        document.getElementById(
+            "selectedUserCount"
+        );
+
 
     const roleState =
         document.getElementById("roleState");
 
+
     const adminNotice =
         document.getElementById("adminNotice");
 
+
     const permissionsActions =
-        document.getElementById("permissionsActions");
+        document.getElementById(
+            "permissionsActions"
+        );
+
 
     const roleConfiguration =
-        document.getElementById("roleConfiguration");
+        document.getElementById(
+            "roleConfiguration"
+        );
+
 
     const changesInfo =
-        document.getElementById("changesInfo");
+        document.getElementById(
+            "changesInfo"
+        );
+
 
     const changesText =
-        document.getElementById("changesText");
+        document.getElementById(
+            "changesText"
+        );
+
 
     const savePermissionsButton =
-        document.getElementById("savePermissionsButton");
+        document.getElementById(
+            "savePermissionsButton"
+        );
+
 
     const restoreButton =
-        document.getElementById("restoreButton");
+        document.getElementById(
+            "restoreButton"
+        );
 
 
     /* =====================================================
-       CAMBIAR VISUALMENTE DE ROL
+       ACTUALIZAR BLOQUEO DEL BODY
     ====================================================== */
 
-    function renderRole(roleKey, animate = false) {
+    function updateBodyLock() {
 
-        const role = roles[roleKey];
+        const activeModal =
+            document.querySelector(
+                ".modal.active"
+            );
+
+
+        const sidebarOpen =
+            document
+                .getElementById("sidebar")
+                ?.classList
+                .contains("open");
+
+
+        document.body.classList.toggle(
+            "locked",
+            Boolean(activeModal || sidebarOpen)
+        );
+
+    }
+
+
+    /* =====================================================
+       MOSTRAR ROL
+    ====================================================== */
+
+    function renderRole(
+        roleKey,
+        animate = false
+    ) {
+
+        const role =
+            roles[roleKey];
+
 
         if (!role) {
             return;
         }
 
+
         currentRole = roleKey;
 
 
         /* ---------------------------------------------
-           MARCAR TARJETA SELECCIONADA
+           MARCAR ROL SELECCIONADO
         ---------------------------------------------- */
 
         roleTabs.forEach((tab) => {
@@ -218,56 +288,80 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
         /* ---------------------------------------------
-           DATOS DEL ROL
+           INFORMACIÓN DEL ROL
         ---------------------------------------------- */
 
-        selectedRoleName.textContent =
-            role.name;
+        if (selectedRoleName) {
 
-        selectedRoleDescription.textContent =
-            role.description;
+            selectedRoleName.textContent =
+                role.name;
 
-        selectedUserCount.textContent =
-            role.users;
+        }
+
+
+        if (selectedRoleDescription) {
+
+            selectedRoleDescription.textContent =
+                role.description;
+
+        }
+
+
+        if (selectedUserCount) {
+
+            selectedUserCount.textContent =
+                role.users;
+
+        }
 
 
         /* ---------------------------------------------
            ESTADO DEL ROL
         ---------------------------------------------- */
 
-        if (role.protected) {
+        if (roleState) {
 
-            roleState.textContent =
-                "Perfil protegido";
+            if (role.protected) {
 
-            roleState.classList.remove(
-                "editable"
-            );
+                roleState.textContent =
+                    "Perfil protegido";
 
-        } else {
 
-            roleState.textContent =
-                "Permisos editables";
+                roleState.classList.remove(
+                    "editable"
+                );
 
-            roleState.classList.add(
-                "editable"
+            } else {
+
+                roleState.textContent =
+                    "Permisos editables";
+
+
+                roleState.classList.add(
+                    "editable"
+                );
+
+            }
+
+        }
+
+
+        /* ---------------------------------------------
+           AVISO DEL ADMINISTRADOR
+        ---------------------------------------------- */
+
+        if (adminNotice) {
+
+            adminNotice.classList.toggle(
+                "hidden",
+                !role.protected
             );
 
         }
 
 
         /* ---------------------------------------------
-           AVISO DEL ADMIN
-        ---------------------------------------------- */
-
-        adminNotice.classList.toggle(
-            "hidden",
-            !role.protected
-        );
-
-
-        /* ---------------------------------------------
-           SWITCHES
+           PERMISOS
         ---------------------------------------------- */
 
         permissionInputs.forEach((input) => {
@@ -275,10 +369,14 @@ document.addEventListener("DOMContentLoaded", () => {
             const permission =
                 input.dataset.permission;
 
+
             input.checked =
                 Boolean(
-                    role.permissions[permission]
+                    role.permissions[
+                        permission
+                    ]
                 );
+
 
             /*
                 Administrador:
@@ -295,35 +393,53 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
         /* ---------------------------------------------
-           BOTONES INFERIORES
+           ACCIONES INFERIORES
         ---------------------------------------------- */
 
-        permissionsActions.classList.toggle(
-            "admin-mode",
-            role.protected
-        );
+        if (permissionsActions) {
+
+            permissionsActions.classList.toggle(
+                "admin-mode",
+                role.protected
+            );
+
+        }
+
+
+        if (restoreButton) {
+
+            restoreButton.disabled =
+                role.protected;
+
+        }
 
 
         updateChangesState();
 
 
         /* ---------------------------------------------
-           ANIMACIÓN DEL PANEL
+           ANIMACIÓN
         ---------------------------------------------- */
 
-        if (animate) {
+        if (
+            animate &&
+            roleConfiguration
+        ) {
 
             roleConfiguration.classList.remove(
                 "switching"
             );
 
+
             void roleConfiguration.offsetWidth;
+
 
             roleConfiguration.classList.add(
                 "switching"
             );
 
-            setTimeout(() => {
+
+            window.setTimeout(() => {
 
                 roleConfiguration.classList.remove(
                     "switching"
@@ -337,51 +453,79 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /* =====================================================
-       CLICK SOBRE LOS ROLES
+       CAMBIAR DE ROL
     ====================================================== */
 
     roleTabs.forEach((tab) => {
 
-        tab.addEventListener("click", () => {
+        tab.addEventListener(
+            "click",
+            () => {
 
-            const newRole =
-                tab.dataset.role;
+                const newRole =
+                    tab.dataset.role;
 
 
-            /*
-                Si toca el mismo rol,
-                no vuelve a ejecutar todo.
-            */
+                if (!newRole) {
+                    return;
+                }
 
-            if (newRole === currentRole) {
 
                 /*
-                    Pequeño efecto visual incluso
-                    al tocar el rol actual.
+                    Si selecciona el mismo rol,
+                    solo se aplica un pequeño efecto.
                 */
 
-                tab.animate(
-                    [
-                        { transform: "scale(1)" },
-                        { transform: "scale(.985)" },
-                        { transform: "scale(1)" }
-                    ],
-                    {
-                        duration: 180,
-                        easing: "ease"
+                if (
+                    newRole === currentRole
+                ) {
+
+                    if (
+                        typeof tab.animate ===
+                        "function"
+                    ) {
+
+                        tab.animate(
+
+                            [
+                                {
+                                    transform:
+                                        "scale(1)"
+                                },
+
+                                {
+                                    transform:
+                                        "scale(.985)"
+                                },
+
+                                {
+                                    transform:
+                                        "scale(1)"
+                                }
+                            ],
+
+                            {
+                                duration: 180,
+                                easing: "ease"
+                            }
+
+                        );
+
                     }
+
+
+                    return;
+
+                }
+
+
+                renderRole(
+                    newRole,
+                    true
                 );
 
-                return;
             }
-
-
-            renderRole(
-                newRole,
-                true
-            );
-
-        });
+        );
 
     });
 
@@ -392,31 +536,61 @@ document.addEventListener("DOMContentLoaded", () => {
 
     permissionInputs.forEach((input) => {
 
-        input.addEventListener("change", () => {
+        input.addEventListener(
+            "change",
+            () => {
 
-            const role =
-                roles[currentRole];
+                const role =
+                    roles[currentRole];
 
 
-            if (role.protected) {
+                if (!role) {
+                    return;
+                }
 
-                renderRole(currentRole);
 
-                return;
+                /*
+                    El administrador
+                    no se modifica.
+                */
+
+                if (role.protected) {
+
+                    renderRole(
+                        currentRole
+                    );
+
+                    return;
+
+                }
+
+
+                const permission =
+                    input.dataset.permission;
+
+
+                if (
+                    !permission ||
+                    !Object.prototype.hasOwnProperty.call(
+                        role.permissions,
+                        permission
+                    )
+                ) {
+
+                    return;
+
+                }
+
+
+                role.permissions[
+                    permission
+                ] = input.checked;
+
+
+                updateChangesState();
+
             }
-
-
-            const permission =
-                input.dataset.permission;
-
-
-            role.permissions[permission] =
-                input.checked;
-
-
-            updateChangesState();
-
-        });
+        );
 
     });
 
@@ -430,28 +604,44 @@ document.addEventListener("DOMContentLoaded", () => {
         const role =
             roles[currentRole];
 
-        if (role.protected) {
+
+        const savedRole =
+            savedRoles[currentRole];
+
+
+        if (
+            !role ||
+            !savedRole ||
+            role.protected
+        ) {
+
             return false;
+
         }
 
 
         const currentPermissions =
             role.permissions;
 
+
         const savedPermissions =
-            savedRoles[currentRole].permissions;
+            savedRole.permissions;
 
 
-        return Object.keys(
-            currentPermissions
-        ).some((permission) => {
+        return Object
+            .keys(currentPermissions)
+            .some((permission) => {
 
-            return (
-                currentPermissions[permission] !==
-                savedPermissions[permission]
-            );
+                return (
+                    currentPermissions[
+                        permission
+                    ] !==
+                    savedPermissions[
+                        permission
+                    ]
+                );
 
-        });
+            });
 
     }
 
@@ -466,52 +656,82 @@ document.addEventListener("DOMContentLoaded", () => {
             roleHasChanges();
 
 
-        changesInfo.classList.toggle(
-            "pending",
-            hasChanges
-        );
+        if (changesInfo) {
+
+            changesInfo.classList.toggle(
+                "pending",
+                hasChanges
+            );
+
+        }
 
 
-        changesText.textContent =
-            hasChanges
-                ? "Hay cambios pendientes"
-                : "Sin cambios pendientes";
+        if (changesText) {
+
+            changesText.textContent =
+                hasChanges
+                    ? "Hay cambios pendientes"
+                    : "Sin cambios pendientes";
+
+        }
 
 
-        savePermissionsButton.disabled =
-            !hasChanges;
+        if (savePermissionsButton) {
+
+            savePermissionsButton.disabled =
+                !hasChanges;
+
+        }
 
     }
 
 
     /* =====================================================
-       RESTAURAR
+       RESTAURAR PERMISOS
     ====================================================== */
 
-    restoreButton.addEventListener("click", () => {
+    if (restoreButton) {
 
-        if (
-            roles[currentRole].protected
-        ) {
-            return;
-        }
+        restoreButton.addEventListener(
+            "click",
+            () => {
 
-
-        roles[currentRole].permissions =
-            JSON.parse(
-                JSON.stringify(
-                    savedRoles[currentRole]
-                        .permissions
-                )
-            );
+                const role =
+                    roles[currentRole];
 
 
-        renderRole(
-            currentRole,
-            true
+                const savedRole =
+                    savedRoles[currentRole];
+
+
+                if (
+                    !role ||
+                    !savedRole ||
+                    role.protected
+                ) {
+
+                    return;
+
+                }
+
+
+                role.permissions =
+                    JSON.parse(
+                        JSON.stringify(
+                            savedRole.permissions
+                        )
+                    );
+
+
+                renderRole(
+                    currentRole,
+                    true
+                );
+
+            }
         );
 
-    });
+    }
 
 
     /* =====================================================
@@ -526,13 +746,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
     groupHeaders.forEach((header) => {
 
-        header.addEventListener("click", () => {
+        header.addEventListener(
+            "click",
+            () => {
 
-            header.classList.toggle(
-                "open"
-            );
+                header.classList.toggle(
+                    "open"
+                );
 
-        });
+            }
+        );
 
     });
 
@@ -542,30 +765,53 @@ document.addEventListener("DOMContentLoaded", () => {
     ====================================================== */
 
     const saveModal =
-        document.getElementById("saveModal");
+        document.getElementById(
+            "saveModal"
+        );
+
 
     const saveRoleName =
-        document.getElementById("saveRoleName");
+        document.getElementById(
+            "saveRoleName"
+        );
+
 
     const cancelSaveButton =
-        document.getElementById("cancelSaveButton");
+        document.getElementById(
+            "cancelSaveButton"
+        );
+
 
     const confirmSaveButton =
-        document.getElementById("confirmSaveButton");
+        document.getElementById(
+            "confirmSaveButton"
+        );
 
 
     function openSaveModal() {
 
+        const role =
+            roles[currentRole];
+
+
         if (
+            !saveModal ||
+            !role ||
             !hasChanges ||
-            roles[currentRole].protected
+            role.protected
         ) {
+
             return;
+
         }
 
 
-        saveRoleName.textContent =
-            roles[currentRole].name;
+        if (saveRoleName) {
+
+            saveRoleName.textContent =
+                role.name;
+
+        }
 
 
         saveModal.classList.add(
@@ -573,37 +819,46 @@ document.addEventListener("DOMContentLoaded", () => {
         );
 
 
-        document.body.classList.add(
-            "locked"
-        );
+        updateBodyLock();
 
     }
 
 
     function closeSaveModal() {
 
+        if (!saveModal) {
+            return;
+        }
+
+
         saveModal.classList.remove(
             "active"
         );
 
 
-        document.body.classList.remove(
-            "locked"
+        updateBodyLock();
+
+    }
+
+
+    if (savePermissionsButton) {
+
+        savePermissionsButton.addEventListener(
+            "click",
+            openSaveModal
         );
 
     }
 
 
-    savePermissionsButton.addEventListener(
-        "click",
-        openSaveModal
-    );
+    if (cancelSaveButton) {
 
+        cancelSaveButton.addEventListener(
+            "click",
+            closeSaveModal
+        );
 
-    cancelSaveButton.addEventListener(
-        "click",
-        closeSaveModal
-    );
+    }
 
 
     document
@@ -624,38 +879,52 @@ document.addEventListener("DOMContentLoaded", () => {
        GUARDAR CAMBIOS SIMULADOS
     ====================================================== */
 
-    confirmSaveButton.addEventListener(
-        "click",
-        () => {
+    if (confirmSaveButton) {
 
-            if (
-                roles[currentRole].protected
-            ) {
-                return;
+        confirmSaveButton.addEventListener(
+            "click",
+            () => {
+
+                const role =
+                    roles[currentRole];
+
+
+                if (
+                    !role ||
+                    role.protected
+                ) {
+
+                    return;
+
+                }
+
+
+                savedRoles[
+                    currentRole
+                ].permissions =
+                    JSON.parse(
+                        JSON.stringify(
+                            role.permissions
+                        )
+                    );
+
+
+                closeSaveModal();
+
+
+                updateChangesState();
+
+
+                showSuccessToast();
+
             }
+        );
 
-
-            savedRoles[currentRole].permissions =
-                JSON.parse(
-                    JSON.stringify(
-                        roles[currentRole]
-                            .permissions
-                    )
-                );
-
-
-            closeSaveModal();
-
-            updateChangesState();
-
-            showSuccessToast();
-
-        }
-    );
+    }
 
 
     /* =====================================================
-       TOAST
+       TOAST DE ÉXITO
     ====================================================== */
 
     const successToast =
@@ -664,14 +933,23 @@ document.addEventListener("DOMContentLoaded", () => {
         );
 
 
-    let toastTimer;
+    let toastTimer = null;
 
 
     function showSuccessToast() {
 
-        clearTimeout(
-            toastTimer
-        );
+        if (!successToast) {
+            return;
+        }
+
+
+        if (toastTimer) {
+
+            clearTimeout(
+                toastTimer
+            );
+
+        }
 
 
         successToast.classList.add(
@@ -680,91 +958,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
         toastTimer =
-            setTimeout(() => {
+            window.setTimeout(
+                () => {
 
-                successToast.classList.remove(
-                    "active"
-                );
+                    successToast.classList.remove(
+                        "active"
+                    );
 
-            }, 3000);
-
-    }
-
-
-    /* =====================================================
-       SIDEBAR MOBILE
-    ====================================================== */
-
-    const sidebar =
-        document.getElementById("sidebar");
-
-    const menuButton =
-        document.getElementById("menuButton");
-
-    const mobileOverlay =
-        document.getElementById("mobileOverlay");
-
-
-    function openSidebar() {
-
-        sidebar.classList.add(
-            "open"
-        );
-
-        mobileOverlay.classList.add(
-            "active"
-        );
-
-        document.body.classList.add(
-            "locked"
-        );
+                },
+                3000
+            );
 
     }
-
-
-    function closeSidebar() {
-
-        sidebar.classList.remove(
-            "open"
-        );
-
-        mobileOverlay.classList.remove(
-            "active"
-        );
-
-        document.body.classList.remove(
-            "locked"
-        );
-
-    }
-
-
-    menuButton.addEventListener(
-        "click",
-        () => {
-
-            if (
-                sidebar.classList.contains(
-                    "open"
-                )
-            ) {
-
-                closeSidebar();
-
-            } else {
-
-                openSidebar();
-
-            }
-
-        }
-    );
-
-
-    mobileOverlay.addEventListener(
-        "click",
-        closeSidebar
-    );
 
 
     /* =====================================================
@@ -772,31 +977,50 @@ document.addEventListener("DOMContentLoaded", () => {
     ====================================================== */
 
     const profile =
-        document.getElementById("profile");
+        document.getElementById(
+            "profile"
+        );
+
 
     const profileButton =
-        document.getElementById("profileButton");
+        document.getElementById(
+            "profileButton"
+        );
 
 
-    profileButton.addEventListener(
-        "click",
-        (event) => {
+    if (
+        profile &&
+        profileButton
+    ) {
 
-            event.stopPropagation();
+        profileButton.addEventListener(
+            "click",
+            (event) => {
 
-            profile.classList.toggle(
-                "open"
-            );
+                event.stopPropagation();
 
-        }
-    );
 
+                profile.classList.toggle(
+                    "open"
+                );
+
+            }
+        );
+
+    }
+
+
+    /*
+        Cerrar menú de perfil
+        al hacer clic fuera.
+    */
 
     document.addEventListener(
         "click",
         (event) => {
 
             if (
+                profile &&
                 !profile.contains(
                     event.target
                 )
@@ -822,15 +1046,19 @@ document.addEventListener("DOMContentLoaded", () => {
         );
 
 
-    notificationButton.addEventListener(
-        "click",
-        () => {
+    if (notificationButton) {
 
-            window.location.href =
-                "alertas.html";
+        notificationButton.addEventListener(
+            "click",
+            () => {
 
-        }
-    );
+                window.location.href =
+                    "alertas.html";
+
+            }
+        );
+
+    }
 
 
     /* =====================================================
@@ -842,15 +1070,12 @@ document.addEventListener("DOMContentLoaded", () => {
             "logoutModal"
         );
 
-    const sidebarLogout =
-        document.getElementById(
-            "sidebarLogout"
-        );
 
     const profileLogout =
         document.getElementById(
             "profileLogout"
         );
+
 
     const confirmLogout =
         document.getElementById(
@@ -860,45 +1085,109 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function openLogoutModal() {
 
+        if (!logoutModal) {
+            return;
+        }
+
+
         logoutModal.classList.add(
             "active"
         );
 
-        document.body.classList.add(
-            "locked"
-        );
 
-        profile.classList.remove(
-            "open"
-        );
+        if (profile) {
+
+            profile.classList.remove(
+                "open"
+            );
+
+        }
+
+
+        updateBodyLock();
 
     }
 
 
     function closeLogoutModal() {
 
+        if (!logoutModal) {
+            return;
+        }
+
+
         logoutModal.classList.remove(
             "active"
         );
 
-        document.body.classList.remove(
-            "locked"
+
+        updateBodyLock();
+
+    }
+
+
+    /*
+        IMPORTANTE:
+
+        El sidebar se carga dinámicamente
+        desde sidebar_admin.txt.
+
+        Por eso NO buscamos sidebarLogout
+        al iniciar el archivo.
+
+        Utilizamos delegación de eventos.
+    */
+
+    document.addEventListener(
+        "click",
+        (event) => {
+
+            const sidebarLogout =
+                event.target.closest(
+                    "#sidebarLogout"
+                );
+
+
+            if (!sidebarLogout) {
+                return;
+            }
+
+
+            event.preventDefault();
+
+
+            openLogoutModal();
+
+        }
+    );
+
+
+    /*
+        Logout desde el perfil
+        de la barra superior.
+    */
+
+    if (profileLogout) {
+
+        profileLogout.addEventListener(
+            "click",
+            (event) => {
+
+                event.preventDefault();
+
+
+                openLogoutModal();
+
+            }
         );
 
     }
 
 
-    sidebarLogout.addEventListener(
-        "click",
-        openLogoutModal
-    );
-
-
-    profileLogout.addEventListener(
-        "click",
-        openLogoutModal
-    );
-
+    /*
+        Cerrar modal desde
+        botón cancelar u overlay.
+    */
 
     document
         .querySelectorAll(
@@ -914,67 +1203,91 @@ document.addEventListener("DOMContentLoaded", () => {
         });
 
 
-    confirmLogout.addEventListener(
-        "click",
-        () => {
+    /*
+        Confirmar cierre de sesión.
+    */
 
-            window.location.href =
-                "login.html";
+    if (confirmLogout) {
 
-        }
-    );
+        confirmLogout.addEventListener(
+            "click",
+            () => {
+
+                window.location.href =
+                    "login.html";
+
+            }
+        );
+
+    }
 
 
     /* =====================================================
-       ESC
+       TECLA ESCAPE
     ====================================================== */
 
     document.addEventListener(
         "keydown",
         (event) => {
 
-            if (event.key !== "Escape") {
+            if (
+                event.key !== "Escape"
+            ) {
+
                 return;
+
             }
 
 
+            /*
+                Primero modal guardar.
+            */
+
             if (
+                saveModal &&
                 saveModal.classList.contains(
                     "active"
                 )
             ) {
 
                 closeSaveModal();
+
                 return;
 
             }
 
 
+            /*
+                Después modal logout.
+            */
+
             if (
+                logoutModal &&
                 logoutModal.classList.contains(
                     "active"
                 )
             ) {
 
                 closeLogoutModal();
+
                 return;
 
             }
 
 
-            profile.classList.remove(
-                "open"
-            );
+            /*
+                Finalmente menú del perfil.
 
+                El sidebar NO se controla
+                desde este archivo.
+                Eso corresponde a components.js.
+            */
 
-            if (
-                sidebar.classList.contains(
+            if (profile) {
+
+                profile.classList.remove(
                     "open"
-                ) &&
-                window.innerWidth <= 950
-            ) {
-
-                closeSidebar();
+                );
 
             }
 
@@ -983,31 +1296,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /* =====================================================
-       RESIZE
-    ====================================================== */
-
-    window.addEventListener(
-        "resize",
-        () => {
-
-            if (
-                window.innerWidth > 950
-            ) {
-
-                closeSidebar();
-
-            }
-
-        }
-    );
-
-
-    /* =====================================================
-       INICIAR
+       INICIAR PÁGINA
     ====================================================== */
 
     renderRole(
         currentRole
     );
+
 
 });

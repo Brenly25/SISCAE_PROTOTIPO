@@ -13,7 +13,7 @@
 
     <link rel="stylesheet" href="../css/pages/login.css">
     <!-- CSS DEL FOOTER -->
-     <link rel="stylesheet" href="../css/components/navbar_home.css">
+     <link rel="stylesheet" href="../css/components/navbar_login.css">
     <link rel="stylesheet" href="../css/components/footer_home.css">
 
 </head>
@@ -262,79 +262,9 @@
 
     <div id="footer-component"></div>
     <script src="../js/components.js"></script>
+    <script src="../js/login.js"></script>
 
 
-
-    <!-- =====================================================
-         JAVASCRIPT
-    ====================================================== -->
-
-    <script>
-
-        /* ==========================================
-           MENÚ MÓVIL
-        ========================================== */
-
-        const menuButton =
-            document.getElementById("loginMenuButton");
-
-        const nav =
-            document.getElementById("loginNav");
-
-
-        if (menuButton && nav) {
-
-            menuButton.addEventListener(
-                "click",
-                function () {
-
-                    nav.classList.toggle("active");
-
-                    menuButton.classList.toggle("active");
-
-
-                    const expanded =
-                        menuButton.getAttribute("aria-expanded") === "true";
-
-
-                    menuButton.setAttribute(
-                        "aria-expanded",
-                        String(!expanded)
-                    );
-
-                }
-            );
-
-        }
-
-
-
-        /* ==========================================
-           BOTÓN GOOGLE
-           Temporal hasta Firebase
-        ========================================== */
-
-        const googleLogin =
-            document.getElementById("googleLogin");
-
-
-        if (googleLogin) {
-
-            googleLogin.addEventListener(
-                "click",
-                function () {
-
-                    console.log(
-                        "Inicio de sesión institucional con Google"
-                    );
-
-                }
-            );
-
-        }
-
-
-    </script>
 
 
 

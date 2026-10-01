@@ -23,10 +23,14 @@ document.addEventListener("DOMContentLoaded", async () => {
         try {
 
             const response =
-                await fetch(`${basePath}components/navbar_home.html`);
+                await fetch(
+                    `${basePath}components/navbar_home.html`
+                );
 
             if (!response.ok) {
-                throw new Error("No se pudo cargar el header.");
+                throw new Error(
+                    "No se pudo cargar el header."
+                );
             }
 
             const html =
@@ -35,18 +39,24 @@ document.addEventListener("DOMContentLoaded", async () => {
             headerContainer.innerHTML = html;
 
 
-            /* =================================================
+            /* =============================================
                RUTAS DEL HEADER
-            ================================================= */
+            ============================================= */
 
             const logo =
-                headerContainer.querySelector(".header__brand");
+                headerContainer.querySelector(
+                    ".header__brand"
+                );
 
             const logoImage =
-                headerContainer.querySelector(".header__brand img");
+                headerContainer.querySelector(
+                    ".header__brand img"
+                );
 
             const loginButton =
-                headerContainer.querySelector(".nav__login");
+                headerContainer.querySelector(
+                    ".nav__login"
+                );
 
 
             if (logo) {
@@ -65,12 +75,14 @@ document.addEventListener("DOMContentLoaded", async () => {
             }
 
 
-            /* =================================================
+            /* =============================================
                LINKS DE NAVEGACIÓN
-            ================================================= */
+            ============================================= */
 
             const navLinks =
-                headerContainer.querySelectorAll(".nav__link");
+                headerContainer.querySelectorAll(
+                    ".nav__link"
+                );
 
 
             if (navLinks[0]) {
@@ -89,9 +101,9 @@ document.addEventListener("DOMContentLoaded", async () => {
             }
 
 
-            /* =================================================
+            /* =============================================
                SECCIÓN ACTIVA DEL NAVBAR
-            ================================================= */
+            ============================================= */
 
             const isHomePage =
                 !isInsidePages;
@@ -129,17 +141,22 @@ document.addEventListener("DOMContentLoaded", async () => {
 
                     navLinks.forEach(link => {
 
-                        link.classList.remove("active");
+                        link.classList.remove(
+                            "active"
+                        );
 
                         const href =
-                            link.getAttribute("href");
-
+                            link.getAttribute(
+                                "href"
+                            );
 
                         if (
                             href ===
                             `index.html#${currentSection}`
                         ) {
-                            link.classList.add("active");
+                            link.classList.add(
+                                "active"
+                            );
                         }
 
                     });
@@ -153,21 +170,24 @@ document.addEventListener("DOMContentLoaded", async () => {
                     { passive: true }
                 );
 
-
                 updateActiveSection();
 
             }
 
 
-            /* =================================================
+            /* =============================================
                MENÚ MÓVIL
-            ================================================= */
+            ============================================= */
 
             const menuButton =
-                headerContainer.querySelector("#menuButton");
+                headerContainer.querySelector(
+                    "#menuButton"
+                );
 
             const nav =
-                headerContainer.querySelector("#nav");
+                headerContainer.querySelector(
+                    "#nav"
+                );
 
 
             if (menuButton && nav) {
@@ -176,14 +196,14 @@ document.addEventListener("DOMContentLoaded", async () => {
                     "click",
                     function () {
 
-                        nav.classList.toggle("open");
-
+                        nav.classList.toggle(
+                            "open"
+                        );
 
                         const expanded =
                             menuButton.getAttribute(
                                 "aria-expanded"
                             ) === "true";
-
 
                         menuButton.setAttribute(
                             "aria-expanded",
@@ -194,7 +214,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                 );
 
 
-                /* CERRAR MENÚ AL SELECCIONAR */
+                /* CERRAR AL SELECCIONAR */
 
                 navLinks.forEach(link => {
 
@@ -202,7 +222,9 @@ document.addEventListener("DOMContentLoaded", async () => {
                         "click",
                         function () {
 
-                            nav.classList.remove("open");
+                            nav.classList.remove(
+                                "open"
+                            );
 
                             menuButton.setAttribute(
                                 "aria-expanded",
@@ -215,7 +237,6 @@ document.addEventListener("DOMContentLoaded", async () => {
                 });
 
             }
-
 
         } catch (error) {
 
@@ -230,22 +251,228 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 
     /* =====================================================
+       NAVBAR LOGIN
+    ===================================================== */
+
+    const loginHeaderContainer =
+        document.getElementById(
+            "login-header-component"
+        );
+
+
+    if (loginHeaderContainer) {
+
+        try {
+
+            const response =
+                await fetch(
+                    `${basePath}components/navbar_login.html`
+                );
+
+
+            if (!response.ok) {
+
+                throw new Error(
+                    "No se pudo cargar el navbar del login."
+                );
+
+            }
+
+
+            const html =
+                await response.text();
+
+            loginHeaderContainer.innerHTML = html;
+
+
+            /* =============================================
+               LOGO
+            ============================================= */
+
+            const loginLogo =
+                loginHeaderContainer.querySelector(
+                    ".login-header__brand"
+                );
+
+            const loginLogoImage =
+                loginHeaderContainer.querySelector(
+                    ".login-header__brand img"
+                );
+
+
+            if (loginLogo) {
+
+                loginLogo.href =
+                    `${basePath}index.html#inicio`;
+
+            }
+
+
+            if (loginLogoImage) {
+
+                loginLogoImage.src =
+                    `${basePath}assets/img/logo.png`;
+
+            }
+
+
+            /* =============================================
+               LINKS DEL NAVBAR
+            ============================================= */
+
+            const loginNavLinks =
+                loginHeaderContainer.querySelectorAll(
+                    ".login-nav__link"
+                );
+
+
+            if (loginNavLinks[0]) {
+
+                loginNavLinks[0].href =
+                    `${basePath}index.html#inicio`;
+
+            }
+
+
+            if (loginNavLinks[1]) {
+
+                loginNavLinks[1].href =
+                    `${basePath}index.html#acerca`;
+
+            }
+
+
+            if (loginNavLinks[2]) {
+
+                loginNavLinks[2].href =
+                    `${basePath}index.html#soporte`;
+
+            }
+
+
+            /* =============================================
+               MENÚ MÓVIL
+            ============================================= */
+
+            const loginMenuButton =
+                loginHeaderContainer.querySelector(
+                    "#loginMenuButton"
+                );
+
+            const loginNav =
+                loginHeaderContainer.querySelector(
+                    "#loginNav"
+                );
+
+
+            if (
+                loginMenuButton &&
+                loginNav
+            ) {
+
+                loginMenuButton.addEventListener(
+                    "click",
+                    function () {
+
+                        loginNav.classList.toggle(
+                            "active"
+                        );
+
+                        loginMenuButton
+                            .classList
+                            .toggle(
+                                "active"
+                            );
+
+                        const expanded =
+                            loginMenuButton
+                                .getAttribute(
+                                    "aria-expanded"
+                                ) === "true";
+
+                        loginMenuButton
+                            .setAttribute(
+                                "aria-expanded",
+                                String(!expanded)
+                            );
+
+                    }
+                );
+
+
+                /* CERRAR AL SELECCIONAR */
+
+                loginNavLinks.forEach(link => {
+
+                    link.addEventListener(
+                        "click",
+                        function () {
+
+                            loginNav
+                                .classList
+                                .remove(
+                                    "active"
+                                );
+
+                            loginMenuButton
+                                .classList
+                                .remove(
+                                    "active"
+                                );
+
+                            loginMenuButton
+                                .setAttribute(
+                                    "aria-expanded",
+                                    "false"
+                                );
+
+                        }
+                    );
+
+                });
+
+            }
+
+        } catch (error) {
+
+            console.error(
+                "Error cargando navbar del login:",
+                error
+            );
+
+        }
+
+    }
+
+
+    /* =====================================================
        FOOTER
     ===================================================== */
 
     const footerContainer =
-        document.getElementById("footer-component");
+        document.getElementById(
+            "footer-component"
+        );
+
 
     if (footerContainer) {
 
         try {
 
             const response =
-                await fetch(`${basePath}components/footer_home.txt`);
+                await fetch(
+                    `${basePath}components/footer_home.txt`
+                );
+
 
             if (!response.ok) {
-                throw new Error("No se pudo cargar el footer.");
+
+                throw new Error(
+                    "No se pudo cargar el footer."
+                );
+
             }
+
 
             const html =
                 await response.text();
@@ -253,9 +480,9 @@ document.addEventListener("DOMContentLoaded", async () => {
             footerContainer.innerHTML = html;
 
 
-            /* =================================================
+            /* =============================================
                LOGO FOOTER
-            ================================================= */
+            ============================================= */
 
             const footerLogo =
                 footerContainer.querySelector(
@@ -271,12 +498,14 @@ document.addEventListener("DOMContentLoaded", async () => {
             }
 
 
-            /* =================================================
+            /* =============================================
                BOTÓN VOLVER ARRIBA
-            ================================================= */
+            ============================================= */
 
             const topButton =
-                footerContainer.querySelector(".footer__top");
+                footerContainer.querySelector(
+                    ".footer__top"
+                );
 
 
             if (topButton) {
@@ -284,7 +513,6 @@ document.addEventListener("DOMContentLoaded", async () => {
                 topButton.href = "#top";
 
             }
-
 
         } catch (error) {
 
@@ -300,34 +528,63 @@ document.addEventListener("DOMContentLoaded", async () => {
 });
 
 
-/* =====================================================
-   SISCAE - SIDEBAR ADMIN
-===================================================== */
+/* =========================================================
+   SISCAE - SISTEMA DE SIDEBARS
+========================================================= */
 
-async function loadAdminSidebar() {
+
+/* =========================================================
+   FUNCIÓN BASE
+========================================================= */
+
+async function loadSidebar(config) {
 
     const sidebarContainer =
-        document.getElementById("sidebar-component");
+        document.getElementById(
+            "sidebar-component"
+        );
+
 
     if (!sidebarContainer) {
         return;
     }
 
+
     try {
 
-        const response = await fetch(
-            "../components/sidebar_admin.txt"
-        );
+        /* =============================================
+           CARGAR COMPONENTE
+        ============================================= */
+
+        const response =
+            await fetch(
+                `../components/${config.file}`
+            );
+
 
         if (!response.ok) {
+
             throw new Error(
                 `No se pudo cargar el sidebar. Error ${response.status}`
             );
+
         }
 
-        const html = await response.text();
+
+        const html =
+            await response.text();
 
         sidebarContainer.innerHTML = html;
+
+
+        /* =============================================
+           SIDEBAR
+        ============================================= */
+
+        const sidebar =
+            sidebarContainer.querySelector(
+                "#sidebar"
+            );
 
 
         /* =============================================
@@ -335,11 +592,29 @@ async function loadAdminSidebar() {
         ============================================= */
 
         const sidebarLogo =
-            document.getElementById("sidebarLogo");
+            sidebarContainer.querySelector(
+                "#sidebarLogo"
+            );
+
+        const sidebarLogoLink =
+            sidebarContainer.querySelector(
+                "#sidebarLogoLink"
+            );
+
 
         if (sidebarLogo) {
+
             sidebarLogo.src =
                 "../assets/img/logo.png";
+
+        }
+
+
+        if (sidebarLogoLink) {
+
+            sidebarLogoLink.href =
+                config.home;
+
         }
 
 
@@ -352,8 +627,12 @@ async function loadAdminSidebar() {
                 "[data-page]"
             );
 
+
         sidebarLinks.forEach(link => {
-            link.href = link.dataset.page;
+
+            link.href =
+                link.dataset.page;
+
         });
 
 
@@ -366,6 +645,7 @@ async function loadAdminSidebar() {
                 .split("/")
                 .pop();
 
+
         sidebarLinks.forEach(link => {
 
             link.classList.toggle(
@@ -377,59 +657,131 @@ async function loadAdminSidebar() {
 
 
         /* =============================================
-           FUNCIONALIDAD MÓVIL
+           ELEMENTOS MÓVILES
         ============================================= */
 
-        const sidebar =
-            document.getElementById("sidebar");
-
         const menuButton =
-            document.getElementById("menuButton");
+            document.getElementById(
+                "menuButton"
+            );
 
         const mobileOverlay =
-            document.getElementById("mobileOverlay");
+            document.getElementById(
+                "mobileOverlay"
+            );
 
+
+        /* =============================================
+           ABRIR SIDEBAR
+        ============================================= */
 
         function openSidebar() {
 
-            if (!sidebar) return;
-
-            sidebar.classList.add("open");
-
-            if (mobileOverlay) {
-                mobileOverlay.classList.add("active");
+            if (!sidebar) {
+                return;
             }
 
-            document.body.classList.add("locked");
+            sidebar.classList.add(
+                "open"
+            );
+
+
+            if (mobileOverlay) {
+
+                mobileOverlay.classList.add(
+                    "active"
+                );
+
+            }
+
+
+            document.body.classList.add(
+                "locked"
+            );
+
         }
 
+
+        /* =============================================
+           CERRAR SIDEBAR
+        ============================================= */
 
         function closeSidebar() {
 
-            if (!sidebar) return;
-
-            sidebar.classList.remove("open");
-
-            if (mobileOverlay) {
-                mobileOverlay.classList.remove("active");
+            if (!sidebar) {
+                return;
             }
 
-            document.body.classList.remove("locked");
+
+            sidebar.classList.remove(
+                "open"
+            );
+
+
+            if (mobileOverlay) {
+
+                mobileOverlay.classList.remove(
+                    "active"
+                );
+
+            }
+
+
+            /*
+               No quitamos locked si hay un modal
+               o drawer abierto en la página.
+            */
+
+            const modalOpen =
+                document.querySelector(
+                    ".modal.active"
+                );
+
+            const drawerOpen =
+                document.querySelector(
+                    ".detail-drawer.active, .alert-drawer.active"
+                );
+
+
+            if (
+                !modalOpen &&
+                !drawerOpen
+            ) {
+
+                document.body.classList.remove(
+                    "locked"
+                );
+
+            }
+
         }
 
 
-        if (menuButton && sidebar) {
+        /* =============================================
+           BOTÓN MÓVIL
+        ============================================= */
+
+        if (
+            menuButton &&
+            sidebar
+        ) {
 
             menuButton.addEventListener(
                 "click",
                 () => {
 
                     if (
-                        sidebar.classList.contains("open")
+                        sidebar.classList.contains(
+                            "open"
+                        )
                     ) {
+
                         closeSidebar();
+
                     } else {
+
                         openSidebar();
+
                     }
 
                 }
@@ -437,6 +789,10 @@ async function loadAdminSidebar() {
 
         }
 
+
+        /* =============================================
+           OVERLAY
+        ============================================= */
 
         if (mobileOverlay) {
 
@@ -448,12 +804,15 @@ async function loadAdminSidebar() {
         }
 
 
-        /* CERRAR AL NAVEGAR EN MÓVIL */
+        /* =============================================
+           CERRAR AL NAVEGAR EN MÓVIL
+        ============================================= */
 
         const navItems =
             sidebarContainer.querySelectorAll(
-                ".nav-item"
+                ".sidebar-link, .sidebar-footer-link[data-page]"
             );
+
 
         navItems.forEach(item => {
 
@@ -464,7 +823,9 @@ async function loadAdminSidebar() {
                     if (
                         window.innerWidth <= 950
                     ) {
+
                         closeSidebar();
+
                     }
 
                 }
@@ -473,7 +834,9 @@ async function loadAdminSidebar() {
         });
 
 
-        /* ESC */
+        /* =============================================
+           ESCAPE
+        ============================================= */
 
         document.addEventListener(
             "keydown",
@@ -482,26 +845,38 @@ async function loadAdminSidebar() {
                 if (
                     event.key === "Escape" &&
                     sidebar &&
-                    sidebar.classList.contains("open") &&
+                    sidebar.classList.contains(
+                        "open"
+                    ) &&
                     window.innerWidth <= 950
                 ) {
+
                     closeSidebar();
+
                 }
 
             }
         );
 
 
-        /* RESIZE */
+        /* =============================================
+           RESIZE
+        ============================================= */
 
         window.addEventListener(
             "resize",
             () => {
 
                 if (
-                    window.innerWidth > 950
+                    window.innerWidth > 950 &&
+                    sidebar &&
+                    sidebar.classList.contains(
+                        "open"
+                    )
                 ) {
+
                     closeSidebar();
+
                 }
 
             }
@@ -509,13 +884,14 @@ async function loadAdminSidebar() {
 
 
         console.log(
-            "Sidebar cargado correctamente"
+            `${config.role} cargado correctamente`
         );
+
 
     } catch (error) {
 
         console.error(
-            "Error cargando sidebar:",
+            `Error cargando ${config.role}:`,
             error
         );
 
@@ -722,6 +1098,24 @@ async function loadSidebar(componentFile) {
         );
 
     }
+/* =========================================================
+   SIDEBAR ADMINISTRADOR
+========================================================= */
+
+async function loadAdminSidebar() {
+
+    await loadSidebar({
+
+        file:
+            "sidebar_admin.txt",
+
+        role:
+            "Sidebar Administrador",
+
+        home:
+            "dashboardAdmin.html"
+
+    });
 
 }
 
@@ -732,4 +1126,23 @@ async function loadSidebar(componentFile) {
 
 function loadRevisorSidebar() {
     return loadSidebar("sidebar_revisor.txt");
+/* =========================================================
+   SIDEBAR AUDITOR
+========================================================= */
+
+async function loadAuditorSidebar() {
+
+    await loadSidebar({
+
+        file:
+            "sidebar_auditor.txt",
+
+        role:
+            "Sidebar Auditor",
+
+        home:
+            "dashboardAuditor.html"
+
+    });
+
 }

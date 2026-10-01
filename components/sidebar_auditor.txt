@@ -1,0 +1,265 @@
+<!-- =====================================================
+     SIDEBAR SISCAE - AUDITOR
+====================================================== -->
+
+<aside class="sidebar sidebar-auditor" id="sidebar">
+
+    <!-- =================================================
+         LOGO
+    ================================================== -->
+
+    <div class="sidebar-logo">
+
+        <a
+            href="#"
+            class="sidebar-logo-link"
+            id="sidebarLogoLink"
+            aria-label="Ir al inicio del Auditor"
+        >
+            <img
+                src=""
+                alt="Ministerio de Educación"
+                id="sidebarLogo"
+            >
+        </a>
+
+    </div>
+
+
+    <!-- =================================================
+         NAVEGACIÓN
+    ================================================== -->
+
+    <nav
+        class="sidebar-nav"
+        aria-label="Navegación del Auditor"
+    >
+
+        <!-- GENERAL -->
+
+        <div class="sidebar-section">
+
+            <span class="sidebar-section-title">
+                GENERAL
+            </span>
+
+
+            <!-- Inicio -->
+
+            <a
+                href="#"
+                class="sidebar-link"
+                data-page="dashboardAuditor.html"
+            >
+
+                <span class="sidebar-link-icon">
+
+                    <svg
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                    >
+                        <path d="M3 11.5 12 4l9 7.5"></path>
+                        <path d="M5.5 10.5V20h13v-9.5"></path>
+                        <path d="M9.5 20v-6h5v6"></path>
+                    </svg>
+
+                </span>
+
+                <span class="sidebar-link-text">
+                    Inicio
+                </span>
+
+            </a>
+
+
+            <!-- Activos editoriales -->
+
+            <a
+                href="#"
+                class="sidebar-link"
+                data-page="activosAuditor.html"
+            >
+
+                <span class="sidebar-link-icon">
+
+                    <svg
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                    >
+                        <path d="M4 4h6l2 2h8v14H4z"></path>
+                        <path d="M4 9h16"></path>
+                    </svg>
+
+                </span>
+
+                <span class="sidebar-link-text">
+                    Activos editoriales
+                </span>
+
+            </a>
+
+        </div>
+
+
+        <!-- SUPERVISIÓN -->
+
+        <div class="sidebar-section">
+
+            <span class="sidebar-section-title">
+                SUPERVISIÓN
+            </span>
+
+
+            <!-- Auditoría -->
+
+            <a
+                href="#"
+                class="sidebar-link"
+                data-page="auditoriaAuditor.html"
+            >
+
+                <span class="sidebar-link-icon">
+
+                    <svg
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                    >
+                        <path d="M9 5H5v14h14v-4"></path>
+                        <path d="M13 5h6v6"></path>
+                        <path d="m19 5-8 8"></path>
+                        <path d="M8 16h5"></path>
+                    </svg>
+
+                </span>
+
+                <span class="sidebar-link-text">
+                    Auditoría
+                </span>
+
+            </a>
+
+
+            <!-- Alertas -->
+
+            <a
+                href="#"
+                class="sidebar-link"
+                data-page="alertasAuditor.html"
+            >
+
+                <span class="sidebar-link-icon">
+
+                    <svg
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                    >
+                        <path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9"></path>
+                        <path d="M10 21h4"></path>
+                    </svg>
+
+                </span>
+
+                <span class="sidebar-link-text">
+                    Alertas
+                </span>
+
+                <span
+                    class="sidebar-badge"
+                    id="sidebarAlertBadge"
+                >
+                    3
+                </span>
+
+            </a>
+
+        </div>
+
+    </nav>
+
+
+    <!-- =================================================
+         PERFIL DEL AUDITOR
+    ================================================== -->
+
+    <div class="sidebar-footer">
+
+        <div class="sidebar-user">
+
+            <div class="sidebar-user-avatar">
+                AU
+            </div>
+
+
+            <div class="sidebar-user-info">
+
+                <strong>
+                    Auditor
+                </strong>
+
+                <span>
+                    auditor@clases.edu.sv
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <!-- Configuración -->
+
+        <a
+            href="#"
+            class="sidebar-footer-link"
+            data-page="configuracionAuditor.html"
+        >
+
+            <span class="sidebar-footer-icon">
+
+                <svg
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                >
+                    <circle cx="12" cy="12" r="3"></circle>
+
+                    <path d="M19.4 15a1.7 1.7 0 0 0 .34 1.88l.06.06-2.83 2.83-.06-.06A1.7 1.7 0 0 0 15 19.4a1.7 1.7 0 0 0-1 .6 1.7 1.7 0 0 0-.4 1.1V21H9.6v-.1A1.7 1.7 0 0 0 8.5 19.4a1.7 1.7 0 0 0-1.88.34l-.06.06-2.83-2.83.06-.06A1.7 1.7 0 0 0 4.1 15a1.7 1.7 0 0 0-.6-1 1.7 1.7 0 0 0-1.1-.4H2v-4h.4A1.7 1.7 0 0 0 4.1 8.5a1.7 1.7 0 0 0-.34-1.88l-.06-.06 2.83-2.83.06.06A1.7 1.7 0 0 0 8.5 4.1a1.7 1.7 0 0 0 1-.6 1.7 1.7 0 0 0 .4-1.1V2h4v.4A1.7 1.7 0 0 0 15 4.1a1.7 1.7 0 0 0 1.88-.34l.06-.06 2.83 2.83-.06.06A1.7 1.7 0 0 0 19.4 8.5a1.7 1.7 0 0 0 .6 1 1.7 1.7 0 0 0 1.1.4h.4v4h-.4A1.7 1.7 0 0 0 19.4 15z"></path>
+                </svg>
+
+            </span>
+
+            <span>
+                Configuración
+            </span>
+
+        </a>
+
+
+        <!-- Cerrar sesión -->
+
+        <button
+            class="sidebar-footer-link sidebar-logout"
+            id="sidebarLogout"
+            type="button"
+        >
+
+            <span class="sidebar-footer-icon">
+
+                <svg
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                >
+                    <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                    <path d="m16 17 5-5-5-5"></path>
+                    <path d="M21 12H9"></path>
+                </svg>
+
+            </span>
+
+            <span>
+                Cerrar sesión
+            </span>
+
+        </button>
+
+    </div>
+
+</aside>

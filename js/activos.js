@@ -1,17 +1,9 @@
 document.addEventListener("DOMContentLoaded", () => {
 
+
     /* =====================================================
-       ELEMENTOS GENERALES
+       TOPBAR
     ====================================================== */
-
-    const sidebar =
-        document.getElementById("sidebar");
-
-    const menuButton =
-        document.getElementById("menuButton");
-
-    const mobileOverlay =
-        document.getElementById("mobileOverlay");
 
     const profile =
         document.getElementById("profile");
@@ -19,100 +11,18 @@ document.addEventListener("DOMContentLoaded", () => {
     const profileButton =
         document.getElementById("profileButton");
 
+    const profileLogout =
+        document.getElementById("profileLogout");
+
     const notificationButton =
         document.getElementById("notificationButton");
-
-
-    /* =====================================================
-       SIDEBAR MOBILE
-    ====================================================== */
-
-    function openSidebar() {
-
-        if (!sidebar) return;
-
-        sidebar.classList.add("open");
-
-        if (mobileOverlay) {
-            mobileOverlay.classList.add("active");
-        }
-
-        document.body.classList.add("locked");
-    }
-
-
-    function closeSidebar() {
-
-        if (!sidebar) return;
-
-        sidebar.classList.remove("open");
-
-        if (mobileOverlay) {
-            mobileOverlay.classList.remove("active");
-        }
-
-        document.body.classList.remove("locked");
-    }
-
-
-    if (menuButton) {
-
-        menuButton.addEventListener(
-            "click",
-            () => {
-
-                if (
-                    sidebar.classList.contains("open")
-                ) {
-                    closeSidebar();
-                } else {
-                    openSidebar();
-                }
-
-            }
-        );
-
-    }
-
-
-    if (mobileOverlay) {
-
-        mobileOverlay.addEventListener(
-            "click",
-            closeSidebar
-        );
-
-    }
-
-
-    document
-        .querySelectorAll(".sidebar-nav .nav-item")
-        .forEach((item) => {
-
-            item.addEventListener(
-                "click",
-                () => {
-
-                    if (
-                        window.innerWidth <= 950
-                    ) {
-                        closeSidebar();
-                    }
-
-                }
-            );
-
-        });
 
 
     /* =====================================================
        PERFIL
     ====================================================== */
 
-    if (
-        profile &&
-        profileButton
-    ) {
+    if (profile && profileButton) {
 
         profileButton.addEventListener(
             "click",
@@ -132,12 +42,14 @@ document.addEventListener("DOMContentLoaded", () => {
         "click",
         (event) => {
 
-            if (!profile) return;
+            if (!profile) {
+                return;
+            }
 
-            if (
-                !profile.contains(event.target)
-            ) {
+            if (!profile.contains(event.target)) {
+
                 profile.classList.remove("open");
+
             }
 
         }
@@ -164,7 +76,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /* =====================================================
-       FILTROS DE ACTIVOS
+       FILTROS
     ====================================================== */
 
     const searchInput =
@@ -191,7 +103,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function normalizeText(text) {
 
-        return text
+        return String(text || "")
             .toLowerCase()
             .normalize("NFD")
             .replace(
@@ -211,10 +123,12 @@ document.addEventListener("DOMContentLoaded", () => {
                     : ""
             );
 
+
         const selectedStatus =
             statusFilter
                 ? statusFilter.value
                 : "all";
+
 
         const selectedType =
             typeFilter
@@ -229,7 +143,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             const rowSearch =
                 normalizeText(
-                    row.dataset.search || ""
+                    row.dataset.search
                 );
 
             const rowStatus =
@@ -267,7 +181,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
             if (visible) {
+
                 visibleCount++;
+
             }
 
         });
@@ -283,19 +199,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (emptyState) {
 
-            if (visibleCount === 0) {
-
-                emptyState.classList.add(
-                    "active"
-                );
-
-            } else {
-
-                emptyState.classList.remove(
-                    "active"
-                );
-
-            }
+            emptyState.classList.toggle(
+                "active",
+                visibleCount === 0
+            );
 
         }
 
@@ -339,16 +246,25 @@ document.addEventListener("DOMContentLoaded", () => {
             () => {
 
                 if (searchInput) {
+
                     searchInput.value = "";
+
                 }
+
 
                 if (statusFilter) {
+
                     statusFilter.value = "all";
+
                 }
 
+
                 if (typeFilter) {
+
                     typeFilter.value = "all";
+
                 }
+
 
                 filterAssets();
 
@@ -359,7 +275,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /* =====================================================
-       MODAL NUEVO ACTIVO
+       MODAL REGISTRAR ACTIVO
     ====================================================== */
 
     const newAssetButton =
@@ -374,22 +290,28 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function openAssetModal() {
 
-        if (!assetModal) return;
+        if (!assetModal) {
+            return;
+        }
+
 
         assetModal.classList.add("active");
 
-        document.body.classList.add("locked");
+        updateBodyLock();
 
     }
 
 
     function closeAssetModal() {
 
-        if (!assetModal) return;
+        if (!assetModal) {
+            return;
+        }
+
 
         assetModal.classList.remove("active");
 
-        document.body.classList.remove("locked");
+        updateBodyLock();
 
     }
 
@@ -426,10 +348,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 event.preventDefault();
 
+
                 /*
-                   En el prototipo simulamos
-                   el registro del activo.
+                   PROTOTIPO:
+                   El registro se simula.
+                   Posteriormente se conectará
+                   con el backend correspondiente.
                 */
+
 
                 assetForm.reset();
 
@@ -442,7 +368,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /* =====================================================
-       MODAL DETALLE ACTIVO
+       MODAL DETALLE
     ====================================================== */
 
     const detailModal =
@@ -459,7 +385,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function openDetailModal(assetName) {
 
-        if (!detailModal) return;
+        if (!detailModal) {
+            return;
+        }
+
 
         if (detailAssetName) {
 
@@ -468,20 +397,24 @@ document.addEventListener("DOMContentLoaded", () => {
 
         }
 
+
         detailModal.classList.add("active");
 
-        document.body.classList.add("locked");
+        updateBodyLock();
 
     }
 
 
     function closeDetailModal() {
 
-        if (!detailModal) return;
+        if (!detailModal) {
+            return;
+        }
+
 
         detailModal.classList.remove("active");
 
-        document.body.classList.remove("locked");
+        updateBodyLock();
 
     }
 
@@ -517,17 +450,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /* =====================================================
-       CERRAR SESIÓN
+       MODAL CERRAR SESIÓN
     ====================================================== */
 
     const logoutModal =
         document.getElementById("logoutModal");
-
-    const sidebarLogout =
-        document.getElementById("sidebarLogout");
-
-    const profileLogout =
-        document.getElementById("profileLogout");
 
     const confirmLogout =
         document.getElementById("confirmLogout");
@@ -535,39 +462,43 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function openLogoutModal() {
 
-        if (!logoutModal) return;
+        if (!logoutModal) {
+            return;
+        }
+
 
         logoutModal.classList.add("active");
 
-        document.body.classList.add("locked");
 
         if (profile) {
+
             profile.classList.remove("open");
+
         }
+
+
+        updateBodyLock();
 
     }
 
 
     function closeLogoutModal() {
 
-        if (!logoutModal) return;
+        if (!logoutModal) {
+            return;
+        }
+
 
         logoutModal.classList.remove("active");
 
-        document.body.classList.remove("locked");
+        updateBodyLock();
 
     }
 
 
-    if (sidebarLogout) {
-
-        sidebarLogout.addEventListener(
-            "click",
-            openLogoutModal
-        );
-
-    }
-
+    /* =====================================================
+       LOGOUT DESDE PERFIL
+    ====================================================== */
 
     if (profileLogout) {
 
@@ -578,6 +509,38 @@ document.addEventListener("DOMContentLoaded", () => {
 
     }
 
+
+    /* =====================================================
+       LOGOUT DESDE SIDEBAR
+       El sidebar se carga dinámicamente.
+    ====================================================== */
+
+    document.addEventListener(
+        "click",
+        (event) => {
+
+            const sidebarLogout =
+                event.target.closest(
+                    "#sidebarLogout"
+                );
+
+
+            if (!sidebarLogout) {
+                return;
+            }
+
+
+            event.preventDefault();
+
+            openLogoutModal();
+
+        }
+    );
+
+
+    /* =====================================================
+       CERRAR MODAL LOGOUT
+    ====================================================== */
 
     document
         .querySelectorAll(
@@ -592,6 +555,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
         });
 
+
+    /* =====================================================
+       CONFIRMAR LOGOUT
+    ====================================================== */
 
     if (confirmLogout) {
 
@@ -609,7 +576,44 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /* =====================================================
-       ESCAPE
+       CONTROL DE SCROLL
+    ====================================================== */
+
+    function updateBodyLock() {
+
+        const modalOpen =
+            document.querySelector(
+                ".modal.active"
+            );
+
+
+        const sidebarOpen =
+            document.querySelector(
+                "#sidebar.open"
+            );
+
+
+        if (modalOpen || sidebarOpen) {
+
+            document.body.classList.add(
+                "locked"
+            );
+
+        } else {
+
+            document.body.classList.remove(
+                "locked"
+            );
+
+        }
+
+    }
+
+
+    /* =====================================================
+       TECLA ESCAPE
+       Solo controla elementos propios de Activos.
+       El sidebar lo controla components.js.
     ====================================================== */
 
     document.addEventListener(
@@ -627,7 +631,9 @@ document.addEventListener("DOMContentLoaded", () => {
                     "active"
                 )
             ) {
+
                 closeAssetModal();
+
             }
 
 
@@ -637,7 +643,9 @@ document.addEventListener("DOMContentLoaded", () => {
                     "active"
                 )
             ) {
+
                 closeDetailModal();
+
             }
 
 
@@ -647,7 +655,9 @@ document.addEventListener("DOMContentLoaded", () => {
                     "active"
                 )
             ) {
+
                 closeLogoutModal();
+
             }
 
 
@@ -657,18 +667,11 @@ document.addEventListener("DOMContentLoaded", () => {
                     "open"
                 )
             ) {
-                profile.classList.remove("open");
-            }
 
-
-            if (
-                sidebar &&
-                sidebar.classList.contains(
+                profile.classList.remove(
                     "open"
-                ) &&
-                window.innerWidth <= 950
-            ) {
-                closeSidebar();
+                );
+
             }
 
         }
@@ -676,27 +679,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /* =====================================================
-       RESIZE
-    ====================================================== */
-
-    window.addEventListener(
-        "resize",
-        () => {
-
-            if (
-                window.innerWidth > 950
-            ) {
-                closeSidebar();
-            }
-
-        }
-    );
-
-
-    /* =====================================================
-       INICIALIZAR
+       INICIALIZACIÓN
     ====================================================== */
 
     filterAssets();
+
 
 });

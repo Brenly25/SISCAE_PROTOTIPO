@@ -1,5 +1,5 @@
 /* =========================================================
-   SISCAE - COMPONENTE SIDEBAR ADMIN
+   SISCAE - SIDEBAR
 ========================================================= */
 
 :root {
@@ -214,7 +214,7 @@
 
 
 /* =========================================================
-   CONTADOR
+   CONTADOR DE OBSERVACIONES
 ========================================================= */
 
 .nav-count {
@@ -300,8 +300,15 @@
 .sidebar-user-info strong {
     display: block;
 
+    overflow: hidden;
+
+    color: var(--white);
+
     font-size: 9px;
     font-weight: var(--font-medium);
+
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 
@@ -310,10 +317,15 @@
 
     margin-top: 2px;
 
+    overflow: hidden;
+
     color:
         rgba(255, 255, 255, 0.52);
 
     font-size: 7px;
+
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 
@@ -360,6 +372,34 @@
     stroke-width: 1.55;
     stroke-linecap: round;
     stroke-linejoin: round;
+}
+
+
+/* =========================================================
+   SCROLL DEL SIDEBAR
+========================================================= */
+
+.sidebar-nav::-webkit-scrollbar {
+    width: 4px;
+}
+
+
+.sidebar-nav::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+
+.sidebar-nav::-webkit-scrollbar-thumb {
+    background:
+        rgba(255, 255, 255, 0.14);
+
+    border-radius: 10px;
+}
+
+
+.sidebar-nav::-webkit-scrollbar-thumb:hover {
+    background:
+        rgba(255, 255, 255, 0.22);
 }
 
 
@@ -427,5 +467,3 @@
     }
 
 }
-
-

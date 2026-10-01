@@ -1098,6 +1098,8 @@ async function loadSidebar(componentFile) {
         );
 
     }
+}
+
 /* =========================================================
    SIDEBAR ADMINISTRADOR
 ========================================================= */
@@ -1129,6 +1131,7 @@ function loadRevisorSidebar() {
 /* =========================================================
    SIDEBAR AUDITOR
 ========================================================= */
+}
 
 async function loadAuditorSidebar() {
 

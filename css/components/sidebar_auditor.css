@@ -1,25 +1,28 @@
 /* =========================================================
-   SISCAE - SIDEBAR AUDITOR
+   SISCAE - SIDEBAR
 ========================================================= */
+
+:root {
+    --sidebar-width: 250px;
+}
 
 
 /* =========================================================
    SIDEBAR
 ========================================================= */
 
-.sidebar-auditor {
-    width: 250px;
+.sidebar {
+    width: var(--sidebar-width);
     height: 100vh;
 
     position: fixed;
     top: 0;
     left: 0;
+
     z-index: 1000;
 
     display: flex;
     flex-direction: column;
-
-    overflow: hidden;
 
     color: var(--white);
 
@@ -33,9 +36,6 @@
 
     border-right:
         1px solid rgba(255, 255, 255, 0.08);
-
-    box-shadow:
-        7px 0 24px rgba(6, 36, 106, 0.10);
 }
 
 
@@ -43,13 +43,13 @@
    LOGO
 ========================================================= */
 
-.sidebar-auditor .sidebar-logo {
-    min-height: 105px;
-    padding: 20px 22px;
+.sidebar-logo {
+    height: 105px;
+
+    padding: 18px 22px;
 
     display: flex;
     align-items: center;
-    justify-content: center;
 
     flex-shrink: 0;
 
@@ -57,22 +57,13 @@
         1px solid rgba(255, 255, 255, 0.10);
 }
 
-.sidebar-auditor .sidebar-logo-link {
-    width: 100%;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.sidebar-auditor .sidebar-logo img {
-    display: block;
-
-    width: auto;
-    max-width: 185px;
-    max-height: 61px;
+.sidebar-logo img {
+    width: 160px;
+    max-height: 65px;
 
     object-fit: contain;
+    object-position: left center;
 }
 
 
@@ -80,78 +71,85 @@
    NAVEGACIÓN
 ========================================================= */
 
-.sidebar-auditor .sidebar-nav {
+.sidebar-nav {
     flex: 1;
 
-    padding: 20px 13px;
+    min-height: 0;
+
+    padding: 20px 12px 17px;
 
     overflow-y: auto;
     overflow-x: hidden;
 }
 
-.sidebar-auditor .sidebar-section {
-    margin-bottom: 25px;
-}
 
-.sidebar-auditor .sidebar-section:last-child {
-    margin-bottom: 0;
-}
-
-.sidebar-auditor .sidebar-section-title {
+.nav-title {
     display: block;
 
-    margin: 0 13px 9px;
+    margin: 9px 10px 7px;
 
-    color: rgba(255, 255, 255, 0.50);
+    color:
+        rgba(255, 255, 255, 0.40);
 
-    font-size: 9px;
-    font-weight: var(--font-bold);
-    letter-spacing: 1.25px;
+    font-size: 8px;
+    font-weight: var(--font-medium);
+
+    letter-spacing: 1.3px;
+}
+
+
+.nav-title-space {
+    margin-top: 22px;
 }
 
 
 /* =========================================================
-   ENLACES
+   OPCIONES
 ========================================================= */
 
-.sidebar-auditor .sidebar-link {
+.nav-item {
+    min-height: 44px;
+
     position: relative;
 
-    width: 100%;
-    min-height: 45px;
-    padding: 0 13px;
+    padding: 0 11px;
 
     display: flex;
     align-items: center;
+
     gap: 12px;
 
-    border: 1px solid transparent;
-    border-radius: 5px;
+    color:
+        rgba(255, 255, 255, 0.78);
 
-    color: rgba(255, 255, 255, 0.78);
+    border-radius: var(--radius-small);
 
-    text-decoration: none;
+    font-size: 11px;
 
     transition:
-        color var(--transition-fast),
         background var(--transition-fast),
-        border-color var(--transition-fast),
-        transform var(--transition-fast);
+        color var(--transition-fast);
 }
 
-.sidebar-auditor .sidebar-link:hover {
+
+.nav-item + .nav-item {
+    margin-top: 2px;
+}
+
+
+.nav-item:hover {
     color: var(--white);
 
     background:
-        rgba(255, 255, 255, 0.075);
-
-    border-color:
-        rgba(255, 255, 255, 0.055);
-
-    transform: translateX(2px);
+        rgba(255, 255, 255, 0.08);
 }
 
-.sidebar-auditor .sidebar-link.active {
+
+/* =========================================================
+   OPCIÓN ACTIVA
+========================================================= */
+
+.nav-item.active {
     color: var(--white);
 
     background:
@@ -160,27 +158,29 @@
             rgba(255, 255, 255, 0.15),
             rgba(255, 255, 255, 0.07)
         );
-
-    border-color:
-        rgba(255, 255, 255, 0.11);
-
-    box-shadow:
-        inset 0 0 0 1px rgba(255, 255, 255, 0.025);
 }
 
-.sidebar-auditor .sidebar-link.active::before {
+
+.nav-item.active::before {
     content: "";
 
-    position: absolute;
-    top: 9px;
-    bottom: 9px;
-    left: -13px;
-
     width: 3px;
+    height: 25px;
 
-    border-radius: 0 3px 3px 0;
+    position: absolute;
+
+    left: -12px;
+    top: 50%;
+
+    transform: translateY(-50%);
 
     background: var(--yellow);
+
+    border-radius:
+        0
+        3px
+        3px
+        0;
 }
 
 
@@ -188,280 +188,144 @@
    ICONOS
 ========================================================= */
 
-.sidebar-auditor .sidebar-link-icon,
-.sidebar-auditor .sidebar-footer-icon {
-    width: 21px;
-    height: 21px;
-
-    flex: 0 0 21px;
-
-    display: grid;
-    place-items: center;
-
-    color: rgba(255, 255, 255, 0.72);
-}
-
-.sidebar-auditor .sidebar-link:hover .sidebar-link-icon,
-.sidebar-auditor .sidebar-link.active .sidebar-link-icon {
-    color: var(--white);
-}
-
-.sidebar-auditor .sidebar-link-icon svg,
-.sidebar-auditor .sidebar-footer-icon svg {
+.nav-icon {
     width: 19px;
     height: 19px;
 
-    display: block;
-
-    fill: none !important;
-    stroke: currentColor !important;
-    stroke-width: 1.7;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-}
-
-.sidebar-auditor .sidebar-link-icon svg path,
-.sidebar-auditor .sidebar-link-icon svg circle,
-.sidebar-auditor .sidebar-link-icon svg rect,
-.sidebar-auditor .sidebar-link-icon svg line,
-.sidebar-auditor .sidebar-link-icon svg polyline,
-.sidebar-auditor .sidebar-footer-icon svg path,
-.sidebar-auditor .sidebar-footer-icon svg circle,
-.sidebar-auditor .sidebar-footer-icon svg rect,
-.sidebar-auditor .sidebar-footer-icon svg line,
-.sidebar-auditor .sidebar-footer-icon svg polyline {
-    fill: none !important;
-    stroke: currentColor !important;
-}
-
-
-/* =========================================================
-   TEXTO DE NAVEGACIÓN
-========================================================= */
-
-.sidebar-auditor .sidebar-link-text {
-    flex: 1;
-
-    min-width: 0;
-
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-
-    font-size: 12px;
-    font-weight: var(--font-regular);
-}
-
-.sidebar-auditor .sidebar-link.active .sidebar-link-text {
-    font-weight: var(--font-medium);
-}
-
-
-/* =========================================================
-   CONTADOR DE ALERTAS
-========================================================= */
-
-.sidebar-auditor .sidebar-badge {
-    min-width: 20px;
-    height: 20px;
-    padding: 0 6px;
-
-    display: inline-flex;
+    display: flex;
     align-items: center;
     justify-content: center;
 
     flex-shrink: 0;
+}
 
-    border:
-        1px solid rgba(255, 255, 255, 0.18);
 
-    border-radius: 10px;
+.nav-icon svg {
+    width: 18px;
+    height: 18px;
 
-    background:
-        rgba(255, 255, 255, 0.14);
+    fill: none;
+    stroke: currentColor;
 
-    color: var(--white);
+    stroke-width: 1.55;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
 
-    font-size: 9px;
+
+/* =========================================================
+   CONTADOR DE OBSERVACIONES
+========================================================= */
+
+.nav-count {
+    min-width: 20px;
+    height: 20px;
+
+    margin-left: auto;
+    padding: 0 6px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: var(--blue-dark);
+    background: var(--yellow);
+
+    border-radius: 20px;
+
+    font-size: 8px;
     font-weight: var(--font-bold);
 }
 
-.sidebar-auditor .sidebar-link.active .sidebar-badge {
-    border-color:
-        rgba(244, 196, 48, 0.35);
-
-    background:
-        rgba(244, 196, 48, 0.16);
-
-    color: #FFE681;
-}
-
 
 /* =========================================================
-   SCROLL DEL SIDEBAR
+   FOOTER DEL SIDEBAR
 ========================================================= */
 
-.sidebar-auditor .sidebar-nav::-webkit-scrollbar {
-    width: 4px;
-}
-
-.sidebar-auditor .sidebar-nav::-webkit-scrollbar-track {
-    background: transparent;
-}
-
-.sidebar-auditor .sidebar-nav::-webkit-scrollbar-thumb {
-    border-radius: 10px;
-
-    background:
-        rgba(255, 255, 255, 0.15);
-}
-
-.sidebar-auditor .sidebar-nav::-webkit-scrollbar-thumb:hover {
-    background:
-        rgba(255, 255, 255, 0.25);
-}
-
-
-/* =========================================================
-   FOOTER
-========================================================= */
-
-.sidebar-auditor .sidebar-footer {
-    padding: 14px 13px 16px;
+.sidebar-footer {
+    padding: 13px;
 
     flex-shrink: 0;
 
     border-top:
         1px solid rgba(255, 255, 255, 0.10);
+}
 
-    background:
-        rgba(4, 25, 77, 0.14);
+
+.sidebar-user {
+    padding: 8px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 9px;
 }
 
 
 /* =========================================================
-   USUARIO
+   AVATAR
 ========================================================= */
 
-.sidebar-auditor .sidebar-user {
-    margin-bottom: 12px;
-    padding: 10px 9px 13px;
+.sidebar-avatar {
+    width: 34px;
+    height: 34px;
 
     display: flex;
     align-items: center;
-    gap: 10px;
+    justify-content: center;
 
-    border-bottom:
-        1px solid rgba(255, 255, 255, 0.08);
-}
+    flex-shrink: 0;
 
-.sidebar-auditor .sidebar-user-avatar {
-    width: 37px;
-    height: 37px;
-
-    flex: 0 0 37px;
-
-    display: grid;
-    place-items: center;
-
-    border:
-        1px solid rgba(255, 255, 255, 0.20);
+    color: var(--blue-dark);
+    background: var(--white);
 
     border-radius: 50%;
 
-    background:
-        rgba(255, 255, 255, 0.12);
-
-    color: var(--white);
-
-    font-size: 10px;
+    font-size: 9px;
     font-weight: var(--font-bold);
-    letter-spacing: 0.4px;
 }
 
-.sidebar-auditor .sidebar-user-info {
+
+/* =========================================================
+   INFORMACIÓN DEL USUARIO
+========================================================= */
+
+.sidebar-user-info {
     min-width: 0;
 
     flex: 1;
 }
 
-.sidebar-auditor .sidebar-user-info strong,
-.sidebar-auditor .sidebar-user-info span {
-    display: block;
-}
 
-.sidebar-auditor .sidebar-user-info strong {
+.sidebar-user-info strong {
+    display: block;
+
+    overflow: hidden;
+
     color: var(--white);
 
-    font-size: 11px;
+    font-size: 9px;
     font-weight: var(--font-medium);
+
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
-.sidebar-auditor .sidebar-user-info span {
-    margin-top: 4px;
+
+.sidebar-user-info span {
+    display: block;
+
+    margin-top: 2px;
 
     overflow: hidden;
 
     color:
-        rgba(255, 255, 255, 0.55);
+        rgba(255, 255, 255, 0.52);
+
+    font-size: 7px;
 
     text-overflow: ellipsis;
     white-space: nowrap;
-
-    font-size: 9px;
-}
-
-
-/* =========================================================
-   ENLACES DEL FOOTER
-========================================================= */
-
-.sidebar-auditor .sidebar-footer-link {
-    width: 100%;
-    min-height: 40px;
-    padding: 0 10px;
-
-    display: flex;
-    align-items: center;
-    gap: 11px;
-
-    border: 1px solid transparent;
-    border-radius: 5px;
-
-    background: transparent;
-
-    color:
-        rgba(255, 255, 255, 0.68);
-
-    text-align: left;
-    text-decoration: none;
-
-    font-size: 11px;
-
-    transition:
-        color var(--transition-fast),
-        background var(--transition-fast),
-        border-color var(--transition-fast);
-}
-
-.sidebar-auditor .sidebar-footer-link:hover {
-    border-color:
-        rgba(255, 255, 255, 0.06);
-
-    background:
-        rgba(255, 255, 255, 0.07);
-
-    color: var(--white);
-}
-
-.sidebar-auditor .sidebar-footer-link:hover
-.sidebar-footer-icon {
-    color: var(--white);
-}
-
-.sidebar-auditor .sidebar-footer-icon {
-    color:
-        rgba(255, 255, 255, 0.62);
 }
 
 
@@ -469,113 +333,137 @@
    CERRAR SESIÓN
 ========================================================= */
 
-.sidebar-auditor .sidebar-logout {
-    margin-top: 2px;
+.logout-icon {
+    width: 31px;
+    height: 31px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    color:
+        rgba(255, 255, 255, 0.65);
+
+    background: transparent;
+
+    border: 0;
 
     cursor: pointer;
+
+    transition:
+        color var(--transition-fast);
 }
 
-.sidebar-auditor .sidebar-logout:hover {
-    border-color:
-        rgba(255, 255, 255, 0.06);
 
-    background:
-        rgba(255, 255, 255, 0.07);
-
+.logout-icon:hover {
     color: var(--white);
 }
 
 
-/* =========================================================
-   ESTADO DE FOCO
-========================================================= */
+.logout-icon svg {
+    width: 16px;
+    height: 16px;
 
-.sidebar-auditor .sidebar-link:focus-visible,
-.sidebar-auditor .sidebar-footer-link:focus-visible,
-.sidebar-auditor .sidebar-logo-link:focus-visible {
-    outline:
-        2px solid rgba(244, 196, 48, 0.90);
+    fill: none;
+    stroke: currentColor;
 
-    outline-offset: 2px;
+    stroke-width: 1.55;
+    stroke-linecap: round;
+    stroke-linejoin: round;
 }
 
 
 /* =========================================================
-   RESPONSIVE
+   SCROLL DEL SIDEBAR
+========================================================= */
+
+.sidebar-nav::-webkit-scrollbar {
+    width: 4px;
+}
+
+
+.sidebar-nav::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+
+.sidebar-nav::-webkit-scrollbar-thumb {
+    background:
+        rgba(255, 255, 255, 0.14);
+
+    border-radius: 10px;
+}
+
+
+.sidebar-nav::-webkit-scrollbar-thumb:hover {
+    background:
+        rgba(255, 255, 255, 0.22);
+}
+
+
+/* =========================================================
+   OVERLAY MÓVIL
+========================================================= */
+
+.mobile-overlay {
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 900;
+
+    display: none;
+
+    background:
+        rgba(4, 17, 46, 0.55);
+}
+
+
+.mobile-overlay.active {
+    display: block;
+}
+
+
+/* =========================================================
+   RESPONSIVE - TABLET
 ========================================================= */
 
 @media (max-width: 950px) {
 
-    .sidebar-auditor {
+    .sidebar {
         transform: translateX(-100%);
 
         transition:
-            transform 0.28s ease;
+            transform var(--transition-normal);
     }
 
-    .sidebar-auditor.open {
+
+    .sidebar.open {
         transform: translateX(0);
-
-        box-shadow:
-            14px 0 40px rgba(4, 17, 46, 0.25);
     }
 
 }
 
 
 /* =========================================================
-   PANTALLAS BAJAS
+   RESPONSIVE - MÓVIL
 ========================================================= */
 
-@media (max-height: 700px) {
+@media (max-width: 600px) {
 
-    .sidebar-auditor .sidebar-logo {
-        min-height: 82px;
-        padding-top: 13px;
-        padding-bottom: 13px;
+    :root {
+        --sidebar-width: 275px;
     }
 
-    .sidebar-auditor .sidebar-logo img {
-        max-height: 50px;
-    }
 
-    .sidebar-auditor .sidebar-nav {
-        padding-top: 15px;
-        padding-bottom: 15px;
-    }
-
-    .sidebar-auditor .sidebar-section {
-        margin-bottom: 18px;
-    }
-
-    .sidebar-auditor .sidebar-link {
-        min-height: 41px;
-    }
-
-    .sidebar-auditor .sidebar-footer {
-        padding-top: 10px;
-        padding-bottom: 11px;
-    }
-
-    .sidebar-auditor .sidebar-user {
-        padding-top: 7px;
-        padding-bottom: 9px;
-        margin-bottom: 8px;
-    }
-
-}
-
-
-/* =========================================================
-   MOVIMIENTO REDUCIDO
-========================================================= */
-
-@media (prefers-reduced-motion: reduce) {
-
-    .sidebar-auditor,
-    .sidebar-auditor .sidebar-link,
-    .sidebar-auditor .sidebar-footer-link {
-        transition: none;
+    .sidebar {
+        width:
+            min(
+                var(--sidebar-width),
+                88vw
+            );
     }
 
 }

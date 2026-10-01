@@ -2,7 +2,7 @@
      SIDEBAR SISCAE - AUDITOR
 ====================================================== -->
 
-<aside class="sidebar sidebar-auditor" id="sidebar">
+<aside class="sidebar" id="sidebar">
 
     <!-- =================================================
          LOGO
@@ -10,18 +10,11 @@
 
     <div class="sidebar-logo">
 
-        <a
-            href="#"
-            class="sidebar-logo-link"
-            id="sidebarLogoLink"
-            aria-label="Ir al inicio del Auditor"
+        <img
+            src=""
+            alt="Ministerio de Educación"
+            id="sidebarLogo"
         >
-            <img
-                src=""
-                alt="Ministerio de Educación"
-                id="sidebarLogo"
-            >
-        </a>
 
     </div>
 
@@ -30,165 +23,227 @@
          NAVEGACIÓN
     ================================================== -->
 
-    <nav
-        class="sidebar-nav"
-        aria-label="Navegación del Auditor"
-    >
-
-        <!-- GENERAL -->
-
-        <div class="sidebar-section">
-
-            <span class="sidebar-section-title">
-                GENERAL
-            </span>
+    <nav class="sidebar-nav">
 
 
-            <!-- Inicio -->
+        <!-- ================= GENERAL ================= -->
 
-            <a
-                href="#"
-                class="sidebar-link"
-                data-page="dashboardAuditor.html"
-            >
-
-                <span class="sidebar-link-icon">
-
-                    <svg
-                        viewBox="0 0 24 24"
-                        aria-hidden="true"
-                    >
-                        <path d="M3 11.5 12 4l9 7.5"></path>
-                        <path d="M5.5 10.5V20h13v-9.5"></path>
-                        <path d="M9.5 20v-6h5v6"></path>
-                    </svg>
-
-                </span>
-
-                <span class="sidebar-link-text">
-                    Inicio
-                </span>
-
-            </a>
+        <span class="nav-title">
+            GENERAL
+        </span>
 
 
-            <!-- Activos editoriales -->
+        <!-- INICIO -->
 
-            <a
-                href="#"
-                class="sidebar-link"
-                data-page="activosAuditor.html"
-            >
+        <a
+            href=""
+            class="nav-item"
+            data-page="dashboardAuditor.html"
+        >
 
-                <span class="sidebar-link-icon">
+            <span class="nav-icon">
 
-                    <svg
-                        viewBox="0 0 24 24"
-                        aria-hidden="true"
-                    >
-                        <path d="M4 4h6l2 2h8v14H4z"></path>
-                        <path d="M4 9h16"></path>
-                    </svg>
-
-                </span>
-
-                <span class="sidebar-link-text">
-                    Activos editoriales
-                </span>
-
-            </a>
-
-        </div>
-
-
-        <!-- SUPERVISIÓN -->
-
-        <div class="sidebar-section">
-
-            <span class="sidebar-section-title">
-                SUPERVISIÓN
-            </span>
-
-
-            <!-- Auditoría -->
-
-            <a
-                href="#"
-                class="sidebar-link"
-                data-page="auditoriaAuditor.html"
-            >
-
-                <span class="sidebar-link-icon">
-
-                    <svg
-                        viewBox="0 0 24 24"
-                        aria-hidden="true"
-                    >
-                        <path d="M9 5H5v14h14v-4"></path>
-                        <path d="M13 5h6v6"></path>
-                        <path d="m19 5-8 8"></path>
-                        <path d="M8 16h5"></path>
-                    </svg>
-
-                </span>
-
-                <span class="sidebar-link-text">
-                    Auditoría
-                </span>
-
-            </a>
-
-
-            <!-- Alertas -->
-
-            <a
-                href="#"
-                class="sidebar-link"
-                data-page="alertasAuditor.html"
-            >
-
-                <span class="sidebar-link-icon">
-
-                    <svg
-                        viewBox="0 0 24 24"
-                        aria-hidden="true"
-                    >
-                        <path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9"></path>
-                        <path d="M10 21h4"></path>
-                    </svg>
-
-                </span>
-
-                <span class="sidebar-link-text">
-                    Alertas
-                </span>
-
-                <span
-                    class="sidebar-badge"
-                    id="sidebarAlertBadge"
+                <svg
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
                 >
-                    3
-                </span>
+                    <rect x="3" y="3" width="7" height="7"></rect>
+                    <rect x="14" y="3" width="7" height="7"></rect>
+                    <rect x="3" y="14" width="7" height="7"></rect>
+                    <rect x="14" y="14" width="7" height="7"></rect>
+                </svg>
 
-            </a>
+            </span>
 
-        </div>
+            <span>
+                Inicio
+            </span>
+
+        </a>
+
+
+        <!-- ================= REVISOR / AUDITOR ================= -->
+
+        <span class="nav-title nav-title-space">
+            REVISOR / AUDITOR
+        </span>
+
+
+        <!-- REVISIÓN -->
+
+        <a
+            href=""
+            class="nav-item"
+            data-page="revisionAuditor.html"
+        >
+
+            <span class="nav-icon">
+
+                <svg
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                >
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                    <polyline points="14 2 14 8 20 8"></polyline>
+                    <polyline points="9 15 11 17 15 13"></polyline>
+                </svg>
+
+            </span>
+
+            <span>
+                Revisión
+            </span>
+
+        </a>
+
+
+        <!-- OBSERVACIONES -->
+
+        <a
+            href=""
+            class="nav-item"
+            data-page="observacionesAuditor.html"
+        >
+
+            <span class="nav-icon">
+
+                <svg
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                >
+                    <path d="M21 15a4 4 0 0 1-4 4H8l-5 3V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4z"></path>
+                    <line x1="8" y1="9" x2="16" y2="9"></line>
+                    <line x1="8" y1="13" x2="13" y2="13"></line>
+                </svg>
+
+            </span>
+
+            <span>
+                Observaciones
+            </span>
+
+        </a>
+
+
+        <!-- APROBACIÓN -->
+
+        <a
+            href=""
+            class="nav-item"
+            data-page="aprobacionAuditor.html"
+        >
+
+            <span class="nav-icon">
+
+                <svg
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                >
+                    <path d="M12 3l7 3v5c0 4.6-2.8 8.1-7 10-4.2-1.9-7-5.4-7-10V6l7-3z"></path>
+                    <polyline points="9 12 11 14 15 10"></polyline>
+                </svg>
+
+            </span>
+
+            <span>
+                Aprobación
+            </span>
+
+        </a>
+
+
+        <!-- AUDITORÍA -->
+
+        <a
+            href=""
+            class="nav-item"
+            data-page="auditoriaAuditor.html"
+        >
+
+            <span class="nav-icon">
+
+                <svg
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                >
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+
+                    <polyline points="14 2 14 8 20 8"></polyline>
+
+                    <line
+                        x1="8"
+                        y1="13"
+                        x2="16"
+                        y2="13"
+                    ></line>
+
+                    <line
+                        x1="8"
+                        y1="17"
+                        x2="16"
+                        y2="17"
+                    ></line>
+                </svg>
+
+            </span>
+
+            <span>
+                Auditoría
+            </span>
+
+        </a>
+
+
+        <!-- ALERTAS -->
+
+        <a
+            href=""
+            class="nav-item"
+            data-page="alertasAuditor.html"
+        >
+
+            <span class="nav-icon">
+
+                <svg
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                >
+                    <path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9"></path>
+                    <path d="M10 21h4"></path>
+                </svg>
+
+            </span>
+
+            <span>
+                Alertas
+            </span>
+
+            <span class="nav-count">
+                3
+            </span>
+
+        </a>
 
     </nav>
 
 
     <!-- =================================================
-         PERFIL DEL AUDITOR
+         USUARIO
     ================================================== -->
 
     <div class="sidebar-footer">
 
         <div class="sidebar-user">
 
-            <div class="sidebar-user-avatar">
+
+            <!-- AVATAR -->
+
+            <div class="sidebar-avatar">
                 AU
             </div>
 
+
+            <!-- INFORMACIÓN -->
 
             <div class="sidebar-user-info">
 
@@ -197,69 +252,53 @@
                 </strong>
 
                 <span>
-                    auditor@clases.edu.sv
+                    Cuenta institucional
                 </span>
 
             </div>
 
-        </div>
 
+            <!-- CERRAR SESIÓN -->
 
-        <!-- Configuración -->
-
-        <a
-            href="#"
-            class="sidebar-footer-link"
-            data-page="configuracionAuditor.html"
-        >
-
-            <span class="sidebar-footer-icon">
-
-                <svg
-                    viewBox="0 0 24 24"
-                    aria-hidden="true"
-                >
-                    <circle cx="12" cy="12" r="3"></circle>
-
-                    <path d="M19.4 15a1.7 1.7 0 0 0 .34 1.88l.06.06-2.83 2.83-.06-.06A1.7 1.7 0 0 0 15 19.4a1.7 1.7 0 0 0-1 .6 1.7 1.7 0 0 0-.4 1.1V21H9.6v-.1A1.7 1.7 0 0 0 8.5 19.4a1.7 1.7 0 0 0-1.88.34l-.06.06-2.83-2.83.06-.06A1.7 1.7 0 0 0 4.1 15a1.7 1.7 0 0 0-.6-1 1.7 1.7 0 0 0-1.1-.4H2v-4h.4A1.7 1.7 0 0 0 4.1 8.5a1.7 1.7 0 0 0-.34-1.88l-.06-.06 2.83-2.83.06.06A1.7 1.7 0 0 0 8.5 4.1a1.7 1.7 0 0 0 1-.6 1.7 1.7 0 0 0 .4-1.1V2h4v.4A1.7 1.7 0 0 0 15 4.1a1.7 1.7 0 0 0 1.88-.34l.06-.06 2.83 2.83-.06.06A1.7 1.7 0 0 0 19.4 8.5a1.7 1.7 0 0 0 .6 1 1.7 1.7 0 0 0 1.1.4h.4v4h-.4A1.7 1.7 0 0 0 19.4 15z"></path>
-                </svg>
-
-            </span>
-
-            <span>
-                Configuración
-            </span>
-
-        </a>
-
-
-        <!-- Cerrar sesión -->
-
-        <button
-            class="sidebar-footer-link sidebar-logout"
-            id="sidebarLogout"
-            type="button"
-        >
-
-            <span class="sidebar-footer-icon">
+            <button
+                class="logout-icon"
+                id="sidebarLogout"
+                type="button"
+                aria-label="Cerrar sesión"
+            >
 
                 <svg
                     viewBox="0 0 24 24"
                     aria-hidden="true"
                 >
                     <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
-                    <path d="m16 17 5-5-5-5"></path>
-                    <path d="M21 12H9"></path>
+
+                    <polyline
+                        points="16 17 21 12 16 7"
+                    ></polyline>
+
+                    <line
+                        x1="21"
+                        y1="12"
+                        x2="9"
+                        y2="12"
+                    ></line>
                 </svg>
 
-            </span>
+            </button>
 
-            <span>
-                Cerrar sesión
-            </span>
-
-        </button>
+        </div>
 
     </div>
 
 </aside>
+
+
+<!-- =====================================================
+     OVERLAY MÓVIL
+====================================================== -->
+
+<div
+    class="mobile-overlay"
+    id="mobileOverlay"
+></div>

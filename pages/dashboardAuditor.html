@@ -1,0 +1,1330 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Inicio Auditor | SISCAE</title>
+
+
+    <!-- =====================================================
+         ESTILOS GENERALES
+    ====================================================== -->
+
+    <link
+        rel="stylesheet"
+        href="../css/global.css"
+    >
+
+
+    <!-- =====================================================
+         SIDEBAR AUDITOR
+    ====================================================== -->
+
+    <link
+        rel="stylesheet"
+        href="../css/components/sidebar_auditor.css"
+    >
+
+
+    <!-- =====================================================
+         DASHBOARD AUDITOR
+    ====================================================== -->
+
+    <link
+        rel="stylesheet"
+        href="../css/pages/dashboardAuditor.css"
+    >
+
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+         SIDEBAR
+    ====================================================== -->
+
+    <div id="sidebar-component"></div>
+
+
+    <!-- =====================================================
+         CONTENIDO PRINCIPAL
+    ====================================================== -->
+
+    <main class="main">
+
+
+        <!-- =================================================
+             AROS DECORATIVOS
+        ================================================== -->
+
+        <div
+            class="dashboard-decoration"
+            aria-hidden="true"
+        >
+
+            <!-- AROS SUPERIORES -->
+
+            <div class="ring-group ring-group-one">
+
+                <span class="ring ring-a"></span>
+
+                <span class="ring ring-b"></span>
+
+                <span class="ring ring-c"></span>
+
+                <span class="ring ring-yellow"></span>
+
+            </div>
+
+
+            <!-- AROS INFERIORES -->
+
+            <div class="ring-group ring-group-two">
+
+                <span class="ring ring-a"></span>
+
+                <span class="ring ring-b"></span>
+
+                <span class="ring ring-c"></span>
+
+                <span class="ring ring-d"></span>
+
+            </div>
+
+        </div>
+
+
+        <!-- =================================================
+             TOPBAR
+        ================================================== -->
+
+        <header class="topbar">
+
+
+            <!-- ================= IZQUIERDA ================= -->
+
+            <div class="topbar-left">
+
+
+                <!-- BOTÓN MENÚ MÓVIL -->
+
+                <button
+                    class="menu-button"
+                    id="menuButton"
+                    type="button"
+                    aria-label="Abrir menú"
+                >
+
+                    <svg
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                    >
+
+                        <path d="M4 7h16"></path>
+
+                        <path d="M4 12h16"></path>
+
+                        <path d="M4 17h16"></path>
+
+                    </svg>
+
+                </button>
+
+
+                <!-- BREADCRUMB -->
+
+                <div class="breadcrumb">
+
+                    <span>
+                        SISCAE
+                    </span>
+
+                    <svg
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                    >
+
+                        <path d="m9 18 6-6-6-6"></path>
+
+                    </svg>
+
+                    <strong>
+                        Inicio
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <!-- ================= DERECHA ================= -->
+
+            <div class="topbar-right">
+
+
+                <!-- ALERTAS -->
+
+                <a
+                    href="alertasAuditor.html"
+                    class="notification"
+                    aria-label="Ver alertas"
+                >
+
+                    <svg
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                    >
+
+                        <path
+                            d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9"
+                        ></path>
+
+                        <path
+                            d="M10 21h4"
+                        ></path>
+
+                    </svg>
+
+                    <span id="notificationCount">
+                        3
+                    </span>
+
+                </a>
+
+
+                <!-- PERFIL -->
+
+                <div
+                    class="profile"
+                    id="profile"
+                >
+
+                    <button
+                        class="profile-button"
+                        id="profileButton"
+                        type="button"
+                    >
+
+                        <span class="profile-avatar">
+                            AU
+                        </span>
+
+
+                        <span class="profile-info">
+
+                            <strong>
+                                Auditor
+                            </strong>
+
+                            <span>
+                                auditor@clases.edu.sv
+                            </span>
+
+                        </span>
+
+
+                        <svg
+                            class="profile-arrow"
+                            viewBox="0 0 24 24"
+                            aria-hidden="true"
+                        >
+
+                            <path
+                                d="m6 9 6 6 6-6"
+                            ></path>
+
+                        </svg>
+
+                    </button>
+
+
+                    <!-- MENÚ PERFIL -->
+
+                    <div class="profile-menu">
+
+                        <button
+                            id="profileLogout"
+                            type="button"
+                        >
+                            Cerrar sesión
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- =================================================
+             CONTENIDO
+        ================================================== -->
+
+        <div class="content">
+
+
+            <!-- =================================================
+                 PRESENTACIÓN
+            ================================================== -->
+
+            <section class="page-header">
+
+                <div>
+
+                    <span class="section-label">
+                        PANEL DE SUPERVISIÓN
+                    </span>
+
+                    <h1>
+                        Panel del Auditor
+                    </h1>
+
+                    <p>
+                        Consulte y supervise el proceso editorial mediante
+                        la revisión de contenidos, observaciones, estados
+                        de aprobación, registros de auditoría y alertas
+                        generadas dentro de SISCAE.
+                    </p>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 RESUMEN GENERAL
+            ================================================== -->
+
+            <section class="overview-section">
+
+
+                <div class="section-heading">
+
+                    <div>
+
+                        <span class="section-label">
+                            RESUMEN GENERAL
+                        </span>
+
+                        <h2>
+                            Estado del proceso editorial
+                        </h2>
+
+                    </div>
+
+
+                    <span class="section-description">
+                        Información registrada en el sistema
+                    </span>
+
+                </div>
+
+
+                <!-- =================================================
+                     TARJETAS RESUMEN
+                ================================================== -->
+
+                <div class="summary-grid">
+
+
+                    <!-- ================= REVISIÓN ================= -->
+
+                    <article class="summary-card">
+
+                        <div class="summary-icon">
+
+                            <svg
+                                viewBox="0 0 24 24"
+                                aria-hidden="true"
+                            >
+
+                                <path
+                                    d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"
+                                ></path>
+
+                                <polyline
+                                    points="14 2 14 8 20 8"
+                                ></polyline>
+
+                                <polyline
+                                    points="9 15 11 17 15 13"
+                                ></polyline>
+
+                            </svg>
+
+                        </div>
+
+
+                        <div class="summary-info">
+
+                            <span>
+                                En revisión
+                            </span>
+
+                            <strong id="reviewCount">
+                                8
+                            </strong>
+
+                            <small>
+                                Contenidos en proceso
+                            </small>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- ================= OBSERVACIONES ================= -->
+
+                    <article class="summary-card">
+
+                        <div class="summary-icon">
+
+                            <svg
+                                viewBox="0 0 24 24"
+                                aria-hidden="true"
+                            >
+
+                                <path
+                                    d="M21 15a4 4 0 0 1-4 4H8l-5 3V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4z"
+                                ></path>
+
+                                <line
+                                    x1="8"
+                                    y1="9"
+                                    x2="16"
+                                    y2="9"
+                                ></line>
+
+                                <line
+                                    x1="8"
+                                    y1="13"
+                                    x2="13"
+                                    y2="13"
+                                ></line>
+
+                            </svg>
+
+                        </div>
+
+
+                        <div class="summary-info">
+
+                            <span>
+                                Observaciones
+                            </span>
+
+                            <strong id="observationCount">
+                                12
+                            </strong>
+
+                            <small>
+                                Registradas recientemente
+                            </small>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- ================= APROBACIONES ================= -->
+
+                    <article class="summary-card">
+
+                        <div class="summary-icon">
+
+                            <svg
+                                viewBox="0 0 24 24"
+                                aria-hidden="true"
+                            >
+
+                                <path
+                                    d="M12 3l7 3v5c0 4.6-2.8 8.1-7 10-4.2-1.9-7-5.4-7-10V6l7-3z"
+                                ></path>
+
+                                <polyline
+                                    points="9 12 11 14 15 10"
+                                ></polyline>
+
+                            </svg>
+
+                        </div>
+
+
+                        <div class="summary-info">
+
+                            <span>
+                                Aprobaciones
+                            </span>
+
+                            <strong id="approvalCount">
+                                6
+                            </strong>
+
+                            <small>
+                                Estados registrados
+                            </small>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- ================= ALERTAS ================= -->
+
+                    <article class="summary-card">
+
+                        <div class="summary-icon">
+
+                            <svg
+                                viewBox="0 0 24 24"
+                                aria-hidden="true"
+                            >
+
+                                <path
+                                    d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9"
+                                ></path>
+
+                                <path
+                                    d="M10 21h4"
+                                ></path>
+
+                            </svg>
+
+                        </div>
+
+
+                        <div class="summary-info">
+
+                            <span>
+                                Alertas
+                            </span>
+
+                            <strong id="alertsCount">
+                                3
+                            </strong>
+
+                            <small>
+                                Eventos por consultar
+                            </small>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 MÓDULOS
+            ================================================== -->
+
+            <section class="modules-section">
+
+
+                <div class="section-heading">
+
+                    <div>
+
+                        <span class="section-label">
+                            REVISOR / AUDITOR
+                        </span>
+
+                        <h2>
+                            Módulos de supervisión
+                        </h2>
+
+                    </div>
+
+                </div>
+
+
+                <div class="modules-grid">
+
+
+                    <!-- =================================================
+                         01 - REVISIÓN
+                    ================================================== -->
+
+                    <a
+                        href="revisionAuditor.html"
+                        class="module-card"
+                    >
+
+                        <div class="module-icon">
+
+                            <svg
+                                viewBox="0 0 24 24"
+                                aria-hidden="true"
+                            >
+
+                                <path
+                                    d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"
+                                ></path>
+
+                                <polyline
+                                    points="14 2 14 8 20 8"
+                                ></polyline>
+
+                                <polyline
+                                    points="9 15 11 17 15 13"
+                                ></polyline>
+
+                            </svg>
+
+                        </div>
+
+
+                        <div class="module-content">
+
+                            <span class="module-number">
+                                01
+                            </span>
+
+                            <h3>
+                                Revisión
+                            </h3>
+
+                            <p>
+                                Consulte los contenidos editoriales,
+                                versiones y elementos asociados al
+                                proceso de revisión.
+                            </p>
+
+                        </div>
+
+
+                        <span class="module-arrow">
+
+                            <svg
+                                viewBox="0 0 24 24"
+                                aria-hidden="true"
+                            >
+
+                                <path
+                                    d="m9 18 6-6-6-6"
+                                ></path>
+
+                            </svg>
+
+                        </span>
+
+                    </a>
+
+
+                    <!-- =================================================
+                         02 - OBSERVACIONES
+                    ================================================== -->
+
+                    <a
+                        href="observacionesAuditor.html"
+                        class="module-card"
+                    >
+
+                        <div class="module-icon">
+
+                            <svg
+                                viewBox="0 0 24 24"
+                                aria-hidden="true"
+                            >
+
+                                <path
+                                    d="M21 15a4 4 0 0 1-4 4H8l-5 3V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4z"
+                                ></path>
+
+                                <line
+                                    x1="8"
+                                    y1="9"
+                                    x2="16"
+                                    y2="9"
+                                ></line>
+
+                                <line
+                                    x1="8"
+                                    y1="13"
+                                    x2="13"
+                                    y2="13"
+                                ></line>
+
+                            </svg>
+
+                        </div>
+
+
+                        <div class="module-content">
+
+                            <span class="module-number">
+                                02
+                            </span>
+
+                            <h3>
+                                Observaciones
+                            </h3>
+
+                            <p>
+                                Consulte las observaciones registradas
+                                durante la revisión y el seguimiento
+                                de los contenidos editoriales.
+                            </p>
+
+                        </div>
+
+
+                        <span class="module-arrow">
+
+                            <svg
+                                viewBox="0 0 24 24"
+                                aria-hidden="true"
+                            >
+
+                                <path
+                                    d="m9 18 6-6-6-6"
+                                ></path>
+
+                            </svg>
+
+                        </span>
+
+                    </a>
+
+
+                    <!-- =================================================
+                         03 - APROBACIÓN
+                    ================================================== -->
+
+                    <a
+                        href="aprobacionAuditor.html"
+                        class="module-card"
+                    >
+
+                        <div class="module-icon">
+
+                            <svg
+                                viewBox="0 0 24 24"
+                                aria-hidden="true"
+                            >
+
+                                <path
+                                    d="M12 3l7 3v5c0 4.6-2.8 8.1-7 10-4.2-1.9-7-5.4-7-10V6l7-3z"
+                                ></path>
+
+                                <polyline
+                                    points="9 12 11 14 15 10"
+                                ></polyline>
+
+                            </svg>
+
+                        </div>
+
+
+                        <div class="module-content">
+
+                            <span class="module-number">
+                                03
+                            </span>
+
+                            <h3>
+                                Aprobación
+                            </h3>
+
+                            <p>
+                                Consulte el estado de aprobación de
+                                los contenidos y el historial asociado
+                                al flujo editorial.
+                            </p>
+
+                        </div>
+
+
+                        <span class="module-arrow">
+
+                            <svg
+                                viewBox="0 0 24 24"
+                                aria-hidden="true"
+                            >
+
+                                <path
+                                    d="m9 18 6-6-6-6"
+                                ></path>
+
+                            </svg>
+
+                        </span>
+
+                    </a>
+
+
+                    <!-- =================================================
+                         04 - AUDITORÍA
+                    ================================================== -->
+
+                    <a
+                        href="auditoriaAuditor.html"
+                        class="module-card"
+                    >
+
+                        <div class="module-icon">
+
+                            <svg
+                                viewBox="0 0 24 24"
+                                aria-hidden="true"
+                            >
+
+                                <path
+                                    d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"
+                                ></path>
+
+                                <polyline
+                                    points="14 2 14 8 20 8"
+                                ></polyline>
+
+                                <line
+                                    x1="8"
+                                    y1="13"
+                                    x2="16"
+                                    y2="13"
+                                ></line>
+
+                                <line
+                                    x1="8"
+                                    y1="17"
+                                    x2="16"
+                                    y2="17"
+                                ></line>
+
+                            </svg>
+
+                        </div>
+
+
+                        <div class="module-content">
+
+                            <span class="module-number">
+                                04
+                            </span>
+
+                            <h3>
+                                Auditoría
+                            </h3>
+
+                            <p>
+                                Consulte la trazabilidad, acciones,
+                                accesos, versiones e intervenciones
+                                registradas dentro del sistema.
+                            </p>
+
+                        </div>
+
+
+                        <span class="module-arrow">
+
+                            <svg
+                                viewBox="0 0 24 24"
+                                aria-hidden="true"
+                            >
+
+                                <path
+                                    d="m9 18 6-6-6-6"
+                                ></path>
+
+                            </svg>
+
+                        </span>
+
+                    </a>
+
+
+                    <!-- =================================================
+                         05 - ALERTAS
+                    ================================================== -->
+
+                    <a
+                        href="alertasAuditor.html"
+                        class="module-card"
+                    >
+
+                        <div class="module-icon">
+
+                            <svg
+                                viewBox="0 0 24 24"
+                                aria-hidden="true"
+                            >
+
+                                <path
+                                    d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9"
+                                ></path>
+
+                                <path
+                                    d="M10 21h4"
+                                ></path>
+
+                            </svg>
+
+                        </div>
+
+
+                        <div class="module-content">
+
+                            <span class="module-number">
+                                05
+                            </span>
+
+                            <h3>
+                                Alertas
+                            </h3>
+
+                            <p>
+                                Consulte eventos relevantes asociados
+                                al proceso editorial, accesos,
+                                seguridad e integridad.
+                            </p>
+
+                        </div>
+
+
+                        <span class="module-arrow">
+
+                            <svg
+                                viewBox="0 0 24 24"
+                                aria-hidden="true"
+                            >
+
+                                <path
+                                    d="m9 18 6-6-6-6"
+                                ></path>
+
+                            </svg>
+
+                        </span>
+
+                    </a>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 ACTIVIDAD RECIENTE
+            ================================================== -->
+
+            <section class="activity-section">
+
+
+                <div class="section-heading">
+
+                    <div>
+
+                        <span class="section-label">
+                            SEGUIMIENTO
+                        </span>
+
+                        <h2>
+                            Actividad reciente
+                        </h2>
+
+                    </div>
+
+
+                    <a
+                        href="auditoriaAuditor.html"
+                        class="section-link"
+                    >
+
+                        Ver auditoría completa
+
+                        <svg
+                            viewBox="0 0 24 24"
+                            aria-hidden="true"
+                        >
+
+                            <path
+                                d="m9 18 6-6-6-6"
+                            ></path>
+
+                        </svg>
+
+                    </a>
+
+                </div>
+
+
+                <div class="activity-panel">
+
+                    <div class="activity-table-wrapper">
+
+                        <table class="activity-table">
+
+                            <thead>
+
+                                <tr>
+
+                                    <th>
+                                        Evento
+                                    </th>
+
+                                    <th>
+                                        Usuario
+                                    </th>
+
+                                    <th>
+                                        Contenido
+                                    </th>
+
+                                    <th>
+                                        Fecha y hora
+                                    </th>
+
+                                    <th>
+                                        Estado
+                                    </th>
+
+                                </tr>
+
+                            </thead>
+
+
+                            <tbody id="activityTableBody">
+
+
+                                <!-- ================= REVISIÓN ================= -->
+
+                                <tr>
+
+                                    <td>
+
+                                        <div class="event-cell">
+
+                                            <span class="event-icon">
+
+                                                <svg
+                                                    viewBox="0 0 24 24"
+                                                    aria-hidden="true"
+                                                >
+
+                                                    <path
+                                                        d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"
+                                                    ></path>
+
+                                                    <polyline
+                                                        points="14 2 14 8 20 8"
+                                                    ></polyline>
+
+                                                </svg>
+
+                                            </span>
+
+                                            <span>
+                                                Revisión registrada
+                                            </span>
+
+                                        </div>
+
+                                    </td>
+
+
+                                    <td>
+                                        Ana Martínez
+                                    </td>
+
+
+                                    <td>
+                                        Libro de Ciencias
+                                    </td>
+
+
+                                    <td>
+                                        01/10/2026 · 8:42 a. m.
+                                    </td>
+
+
+                                    <td>
+
+                                        <span class="result-badge">
+                                            Registrado
+                                        </span>
+
+                                    </td>
+
+                                </tr>
+
+
+                                <!-- ================= OBSERVACIÓN ================= -->
+
+                                <tr>
+
+                                    <td>
+
+                                        <div class="event-cell">
+
+                                            <span class="event-icon">
+
+                                                <svg
+                                                    viewBox="0 0 24 24"
+                                                    aria-hidden="true"
+                                                >
+
+                                                    <path
+                                                        d="M21 15a4 4 0 0 1-4 4H8l-5 3V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4z"
+                                                    ></path>
+
+                                                </svg>
+
+                                            </span>
+
+                                            <span>
+                                                Observación agregada
+                                            </span>
+
+                                        </div>
+
+                                    </td>
+
+
+                                    <td>
+                                        Carlos Hernández
+                                    </td>
+
+
+                                    <td>
+                                        Guía de Matemática
+                                    </td>
+
+
+                                    <td>
+                                        01/10/2026 · 8:26 a. m.
+                                    </td>
+
+
+                                    <td>
+
+                                        <span class="result-badge">
+                                            Registrado
+                                        </span>
+
+                                    </td>
+
+                                </tr>
+
+
+                                <!-- ================= APROBACIÓN ================= -->
+
+                                <tr>
+
+                                    <td>
+
+                                        <div class="event-cell">
+
+                                            <span class="event-icon">
+
+                                                <svg
+                                                    viewBox="0 0 24 24"
+                                                    aria-hidden="true"
+                                                >
+
+                                                    <path
+                                                        d="M12 3l7 3v5c0 4.6-2.8 8.1-7 10-4.2-1.9-7-5.4-7-10V6l7-3z"
+                                                    ></path>
+
+                                                    <polyline
+                                                        points="9 12 11 14 15 10"
+                                                    ></polyline>
+
+                                                </svg>
+
+                                            </span>
+
+                                            <span>
+                                                Estado de aprobación actualizado
+                                            </span>
+
+                                        </div>
+
+                                    </td>
+
+
+                                    <td>
+                                        María López
+                                    </td>
+
+
+                                    <td>
+                                        Material de Lenguaje
+                                    </td>
+
+
+                                    <td>
+                                        01/10/2026 · 8:12 a. m.
+                                    </td>
+
+
+                                    <td>
+
+                                        <span class="result-badge verified">
+                                            Aprobado
+                                        </span>
+
+                                    </td>
+
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 FOOTER
+            ================================================== -->
+
+            <footer class="page-footer">
+
+                <div>
+
+                    <strong>
+                        SISCAE
+                    </strong>
+
+                    <span>
+                        Sistema Integral de Seguridad y Control
+                        de Activos Editoriales
+                    </span>
+
+                </div>
+
+
+                <span>
+                    Panel de Auditor
+                </span>
+
+            </footer>
+
+        </div>
+
+    </main>
+
+
+    <!-- =====================================================
+         MODAL CERRAR SESIÓN
+    ====================================================== -->
+
+    <div
+        class="modal"
+        id="logoutModal"
+        aria-hidden="true"
+    >
+
+        <div
+            class="modal-overlay"
+            data-close-logout
+        ></div>
+
+
+        <div class="logout-dialog">
+
+
+            <!-- ICONO -->
+
+            <div class="logout-icon">
+
+                <svg
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                >
+
+                    <path
+                        d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"
+                    ></path>
+
+                    <polyline
+                        points="16 17 21 12 16 7"
+                    ></polyline>
+
+                    <line
+                        x1="21"
+                        y1="12"
+                        x2="9"
+                        y2="12"
+                    ></line>
+
+                </svg>
+
+            </div>
+
+
+            <h2>
+                Cerrar sesión
+            </h2>
+
+
+            <p>
+                ¿Desea finalizar la sesión actual y regresar
+                al acceso institucional?
+            </p>
+
+
+            <div class="modal-actions">
+
+                <button
+                    class="btn-secondary"
+                    type="button"
+                    data-close-logout
+                >
+                    Cancelar
+                </button>
+
+
+                <button
+                    class="btn-primary"
+                    id="confirmLogout"
+                    type="button"
+                >
+                    Cerrar sesión
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         SCRIPTS
+    ====================================================== -->
+
+    <script src="../js/components.js"></script>
+
+
+    <script>
+
+        loadAuditorSidebar();
+
+    </script>
+
+
+    <script src="../js/dashboardAuditor.js"></script>
+
+
+</body>
+
+</html>

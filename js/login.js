@@ -9,6 +9,7 @@
 
 const menuButton =
     document.getElementById("loginMenuButton");
+    
 
 const nav =
     document.getElementById("loginNav");
@@ -45,21 +46,8 @@ if (menuButton && nav) {
    Temporal hasta Firebase
 ========================================================== */
 
-const googleLogin =
-    document.getElementById("googleLogin");
+const googleLogin = document.getElementById("googleLogin");
 
-
-if (googleLogin) {
-
-    googleLogin.addEventListener(
-        "click",
-        function () {
-
-            console.log(
-                "Inicio de sesión institucional con Google"
-            );
-
-        }
-    );
-
-}
+googleLogin.addEventListener("click", () => {
+    window.location.href = "interfaces.html";
+});

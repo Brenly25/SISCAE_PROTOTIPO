@@ -3,144 +3,52 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
     <title>Activos editoriales | SISCAE</title>
 
-    <link rel="stylesheet" href="../css/pages/activos.css">
+    <!-- =====================================================
+         ESTILOS
+    ====================================================== -->
+
+    <link
+        rel="stylesheet"
+        href="../css/global.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="../css/components/sidebar_admin.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="../css/pages/activos.css"
+    >
+
 </head>
 
 <body>
 
     <!-- =====================================================
-         SIDEBAR
+         SIDEBAR ADMINISTRADOR
     ====================================================== -->
 
-    <aside class="sidebar" id="sidebar">
-
-        <div class="sidebar-logo">
-            <img src="../assets/img/logo.png" alt="Ministerio de Educación">
-        </div>
-
-        <nav class="sidebar-nav">
-
-            <span class="nav-title">GENERAL</span>
-
-            <a href="dashboardAdmin.html" class="nav-item">
-                <span class="nav-icon">
-                    <svg viewBox="0 0 24 24">
-                        <rect x="3" y="3" width="7" height="7"></rect>
-                        <rect x="14" y="3" width="7" height="7"></rect>
-                        <rect x="3" y="14" width="7" height="7"></rect>
-                        <rect x="14" y="14" width="7" height="7"></rect>
-                    </svg>
-                </span>
-                <span>Inicio</span>
-            </a>
-
-            <a href="activos.html" class="nav-item active">
-                <span class="nav-icon">
-                    <svg viewBox="0 0 24 24">
-                        <path d="M3 7h6l2 2h10v10H3z"></path>
-                        <path d="M3 7V5h6l2 2"></path>
-                    </svg>
-                </span>
-                <span>Activos editoriales</span>
-            </a>
+    <div id="sidebar-component"></div>
 
 
-            <span class="nav-title nav-title-space">
-                ADMINISTRACIÓN
-            </span>
+    <!-- =====================================================
+         OVERLAY MÓVIL DEL SIDEBAR
+    ====================================================== -->
 
-            <a href="usuarios.html" class="nav-item">
-                <span class="nav-icon">
-                    <svg viewBox="0 0 24 24">
-                        <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
-                        <circle cx="9" cy="7" r="4"></circle>
-                        <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
-                        <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-                    </svg>
-                </span>
-                <span>Usuarios</span>
-            </a>
-
-            <a href="roles.html" class="nav-item">
-                <span class="nav-icon">
-                    <svg viewBox="0 0 24 24">
-                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-                        <path d="m9 12 2 2 4-4"></path>
-                    </svg>
-                </span>
-                <span>Roles y permisos</span>
-            </a>
-
-
-            <span class="nav-title nav-title-space">
-                SUPERVISIÓN
-            </span>
-
-            <a href="auditoria.html" class="nav-item">
-                <span class="nav-icon">
-                    <svg viewBox="0 0 24 24">
-                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                        <polyline points="14 2 14 8 20 8"></polyline>
-                        <line x1="8" y1="13" x2="16" y2="13"></line>
-                        <line x1="8" y1="17" x2="16" y2="17"></line>
-                    </svg>
-                </span>
-                <span>Auditoría</span>
-            </a>
-
-            <a href="alertas.html" class="nav-item">
-                <span class="nav-icon">
-                    <svg viewBox="0 0 24 24">
-                        <path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9"></path>
-                        <path d="M10 21h4"></path>
-                    </svg>
-                </span>
-                <span>Alertas</span>
-
-                <span class="nav-count">3</span>
-            </a>
-
-        </nav>
-
-
-        <div class="sidebar-footer">
-
-            <div class="sidebar-user">
-
-                <div class="sidebar-avatar">
-                    AD
-                </div>
-
-                <div class="sidebar-user-info">
-                    <strong>Administrador</strong>
-                    <span>Cuenta institucional</span>
-                </div>
-
-                <button
-                    class="logout-icon"
-                    id="sidebarLogout"
-                    type="button"
-                    aria-label="Cerrar sesión"
-                >
-                    <svg viewBox="0 0 24 24">
-                        <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
-                        <polyline points="16 17 21 12 16 7"></polyline>
-                        <line x1="21" y1="12" x2="9" y2="12"></line>
-                    </svg>
-                </button>
-
-            </div>
-
-        </div>
-
-    </aside>
-
-
-    <div class="mobile-overlay" id="mobileOverlay"></div>
+    <div
+        class="mobile-overlay"
+        id="mobileOverlay"
+    ></div>
 
 
     <!-- =====================================================
@@ -149,9 +57,14 @@
 
     <main class="main">
 
-        <!-- FONDO DECORATIVO -->
+        <!-- =================================================
+             FONDO DECORATIVO
+        ================================================== -->
 
-        <div class="dashboard-decoration" aria-hidden="true">
+        <div
+            class="dashboard-decoration"
+            aria-hidden="true"
+        >
 
             <div class="ring-group ring-group-one">
                 <span class="ring ring-a"></span>
@@ -189,14 +102,18 @@
                     type="button"
                     aria-label="Abrir menú"
                 >
+
                     <svg viewBox="0 0 24 24">
                         <line x1="3" y1="6" x2="21" y2="6"></line>
                         <line x1="3" y1="12" x2="21" y2="12"></line>
                         <line x1="3" y1="18" x2="21" y2="18"></line>
                     </svg>
+
                 </button>
 
+
                 <div class="breadcrumb">
+
                     <span>SISCAE</span>
 
                     <svg viewBox="0 0 24 24">
@@ -204,6 +121,7 @@
                     </svg>
 
                     <strong>Activos editoriales</strong>
+
                 </div>
 
             </div>
@@ -217,16 +135,21 @@
                     type="button"
                     aria-label="Ver alertas"
                 >
+
                     <svg viewBox="0 0 24 24">
                         <path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9"></path>
                         <path d="M10 21h4"></path>
                     </svg>
 
                     <span>3</span>
+
                 </button>
 
 
-                <div class="profile" id="profile">
+                <div
+                    class="profile"
+                    id="profile"
+                >
 
                     <button
                         class="profile-button"
@@ -239,11 +162,21 @@
                         </div>
 
                         <div class="profile-info">
-                            <strong>Administrador</strong>
-                            <span>Administrador del sistema</span>
+
+                            <strong>
+                                Administrador
+                            </strong>
+
+                            <span>
+                                Administrador del sistema
+                            </span>
+
                         </div>
 
-                        <svg class="profile-arrow" viewBox="0 0 24 24">
+                        <svg
+                            class="profile-arrow"
+                            viewBox="0 0 24 24"
+                        >
                             <polyline points="6 9 12 15 18 9"></polyline>
                         </svg>
 
@@ -278,8 +211,9 @@
 
         <div class="content">
 
-
-            <!-- ENCABEZADO -->
+            <!-- =================================================
+                 ENCABEZADO
+            ================================================== -->
 
             <section class="page-header">
 
@@ -289,7 +223,9 @@
                         GESTIÓN EDITORIAL
                     </span>
 
-                    <h1>Activos editoriales</h1>
+                    <h1>
+                        Activos editoriales
+                    </h1>
 
                     <p>
                         Consulta y supervisión de los recursos editoriales
@@ -299,7 +235,11 @@
                 </div>
 
 
-                <button class="primary-action" id="newAssetButton" type="button">
+                <button
+                    class="primary-action"
+                    id="newAssetButton"
+                    type="button"
+                >
 
                     <svg viewBox="0 0 24 24">
                         <line x1="12" y1="5" x2="12" y2="19"></line>
@@ -322,16 +262,28 @@
                 <article class="asset-stat">
 
                     <div class="stat-icon">
+
                         <svg viewBox="0 0 24 24">
                             <path d="M3 7h6l2 2h10v10H3z"></path>
                             <path d="M3 7V5h6l2 2"></path>
                         </svg>
+
                     </div>
 
                     <div>
-                        <span>Total de activos</span>
-                        <strong>148</strong>
-                        <small>Recursos registrados</small>
+
+                        <span>
+                            Total de activos
+                        </span>
+
+                        <strong>
+                            148
+                        </strong>
+
+                        <small>
+                            Recursos registrados
+                        </small>
+
                     </div>
 
                 </article>
@@ -340,16 +292,28 @@
                 <article class="asset-stat">
 
                     <div class="stat-icon">
+
                         <svg viewBox="0 0 24 24">
                             <circle cx="12" cy="12" r="9"></circle>
                             <polyline points="12 7 12 12 15 14"></polyline>
                         </svg>
+
                     </div>
 
                     <div>
-                        <span>En revisión</span>
-                        <strong>12</strong>
-                        <small>Proceso editorial activo</small>
+
+                        <span>
+                            En revisión
+                        </span>
+
+                        <strong>
+                            12
+                        </strong>
+
+                        <small>
+                            Proceso editorial activo
+                        </small>
+
                     </div>
 
                 </article>
@@ -358,15 +322,27 @@
                 <article class="asset-stat">
 
                     <div class="stat-icon">
+
                         <svg viewBox="0 0 24 24">
                             <path d="M20 6 9 17l-5-5"></path>
                         </svg>
+
                     </div>
 
                     <div>
-                        <span>Aprobados</span>
-                        <strong>40</strong>
-                        <small>Listos para publicación</small>
+
+                        <span>
+                            Aprobados
+                        </span>
+
+                        <strong>
+                            40
+                        </strong>
+
+                        <small>
+                            Listos para publicación
+                        </small>
+
                     </div>
 
                 </article>
@@ -375,17 +351,29 @@
                 <article class="asset-stat">
 
                     <div class="stat-icon">
+
                         <svg viewBox="0 0 24 24">
                             <path d="M12 2v13"></path>
                             <polyline points="7 10 12 15 17 10"></polyline>
                             <path d="M5 22h14"></path>
                         </svg>
+
                     </div>
 
                     <div>
-                        <span>Publicados</span>
-                        <strong>96</strong>
-                        <small>Proceso finalizado</small>
+
+                        <span>
+                            Publicados
+                        </span>
+
+                        <strong>
+                            96
+                        </strong>
+
+                        <small>
+                            Proceso finalizado
+                        </small>
+
                     </div>
 
                 </article>
@@ -394,7 +382,7 @@
 
 
             <!-- =================================================
-                 PANEL PRINCIPAL
+                 PANEL DE ACTIVOS
             ================================================== -->
 
             <section class="assets-panel">
@@ -402,26 +390,40 @@
                 <div class="assets-panel-header">
 
                     <div>
+
                         <span class="section-label">
                             RECURSOS REGISTRADOS
                         </span>
 
-                        <h2>Listado de activos</h2>
+                        <h2>
+                            Listado de activos
+                        </h2>
 
                         <p>
                             Localice y consulte los activos incorporados al sistema.
                         </p>
+
                     </div>
 
+
                     <div class="result-count">
-                        <strong id="resultCount">6</strong>
-                        <span>resultados mostrados</span>
+
+                        <strong id="resultCount">
+                            6
+                        </strong>
+
+                        <span>
+                            resultados mostrados
+                        </span>
+
                     </div>
 
                 </div>
 
 
-                <!-- FILTROS -->
+                <!-- =================================================
+                     FILTROS
+                ================================================== -->
 
                 <div class="filters">
 
@@ -444,10 +446,23 @@
                     <div class="select-wrapper">
 
                         <select id="statusFilter">
-                            <option value="all">Todos los estados</option>
-                            <option value="revision">En revisión</option>
-                            <option value="aprobado">Aprobado</option>
-                            <option value="publicado">Publicado</option>
+
+                            <option value="all">
+                                Todos los estados
+                            </option>
+
+                            <option value="revision">
+                                En revisión
+                            </option>
+
+                            <option value="aprobado">
+                                Aprobado
+                            </option>
+
+                            <option value="publicado">
+                                Publicado
+                            </option>
+
                         </select>
 
                         <svg viewBox="0 0 24 24">
@@ -460,10 +475,23 @@
                     <div class="select-wrapper">
 
                         <select id="typeFilter">
-                            <option value="all">Todos los tipos</option>
-                            <option value="libro">Libro</option>
-                            <option value="guia">Guía</option>
-                            <option value="material">Material educativo</option>
+
+                            <option value="all">
+                                Todos los tipos
+                            </option>
+
+                            <option value="libro">
+                                Libro
+                            </option>
+
+                            <option value="guia">
+                                Guía
+                            </option>
+
+                            <option value="material">
+                                Material educativo
+                            </option>
+
                         </select>
 
                         <svg viewBox="0 0 24 24">
@@ -484,7 +512,9 @@
                 </div>
 
 
-                <!-- CABECERA TABLA -->
+                <!-- =================================================
+                     CABECERA
+                ================================================== -->
 
                 <div class="asset-table-header">
 
@@ -499,10 +529,14 @@
                 </div>
 
 
-                <!-- LISTADO -->
+                <!-- =================================================
+                     LISTADO
+                ================================================== -->
 
-                <div class="asset-list" id="assetList">
-
+                <div
+                    class="asset-list"
+                    id="assetList"
+                >
 
                     <!-- ACTIVO 1 -->
 
@@ -516,33 +550,55 @@
                         <div class="asset-name">
 
                             <div class="file-icon">
+
                                 <svg viewBox="0 0 24 24">
                                     <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
                                     <polyline points="14 2 14 8 20 8"></polyline>
                                 </svg>
+
                             </div>
 
                             <div>
-                                <strong>Libro de Ciencias Naturales</strong>
-                                <span>Educación Básica</span>
+
+                                <strong>
+                                    Libro de Ciencias Naturales
+                                </strong>
+
+                                <span>
+                                    Educación Básica
+                                </span>
+
                             </div>
 
                         </div>
 
-                        <span>Libro</span>
+                        <span>
+                            Libro
+                        </span>
 
-                        <strong class="version">v3.2</strong>
+                        <strong class="version">
+                            v3.2
+                        </strong>
 
                         <div class="responsible">
-                            <span class="user-initials">ML</span>
-                            <span>María López</span>
+
+                            <span class="user-initials">
+                                ML
+                            </span>
+
+                            <span>
+                                María López
+                            </span>
+
                         </div>
 
                         <span class="status status-review">
                             En revisión
                         </span>
 
-                        <span>24 sep. 2026</span>
+                        <span>
+                            24 sep. 2026
+                        </span>
 
                         <button
                             class="row-action"
@@ -550,9 +606,11 @@
                             aria-label="Ver activo"
                             data-view-asset="Libro de Ciencias Naturales"
                         >
+
                             <svg viewBox="0 0 24 24">
                                 <polyline points="9 18 15 12 9 6"></polyline>
                             </svg>
+
                         </button>
 
                     </article>
@@ -570,33 +628,55 @@
                         <div class="asset-name">
 
                             <div class="file-icon">
+
                                 <svg viewBox="0 0 24 24">
                                     <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
                                     <polyline points="14 2 14 8 20 8"></polyline>
                                 </svg>
+
                             </div>
 
                             <div>
-                                <strong>Guía metodológica</strong>
-                                <span>Formación docente</span>
+
+                                <strong>
+                                    Guía metodológica
+                                </strong>
+
+                                <span>
+                                    Formación docente
+                                </span>
+
                             </div>
 
                         </div>
 
-                        <span>Guía</span>
+                        <span>
+                            Guía
+                        </span>
 
-                        <strong class="version">v2.0</strong>
+                        <strong class="version">
+                            v2.0
+                        </strong>
 
                         <div class="responsible">
-                            <span class="user-initials">CH</span>
-                            <span>Carlos Hernández</span>
+
+                            <span class="user-initials">
+                                CH
+                            </span>
+
+                            <span>
+                                Carlos Hernández
+                            </span>
+
                         </div>
 
                         <span class="status status-published">
                             Publicado
                         </span>
 
-                        <span>23 sep. 2026</span>
+                        <span>
+                            23 sep. 2026
+                        </span>
 
                         <button
                             class="row-action"
@@ -604,9 +684,11 @@
                             aria-label="Ver activo"
                             data-view-asset="Guía metodológica"
                         >
+
                             <svg viewBox="0 0 24 24">
                                 <polyline points="9 18 15 12 9 6"></polyline>
                             </svg>
+
                         </button>
 
                     </article>
@@ -624,33 +706,55 @@
                         <div class="asset-name">
 
                             <div class="file-icon">
+
                                 <svg viewBox="0 0 24 24">
                                     <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
                                     <polyline points="14 2 14 8 20 8"></polyline>
                                 </svg>
+
                             </div>
 
                             <div>
-                                <strong>Material de apoyo de Matemática</strong>
-                                <span>Educación Básica</span>
+
+                                <strong>
+                                    Material de apoyo de Matemática
+                                </strong>
+
+                                <span>
+                                    Educación Básica
+                                </span>
+
                             </div>
 
                         </div>
 
-                        <span>Material educativo</span>
+                        <span>
+                            Material educativo
+                        </span>
 
-                        <strong class="version">v1.4</strong>
+                        <strong class="version">
+                            v1.4
+                        </strong>
 
                         <div class="responsible">
-                            <span class="user-initials">AM</span>
-                            <span>Ana Martínez</span>
+
+                            <span class="user-initials">
+                                AM
+                            </span>
+
+                            <span>
+                                Ana Martínez
+                            </span>
+
                         </div>
 
                         <span class="status status-approved">
                             Aprobado
                         </span>
 
-                        <span>22 sep. 2026</span>
+                        <span>
+                            22 sep. 2026
+                        </span>
 
                         <button
                             class="row-action"
@@ -658,9 +762,11 @@
                             aria-label="Ver activo"
                             data-view-asset="Material de apoyo de Matemática"
                         >
+
                             <svg viewBox="0 0 24 24">
                                 <polyline points="9 18 15 12 9 6"></polyline>
                             </svg>
+
                         </button>
 
                     </article>
@@ -678,33 +784,55 @@
                         <div class="asset-name">
 
                             <div class="file-icon">
+
                                 <svg viewBox="0 0 24 24">
                                     <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
                                     <polyline points="14 2 14 8 20 8"></polyline>
                                 </svg>
+
                             </div>
 
                             <div>
-                                <strong>Guía de Estudios Sociales</strong>
-                                <span>Segundo Ciclo</span>
+
+                                <strong>
+                                    Guía de Estudios Sociales
+                                </strong>
+
+                                <span>
+                                    Segundo Ciclo
+                                </span>
+
                             </div>
 
                         </div>
 
-                        <span>Guía</span>
+                        <span>
+                            Guía
+                        </span>
 
-                        <strong class="version">v1.7</strong>
+                        <strong class="version">
+                            v1.7
+                        </strong>
 
                         <div class="responsible">
-                            <span class="user-initials">JR</span>
-                            <span>José Ramírez</span>
+
+                            <span class="user-initials">
+                                JR
+                            </span>
+
+                            <span>
+                                José Ramírez
+                            </span>
+
                         </div>
 
                         <span class="status status-review">
                             En revisión
                         </span>
 
-                        <span>21 sep. 2026</span>
+                        <span>
+                            21 sep. 2026
+                        </span>
 
                         <button
                             class="row-action"
@@ -712,9 +840,11 @@
                             aria-label="Ver activo"
                             data-view-asset="Guía de Estudios Sociales"
                         >
+
                             <svg viewBox="0 0 24 24">
                                 <polyline points="9 18 15 12 9 6"></polyline>
                             </svg>
+
                         </button>
 
                     </article>
@@ -732,33 +862,55 @@
                         <div class="asset-name">
 
                             <div class="file-icon">
+
                                 <svg viewBox="0 0 24 24">
                                     <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
                                     <polyline points="14 2 14 8 20 8"></polyline>
                                 </svg>
+
                             </div>
 
                             <div>
-                                <strong>Libro de Lenguaje</strong>
-                                <span>Primer Ciclo</span>
+
+                                <strong>
+                                    Libro de Lenguaje
+                                </strong>
+
+                                <span>
+                                    Primer Ciclo
+                                </span>
+
                             </div>
 
                         </div>
 
-                        <span>Libro</span>
+                        <span>
+                            Libro
+                        </span>
 
-                        <strong class="version">v4.1</strong>
+                        <strong class="version">
+                            v4.1
+                        </strong>
 
                         <div class="responsible">
-                            <span class="user-initials">SC</span>
-                            <span>Sofía Castro</span>
+
+                            <span class="user-initials">
+                                SC
+                            </span>
+
+                            <span>
+                                Sofía Castro
+                            </span>
+
                         </div>
 
                         <span class="status status-published">
                             Publicado
                         </span>
 
-                        <span>19 sep. 2026</span>
+                        <span>
+                            19 sep. 2026
+                        </span>
 
                         <button
                             class="row-action"
@@ -766,9 +918,11 @@
                             aria-label="Ver activo"
                             data-view-asset="Libro de Lenguaje"
                         >
+
                             <svg viewBox="0 0 24 24">
                                 <polyline points="9 18 15 12 9 6"></polyline>
                             </svg>
+
                         </button>
 
                     </article>
@@ -786,33 +940,55 @@
                         <div class="asset-name">
 
                             <div class="file-icon">
+
                                 <svg viewBox="0 0 24 24">
                                     <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
                                     <polyline points="14 2 14 8 20 8"></polyline>
                                 </svg>
+
                             </div>
 
                             <div>
-                                <strong>Cuaderno de actividades</strong>
-                                <span>Primera Infancia</span>
+
+                                <strong>
+                                    Cuaderno de actividades
+                                </strong>
+
+                                <span>
+                                    Primera Infancia
+                                </span>
+
                             </div>
 
                         </div>
 
-                        <span>Material educativo</span>
+                        <span>
+                            Material educativo
+                        </span>
 
-                        <strong class="version">v2.3</strong>
+                        <strong class="version">
+                            v2.3
+                        </strong>
 
                         <div class="responsible">
-                            <span class="user-initials">LG</span>
-                            <span>Laura Gómez</span>
+
+                            <span class="user-initials">
+                                LG
+                            </span>
+
+                            <span>
+                                Laura Gómez
+                            </span>
+
                         </div>
 
                         <span class="status status-approved">
                             Aprobado
                         </span>
 
-                        <span>18 sep. 2026</span>
+                        <span>
+                            18 sep. 2026
+                        </span>
 
                         <button
                             class="row-action"
@@ -820,9 +996,11 @@
                             aria-label="Ver activo"
                             data-view-asset="Cuaderno de actividades"
                         >
+
                             <svg viewBox="0 0 24 24">
                                 <polyline points="9 18 15 12 9 6"></polyline>
                             </svg>
+
                         </button>
 
                     </article>
@@ -830,18 +1008,27 @@
                 </div>
 
 
-                <!-- SIN RESULTADOS -->
+                <!-- =================================================
+                     SIN RESULTADOS
+                ================================================== -->
 
-                <div class="empty-state" id="emptyState">
+                <div
+                    class="empty-state"
+                    id="emptyState"
+                >
 
                     <div class="empty-icon">
+
                         <svg viewBox="0 0 24 24">
                             <circle cx="11" cy="11" r="7"></circle>
                             <line x1="20" y1="20" x2="16.65" y2="16.65"></line>
                         </svg>
+
                     </div>
 
-                    <strong>No se encontraron activos</strong>
+                    <strong>
+                        No se encontraron activos
+                    </strong>
 
                     <span>
                         Modifique los criterios de búsqueda o los filtros seleccionados.
@@ -852,20 +1039,27 @@
             </section>
 
 
-            <!-- FOOTER -->
+            <!-- =================================================
+                 FOOTER INTERNO
+            ================================================== -->
 
             <footer class="page-footer">
 
                 <div>
-                    <strong>SISCAE</strong>
+
+                    <strong>
+                        SISCAE
+                    </strong>
 
                     <span>
-                        Sistema Integral de Seguridad y Control
-                        de Activos Editoriales
+                        Sistema Integral de Seguridad y Control de Activos Editoriales
                     </span>
+
                 </div>
 
-                <span>Ministerio de Educación</span>
+                <span>
+                    Ministerio de Educación
+                </span>
 
             </footer>
 
@@ -878,21 +1072,33 @@
          MODAL REGISTRAR ACTIVO
     ====================================================== -->
 
-    <div class="modal" id="assetModal">
+    <div
+        class="modal"
+        id="assetModal"
+    >
 
-        <div class="modal-overlay" data-close-asset-modal></div>
+        <div
+            class="modal-overlay"
+            data-close-asset-modal
+        ></div>
+
 
         <div class="modal-dialog asset-modal-dialog">
 
             <div class="modal-heading">
 
                 <div>
+
                     <span class="section-label">
                         NUEVO REGISTRO
                     </span>
 
-                    <h2>Registrar activo editorial</h2>
+                    <h2>
+                        Registrar activo editorial
+                    </h2>
+
                 </div>
+
 
                 <button
                     class="modal-close"
@@ -905,14 +1111,19 @@
 
             </div>
 
+
             <p class="modal-description">
                 Complete la información general del recurso editorial.
             </p>
 
+
             <form id="assetForm">
 
                 <div class="form-group">
-                    <label for="assetName">Nombre del activo</label>
+
+                    <label for="assetName">
+                        Nombre del activo
+                    </label>
 
                     <input
                         type="text"
@@ -920,23 +1131,49 @@
                         placeholder="Ej. Libro de Ciencias Naturales"
                         required
                     >
+
                 </div>
+
 
                 <div class="form-row">
 
                     <div class="form-group">
-                        <label for="assetType">Tipo</label>
 
-                        <select id="assetType" required>
-                            <option value="">Seleccionar</option>
-                            <option>Libro</option>
-                            <option>Guía</option>
-                            <option>Material educativo</option>
+                        <label for="assetType">
+                            Tipo
+                        </label>
+
+                        <select
+                            id="assetType"
+                            required
+                        >
+
+                            <option value="">
+                                Seleccionar
+                            </option>
+
+                            <option>
+                                Libro
+                            </option>
+
+                            <option>
+                                Guía
+                            </option>
+
+                            <option>
+                                Material educativo
+                            </option>
+
                         </select>
+
                     </div>
 
+
                     <div class="form-group">
-                        <label for="assetVersion">Versión</label>
+
+                        <label for="assetVersion">
+                            Versión
+                        </label>
 
                         <input
                             type="text"
@@ -944,11 +1181,14 @@
                             placeholder="Ej. v1.0"
                             required
                         >
+
                     </div>
 
                 </div>
 
+
                 <div class="form-group">
+
                     <label for="assetResponsible">
                         Responsable
                     </label>
@@ -959,7 +1199,9 @@
                         placeholder="Nombre del responsable"
                         required
                     >
+
                 </div>
+
 
                 <div class="modal-actions">
 
@@ -991,18 +1233,28 @@
          MODAL DETALLE
     ====================================================== -->
 
-    <div class="modal" id="detailModal">
+    <div
+        class="modal"
+        id="detailModal"
+    >
 
-        <div class="modal-overlay" data-close-detail-modal></div>
+        <div
+            class="modal-overlay"
+            data-close-detail-modal
+        ></div>
+
 
         <div class="modal-dialog detail-dialog">
 
             <div class="detail-icon">
+
                 <svg viewBox="0 0 24 24">
                     <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
                     <polyline points="14 2 14 8 20 8"></polyline>
                 </svg>
+
             </div>
+
 
             <span class="section-label">
                 ACTIVO EDITORIAL
@@ -1016,6 +1268,7 @@
                 Esta vista permitirá consultar la información,
                 versiones, trazabilidad y acciones asociadas al activo.
             </p>
+
 
             <div class="modal-actions">
 
@@ -1038,17 +1291,27 @@
          MODAL CERRAR SESIÓN
     ====================================================== -->
 
-    <div class="modal" id="logoutModal">
+    <div
+        class="modal"
+        id="logoutModal"
+    >
 
-        <div class="modal-overlay" data-close-logout-modal></div>
+        <div
+            class="modal-overlay"
+            data-close-logout-modal
+        ></div>
+
 
         <div class="modal-dialog">
 
-            <h2>Cerrar sesión</h2>
+            <h2>
+                Cerrar sesión
+            </h2>
 
             <p class="modal-description">
                 ¿Desea finalizar su sesión actual en SISCAE?
             </p>
+
 
             <div class="modal-actions">
 
@@ -1075,7 +1338,22 @@
     </div>
 
 
-    <script src="../js/activos.js"></script>
+    <!-- =====================================================
+         COMPONENTES COMPARTIDOS
+    ====================================================== -->
+
+    <script src="../js/components.js"></script>
+
+    <script>
+        loadAdminSidebar();
+    </script>
+
+
+    <!-- =====================================================
+         JAVASCRIPT DE ACTIVOS
+    ====================================================== -->
+
+    <script src="../js/pages/activos.js"></script>
 
 </body>
 

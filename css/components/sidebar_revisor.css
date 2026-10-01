@@ -1,5 +1,10 @@
 /* =========================================================
-   SISCAE - SIDEBAR
+   SISCAE - SIDEBAR REVISOR
+
+   Mismo diseño que css/components/sidebar_admin.css para
+   que todos los roles se vean iguales. Lo único propio del
+   revisor es la variante de contador "--muted" (casos que
+   esperan al autor y no requieren acción inmediata).
 ========================================================= */
 
 :root {
@@ -18,7 +23,6 @@
     position: fixed;
     top: 0;
     left: 0;
-
     z-index: 1000;
 
     display: flex;
@@ -34,8 +38,7 @@
             #0754C9 100%
         );
 
-    border-right:
-        1px solid rgba(255, 255, 255, 0.08);
+    border-right: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 
@@ -45,18 +48,14 @@
 
 .sidebar-logo {
     height: 105px;
-
     padding: 18px 22px;
 
     display: flex;
     align-items: center;
-
     flex-shrink: 0;
 
-    border-bottom:
-        1px solid rgba(255, 255, 255, 0.10);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.10);
 }
-
 
 .sidebar-logo img {
     width: 160px;
@@ -73,30 +72,23 @@
 
 .sidebar-nav {
     flex: 1;
-
     min-height: 0;
-
     padding: 20px 12px 17px;
 
     overflow-y: auto;
     overflow-x: hidden;
 }
 
-
 .nav-title {
     display: block;
-
     margin: 9px 10px 7px;
 
-    color:
-        rgba(255, 255, 255, 0.40);
+    color: rgba(255, 255, 255, 0.40);
 
     font-size: 8px;
     font-weight: var(--font-medium);
-
     letter-spacing: 1.3px;
 }
-
 
 .nav-title-space {
     margin-top: 22px;
@@ -109,19 +101,14 @@
 
 .nav-item {
     min-height: 44px;
-
     position: relative;
-
     padding: 0 11px;
 
     display: flex;
     align-items: center;
-
     gap: 12px;
 
-    color:
-        rgba(255, 255, 255, 0.78);
-
+    color: rgba(255, 255, 255, 0.78);
     border-radius: var(--radius-small);
 
     font-size: 11px;
@@ -131,23 +118,22 @@
         color var(--transition-fast);
 }
 
-
 .nav-item + .nav-item {
     margin-top: 2px;
 }
 
-
 .nav-item:hover {
     color: var(--white);
+    background: rgba(255, 255, 255, 0.08);
+}
 
-    background:
-        rgba(255, 255, 255, 0.08);
+.nav-item:focus-visible {
+    outline: 2px solid var(--yellow);
+    outline-offset: -2px;
 }
 
 
-/* =========================================================
-   OPCIÓN ACTIVA
-========================================================= */
+/* OPCIÓN ACTIVA */
 
 .nav-item.active {
     color: var(--white);
@@ -160,7 +146,6 @@
         );
 }
 
-
 .nav-item.active::before {
     content: "";
 
@@ -168,19 +153,12 @@
     height: 25px;
 
     position: absolute;
-
     left: -12px;
     top: 50%;
-
     transform: translateY(-50%);
 
     background: var(--yellow);
-
-    border-radius:
-        0
-        3px
-        3px
-        0;
+    border-radius: 0 3px 3px 0;
 }
 
 
@@ -195,10 +173,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-
     flex-shrink: 0;
 }
-
 
 .nav-icon svg {
     width: 18px;
@@ -206,7 +182,6 @@
 
     fill: none;
     stroke: currentColor;
-
     stroke-width: 1.55;
     stroke-linecap: round;
     stroke-linejoin: round;
@@ -214,13 +189,12 @@
 
 
 /* =========================================================
-   CONTADOR DE OBSERVACIONES
+   CONTADORES
 ========================================================= */
 
 .nav-count {
     min-width: 20px;
     height: 20px;
-
     margin-left: auto;
     padding: 0 6px;
 
@@ -230,11 +204,23 @@
 
     color: var(--blue-dark);
     background: var(--yellow);
-
     border-radius: 20px;
 
     font-size: 8px;
     font-weight: var(--font-bold);
+}
+
+/* Casos en manos del autor: informativo, no urgente */
+
+.nav-count--muted {
+    color: var(--white);
+    background: rgba(255, 255, 255, 0.16);
+}
+
+/* Si un contador llega a cero se oculta */
+
+.nav-count[data-empty="true"] {
+    display: none;
 }
 
 
@@ -244,27 +230,18 @@
 
 .sidebar-footer {
     padding: 13px;
-
     flex-shrink: 0;
 
-    border-top:
-        1px solid rgba(255, 255, 255, 0.10);
+    border-top: 1px solid rgba(255, 255, 255, 0.10);
 }
-
 
 .sidebar-user {
     padding: 8px;
 
     display: flex;
     align-items: center;
-
     gap: 9px;
 }
-
-
-/* =========================================================
-   AVATAR
-========================================================= */
 
 .sidebar-avatar {
     width: 34px;
@@ -273,65 +250,47 @@
     display: flex;
     align-items: center;
     justify-content: center;
-
     flex-shrink: 0;
 
     color: var(--blue-dark);
     background: var(--white);
-
     border-radius: 50%;
 
     font-size: 9px;
     font-weight: var(--font-bold);
 }
 
-
-/* =========================================================
-   INFORMACIÓN DEL USUARIO
-========================================================= */
-
 .sidebar-user-info {
     min-width: 0;
-
     flex: 1;
 }
 
-
 .sidebar-user-info strong {
     display: block;
-
     overflow: hidden;
 
     color: var(--white);
 
     font-size: 9px;
     font-weight: var(--font-medium);
-
     text-overflow: ellipsis;
     white-space: nowrap;
 }
-
 
 .sidebar-user-info span {
     display: block;
-
     margin-top: 2px;
-
     overflow: hidden;
 
-    color:
-        rgba(255, 255, 255, 0.52);
+    color: rgba(255, 255, 255, 0.52);
 
     font-size: 7px;
-
     text-overflow: ellipsis;
     white-space: nowrap;
 }
 
 
-/* =========================================================
-   CERRAR SESIÓN
-========================================================= */
+/* CERRAR SESIÓN */
 
 .logout-icon {
     width: 31px;
@@ -340,27 +299,20 @@
     display: flex;
     align-items: center;
     justify-content: center;
-
     flex-shrink: 0;
 
-    color:
-        rgba(255, 255, 255, 0.65);
-
+    color: rgba(255, 255, 255, 0.65);
     background: transparent;
-
     border: 0;
 
     cursor: pointer;
 
-    transition:
-        color var(--transition-fast);
+    transition: color var(--transition-fast);
 }
-
 
 .logout-icon:hover {
     color: var(--white);
 }
-
 
 .logout-icon svg {
     width: 16px;
@@ -368,7 +320,6 @@
 
     fill: none;
     stroke: currentColor;
-
     stroke-width: 1.55;
     stroke-linecap: round;
     stroke-linejoin: round;
@@ -383,23 +334,13 @@
     width: 4px;
 }
 
-
 .sidebar-nav::-webkit-scrollbar-track {
     background: transparent;
 }
 
-
 .sidebar-nav::-webkit-scrollbar-thumb {
-    background:
-        rgba(255, 255, 255, 0.14);
-
+    background: rgba(255, 255, 255, 0.14);
     border-radius: 10px;
-}
-
-
-.sidebar-nav::-webkit-scrollbar-thumb:hover {
-    background:
-        rgba(255, 255, 255, 0.22);
 }
 
 
@@ -409,17 +350,13 @@
 
 .mobile-overlay {
     position: fixed;
-
     inset: 0;
-
     z-index: 900;
 
     display: none;
 
-    background:
-        rgba(4, 17, 46, 0.55);
+    background: rgba(4, 17, 46, 0.55);
 }
-
 
 .mobile-overlay.active {
     display: block;
@@ -427,18 +364,15 @@
 
 
 /* =========================================================
-   RESPONSIVE - TABLET
+   RESPONSIVE
 ========================================================= */
 
 @media (max-width: 950px) {
 
     .sidebar {
         transform: translateX(-100%);
-
-        transition:
-            transform var(--transition-normal);
+        transition: transform var(--transition-normal);
     }
-
 
     .sidebar.open {
         transform: translateX(0);
@@ -446,24 +380,23 @@
 
 }
 
-
-/* =========================================================
-   RESPONSIVE - MÓVIL
-========================================================= */
-
 @media (max-width: 600px) {
 
     :root {
         --sidebar-width: 275px;
     }
 
-
     .sidebar {
-        width:
-            min(
-                var(--sidebar-width),
-                88vw
-            );
+        width: min(var(--sidebar-width), 88vw);
+    }
+
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    .sidebar,
+    .nav-item {
+        transition: none;
     }
 
 }

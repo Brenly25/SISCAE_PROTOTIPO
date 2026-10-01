@@ -900,6 +900,206 @@ async function loadSidebar(config) {
 }
 
 
+/* =====================================================
+   SISCAE - SIDEBAR POR ROL (genérico)
+
+   Carga cualquier sidebar de /components y le da el
+   mismo comportamiento que el del admin: logo, enlaces,
+   opción activa y menú móvil.
+
+   Además soporta enlaces a secciones de la misma página
+   (data-page="pagina.html#seccion"): la opción se marca
+   activa según la sección visible al hacer scroll.
+
+   Uso:  await loadSidebar("sidebar_revisor.txt");
+===================================================== */
+
+async function loadSidebar(componentFile) {
+
+    const sidebarContainer =
+        document.getElementById("sidebar-component");
+
+    if (!sidebarContainer) {
+        return;
+    }
+
+    try {
+
+        const response = await fetch(
+            `../components/${componentFile}`
+        );
+
+        if (!response.ok) {
+            throw new Error(
+                `No se pudo cargar ${componentFile}. Error ${response.status}`
+            );
+        }
+
+        sidebarContainer.innerHTML = await response.text();
+
+
+        /* LOGO */
+
+        const sidebarLogo =
+            document.getElementById("sidebarLogo");
+
+        if (sidebarLogo) {
+            sidebarLogo.src = "../assets/img/logo.png";
+        }
+
+
+        /* ENLACES */
+
+        const sidebarLinks =
+            [...sidebarContainer.querySelectorAll("[data-page]")];
+
+        sidebarLinks.forEach(link => {
+            link.href = link.dataset.page;
+        });
+
+        const currentPage =
+            window.location.pathname.split("/").pop();
+
+        const samePageLinks = sidebarLinks.filter(link => {
+            const [page] = link.dataset.page.split("#");
+            return page === currentPage;
+        });
+
+        function setActive(hash) {
+
+            samePageLinks.forEach(link => {
+
+                const [, linkHash = ""] =
+                    link.dataset.page.split("#");
+
+                link.classList.toggle(
+                    "active",
+                    linkHash === hash
+                );
+
+            });
+
+        }
+
+        setActive(window.location.hash.replace("#", ""));
+
+
+        /* OPCIÓN ACTIVA SEGÚN LA SECCIÓN VISIBLE */
+
+        const sections = samePageLinks
+            .map(link => link.dataset.page.split("#")[1])
+            .filter(Boolean)
+            .map(id => document.getElementById(id))
+            .filter(Boolean);
+
+        if (sections.length) {
+
+            function updateFromScroll() {
+
+                const marker = window.scrollY + 160;
+
+                let current = "";
+
+                sections.forEach(section => {
+
+                    const top =
+                        section.getBoundingClientRect().top +
+                        window.scrollY;
+
+                    if (marker >= top) {
+                        current = section.id;
+                    }
+
+                });
+
+                // Al llegar al final, la última sección puede no
+                // alcanzar la parte superior: se marca igual
+                const atBottom =
+                    window.innerHeight + window.scrollY >=
+                    document.documentElement.scrollHeight - 4;
+
+                if (atBottom) {
+                    current = sections[sections.length - 1].id;
+                }
+
+                setActive(current);
+            }
+
+            window.addEventListener(
+                "scroll",
+                updateFromScroll,
+                { passive: true }
+            );
+
+            updateFromScroll();
+        }
+
+
+        /* MENÚ MÓVIL */
+
+        const sidebar =
+            document.getElementById("sidebar");
+
+        const menuButton =
+            document.getElementById("menuButton");
+
+        const mobileOverlay =
+            document.getElementById("mobileOverlay");
+
+        function openSidebar() {
+            sidebar?.classList.add("open");
+            mobileOverlay?.classList.add("active");
+            document.body.classList.add("locked");
+        }
+
+        function closeSidebar() {
+            sidebar?.classList.remove("open");
+            mobileOverlay?.classList.remove("active");
+            document.body.classList.remove("locked");
+        }
+
+        menuButton?.addEventListener("click", () => {
+            sidebar?.classList.contains("open")
+                ? closeSidebar()
+                : openSidebar();
+        });
+
+        mobileOverlay?.addEventListener("click", closeSidebar);
+
+        sidebarLinks.forEach(link => {
+            link.addEventListener("click", () => {
+                if (window.innerWidth <= 950) {
+                    closeSidebar();
+                }
+            });
+        });
+
+        document.addEventListener("keydown", event => {
+            if (
+                event.key === "Escape" &&
+                sidebar?.classList.contains("open") &&
+                window.innerWidth <= 950
+            ) {
+                closeSidebar();
+            }
+        });
+
+        window.addEventListener("resize", () => {
+            if (window.innerWidth > 950) {
+                closeSidebar();
+            }
+        });
+
+    } catch (error) {
+
+        console.error(
+            "Error cargando sidebar:",
+            error
+        );
+
+    }
+}
+
 /* =========================================================
    SIDEBAR ADMINISTRADOR
 ========================================================= */
@@ -922,9 +1122,16 @@ async function loadAdminSidebar() {
 }
 
 
+/* =====================================================
+   SISCAE - SIDEBAR REVISOR
+===================================================== */
+
+function loadRevisorSidebar() {
+    return loadSidebar("sidebar_revisor.txt");
 /* =========================================================
    SIDEBAR AUDITOR
 ========================================================= */
+}
 
 async function loadAuditorSidebar() {
 

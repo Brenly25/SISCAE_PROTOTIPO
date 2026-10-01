@@ -230,6 +230,191 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 
     /* =====================================================
+   NAVBAR LOGIN
+===================================================== */
+
+    const loginHeaderContainer =
+        document.getElementById("login-header-component");
+
+
+    if (loginHeaderContainer) {
+
+        try {
+
+            const response =
+                await fetch(
+                    `${basePath}components/navbar_login.html`
+                );
+
+
+            if (!response.ok) {
+
+                throw new Error(
+                    "No se pudo cargar el navbar del login."
+                );
+
+            }
+
+
+            const html =
+                await response.text();
+
+
+            loginHeaderContainer.innerHTML = html;
+
+
+            /* =================================================
+               LOGO
+            ================================================= */
+
+            const loginLogo =
+                loginHeaderContainer.querySelector(
+                    ".login-header__brand"
+                );
+
+            const loginLogoImage =
+                loginHeaderContainer.querySelector(
+                    ".login-header__brand img"
+                );
+
+
+            if (loginLogo) {
+
+                loginLogo.href =
+                    `${basePath}index.html#inicio`;
+
+            }
+
+
+            if (loginLogoImage) {
+
+                loginLogoImage.src =
+                    `${basePath}assets/img/logo.png`;
+
+            }
+
+
+            /* =================================================
+               LINKS DEL NAVBAR
+            ================================================= */
+
+            const loginNavLinks =
+                loginHeaderContainer.querySelectorAll(
+                    ".login-nav__link"
+                );
+
+
+            if (loginNavLinks[0]) {
+
+                loginNavLinks[0].href =
+                    `${basePath}index.html#inicio`;
+
+            }
+
+
+            if (loginNavLinks[1]) {
+
+                loginNavLinks[1].href =
+                    `${basePath}index.html#acerca`;
+
+            }
+
+
+            if (loginNavLinks[2]) {
+
+                loginNavLinks[2].href =
+                    `${basePath}index.html#soporte`;
+
+            }
+
+
+            /* =================================================
+               MENÚ MÓVIL
+            ================================================= */
+
+            const loginMenuButton =
+                loginHeaderContainer.querySelector(
+                    "#loginMenuButton"
+                );
+
+            const loginNav =
+                loginHeaderContainer.querySelector(
+                    "#loginNav"
+                );
+
+
+            if (loginMenuButton && loginNav) {
+
+                loginMenuButton.addEventListener(
+                    "click",
+                    function () {
+
+                        loginNav.classList.toggle(
+                            "active"
+                        );
+
+                        loginMenuButton.classList.toggle(
+                            "active"
+                        );
+
+
+                        const expanded =
+                            loginMenuButton.getAttribute(
+                                "aria-expanded"
+                            ) === "true";
+
+
+                        loginMenuButton.setAttribute(
+                            "aria-expanded",
+                            String(!expanded)
+                        );
+
+                    }
+                );
+
+
+                /* CERRAR MENÚ AL SELECCIONAR */
+
+                loginNavLinks.forEach(link => {
+
+                    link.addEventListener(
+                        "click",
+                        function () {
+
+                            loginNav.classList.remove(
+                                "active"
+                            );
+
+                            loginMenuButton.classList.remove(
+                                "active"
+                            );
+
+                            loginMenuButton.setAttribute(
+                                "aria-expanded",
+                                "false"
+                            );
+
+                        }
+                    );
+
+                });
+
+            }
+
+
+        } catch (error) {
+
+            console.error(
+                "Error cargando navbar del login:",
+                error
+            );
+
+        }
+
+    }
+
+
+    /* =====================================================
        FOOTER
     ===================================================== */
 

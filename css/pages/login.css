@@ -4,191 +4,15 @@
 
 
 /* ==========================================================
-   GENERAL
+   ESTRUCTURA DE PÁGINA
 ========================================================== */
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-
-html {
-    scroll-behavior: smooth;
-}
-
 
 body {
-    min-height: 100vh;
-
     display: flex;
     flex-direction: column;
 
-    font-family: "Roboto", Arial, sans-serif;
-
-    background: #f5f6f8;
-
-    color: #172b4d;
+    background: var(--background);
 }
-
-
-a {
-    text-decoration: none;
-}
-
-
-button {
-    font-family: inherit;
-}
-
-
-
-/* ==========================================================
-   HEADER
-========================================================== */
-
-.login-header {
-    width: 100%;
-    height: 100px;
-
-    position: relative;
-    z-index: 100;
-
-    flex-shrink: 0;
-
-    background: #183a78;
-
-    border-bottom: 3px solid #c99d36;
-}
-
-
-
-/* CONTENIDO HEADER */
-
-.login-header__content {
-    width: min(1400px, 88%);
-    height: 100%;
-
-    margin: 0 auto;
-
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-
-
-/* ==========================================================
-   LOGO HEADER
-========================================================== */
-
-.login-header__brand {
-    display: flex;
-    align-items: center;
-}
-
-
-.login-header__brand img {
-    width: 185px;
-    height: auto;
-
-    display: block;
-    object-fit: contain;
-}
-
-
-
-/* ==========================================================
-   NAVEGACIÓN
-========================================================== */
-
-.login-nav {
-    display: flex;
-    align-items: center;
-
-    gap: 52px;
-}
-
-
-.login-nav__link {
-    position: relative;
-
-    padding: 10px 0;
-
-    color: rgba(255, 255, 255, 0.82);
-
-    font-size: 15px;
-    font-weight: 600;
-
-    transition:
-        color 0.2s ease;
-}
-
-
-.login-nav__link::after {
-    content: "";
-
-    position: absolute;
-
-    left: 0;
-    bottom: 2px;
-
-    width: 0;
-    height: 2px;
-
-    background: #d2a33a;
-
-    transition:
-        width 0.25s ease;
-}
-
-
-.login-nav__link:hover {
-    color: #ffffff;
-}
-
-
-.login-nav__link:hover::after {
-    width: 100%;
-}
-
-
-
-/* ==========================================================
-   BOTÓN MENÚ
-========================================================== */
-
-.login-menu-button {
-    width: 42px;
-    height: 42px;
-
-    display: none;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-
-    gap: 5px;
-
-    border: none;
-
-    background: transparent;
-
-    cursor: pointer;
-}
-
-
-.login-menu-button span {
-    width: 24px;
-    height: 2px;
-
-    display: block;
-
-    background: #ffffff;
-
-    transition: 0.25s ease;
-}
-
 
 
 /* ==========================================================
@@ -200,20 +24,14 @@ button {
 
     flex: 1;
 
-    /*
-       AQUÍ CONTROLAMOS EL ESPACIO REAL
-       ENTRE NAVBAR - LOGIN - FOOTER
-    */
-
     padding: 70px 32px;
 
     display: flex;
     align-items: center;
     justify-content: center;
 
-    background: #f5f6f8;
+    background: var(--background);
 }
-
 
 
 /* ==========================================================
@@ -230,17 +48,17 @@ button {
         1.12fr
         0.88fr;
 
-    background: #ffffff;
+    background: var(--white);
 
-    border: 1px solid #e0e5eb;
+    border:
+        1px solid
+        var(--border);
 
     box-shadow:
-        0 20px 50px
-        rgba(17, 37, 70, 0.10);
+        var(--shadow-large);
 
     overflow: hidden;
 }
-
 
 
 /* ==========================================================
@@ -263,10 +81,9 @@ button {
         linear-gradient(
             135deg,
             #fbfcfd 0%,
-            #f7f9fb 100%
+            var(--background) 100%
         );
 }
-
 
 
 /* ==========================================================
@@ -283,8 +100,9 @@ button {
 }
 
 
-
-/* LÍNEA DORADA */
+/* ==========================================================
+   LÍNEA DORADA
+========================================================== */
 
 .login-intro__line {
     width: 45px;
@@ -294,37 +112,39 @@ button {
 
     margin-bottom: 18px;
 
-    background: #c99d36;
+    background: var(--yellow);
 }
 
 
-
-/* PLATAFORMA */
+/* ==========================================================
+   PLATAFORMA
+========================================================== */
 
 .login-intro__label {
     display: block;
 
     margin-bottom: 20px;
 
-    color: #62738a;
+    color: var(--text-secondary);
 
     font-size: 12px;
-    font-weight: 600;
+    font-weight: var(--font-medium);
 
     letter-spacing: 2px;
 }
 
 
-
-/* SISCAE */
+/* ==========================================================
+   SISCAE
+========================================================== */
 
 .login-intro h1 {
     margin-bottom: 20px;
 
-    color: #24599a;
+    color: var(--blue-header);
 
     font-size: 52px;
-    font-weight: 700;
+    font-weight: var(--font-bold);
 
     line-height: 1;
 
@@ -332,35 +152,36 @@ button {
 }
 
 
-
-/* NOMBRE COMPLETO */
+/* ==========================================================
+   NOMBRE COMPLETO
+========================================================== */
 
 .login-intro h2 {
     max-width: 500px;
 
     margin-bottom: 25px;
 
-    color: #172b4d;
+    color: var(--text);
 
     font-size: 25px;
-    font-weight: 500;
+    font-weight: var(--font-medium);
 
     line-height: 1.45;
 }
 
 
-
-/* TEXTO */
+/* ==========================================================
+   TEXTO
+========================================================== */
 
 .login-intro p {
-    color: #6f7e91;
+    color: var(--text-secondary);
 
     font-size: 14px;
-    font-weight: 400;
+    font-weight: var(--font-regular);
 
     line-height: 1.7;
 }
-
 
 
 /* ==========================================================
@@ -398,9 +219,8 @@ button {
 
     border:
         27px solid
-        rgba(198, 160, 74, 0.055);
+        rgba(244, 196, 48, 0.055);
 }
-
 
 
 /* ==========================================================
@@ -420,12 +240,12 @@ button {
 
     overflow: hidden;
 
-    background: #eef2f6;
+    background: var(--background-secondary);
 
     border-left:
-        1px solid #e0e5eb;
+        1px solid
+        var(--border);
 }
-
 
 
 /* ==========================================================
@@ -440,7 +260,6 @@ button {
 
     z-index: 2;
 }
-
 
 
 /* ==========================================================
@@ -460,8 +279,9 @@ button {
 }
 
 
-
-/* ARO */
+/* ==========================================================
+   ARO
+========================================================== */
 
 .access-ring {
     width: 245px;
@@ -480,8 +300,9 @@ button {
 }
 
 
-
-/* LÍNEAS */
+/* ==========================================================
+   LÍNEAS
+========================================================== */
 
 .access-line {
     width: 155px;
@@ -514,8 +335,9 @@ button {
 }
 
 
-
-/* PUNTOS */
+/* ==========================================================
+   PUNTOS
+========================================================== */
 
 .access-dot {
     width: 5px;
@@ -526,7 +348,7 @@ button {
     border-radius: 50%;
 
     background:
-        rgba(198, 160, 74, 0.38);
+        rgba(244, 196, 48, 0.38);
 }
 
 
@@ -548,7 +370,6 @@ button {
 }
 
 
-
 /* ==========================================================
    ICONO LOGIN
 ========================================================== */
@@ -563,28 +384,28 @@ button {
     align-items: center;
     justify-content: center;
 
-    background: #172b4d;
+    background: var(--text);
 
-    color: #ffffff;
-
-    font-size: 19px;
+    color: var(--white);
 
     border-bottom:
-        4px solid #c99d36;
+        4px solid
+        var(--yellow);
 }
+
 
 .login-icon svg {
     width: 21px;
     height: 21px;
 
     fill: none;
+
     stroke: currentColor;
 
     stroke-width: 1.7;
     stroke-linecap: round;
     stroke-linejoin: round;
 }
-
 
 
 /* ==========================================================
@@ -594,14 +415,13 @@ button {
 .login-access__content h2 {
     margin-bottom: 12px;
 
-    color: #172b4d;
+    color: var(--text);
 
     font-size: 31px;
-    font-weight: 700;
+    font-weight: var(--font-bold);
 
     line-height: 1.2;
 }
-
 
 
 /* ==========================================================
@@ -611,13 +431,12 @@ button {
 .login-access__description {
     margin-bottom: 30px;
 
-    color: #718095;
+    color: var(--text-secondary);
 
     font-size: 14px;
 
     line-height: 1.6;
 }
-
 
 
 /* ==========================================================
@@ -636,28 +455,27 @@ button {
 
     gap: 14px;
 
-    background: #ffffff;
+    background: var(--white);
 
     border:
-        1px solid #ccd4de;
+        1px solid
+        var(--border);
 
-    border-radius: 10px;
+    border-radius:
+        var(--radius-large);
 
-    color: #172b4d;
+    color: var(--text);
 
     font-size: 14px;
-    font-weight: 600;
-
-    cursor: pointer;
+    font-weight: var(--font-medium);
 
     box-shadow:
-        0 2px 4px
-        rgba(23, 43, 77, 0.025);
+        var(--shadow-small);
 
     transition:
-        border-color 0.2s ease,
-        box-shadow 0.2s ease,
-        transform 0.2s ease;
+        border-color var(--transition-fast),
+        box-shadow var(--transition-fast),
+        transform var(--transition-fast);
 }
 
 
@@ -670,11 +488,10 @@ button {
 
 
 .google-button:hover {
-    border-color: #24599a;
+    border-color: var(--blue-secondary);
 
     box-shadow:
-        0 7px 18px
-        rgba(23, 43, 77, 0.10);
+        var(--shadow-medium);
 
     transform:
         translateY(-1px);
@@ -685,16 +502,6 @@ button {
     transform:
         translateY(0);
 }
-
-
-.google-button:focus-visible {
-    outline:
-        3px solid
-        rgba(36, 89, 154, 0.18);
-
-    outline-offset: 3px;
-}
-
 
 
 /* ==========================================================
@@ -710,7 +517,7 @@ button {
 
     gap: 8px;
 
-    color: #69798e;
+    color: var(--text-secondary);
 
     font-size: 11px;
 
@@ -722,7 +529,7 @@ button {
     width: 14px;
     height: 14px;
 
-    color: #b38d32;
+    color: var(--yellow);
 
     fill: none;
     stroke: currentColor;
@@ -736,211 +543,10 @@ button {
 
 
 .institutional-access strong {
-    color: #334b70;
+    color: var(--blue-header);
 
-    font-weight: 700;
+    font-weight: var(--font-bold);
 }
-
-
-
-/* ==========================================================
-   FOOTER
-========================================================== */
-
-.login-footer {
-    width: 100%;
-
-    flex-shrink: 0;
-
-    background: #082b61;
-
-    color: #ffffff;
-
-    border-top: 3px solid #d3a32f;
-}
-
-
-
-/* ==========================================================
-   FOOTER PRINCIPAL
-========================================================== */
-
-.login-footer__main {
-    width: min(1400px, 92%);
-
-    min-height: 135px;
-
-    margin: 0 auto;
-
-    display: flex;
-    align-items: center;
-
-    position: relative;
-}
-
-
-
-/* ==========================================================
-   LOGO FOOTER
-========================================================== */
-
-.login-footer__brand {
-    display: flex;
-    align-items: center;
-}
-
-
-.login-footer__brand img {
-    width: 205px;
-    height: auto;
-
-    display: block;
-}
-
-
-
-/* ==========================================================
-   DIVISOR
-========================================================== */
-
-.login-footer__divider {
-    width: 1px;
-    height: 60px;
-
-    margin:
-        0
-        35px;
-
-    background:
-        rgba(255, 255, 255, 0.30);
-}
-
-
-
-/* ==========================================================
-   SISTEMA FOOTER
-========================================================== */
-
-.login-footer__system {
-    display: flex;
-    flex-direction: column;
-
-    gap: 7px;
-}
-
-
-.login-footer__system strong {
-    color: #ffffff;
-
-    font-size: 16px;
-    font-weight: 700;
-
-    letter-spacing: 1px;
-}
-
-
-.login-footer__system span {
-    color:
-        rgba(255, 255, 255, 0.72);
-
-    font-size: 11px;
-}
-
-
-
-/* ==========================================================
-   BOTÓN VOLVER ARRIBA
-========================================================== */
-
-.login-footer__top {
-    width: 46px;
-    height: 46px;
-
-    margin-left: auto;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    border:
-        1px solid
-        rgba(255, 255, 255, 0.20);
-
-    border-radius: 50%;
-
-    background:
-        rgba(255, 255, 255, 0.06);
-
-    transition:
-        background 0.2s ease,
-        border-color 0.2s ease,
-        transform 0.2s ease;
-}
-
-
-.login-footer__top svg {
-    width: 20px;
-    height: 20px;
-
-    fill: none;
-
-    stroke: #ffffff;
-
-    stroke-width: 1.8;
-
-    stroke-linecap: round;
-
-    stroke-linejoin: round;
-}
-
-
-.login-footer__top:hover {
-    background:
-        rgba(255, 255, 255, 0.12);
-
-    border-color:
-        rgba(255, 255, 255, 0.40);
-
-    transform:
-        translateY(-2px);
-}
-
-
-
-/* ==========================================================
-   FOOTER INFERIOR
-========================================================== */
-
-.login-footer__bottom {
-    border-top:
-        1px solid
-        rgba(255, 255, 255, 0.10);
-}
-
-
-.login-footer__bottom-content {
-    width: min(1400px, 92%);
-
-    min-height: 52px;
-
-    margin: 0 auto;
-
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    gap: 20px;
-
-    color:
-        rgba(255, 255, 255, 0.52);
-
-    font-size: 10px;
-
-    text-transform: uppercase;
-
-    letter-spacing: 0.6px;
-}
-
 
 
 /* ==========================================================
@@ -948,62 +554,6 @@ button {
 ========================================================== */
 
 @media (max-width: 900px) {
-
-    /* HEADER */
-
-    .login-header__content {
-        width: 90%;
-    }
-
-
-    .login-menu-button {
-        display: flex;
-    }
-
-
-    .login-nav {
-        width: 100%;
-
-        position: absolute;
-
-        top: 100%;
-        left: 0;
-
-        padding: 25px;
-
-        display: none;
-        flex-direction: column;
-
-        gap: 10px;
-
-        background: #183a78;
-
-        border-top:
-            1px solid
-            rgba(255, 255, 255, 0.12);
-
-        box-shadow:
-            0 10px 20px
-            rgba(0, 0, 0, 0.12);
-    }
-
-
-    .login-nav.active {
-        display: flex;
-    }
-
-
-    .login-nav__link {
-        width: 100%;
-
-        padding: 12px 5%;
-
-        text-align: center;
-    }
-
-
-
-    /* LOGIN */
 
     .login-main {
         padding: 55px 20px;
@@ -1032,7 +582,8 @@ button {
         border-left: none;
 
         border-top:
-            1px solid #e0e5eb;
+            1px solid
+            var(--border);
     }
 
 
@@ -1040,28 +591,7 @@ button {
         max-width: 470px;
     }
 
-
-
-    /* FOOTER */
-
-    .login-footer__main {
-        min-height: 125px;
-    }
-
-
-    .login-footer__brand img {
-        width: 175px;
-    }
-
-
-    .login-footer__divider {
-        margin:
-            0
-            25px;
-    }
-
 }
-
 
 
 /* ==========================================================
@@ -1070,28 +600,14 @@ button {
 
 @media (max-width: 600px) {
 
-    /* HEADER */
-
-    .login-header {
-        height: 82px;
-    }
-
-
-    .login-header__brand img {
-        width: 150px;
-    }
-
-
-
-    /* MAIN */
-
     .login-main {
         padding: 35px 15px;
     }
 
 
-
-    /* IZQUIERDA */
+    /* =====================================================
+       IZQUIERDA
+    ===================================================== */
 
     .login-intro {
         padding: 42px 30px;
@@ -1120,8 +636,9 @@ button {
     }
 
 
-
-    /* DERECHA */
+    /* =====================================================
+       DERECHA
+    ===================================================== */
 
     .login-access {
         padding: 45px 30px;
@@ -1146,8 +663,9 @@ button {
     }
 
 
-
-    /* GOOGLE */
+    /* =====================================================
+       GOOGLE
+    ===================================================== */
 
     .google-button {
         height: 54px;
@@ -1156,80 +674,12 @@ button {
 
         font-size: 13px;
 
-        border-radius: 9px;
+        border-radius:
+            var(--radius-large);
     }
 
 
     .institutional-access {
-        line-height: 1.5;
-    }
-
-
-
-    /* FOOTER */
-
-    .login-footer__main {
-        min-height: auto;
-
-        padding:
-            35px
-            0;
-
-        flex-direction: column;
-
-        justify-content: center;
-
-        text-align: center;
-
-        gap: 22px;
-    }
-
-
-    .login-footer__brand img {
-        width: 175px;
-    }
-
-
-    .login-footer__divider {
-        width: 70px;
-        height: 1px;
-
-        margin: 0;
-    }
-
-
-    .login-footer__system {
-        align-items: center;
-    }
-
-
-    .login-footer__system span {
-        max-width: 300px;
-
-        line-height: 1.5;
-    }
-
-
-    .login-footer__top {
-        margin-left: 0;
-    }
-
-
-    .login-footer__bottom-content {
-        min-height: auto;
-
-        padding:
-            20px
-            0;
-
-        flex-direction: column;
-
-        justify-content: center;
-
-        gap: 8px;
-
-        text-align: center;
-
         line-height: 1.5;
     }
 

@@ -4,13 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Dashboard | Autor / Editor | SISCAE</title>
+  <title>Versiones | Autor / Editor | SISCAE</title>
 
-  <link rel="stylesheet" href="../css/pages/dashboard.css">
-  <script src="../js/dashboard.js" defer></script>
+  <link rel="stylesheet" href="../css/pages/versiones.css">
+  <script src="../js/versiones.js" defer></script>
 </head>
 
-<body data-page="dashboard">
+<body data-page="versiones">
   <a class="author-skip" href="#contenido">Ir al contenido</a>
 
   <!-- MENÚ LATERAL -->
@@ -25,11 +25,7 @@
     <nav class="sidebar-nav" aria-label="Autor / Editor">
       <span class="nav-title">MI ESPACIO</span>
 
-      <a
-        href="dashboard.html"
-        class="nav-item active"
-        aria-current="page"
-      >
+      <a href="dashboard.html" class="nav-item">
         <span class="author-nav-icon" aria-hidden="true">▦</span>
         <span>Dashboard</span>
       </a>
@@ -39,7 +35,11 @@
         <span>Registrar activo</span>
       </a>
 
-      <a href="versiones.html" class="nav-item">
+      <a
+        href="versiones.html"
+        class="nav-item active"
+        aria-current="page"
+      >
         <span class="author-nav-icon" aria-hidden="true">↻</span>
         <span>Versiones</span>
       </a>
@@ -91,7 +91,7 @@
         <div class="breadcrumb">
           <span>SISCAE</span>
           <span aria-hidden="true">/</span>
-          <strong>Dashboard</strong>
+          <strong>Versiones</strong>
         </div>
       </div>
 
@@ -102,10 +102,11 @@
       <section class="page-header">
         <div>
           <span class="section-label">AUTOR / EDITOR</span>
-          <h1>Dashboard</h1>
+          <h1>Versiones</h1>
 
           <p>
-            Un resumen de sus libros, versiones y observaciones.
+            Consulte el historial de cada libro
+            y registre sus actualizaciones.
           </p>
         </div>
 
@@ -119,16 +120,53 @@
         hidden
       ></div>
 
-      <!-- INDICADORES -->
-      <div id="summary" class="author-summary"></div>
-
-      <!-- RESUMEN DE ACTIVOS -->
+      <!-- HISTORIAL DE VERSIONES -->
       <section class="author-panel">
-        <div class="author-panel-heading">
-          <h2>Resumen de activos</h2>
-        </div>
+        <label for="asset-select">Seleccione un activo</label>
+        <select id="asset-select"></select>
 
-        <div id="asset-summary"></div>
+        <div id="version-list"></div>
+      </section>
+
+      <!-- NUEVA VERSIÓN -->
+      <section
+        id="version-panel"
+        class="author-panel author-form-panel"
+        hidden
+      >
+        <h2>Registrar nueva versión</h2>
+        <p id="next-version" class="author-muted"></p>
+
+        <form id="version-form">
+          <label for="archivo">Archivo actualizado</label>
+
+          <input
+            type="file"
+            id="archivo"
+            name="archivo"
+            accept=".pdf,.doc,.docx,.epub"
+            required
+          >
+
+          <small>
+            PDF, DOC, DOCX o EPUB · máximo 50 MB.
+          </small>
+
+          <label for="nota">Descripción de los cambios</label>
+
+          <textarea
+            id="nota"
+            name="nota"
+            rows="3"
+            maxlength="2000"
+            placeholder="Indique qué cambió respecto a la entrega anterior."
+            required
+          ></textarea>
+
+          <button type="submit" class="author-primary">
+            Guardar versión y generar SHA-256
+          </button>
+        </form>
       </section>
     </div>
 

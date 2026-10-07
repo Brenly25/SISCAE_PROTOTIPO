@@ -4,13 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Dashboard | Autor / Editor | SISCAE</title>
+  <title>Registrar activo | Autor / Editor | SISCAE</title>
 
-  <link rel="stylesheet" href="../css/pages/dashboard.css">
-  <script src="../js/dashboard.js" defer></script>
+  <link rel="stylesheet" href="../css/pages/carga.css">
+  <script src="../js/carga.js" defer></script>
 </head>
 
-<body data-page="dashboard">
+<body data-page="carga">
   <a class="author-skip" href="#contenido">Ir al contenido</a>
 
   <!-- MENÚ LATERAL -->
@@ -25,16 +25,16 @@
     <nav class="sidebar-nav" aria-label="Autor / Editor">
       <span class="nav-title">MI ESPACIO</span>
 
-      <a
-        href="dashboard.html"
-        class="nav-item active"
-        aria-current="page"
-      >
+      <a href="dashboard.html" class="nav-item">
         <span class="author-nav-icon" aria-hidden="true">▦</span>
         <span>Dashboard</span>
       </a>
 
-      <a href="carga.html" class="nav-item">
+      <a
+        href="carga.html"
+        class="nav-item active"
+        aria-current="page"
+      >
         <span class="author-nav-icon" aria-hidden="true">+</span>
         <span>Registrar activo</span>
       </a>
@@ -91,7 +91,7 @@
         <div class="breadcrumb">
           <span>SISCAE</span>
           <span aria-hidden="true">/</span>
-          <strong>Dashboard</strong>
+          <strong>Registrar activo</strong>
         </div>
       </div>
 
@@ -102,10 +102,11 @@
       <section class="page-header">
         <div>
           <span class="section-label">AUTOR / EDITOR</span>
-          <h1>Dashboard</h1>
+          <h1>Registrar activo</h1>
 
           <p>
-            Un resumen de sus libros, versiones y observaciones.
+            Registre un libro y genere la huella SHA-256
+            de su primera versión.
           </p>
         </div>
 
@@ -119,16 +120,77 @@
         hidden
       ></div>
 
-      <!-- INDICADORES -->
-      <div id="summary" class="author-summary"></div>
+      <!-- FORMULARIO DE REGISTRO -->
+      <section class="author-panel author-form-panel">
+        <h2>Registrar un libro</h2>
 
-      <!-- RESUMEN DE ACTIVOS -->
-      <section class="author-panel">
-        <div class="author-panel-heading">
-          <h2>Resumen de activos</h2>
-        </div>
+        <p class="author-muted">
+          La primera entrega se registrará como versión 1.1.
+        </p>
 
-        <div id="asset-summary"></div>
+        <form id="register-form">
+          <label for="nombre">
+            Nombre del libro
+            <span aria-hidden="true">*</span>
+          </label>
+
+          <input
+            type="text"
+            id="nombre"
+            name="nombre"
+            maxlength="160"
+            placeholder="Ej. Libro de Matemática de cuarto grado"
+            required
+          >
+
+          <label for="archivo">
+            Archivo del libro
+            <span aria-hidden="true">*</span>
+          </label>
+
+          <input
+            type="file"
+            id="archivo"
+            name="archivo"
+            accept=".pdf,.doc,.docx,.epub"
+            aria-describedby="file-help"
+            required
+          >
+
+          <small id="file-help">
+            PDF, DOC, DOCX o EPUB · máximo 50 MB.
+          </small>
+
+          <label for="nota">
+            Descripción de la entrega
+            <span class="author-muted">(opcional)</span>
+          </label>
+
+          <textarea
+            id="nota"
+            name="nota"
+            rows="3"
+            maxlength="2000"
+            placeholder="Describa el contenido del libro."
+          ></textarea>
+
+          <div class="author-note">
+            <strong>Firma SHA-256</strong>
+
+            <p>
+              Al registrar el libro se calculará su huella a partir
+              del contenido del archivo. Esta huella permite comprobar
+              su integridad; no es una firma digital con certificado.
+            </p>
+          </div>
+
+          <button type="submit" class="author-primary">
+            Registrar y generar SHA-256
+          </button>
+        </form>
+
+        <!-- RESULTADO DEL REGISTRO -->
+        <div id="registered" aria-live="polite"></div>
       </section>
     </div>
 

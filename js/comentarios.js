@@ -1,4 +1,4 @@
-/* DASHBOARD — AUTOR / EDITOR */
+/* OBSERVACIONES — AUTOR / EDITOR */
 
 window.AutorStore = (() => {
   const DB_NAME = "siscae-autor-v1";
@@ -114,7 +114,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     $("feedback").textContent = text;
   }
 
-  /* CARGAR INFORMACIÓN */
+  /* LEER ACTIVOS Y OBSERVACIONES */
 
   async function loadData() {
     [assets, observations] = await Promise.all([
@@ -131,44 +131,42 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
   }
 
-  /* INDICADORES */
+  /* FILTRO POR ACTIVO */
 
-  function renderSummary() {
-    const totalVersions = assets.reduce(
-      (total, asset) => total + asset.versiones.length,
-      0
-    );
+  function renderOptions() {
+    $("asset-filter").innerHTML = `
+      <option value="">Todos los activos</option>
 
-    const signedAssets = assets.filter(asset => {
-      return asset.versiones.some(version => version.firma);
-    }).length;
-
-    const indicators = [
-      ["Activos registrados", assets.length],
-      ["Versiones", totalVersions],
-      ["Activos firmados", signedAssets],
-      ["Observaciones", observations.length]
-    ];
-
-    $("summary").innerHTML = indicators.map(([label, count]) => `
-      <article class="author-stat">
-        <span>${label}</span>
-        <strong>${count}</strong>
-      </article>
-    `).join("");
+      ${assets.map(asset => `
+        <option value="${escapeHTML(asset.id)}">
+          ${escapeHTML(asset.nombre)}
+        </option>
+      `).join("")}
+    `;
   }
 
-  /* RESUMEN DE ACTIVOS */
+  /* LISTADO DE OBSERVACIONES */
 
-  function renderAssets() {
-    if (!assets.length) {
-      $("asset-summary").innerHTML = `
+  function renderObservations() {
+    const selectedAsset = $("asset-filter").value;
+
+    const filtered = observations
+      .filter(observation => {
+        return !selectedAsset ||
+          observation.activoId === selectedAsset;
+      })
+      .sort((a, b) => b.fecha.localeCompare(a.fecha));
+
+    if (!filtered.length) {
+      $("observation-list").innerHTML = `
         <div class="author-empty">
           <span aria-hidden="true">▤</span>
-          <h3>Todavía no hay activos</h3>
+
+          <h3>Sin observaciones del revisor</h3>
+
           <p>
-            Los resúmenes aparecerán cuando registre su primer libro
-            desde Registrar activo.
+            Aquí aparecerán los comentarios sobre cada activo y su versión
+            cuando se conecte el rol de revisor.
           </p>
         </div>
       `;
@@ -176,62 +174,39 @@ document.addEventListener("DOMContentLoaded", async () => {
       return;
     }
 
-    const rows = assets.map(asset => {
-      const lastVersion = asset.versiones.at(-1);
-
-      const observationCount = observations.filter(observation => {
-        return observation.activoId === asset.id;
-      }).length;
+    $("observation-list").innerHTML = filtered.map(observation => {
+      const asset = assets.find(asset => {
+        return asset.id === observation.activoId;
+      });
 
       return `
-        <tr>
-          <td>
-            <strong>${escapeHTML(asset.nombre)}</strong>
-            <small>
-              Actualizado: ${formatDate(asset.actualizado)}
-            </small>
-          </td>
+        <article class="author-version">
+          <span class="author-badge">
+            ${escapeHTML(observation.estado || "Pendiente")}
+          </span>
 
-          <td>v${escapeHTML(lastVersion.numero)}</td>
+          <h2>${escapeHTML(asset.nombre)}</h2>
 
-          <td>${asset.versiones.length}</td>
+          <p class="author-muted">
+            Versión ${escapeHTML(observation.version)}
+            · ${escapeHTML(observation.revisor)}
+            · ${formatDate(observation.fecha)}
+          </p>
 
-          <td>
-            <span class="author-badge">
-              ${escapeHTML(asset.estado)}
-            </span>
-          </td>
-
-          <td>${observationCount}</td>
-        </tr>
+          <p class="author-version-note">${escapeHTML(observation.texto)}</p>
+        </article>
       `;
     }).join("");
-
-    $("asset-summary").innerHTML = `
-      <div class="author-table-wrap">
-        <table class="author-table">
-          <thead>
-            <tr>
-              <th>Libro</th>
-              <th>Última versión</th>
-              <th>Versiones</th>
-              <th>Estado</th>
-              <th>Observaciones</th>
-            </tr>
-          </thead>
-
-          <tbody>${rows}</tbody>
-        </table>
-      </div>
-    `;
   }
 
   /* INICIALIZACIÓN */
 
   try {
     await loadData();
-    renderSummary();
-    renderAssets();
+    renderOptions();
+    renderObservations();
+
+    $("asset-filter").addEventListener("change", renderObservations);
   } catch (error) {
     showMessage(error.message, true);
   }

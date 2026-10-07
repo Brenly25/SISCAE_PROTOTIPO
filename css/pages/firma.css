@@ -1,4 +1,4 @@
-/* DASHBOARD — AUTOR / EDITOR */
+/* FIRMA — AUTOR / EDITOR */
 
 @font-face {
   font-family: Roboto;
@@ -278,37 +278,7 @@ select {
   line-height: 1.6;
 }
 
-/* INDICADORES */
-
-.author-summary {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 18px;
-  margin-bottom: 28px;
-}
-
-.author-stat {
-  border: 1px solid var(--border);
-  border-top: 3px solid var(--blue-3);
-  background: white;
-  border-radius: 8px;
-  padding: 22px;
-}
-
-.author-stat span {
-  display: block;
-  font-size: 13px;
-  color: var(--text-secondary);
-}
-
-.author-stat strong {
-  display: block;
-  font-size: 32px;
-  color: var(--navy);
-  margin-top: 14px;
-}
-
-/* PANEL Y TABLA */
+/* PANEL Y BUSCADOR */
 
 .author-panel {
   background: white;
@@ -325,50 +295,42 @@ select {
   margin-bottom: 10px;
 }
 
-.author-panel-heading {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 16px;
-  margin: 20px 0;
-}
-
-.author-panel-heading span {
-  font-size: 13px;
-  color: var(--text-secondary);
-}
-
-.author-table-wrap {
-  overflow: auto;
-}
-
-.author-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 13px;
-  text-align: left;
-}
-
-.author-table th {
-  padding: 14px 16px;
-  background: #f2f5fa;
-  color: var(--text-secondary);
-  font-weight: 500;
-  white-space: nowrap;
-}
-
-.author-table td {
-  padding: 18px 16px;
-  border-bottom: 1px solid var(--border);
-}
-
-.author-table small {
+.author-panel label {
   display: block;
-  font-size: 11px;
-  color: var(--text-secondary);
-  line-height: 1.6;
-  margin-top: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  margin: 20px 0 9px;
 }
+
+.author-panel input {
+  display: block;
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid #bac8dc;
+  border-radius: 5px;
+  background: white;
+  color: var(--text);
+  font: inherit;
+  font-size: 14px;
+}
+
+.author-panel input:focus-visible,
+button:focus-visible,
+a:focus-visible {
+  outline: 3px solid #93bcff;
+  outline-offset: 3px;
+}
+
+button:disabled {
+  opacity: 0.55;
+  cursor: wait;
+}
+
+.author-sign-group {
+  margin-top: 32px;
+}
+
+/* ACTIVOS FIRMADOS */
 
 .author-badge {
   display: inline-block;
@@ -378,6 +340,86 @@ select {
   padding: 5px 9px;
   font-size: 12px;
   white-space: nowrap;
+}
+
+.author-version {
+  padding: 22px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  margin: 18px 0;
+  overflow-wrap: anywhere;
+}
+
+.author-version-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.author-version h3 {
+  font-size: 16px;
+  margin: 12px 0 8px;
+}
+
+.author-version-heading p {
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+.author-signed {
+  font-size: 12px;
+  color: #08754b;
+  white-space: nowrap;
+}
+
+.author-version-note {
+  font-size: 14px;
+  line-height: 1.7;
+  margin-top: 14px;
+  white-space: pre-wrap;
+}
+
+/* HUELLA Y ACCIONES */
+
+.author-hash {
+  background: #f6f8fc;
+  padding: 14px;
+  margin: 16px 0;
+  border-radius: 5px;
+  min-width: 0;
+}
+
+.author-hash span {
+  display: block;
+  font-size: 11px;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  margin-bottom: 8px;
+}
+
+.author-hash code {
+  font-size: 12px;
+  overflow-wrap: anywhere;
+  word-break: break-all;
+  line-height: 1.7;
+}
+
+.author-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 14px;
+}
+
+.author-actions button {
+  border: 1px solid #c5d3e8;
+  color: var(--blue-3);
+  background: white;
+  padding: 9px 12px;
+  border-radius: 4px;
+  font-size: 12px;
+  cursor: pointer;
 }
 
 /* ESTADO VACÍO Y MENSAJES */
@@ -423,17 +465,6 @@ select {
   border-color: #f2c5c5;
 }
 
-button:focus-visible,
-a:focus-visible {
-  outline: 3px solid #93bcff;
-  outline-offset: 3px;
-}
-
-button:disabled {
-  opacity: 0.55;
-  cursor: wait;
-}
-
 /* PIE DE PÁGINA */
 
 .author-footer {
@@ -450,12 +481,6 @@ button:disabled {
 }
 
 /* RESPONSIVE */
-
-@media (max-width: 1100px) {
-  .author-summary {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
 
 @media (max-width: 950px) {
   .main {
@@ -512,15 +537,11 @@ button:disabled {
     gap: 6px;
   }
 
-  .author-panel-heading {
-    flex-wrap: wrap;
+  .author-version {
+    padding: 14px;
   }
 
-  .author-stat {
-    padding: 16px;
-  }
-
-  .author-summary {
-    gap: 10px;
+  .author-version-heading {
+    flex-direction: column;
   }
 }

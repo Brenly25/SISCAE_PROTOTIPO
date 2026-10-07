@@ -4,13 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Dashboard | Autor / Editor | SISCAE</title>
+  <title>Firma | Autor / Editor | SISCAE</title>
 
-  <link rel="stylesheet" href="../css/pages/dashboard.css">
-  <script src="../js/dashboard.js" defer></script>
+  <link rel="stylesheet" href="../css/pages/firma.css">
+  <script src="../js/firma.js" defer></script>
 </head>
 
-<body data-page="dashboard">
+<body data-page="firma">
   <a class="author-skip" href="#contenido">Ir al contenido</a>
 
   <!-- MENÚ LATERAL -->
@@ -25,11 +25,7 @@
     <nav class="sidebar-nav" aria-label="Autor / Editor">
       <span class="nav-title">MI ESPACIO</span>
 
-      <a
-        href="dashboard.html"
-        class="nav-item active"
-        aria-current="page"
-      >
+      <a href="dashboard.html" class="nav-item">
         <span class="author-nav-icon" aria-hidden="true">▦</span>
         <span>Dashboard</span>
       </a>
@@ -44,7 +40,11 @@
         <span>Versiones</span>
       </a>
 
-      <a href="firma.html" class="nav-item">
+      <a
+        href="firma.html"
+        class="nav-item active"
+        aria-current="page"
+      >
         <span class="author-nav-icon" aria-hidden="true">✓</span>
         <span>Firma</span>
       </a>
@@ -91,7 +91,7 @@
         <div class="breadcrumb">
           <span>SISCAE</span>
           <span aria-hidden="true">/</span>
-          <strong>Dashboard</strong>
+          <strong>Firma</strong>
         </div>
       </div>
 
@@ -102,10 +102,11 @@
       <section class="page-header">
         <div>
           <span class="section-label">AUTOR / EDITOR</span>
-          <h1>Dashboard</h1>
+          <h1>Firma</h1>
 
           <p>
-            Un resumen de sus libros, versiones y observaciones.
+            Consulte los activos y las versiones
+            con huella SHA-256 registrada.
           </p>
         </div>
 
@@ -119,16 +120,22 @@
         hidden
       ></div>
 
-      <!-- INDICADORES -->
-      <div id="summary" class="author-summary"></div>
-
-      <!-- RESUMEN DE ACTIVOS -->
+      <!-- LISTADO DE ACTIVOS FIRMADOS -->
       <section class="author-panel">
-        <div class="author-panel-heading">
-          <h2>Resumen de activos</h2>
-        </div>
+        <label for="search">Buscar un activo firmado</label>
 
-        <div id="asset-summary"></div>
+        <input
+          type="search"
+          id="search"
+          placeholder="Nombre del libro o del archivo"
+        >
+
+        <p class="author-muted">
+          Se muestra la huella de cada versión registrada.
+          Puede descargar el archivo y verificar su integridad.
+        </p>
+
+        <div id="signature-list"></div>
       </section>
     </div>
 

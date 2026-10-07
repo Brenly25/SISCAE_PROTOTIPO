@@ -1289,3 +1289,27 @@ async function loadAuditorSidebar() {
     });
 
 }
+
+function activarPaginaSidebar() {
+
+    const paginaActual =
+        window.location.pathname
+            .split("/")
+            .pop()
+            .replace(".html", "");
+
+
+    const enlaces =
+        document.querySelectorAll(".sidebar-link");
+
+
+    enlaces.forEach(enlace => {
+
+        const pagina = enlace.dataset.page;
+
+        if (pagina === paginaActual) {
+            enlace.classList.add("active");
+        }
+
+    });
+}

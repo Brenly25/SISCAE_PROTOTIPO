@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Panel del consultor | SISCAE</title>
+
+    <!-- Estilos globales -->
+    <link rel="stylesheet" href="../../css/global.css">
+
+    <!-- Estilos del dashboard -->
+    <link rel="stylesheet" href="../../css/pages/dashboardConsultor.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+
+<body>
+
+    <!-- Sidebar -->
+    <aside id="sidebar-container"></aside>
+
+    <!-- Contenedor principal -->
+    <div class="consultor-layout">
+
+        <!-- ==================================================
+             BARRA SUPERIOR
+        =================================================== -->
+        <header class="topbar">
+
+            <div class="breadcrumb">
+                <span>SISCAE</span>
+                <i class="fa-solid fa-chevron-right"></i>
+                <strong>Panel del consultor</strong>
+            </div>
+
+            <div class="topbar-user">
+
+                <button class="notification-button" type="button">
+                    <i class="fa-regular fa-bell"></i>
+                </button>
+
+                <div class="user-avatar">
+                    CE
+                </div>
+
+                <div class="user-info">
+                    <strong>Consultor externo</strong>
+                    <span>Usuario autorizado</span>
+                </div>
+
+                <i class="fa-solid fa-chevron-down user-arrow"></i>
+
+            </div>
+
+        </header>
+
+
+        <!-- ==================================================
+             CONTENIDO
+        =================================================== -->
+        <main class="main-content">
+
+            <!-- Aros de fondo -->
+            <div class="background-rings rings-right"></div>
+            <div class="background-rings rings-left"></div>
+
+
+            <!-- ==================================================
+                 ENCABEZADO
+            =================================================== -->
+            <section class="page-header">
+
+                <div class="page-title">
+
+                    <span class="section-label">
+                        CONSULTA DE ACTIVOS
+                    </span>
+
+                    <h1>Panel del consultor</h1>
+
+                    <p>
+                        Consulta los recursos editoriales asignados y
+                        accede al entorno de trabajo autorizado.
+                    </p>
+
+                </div>
+
+
+                <div class="current-date">
+
+                    <div class="date-line"></div>
+
+                    <div class="date-icon">
+                        <i class="fa-regular fa-calendar"></i>
+                    </div>
+
+                    <div class="date-info">
+                        <span>FECHA ACTUAL</span>
+                        <strong>7 de octubre de 2026</strong>
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ==================================================
+                 ESTADO DE ASIGNACIONES
+            =================================================== -->
+            <section class="status-panel">
+
+                <div class="panel-header">
+
+                    <div>
+                        <span class="section-label">
+                            INFORMACIÓN GENERAL
+                        </span>
+
+                        <h2>Estado de mis asignaciones</h2>
+                    </div>
+
+
+                    <div class="system-status">
+                        <span class="status-dot"></span>
+                        Acceso vigente
+                    </div>
+
+                </div>
+
+
+                <div class="summary-row">
+
+                    <!-- Activos asignados -->
+                    <div class="summary-item">
+
+                        <div class="summary-icon">
+                            <i class="fa-regular fa-folder-open"></i>
+                        </div>
+
+                        <div class="summary-info">
+                            <span>Activos asignados</span>
+
+                            <strong>4</strong>
+
+                            <small>
+                                Recursos asignados
+                            </small>
+                        </div>
+
+                    </div>
+
+
+                    <!-- Disponibles -->
+                    <div class="summary-item">
+
+                        <div class="summary-icon">
+                            <i class="fa-regular fa-circle-check"></i>
+                        </div>
+
+                        <div class="summary-info">
+                            <span>Disponibles</span>
+
+                            <strong>3</strong>
+
+                            <small>
+                                Con acceso vigente
+                            </small>
+                        </div>
+
+                    </div>
+
+
+                    <!-- Próximos a vencer -->
+                    <div class="summary-item warning-item">
+
+                        <div class="summary-icon">
+                            <i class="fa-regular fa-clock"></i>
+                        </div>
+
+                        <div class="summary-info">
+                            <span>Próximos a vencer</span>
+
+                            <strong>1</strong>
+
+                            <small>
+                                Requiere atención
+                            </small>
+                        </div>
+
+                        <span class="attention-label">
+                            Atención
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ==================================================
+                 ASIGNACIONES RECIENTES
+            =================================================== -->
+            <section class="dashboard-section">
+
+                <div class="section-title">
+
+                    <span class="section-label">
+                        ACTIVOS EDITORIALES
+                    </span>
+
+                    <div class="section-title-row">
+
+                        <div>
+                            <h2>Asignaciones recientes</h2>
+
+                            <p>
+                                Recursos habilitados para tu consulta.
+                            </p>
+                        </div>
+
+                        <a href="activosConsultor.html"
+                            class="view-all">
+
+                            Ver todos
+
+                            <i class="fa-solid fa-arrow-right"></i>
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <div class="assets-panel">
+
+                    <!-- ================= ACTIVO 1 ================= -->
+                    <div class="asset-row">
+
+                        <div class="asset-main">
+
+                            <div class="asset-icon">
+                                <i class="fa-regular fa-file-lines"></i>
+                            </div>
+
+                            <div class="asset-name">
+
+                                <span class="asset-code">
+                                    ACT-2026-001
+                                </span>
+
+                                <h3>Guía de Matemática 5.º</h3>
+
+                                <span class="available-status">
+                                    <span></span>
+                                    Disponible
+                                </span>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="asset-data">
+                            <span>TIPO</span>
+                            <strong>Documento</strong>
+                        </div>
+
+
+                        <div class="asset-data">
+                            <span>VERSIÓN</span>
+                            <strong>2.0</strong>
+                        </div>
+
+
+                        <div class="asset-data">
+                            <span>VIGENCIA</span>
+                            <strong>10/10/2026</strong>
+                        </div>
+
+
+                        <div class="asset-action">
+
+                            <a href="sandbox.html?activo=ACT-2026-001"
+                                class="open-resource">
+
+                                Abrir recurso
+
+                                <i class="fa-solid fa-arrow-right"></i>
+
+                            </a>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- ================= ACTIVO 2 ================= -->
+                    <div class="asset-row">
+
+                        <div class="asset-main">
+
+                            <div class="asset-icon">
+                                <i class="fa-regular fa-file-lines"></i>
+                            </div>
+
+                            <div class="asset-name">
+
+                                <span class="asset-code">
+                                    ACT-2026-002
+                                </span>
+
+                                <h3>Material de Ciencias Naturales</h3>
+
+                                <span class="available-status">
+                                    <span></span>
+                                    Disponible
+                                </span>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="asset-data">
+                            <span>TIPO</span>
+                            <strong>Documento</strong>
+                        </div>
+
+
+                        <div class="asset-data">
+                            <span>VERSIÓN</span>
+                            <strong>1.2</strong>
+                        </div>
+
+
+                        <div class="asset-data">
+                            <span>VIGENCIA</span>
+                            <strong>15/10/2026</strong>
+                        </div>
+
+
+                        <div class="asset-action">
+
+                            <a href="sandbox.html?activo=ACT-2026-002"
+                                class="open-resource">
+
+                                Abrir recurso
+
+                                <i class="fa-solid fa-arrow-right"></i>
+
+                            </a>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- ================= ACTIVO 3 ================= -->
+                    <div class="asset-row">
+
+                        <div class="asset-main">
+
+                            <div class="asset-icon">
+                                <i class="fa-regular fa-file-lines"></i>
+                            </div>
+
+                            <div class="asset-name">
+
+                                <span class="asset-code">
+                                    ACT-2026-003
+                                </span>
+
+                                <h3>Documento de Lenguaje</h3>
+
+                                <span class="expiring-status">
+                                    <span></span>
+                                    Próximo a vencer
+                                </span>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="asset-data">
+                            <span>TIPO</span>
+                            <strong>Documento</strong>
+                        </div>
+
+
+                        <div class="asset-data">
+                            <span>VERSIÓN</span>
+                            <strong>1.0</strong>
+                        </div>
+
+
+                        <div class="asset-data">
+                            <span>VIGENCIA</span>
+                            <strong>08/10/2026</strong>
+                        </div>
+
+
+                        <div class="asset-action">
+
+                            <a href="sandbox.html?activo=ACT-2026-003"
+                                class="open-resource">
+
+                                Abrir recurso
+
+                                <i class="fa-solid fa-arrow-right"></i>
+
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ==================================================
+                 ACTIVIDAD RECIENTE
+            =================================================== -->
+            <section class="dashboard-section activity-section">
+
+                <div class="section-title">
+
+                    <span class="section-label">
+                        ACTIVIDAD RECIENTE
+                    </span>
+
+                    <div class="section-title-row">
+
+                        <div>
+                            <h2>Últimos accesos</h2>
+
+                            <p>
+                                Consulta tus sesiones recientes en los
+                                recursos editoriales asignados.
+                            </p>
+                        </div>
+
+                        <a href="sesionesConsultor.html"
+                            class="view-all">
+
+                            Ver historial
+
+                            <i class="fa-solid fa-arrow-right"></i>
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <div class="activity-panel">
+
+                    <!-- Registro -->
+                    <div class="activity-row">
+
+                        <div class="activity-icon">
+                            <i class="fa-regular fa-file-lines"></i>
+                        </div>
+
+                        <div class="activity-info">
+
+                            <strong>
+                                Guía de Matemática 5.º
+                            </strong>
+
+                            <span>
+                                Consulta de recurso
+                            </span>
+
+                        </div>
+
+                        <div class="activity-date">
+                            <strong>Hoy</strong>
+                            <span>8:21 a. m.</span>
+                        </div>
+
+                    </div>
+
+
+                    <!-- Registro -->
+                    <div class="activity-row">
+
+                        <div class="activity-icon">
+                            <i class="fa-regular fa-file-lines"></i>
+                        </div>
+
+                        <div class="activity-info">
+
+                            <strong>
+                                Material de Ciencias Naturales
+                            </strong>
+
+                            <span>
+                                Consulta de recurso
+                            </span>
+
+                        </div>
+
+                        <div class="activity-date">
+                            <strong>Ayer</strong>
+                            <span>2:45 p. m.</span>
+                        </div>
+
+                    </div>
+
+
+                    <!-- Registro -->
+                    <div class="activity-row">
+
+                        <div class="activity-icon">
+                            <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                        </div>
+
+                        <div class="activity-info">
+
+                            <strong>
+                                Documento de Lenguaje
+                            </strong>
+
+                            <span>
+                                Sesión finalizada
+                            </span>
+
+                        </div>
+
+                        <div class="activity-date">
+                            <strong>5 de octubre</strong>
+                            <span>10:18 a. m.</span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+
+    <!-- Componentes -->
+    <script src="../js/component-loader.js"></script>
+
+</body>
+
+</html>

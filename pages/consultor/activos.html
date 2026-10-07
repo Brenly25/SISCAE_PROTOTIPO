@@ -1,0 +1,1149 @@
+<!DOCTYPE html>
+
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Activos asignados | SISCAE</title>
+
+
+    <!-- =====================================================
+         ESTILOS
+    ====================================================== -->
+
+    <link rel="stylesheet"
+          href="../../css/global.css">
+
+    <link rel="stylesheet"
+          href="../../css/pages/consultor.css">
+
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+         OVERLAY MÓVIL
+    ====================================================== -->
+
+    <div class="mobile-overlay"></div>
+
+
+
+    <!-- =====================================================
+         SIDEBAR CONSULTOR EXTERNO
+    ====================================================== -->
+
+    <aside class="sidebar">
+
+
+        <!-- LOGO -->
+
+        <div class="sidebar-header">
+
+            <a href="dashboard.html"
+               class="sidebar-logo">
+
+                <img src="../../assets/img/logo.png"
+                     alt="Ministerio de Educación">
+
+            </a>
+
+        </div>
+
+
+
+        <!-- NAVEGACIÓN -->
+
+        <nav class="sidebar-nav">
+
+
+            <!-- ================= GENERAL ================= -->
+
+            <div class="sidebar-section">
+
+                <span class="sidebar-section-title">
+                    GENERAL
+                </span>
+
+
+                <!-- Inicio -->
+
+                <a href="dashboard.html"
+                   class="sidebar-link"
+                   data-page="dashboard.html">
+
+                    <span class="sidebar-active-line"></span>
+
+                    <span class="sidebar-icon">
+                        <i class="fa-solid fa-border-all"></i>
+                    </span>
+
+                    <span class="sidebar-text">
+                        Inicio
+                    </span>
+
+                </a>
+
+
+                <!-- Activos -->
+
+                <a href="activos.html"
+                   class="sidebar-link active"
+                   data-page="activos.html">
+
+                    <span class="sidebar-active-line"></span>
+
+                    <span class="sidebar-icon">
+                        <i class="fa-regular fa-folder"></i>
+                    </span>
+
+                    <span class="sidebar-text">
+                        Activos asignados
+                    </span>
+
+                </a>
+
+            </div>
+
+
+
+            <!-- ================= ACCESO ================= -->
+
+            <div class="sidebar-section">
+
+                <span class="sidebar-section-title">
+                    ACCESO
+                </span>
+
+
+                <a href="sesiones.html"
+                   class="sidebar-link"
+                   data-page="sesiones.html">
+
+                    <span class="sidebar-active-line"></span>
+
+                    <span class="sidebar-icon">
+                        <i class="fa-solid fa-clock-rotate-left"></i>
+                    </span>
+
+                    <span class="sidebar-text">
+                        Historial de sesiones
+                    </span>
+
+                </a>
+
+            </div>
+
+
+        </nav>
+
+
+
+        <!-- =================================================
+             USUARIO
+        ================================================== -->
+
+        <div class="sidebar-user">
+
+
+            <div class="sidebar-user-avatar">
+                CE
+            </div>
+
+
+            <div class="sidebar-user-info">
+
+                <strong>
+                    Consultor externo
+                </strong>
+
+                <span>
+                    Cuenta institucional
+                </span>
+
+            </div>
+
+
+            <button type="button"
+                    class="sidebar-logout"
+                    data-action="logout"
+                    title="Cerrar sesión">
+
+                <i class="fa-solid fa-arrow-right-from-bracket"></i>
+
+            </button>
+
+
+        </div>
+
+
+    </aside>
+
+
+
+    <!-- =====================================================
+         CONTENEDOR PRINCIPAL
+    ====================================================== -->
+
+    <div class="consultor-layout">
+
+
+
+        <!-- =================================================
+             TOPBAR
+        ================================================== -->
+
+        <header class="topbar">
+
+
+            <div class="breadcrumb">
+
+
+                <button type="button"
+                        class="mobile-menu-button"
+                        aria-label="Abrir menú">
+
+                    <i class="fa-solid fa-bars"></i>
+
+                </button>
+
+
+                <span>
+                    SISCAE
+                </span>
+
+                <i class="fa-solid fa-chevron-right"></i>
+
+                <strong>
+                    Activos asignados
+                </strong>
+
+
+            </div>
+
+
+
+            <!-- USUARIO -->
+
+            <div class="topbar-user">
+
+
+                <button class="notification-button"
+                        type="button"
+                        title="Notificaciones">
+
+                    <i class="fa-regular fa-bell"></i>
+
+                </button>
+
+
+                <div class="user-avatar">
+                    CE
+                </div>
+
+
+                <div class="user-info">
+
+                    <strong>
+                        Consultor externo
+                    </strong>
+
+                    <span>
+                        Usuario autorizado
+                    </span>
+
+                </div>
+
+
+                <i class="fa-solid fa-chevron-down user-arrow"></i>
+
+
+            </div>
+
+
+        </header>
+
+
+
+        <!-- =================================================
+             CONTENIDO
+        ================================================== -->
+
+        <main class="main-content">
+
+
+            <!-- AROS DE FONDO -->
+
+            <div class="background-rings rings-right"></div>
+
+            <div class="background-rings rings-left"></div>
+
+
+
+            <!-- =================================================
+                 ENCABEZADO
+            ================================================== -->
+
+            <section class="page-header">
+
+
+                <div class="page-title">
+
+
+                    <span class="section-label">
+                        RECURSOS AUTORIZADOS
+                    </span>
+
+
+                    <h1>
+                        Activos asignados
+                    </h1>
+
+
+                    <p>
+                        Consulta los activos editoriales que han sido
+                        habilitados para tu participación en el proyecto.
+                    </p>
+
+
+                </div>
+
+
+
+                <!-- FECHA -->
+
+                <div class="current-date">
+
+
+                    <div class="date-line"></div>
+
+
+                    <div class="date-icon">
+
+                        <i class="fa-regular fa-calendar"></i>
+
+                    </div>
+
+
+                    <div class="date-info">
+
+                        <span>
+                            FECHA ACTUAL
+                        </span>
+
+                        <strong id="currentDate">
+                            7 de octubre de 2026
+                        </strong>
+
+                    </div>
+
+
+                </div>
+
+
+            </section>
+
+
+
+            <!-- =================================================
+                 RESUMEN
+            ================================================== -->
+
+            <section class="status-panel">
+
+
+                <div class="panel-header">
+
+
+                    <div>
+
+                        <span class="section-label">
+                            RESUMEN
+                        </span>
+
+                        <h2>
+                            Recursos disponibles
+                        </h2>
+
+                    </div>
+
+
+                    <div class="system-status">
+
+                        <span class="status-dot"></span>
+
+                        Acceso vigente
+
+                    </div>
+
+
+                </div>
+
+
+
+                <div class="summary-row">
+
+
+                    <!-- ASIGNADOS -->
+
+                    <div class="summary-item">
+
+
+                        <div class="summary-icon">
+
+                            <i class="fa-regular fa-folder-open"></i>
+
+                        </div>
+
+
+                        <div class="summary-info">
+
+                            <span>
+                                Activos asignados
+                            </span>
+
+                            <strong>
+                                4
+                            </strong>
+
+                            <small>
+                                Recursos autorizados
+                            </small>
+
+                        </div>
+
+
+                    </div>
+
+
+
+                    <!-- DISPONIBLES -->
+
+                    <div class="summary-item">
+
+
+                        <div class="summary-icon">
+
+                            <i class="fa-regular fa-circle-check"></i>
+
+                        </div>
+
+
+                        <div class="summary-info">
+
+                            <span>
+                                Disponibles
+                            </span>
+
+                            <strong>
+                                3
+                            </strong>
+
+                            <small>
+                                Con acceso vigente
+                            </small>
+
+                        </div>
+
+
+                    </div>
+
+
+
+                    <!-- PRÓXIMOS A VENCER -->
+
+                    <div class="summary-item warning-item">
+
+
+                        <div class="summary-icon">
+
+                            <i class="fa-regular fa-clock"></i>
+
+                        </div>
+
+
+                        <div class="summary-info">
+
+                            <span>
+                                Próximos a vencer
+                            </span>
+
+                            <strong>
+                                1
+                            </strong>
+
+                            <small>
+                                Requiere atención
+                            </small>
+
+                        </div>
+
+
+                        <span class="attention-label">
+                            Atención
+                        </span>
+
+
+                    </div>
+
+
+                </div>
+
+
+            </section>
+
+
+
+            <!-- =================================================
+                 LISTADO
+            ================================================== -->
+
+            <section class="dashboard-section">
+
+
+                <div class="section-title">
+
+
+                    <span class="section-label">
+                        ACTIVOS EDITORIALES
+                    </span>
+
+
+                    <div class="section-title-row">
+
+
+                        <div>
+
+                            <h2>
+                                Mis asignaciones
+                            </h2>
+
+                            <p>
+                                Selecciona un recurso para acceder al
+                                entorno de trabajo autorizado.
+                            </p>
+
+                        </div>
+
+
+                    </div>
+
+
+                </div>
+
+
+
+                <!-- =================================================
+                     FILTROS
+                ================================================== -->
+
+                <div class="filters-bar">
+
+
+                    <!-- BUSCADOR -->
+
+                    <div class="form-group grow">
+
+                        <label for="buscarActivo">
+                            Buscar activo
+                        </label>
+
+                        <input type="search"
+                               id="buscarActivo"
+                               class="form-control"
+                               placeholder="Buscar por nombre o código">
+
+                    </div>
+
+
+
+                    <!-- ESTADO -->
+
+                    <div class="form-group">
+
+                        <label for="filtroEstado">
+                            Estado
+                        </label>
+
+                        <select id="filtroEstado"
+                                class="form-control">
+
+                            <option value="todos">
+                                Todos
+                            </option>
+
+                            <option value="disponible">
+                                Disponible
+                            </option>
+
+                            <option value="próximo a vencer">
+                                Próximo a vencer
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+
+                    <!-- TIPO -->
+
+                    <div class="form-group">
+
+                        <label for="filtroTipo">
+                            Tipo
+                        </label>
+
+                        <select id="filtroTipo"
+                                class="form-control">
+
+                            <option value="todos">
+                                Todos
+                            </option>
+
+                            <option value="documento">
+                                Documento
+                            </option>
+
+                            <option value="imagen">
+                                Imagen
+                            </option>
+
+                            <option value="video">
+                                Video
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                </div>
+
+
+
+                <!-- =================================================
+                     ACTIVOS
+                ================================================== -->
+
+                <div class="assets-panel">
+
+
+
+                    <!-- =============================================
+                         ACTIVO 1
+                    ============================================== -->
+
+                    <div class="asset-row"
+                         data-asset-row
+                         data-nombre="Guía de Matemática 5.º"
+                         data-codigo="ACT-2026-001"
+                         data-tipo="documento"
+                         data-estado="disponible">
+
+
+                        <div class="asset-main">
+
+
+                            <div class="asset-icon">
+
+                                <i class="fa-regular fa-file-lines"></i>
+
+                            </div>
+
+
+                            <div class="asset-name">
+
+
+                                <span class="asset-code">
+                                    ACT-2026-001
+                                </span>
+
+
+                                <h3>
+                                    Guía de Matemática 5.º
+                                </h3>
+
+
+                                <span class="available-status">
+
+                                    <span></span>
+
+                                    Disponible
+
+                                </span>
+
+
+                            </div>
+
+
+                        </div>
+
+
+
+                        <div class="asset-data">
+
+                            <span>
+                                TIPO
+                            </span>
+
+                            <strong>
+                                Documento
+                            </strong>
+
+                        </div>
+
+
+
+                        <div class="asset-data">
+
+                            <span>
+                                VERSIÓN
+                            </span>
+
+                            <strong>
+                                2.0
+                            </strong>
+
+                        </div>
+
+
+
+                        <div class="asset-data">
+
+                            <span>
+                                VIGENCIA
+                            </span>
+
+                            <strong>
+                                10/10/2026
+                            </strong>
+
+                        </div>
+
+
+
+                        <div class="asset-action">
+
+
+                            <a href="sandbox.html?activo=ACT-2026-001"
+                               class="open-resource"
+                               data-open-asset="ACT-2026-001">
+
+                                Abrir recurso
+
+                                <i class="fa-solid fa-arrow-right"></i>
+
+                            </a>
+
+
+                        </div>
+
+
+                    </div>
+
+
+
+                    <!-- =============================================
+                         ACTIVO 2
+                    ============================================== -->
+
+                    <div class="asset-row"
+                         data-asset-row
+                         data-nombre="Material de Ciencias Naturales"
+                         data-codigo="ACT-2026-002"
+                         data-tipo="documento"
+                         data-estado="disponible">
+
+
+                        <div class="asset-main">
+
+
+                            <div class="asset-icon">
+
+                                <i class="fa-regular fa-file-lines"></i>
+
+                            </div>
+
+
+                            <div class="asset-name">
+
+
+                                <span class="asset-code">
+                                    ACT-2026-002
+                                </span>
+
+
+                                <h3>
+                                    Material de Ciencias Naturales
+                                </h3>
+
+
+                                <span class="available-status">
+
+                                    <span></span>
+
+                                    Disponible
+
+                                </span>
+
+
+                            </div>
+
+
+                        </div>
+
+
+
+                        <div class="asset-data">
+
+                            <span>
+                                TIPO
+                            </span>
+
+                            <strong>
+                                Documento
+                            </strong>
+
+                        </div>
+
+
+
+                        <div class="asset-data">
+
+                            <span>
+                                VERSIÓN
+                            </span>
+
+                            <strong>
+                                1.2
+                            </strong>
+
+                        </div>
+
+
+
+                        <div class="asset-data">
+
+                            <span>
+                                VIGENCIA
+                            </span>
+
+                            <strong>
+                                15/10/2026
+                            </strong>
+
+                        </div>
+
+
+
+                        <div class="asset-action">
+
+
+                            <a href="sandbox.html?activo=ACT-2026-002"
+                               class="open-resource"
+                               data-open-asset="ACT-2026-002">
+
+                                Abrir recurso
+
+                                <i class="fa-solid fa-arrow-right"></i>
+
+                            </a>
+
+
+                        </div>
+
+
+                    </div>
+
+
+
+                    <!-- =============================================
+                         ACTIVO 3
+                    ============================================== -->
+
+                    <div class="asset-row"
+                         data-asset-row
+                         data-nombre="Documento de Lenguaje"
+                         data-codigo="ACT-2026-003"
+                         data-tipo="documento"
+                         data-estado="próximo a vencer">
+
+
+                        <div class="asset-main">
+
+
+                            <div class="asset-icon">
+
+                                <i class="fa-regular fa-file-lines"></i>
+
+                            </div>
+
+
+                            <div class="asset-name">
+
+
+                                <span class="asset-code">
+                                    ACT-2026-003
+                                </span>
+
+
+                                <h3>
+                                    Documento de Lenguaje
+                                </h3>
+
+
+                                <span class="expiring-status">
+
+                                    <span></span>
+
+                                    Próximo a vencer
+
+                                </span>
+
+
+                            </div>
+
+
+                        </div>
+
+
+
+                        <div class="asset-data">
+
+                            <span>
+                                TIPO
+                            </span>
+
+                            <strong>
+                                Documento
+                            </strong>
+
+                        </div>
+
+
+
+                        <div class="asset-data">
+
+                            <span>
+                                VERSIÓN
+                            </span>
+
+                            <strong>
+                                1.0
+                            </strong>
+
+                        </div>
+
+
+
+                        <div class="asset-data">
+
+                            <span>
+                                VIGENCIA
+                            </span>
+
+                            <strong>
+                                08/10/2026
+                            </strong>
+
+                        </div>
+
+
+
+                        <div class="asset-action">
+
+
+                            <a href="sandbox.html?activo=ACT-2026-003"
+                               class="open-resource"
+                               data-open-asset="ACT-2026-003">
+
+                                Abrir recurso
+
+                                <i class="fa-solid fa-arrow-right"></i>
+
+                            </a>
+
+
+                        </div>
+
+
+                    </div>
+
+
+
+                    <!-- =============================================
+                         ACTIVO 4
+                    ============================================== -->
+
+                    <div class="asset-row"
+                         data-asset-row
+                         data-nombre="Material de Estudios Sociales"
+                         data-codigo="ACT-2026-004"
+                         data-tipo="documento"
+                         data-estado="disponible">
+
+
+                        <div class="asset-main">
+
+
+                            <div class="asset-icon">
+
+                                <i class="fa-regular fa-file-lines"></i>
+
+                            </div>
+
+
+                            <div class="asset-name">
+
+
+                                <span class="asset-code">
+                                    ACT-2026-004
+                                </span>
+
+
+                                <h3>
+                                    Material de Estudios Sociales
+                                </h3>
+
+
+                                <span class="available-status">
+
+                                    <span></span>
+
+                                    Disponible
+
+                                </span>
+
+
+                            </div>
+
+
+                        </div>
+
+
+
+                        <div class="asset-data">
+
+                            <span>
+                                TIPO
+                            </span>
+
+                            <strong>
+                                Documento
+                            </strong>
+
+                        </div>
+
+
+
+                        <div class="asset-data">
+
+                            <span>
+                                VERSIÓN
+                            </span>
+
+                            <strong>
+                                1.4
+                            </strong>
+
+                        </div>
+
+
+
+                        <div class="asset-data">
+
+                            <span>
+                                VIGENCIA
+                            </span>
+
+                            <strong>
+                                20/10/2026
+                            </strong>
+
+                        </div>
+
+
+
+                        <div class="asset-action">
+
+
+                            <a href="sandbox.html?activo=ACT-2026-004"
+                               class="open-resource"
+                               data-open-asset="ACT-2026-004">
+
+                                Abrir recurso
+
+                                <i class="fa-solid fa-arrow-right"></i>
+
+                            </a>
+
+
+                        </div>
+
+
+                    </div>
+
+
+
+                    <!-- =================================================
+                         SIN RESULTADOS
+                    ================================================== -->
+
+                    <div id="emptyAssets"
+                         class="empty-state"
+                         style="display: none;">
+
+
+                        <i class="fa-regular fa-folder-open"></i>
+
+
+                        <h3>
+                            No se encontraron activos
+                        </h3>
+
+
+                        <p>
+                            No existen recursos que coincidan con los
+                            criterios de búsqueda seleccionados.
+                        </p>
+
+
+                    </div>
+
+
+                </div>
+
+
+            </section>
+
+
+        </main>
+
+
+    </div>
+
+
+
+    <!-- =====================================================
+         JAVASCRIPT GENERAL DEL CONSULTOR
+    ====================================================== -->
+
+    <script src="../../js/consultor.js"></script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,1138 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Entorno de trabajo | SISCAE</title>
+
+    <!-- ESTILOS -->
+    <link rel="stylesheet"
+          href="../../css/global.css">
+
+    <link rel="stylesheet"
+          href="../../css/pages/consultor.css">
+
+    <!-- FONT AWESOME -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+
+
+<body>
+
+    <!-- OVERLAY MÓVIL -->
+    <div class="mobile-overlay"></div>
+
+
+    <!-- =====================================================
+         SIDEBAR
+    ====================================================== -->
+
+    <aside class="sidebar">
+
+        <div class="sidebar-header">
+
+            <a href="../../index.html"
+               class="sidebar-logo">
+
+                <img src="../../assets/img/logo.png"
+                     alt="Ministerio de Educación">
+
+            </a>
+
+        </div>
+
+
+        <nav class="sidebar-nav">
+
+            <!-- GENERAL -->
+
+            <div class="sidebar-section">
+
+                <span class="sidebar-section-title">
+                    GENERAL
+                </span>
+
+
+                <a href="dashboard.html"
+                   class="sidebar-link"
+                   data-page="dashboard.html">
+
+                    <span class="sidebar-active-line"></span>
+
+                    <span class="sidebar-icon">
+                        <i class="fa-solid fa-border-all"></i>
+                    </span>
+
+                    <span class="sidebar-text">
+                        Inicio
+                    </span>
+
+                </a>
+
+
+                <a href="activos.html"
+                   class="sidebar-link active"
+                   data-page="activos.html">
+
+                    <span class="sidebar-active-line"></span>
+
+                    <span class="sidebar-icon">
+                        <i class="fa-regular fa-folder"></i>
+                    </span>
+
+                    <span class="sidebar-text">
+                        Activos asignados
+                    </span>
+
+                </a>
+
+            </div>
+
+
+            <!-- ACCESO -->
+
+            <div class="sidebar-section">
+
+                <span class="sidebar-section-title">
+                    ACCESO
+                </span>
+
+
+                <a href="sesiones.html"
+                   class="sidebar-link"
+                   data-page="sesiones.html">
+
+                    <span class="sidebar-active-line"></span>
+
+                    <span class="sidebar-icon">
+                        <i class="fa-solid fa-clock-rotate-left"></i>
+                    </span>
+
+                    <span class="sidebar-text">
+                        Historial de sesiones
+                    </span>
+
+                </a>
+
+            </div>
+
+        </nav>
+
+
+        <!-- USUARIO -->
+
+        <div class="sidebar-user">
+
+            <div class="sidebar-user-avatar">
+                CE
+            </div>
+
+
+            <div class="sidebar-user-info">
+
+                <strong>
+                    Consultor externo
+                </strong>
+
+                <span>
+                    Cuenta institucional
+                </span>
+
+            </div>
+
+
+            <button type="button"
+                    class="sidebar-logout"
+                    data-action="logout"
+                    title="Cerrar sesión">
+
+                <i class="fa-solid fa-arrow-right-from-bracket"></i>
+
+            </button>
+
+        </div>
+
+    </aside>
+
+
+
+    <!-- =====================================================
+         CONTENEDOR PRINCIPAL
+    ====================================================== -->
+
+    <div class="consultor-layout">
+
+
+        <!-- =================================================
+             TOPBAR
+        ================================================== -->
+
+        <header class="topbar">
+
+            <div class="breadcrumb">
+
+                <button type="button"
+                        class="mobile-menu-button"
+                        aria-label="Abrir menú">
+
+                    <i class="fa-solid fa-bars"></i>
+
+                </button>
+
+
+                <span>
+                    SISCAE
+                </span>
+
+                <i class="fa-solid fa-chevron-right"></i>
+
+                <a href="activos.html">
+                    Activos asignados
+                </a>
+
+                <i class="fa-solid fa-chevron-right"></i>
+
+                <strong>
+                    Entorno de trabajo
+                </strong>
+
+            </div>
+
+
+            <div class="topbar-user">
+
+                <div class="user-avatar">
+                    CE
+                </div>
+
+
+                <div class="user-info">
+
+                    <strong>
+                        Consultor externo
+                    </strong>
+
+                    <span>
+                        Usuario autorizado
+                    </span>
+
+                </div>
+
+
+                <i class="fa-solid fa-chevron-down user-arrow"></i>
+
+            </div>
+
+        </header>
+
+
+
+        <!-- =================================================
+             CONTENIDO
+        ================================================== -->
+
+        <main class="main-content">
+
+            <!-- AROS DE FONDO -->
+            <div class="background-rings rings-right"></div>
+            <div class="background-rings rings-left"></div>
+
+
+            <!-- =================================================
+                 ENCABEZADO
+            ================================================== -->
+
+            <section class="page-header">
+
+                <div class="page-title">
+
+                    <span class="section-label">
+                        ENTORNO AISLADO
+                    </span>
+
+                    <h1>
+                        Entorno seguro de trabajo
+                    </h1>
+
+                    <p>
+                        Accede y trabaja únicamente con el recurso
+                        editorial que tienes asignado.
+                    </p>
+
+                </div>
+
+
+                <div class="current-date">
+
+                    <div class="date-line"></div>
+
+
+                    <div class="date-icon">
+                        <i class="fa-regular fa-calendar"></i>
+                    </div>
+
+
+                    <div class="date-info">
+
+                        <span>
+                            FECHA ACTUAL
+                        </span>
+
+                        <strong id="currentDate">
+                            7 de octubre de 2026
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =================================================
+                 CONTENIDO DEL ENTORNO
+            ================================================== -->
+
+            <div id="sandboxContent">
+
+
+                <!-- =================================================
+                     ACTIVO ASIGNADO
+                ================================================== -->
+
+                <section class="content-panel">
+
+                    <div class="panel-header">
+
+                        <div>
+
+                            <span class="section-label">
+                                ACTIVO ASIGNADO
+                            </span>
+
+                            <h2 id="sandboxAssetName">
+                                Cargando recurso...
+                            </h2>
+
+                        </div>
+
+
+                        <div class="system-status">
+
+                            <span class="status-dot"></span>
+
+                            Acceso autorizado
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- DATOS -->
+
+                    <div class="summary-row">
+
+
+                        <!-- CÓDIGO -->
+
+                        <div class="summary-item">
+
+                            <div class="summary-icon">
+                                <i class="fa-solid fa-hashtag"></i>
+                            </div>
+
+
+                            <div class="summary-info">
+
+                                <span>
+                                    Código
+                                </span>
+
+                                <strong id="sandboxAssetCode">
+                                    --
+                                </strong>
+
+                                <small>
+                                    Identificador del activo
+                                </small>
+
+                            </div>
+
+                        </div>
+
+
+
+                        <!-- VERSIÓN -->
+
+                        <div class="summary-item">
+
+                            <div class="summary-icon">
+                                <i class="fa-solid fa-code-branch"></i>
+                            </div>
+
+
+                            <div class="summary-info">
+
+                                <span>
+                                    Versión actual
+                                </span>
+
+                                <strong id="sandboxAssetVersion">
+                                    --
+                                </strong>
+
+                                <small id="sandboxAssetType">
+                                    --
+                                </small>
+
+                            </div>
+
+                        </div>
+
+
+
+                        <!-- VIGENCIA -->
+
+                        <div class="summary-item">
+
+                            <div class="summary-icon">
+                                <i class="fa-regular fa-calendar-check"></i>
+                            </div>
+
+
+                            <div class="summary-info">
+
+                                <span>
+                                    Acceso vigente hasta
+                                </span>
+
+                                <strong id="sandboxAssetExpiration"
+                                        style="font-size: 17px;">
+                                    --
+                                </strong>
+
+                                <small id="sandboxAssetStatus">
+                                    --
+                                </small>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+
+                <!-- =================================================
+                     ARCHIVO DE TRABAJO
+                ================================================== -->
+
+                <section class="dashboard-section">
+
+                    <div class="section-title">
+
+                        <span class="section-label">
+                            ÁREA DE TRABAJO
+                        </span>
+
+                        <h2>
+                            Archivo de trabajo
+                        </h2>
+
+                        <p>
+                            Abre el recurso con la herramienta autorizada
+                            para realizar las modificaciones asignadas.
+                        </p>
+
+                    </div>
+
+
+
+                    <div class="content-panel">
+
+
+                        <!-- ARCHIVO -->
+
+                        <div class="activity-row">
+
+                            <div class="activity-icon">
+                                <i class="fa-regular fa-file-zipper"></i>
+                            </div>
+
+
+                            <div class="activity-info">
+
+                                <strong id="sandboxPackageName">
+                                    Archivo de trabajo
+                                </strong>
+
+                                <span>
+                                    Paquete sincronizado con el almacenamiento central
+                                </span>
+
+                            </div>
+
+
+                            <span class="badge badge-success">
+                                Sincronizado
+                            </span>
+
+                        </div>
+
+
+
+                        <!-- APLICACIÓN -->
+
+                        <div class="activity-row">
+
+                            <div class="activity-icon">
+                                <i class="fa-solid fa-desktop"></i>
+                            </div>
+
+
+                            <div class="activity-info">
+
+                                <strong>
+                                    Aplicación asignada
+                                </strong>
+
+                                <span id="sandboxApplication">
+                                    Herramienta autorizada
+                                </span>
+
+                            </div>
+
+
+                            <span class="badge badge-blue">
+                                Disponible
+                            </span>
+
+                        </div>
+
+
+
+                        <!-- SEGURIDAD -->
+
+                        <div class="activity-row">
+
+                            <div class="activity-icon">
+                                <i class="fa-solid fa-shield-halved"></i>
+                            </div>
+
+
+                            <div class="activity-info">
+
+                                <strong>
+                                    Entorno protegido
+                                </strong>
+
+                                <span>
+                                    El recurso se ejecutará bajo las políticas
+                                    de seguridad definidas para la sesión.
+                                </span>
+
+                            </div>
+
+
+                            <span class="badge badge-success">
+                                Protegido
+                            </span>
+
+                        </div>
+
+
+
+                        <!-- ABRIR RECURSO -->
+
+                        <div style="
+                            padding: 24px 28px;
+                            display: flex;
+                            align-items: center;
+                            justify-content: space-between;
+                            gap: 25px;
+                            border-top: 1px solid #e1e7ef;
+                        ">
+
+                            <div style="max-width: 650px;">
+
+                                <strong style="
+                                    display: block;
+                                    color: #17243d;
+                                    font-size: 14px;
+                                    margin-bottom: 5px;
+                                ">
+                                    Iniciar trabajo
+                                </strong>
+
+
+                                <span style="
+                                    color: #69778c;
+                                    font-size: 12px;
+                                    line-height: 1.6;
+                                ">
+                                    Al abrir el recurso se iniciará una sesión
+                                    de edición controlada. La actividad realizada
+                                    quedará registrada en SISCAE.
+                                </span>
+
+                            </div>
+
+
+                            <button type="button"
+                                    class="btn-primary"
+                                    id="openEditorButton">
+
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+
+                                <span id="openEditorText">
+                                    Abrir aplicación
+                                </span>
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+
+                <!-- =================================================
+                     CONTROL DE VERSIONES
+                ================================================== -->
+
+                <section class="dashboard-section">
+
+                    <div class="section-title">
+
+                        <span class="section-label">
+                            CONTROL DE VERSIONES
+                        </span>
+
+                        <h2>
+                            Finalizar trabajo
+                        </h2>
+
+                        <p>
+                            Cuando termines la edición, confirma los cambios
+                            realizados para registrar una nueva versión
+                            del activo.
+                        </p>
+
+                    </div>
+
+
+
+                    <div class="content-panel">
+
+
+                        <!-- =================================================
+                             VERSIONES
+                        ================================================== -->
+
+                        <div class="summary-row">
+
+
+                            <!-- ACTUAL -->
+
+                            <div class="summary-item">
+
+                                <div class="summary-icon">
+                                    <i class="fa-solid fa-code-branch"></i>
+                                </div>
+
+
+                                <div class="summary-info">
+
+                                    <span>
+                                        Versión actual
+                                    </span>
+
+                                    <strong id="currentWorkVersion">
+                                        --
+                                    </strong>
+
+                                    <small>
+                                        Versión asignada
+                                    </small>
+
+                                </div>
+
+                            </div>
+
+
+
+                            <!-- NUEVA -->
+
+                            <div class="summary-item">
+
+                                <div class="summary-icon">
+                                    <i class="fa-solid fa-arrow-up"></i>
+                                </div>
+
+
+                                <div class="summary-info">
+
+                                    <span>
+                                        Nueva versión
+                                    </span>
+
+                                    <strong id="nextWorkVersion">
+                                        --
+                                    </strong>
+
+                                    <small>
+                                        Se registrará al confirmar
+                                    </small>
+
+                                </div>
+
+                            </div>
+
+
+
+                            <!-- SINCRONIZACIÓN -->
+
+                            <div class="summary-item">
+
+                                <div class="summary-icon">
+                                    <i class="fa-solid fa-cloud-arrow-up"></i>
+                                </div>
+
+
+                                <div class="summary-info">
+
+                                    <span>
+                                        Estado del archivo
+                                    </span>
+
+                                    <strong style="
+                                        color: #178653;
+                                        font-size: 16px;
+                                    ">
+                                        Sincronizado
+                                    </strong>
+
+                                    <small>
+                                        Almacenamiento central
+                                    </small>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+
+                        <!-- =================================================
+                             DESCRIPCIÓN
+                        ================================================== -->
+
+                        <div style="
+                            padding: 28px;
+                            border-top: 1px solid #e1e7ef;
+                        ">
+
+                            <div class="form-group">
+
+                                <label for="versionComment">
+                                    Descripción de los cambios realizados
+                                </label>
+
+
+                                <textarea
+                                    id="versionComment"
+                                    class="form-control"
+                                    rows="4"
+                                    placeholder="Ejemplo: Se corrigieron textos y se actualizaron las imágenes de las páginas 10 a 15."></textarea>
+
+
+                                <small style="
+                                    display: block;
+                                    margin-top: 7px;
+                                    color: #7b8798;
+                                    font-size: 10px;
+                                ">
+                                    Esta descripción quedará asociada al
+                                    historial de la nueva versión.
+                                </small>
+
+                            </div>
+
+
+
+                            <!-- RESULTADO -->
+
+                            <div id="versionResult"
+                                 style="
+                                    display: none;
+                                    margin-top: 22px;
+                                 ">
+                            </div>
+
+
+
+                            <!-- REGISTRAR -->
+
+                            <div style="
+                                display: flex;
+                                justify-content: flex-end;
+                                margin-top: 25px;
+                            ">
+
+                                <button type="button"
+                                        class="btn-primary"
+                                        id="registerVersionButton">
+
+                                    <i class="fa-solid fa-check"></i>
+
+                                    Registrar nueva versión
+
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+
+                <!-- =================================================
+                     SEGURIDAD
+                ================================================== -->
+
+                <section class="dashboard-section">
+
+                    <div class="section-title">
+
+                        <span class="section-label">
+                            SEGURIDAD DE LA SESIÓN
+                        </span>
+
+                        <h2>
+                            Controles aplicados
+                        </h2>
+
+                        <p>
+                            El entorno mantiene las restricciones de
+                            seguridad establecidas durante la sesión.
+                        </p>
+
+                    </div>
+
+
+
+                    <div class="content-panel">
+
+
+                        <!-- ACCESO -->
+
+                        <div class="activity-row">
+
+                            <div class="activity-icon">
+                                <i class="fa-solid fa-folder-lock"></i>
+                            </div>
+
+
+                            <div class="activity-info">
+
+                                <strong>
+                                    Acceso limitado
+                                </strong>
+
+                                <span>
+                                    Solo puedes trabajar con los activos
+                                    que han sido asignados a tu cuenta.
+                                </span>
+
+                            </div>
+
+
+                            <span class="badge badge-success">
+                                Activo
+                            </span>
+
+                        </div>
+
+
+
+                        <!-- TRANSFERENCIAS -->
+
+                        <div class="activity-row">
+
+                            <div class="activity-icon">
+                                <i class="fa-regular fa-clipboard"></i>
+                            </div>
+
+
+                            <div class="activity-info">
+
+                                <strong>
+                                    Transferencia restringida
+                                </strong>
+
+                                <span>
+                                    Las políticas del entorno limitan la
+                                    copia y transferencia no autorizada
+                                    del contenido.
+                                </span>
+
+                            </div>
+
+
+                            <span class="badge badge-blue">
+                                Restringido
+                            </span>
+
+                        </div>
+
+
+
+                        <!-- ALMACENAMIENTO -->
+
+                        <div class="activity-row">
+
+                            <div class="activity-icon">
+                                <i class="fa-solid fa-hard-drive"></i>
+                            </div>
+
+
+                            <div class="activity-info">
+
+                                <strong>
+                                    Almacenamiento controlado
+                                </strong>
+
+                                <span>
+                                    Los cambios se sincronizan con el
+                                    almacenamiento central sin conservar
+                                    copias permanentes fuera del entorno.
+                                </span>
+
+                            </div>
+
+
+                            <span class="badge badge-blue">
+                                Protegido
+                            </span>
+
+                        </div>
+
+
+
+                        <!-- AUDITORÍA -->
+
+                        <div class="activity-row">
+
+                            <div class="activity-icon">
+                                <i class="fa-solid fa-list-check"></i>
+                            </div>
+
+
+                            <div class="activity-info">
+
+                                <strong>
+                                    Actividad registrada
+                                </strong>
+
+                                <span>
+                                    Los accesos y cambios realizados
+                                    forman parte de la trazabilidad
+                                    del activo editorial.
+                                </span>
+
+                            </div>
+
+
+                            <span class="badge badge-success">
+                                Registrado
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+
+                <!-- =================================================
+                     ACCIONES FINALES
+                ================================================== -->
+
+                <section class="dashboard-section"
+                         style="margin-top: 25px;">
+
+                    <div style="
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        gap: 20px;
+                    ">
+
+                        <a href="activos.html"
+                           class="btn-secondary">
+
+                            <i class="fa-solid fa-arrow-left"></i>
+
+                            Volver a activos
+
+                        </a>
+
+
+                        <button type="button"
+                                class="btn-secondary"
+                                data-action="finish-session">
+
+                            <i class="fa-solid fa-arrow-right-from-bracket"></i>
+
+                            Finalizar sesión de trabajo
+
+                        </button>
+
+                    </div>
+
+                </section>
+
+
+            </div>
+
+        </main>
+
+    </div>
+
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+    ====================================================== -->
+
+    <script src="../../js/consultor.js"></script>
+
+
+    <!-- =====================================================
+         DATOS VISUALES DEL ACTIVO
+    ====================================================== -->
+
+    <script>
+
+        document.addEventListener("DOMContentLoaded", () => {
+
+            const parametros =
+                new URLSearchParams(window.location.search);
+
+            const codigo =
+                parametros.get("activo");
+
+
+            if (
+                typeof activosConsultor === "undefined" ||
+                !activosConsultor[codigo]
+            ) {
+                return;
+            }
+
+
+            const activo =
+                activosConsultor[codigo];
+
+
+            /* =============================================
+               APLICACIÓN
+            ============================================= */
+
+            const aplicacion =
+                document.getElementById(
+                    "sandboxApplication"
+                );
+
+
+            if (aplicacion) {
+
+                aplicacion.textContent =
+                    activo.aplicacion ||
+                    "Herramienta autorizada";
+
+            }
+
+
+
+            /* =============================================
+               TEXTO DEL BOTÓN
+            ============================================= */
+
+            const botonTexto =
+                document.getElementById(
+                    "openEditorText"
+                );
+
+
+            if (botonTexto) {
+
+                botonTexto.textContent =
+                    activo.aplicacion
+                        ? `Abrir en ${activo.aplicacion}`
+                        : "Abrir aplicación";
+
+            }
+
+
+
+            /* =============================================
+               VERSIONES
+            ============================================= */
+
+            const versionActual =
+                document.getElementById(
+                    "currentWorkVersion"
+                );
+
+
+            const versionNueva =
+                document.getElementById(
+                    "nextWorkVersion"
+                );
+
+
+            if (versionActual) {
+
+                versionActual.textContent =
+                    activo.version;
+
+            }
+
+
+            if (
+                versionNueva &&
+                typeof calcularNuevaVersion === "function"
+            ) {
+
+                versionNueva.textContent =
+                    calcularNuevaVersion(
+                        activo.version
+                    );
+
+            }
+
+        });
+
+    </script>
+
+
+</body>
+
+</html>

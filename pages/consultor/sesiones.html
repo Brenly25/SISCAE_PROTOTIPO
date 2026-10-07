@@ -1,0 +1,1118 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Historial de sesiones | SISCAE</title>
+
+
+    <!-- =====================================================
+         ESTILOS
+    ====================================================== -->
+
+    <link rel="stylesheet"
+          href="../../css/global.css">
+
+    <link rel="stylesheet"
+          href="../../css/pages/consultor.css">
+
+
+    <!-- FONT AWESOME -->
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+         OVERLAY MÓVIL
+    ====================================================== -->
+
+    <div class="mobile-overlay"></div>
+
+
+
+    <!-- =====================================================
+         SIDEBAR
+    ====================================================== -->
+
+    <aside class="sidebar">
+
+
+        <!-- LOGO -->
+
+        <div class="sidebar-header">
+
+            <a href="../../index.html"
+               class="sidebar-logo">
+
+                <img src="../../assets/img/logo.png"
+                     alt="Ministerio de Educación">
+
+            </a>
+
+        </div>
+
+
+
+        <!-- =================================================
+             NAVEGACIÓN
+        ================================================== -->
+
+        <nav class="sidebar-nav">
+
+
+            <!-- GENERAL -->
+
+            <div class="sidebar-section">
+
+                <span class="sidebar-section-title">
+                    GENERAL
+                </span>
+
+
+                <!-- INICIO -->
+
+                <a href="dashboard.html"
+                   class="sidebar-link"
+                   data-page="dashboard.html">
+
+                    <span class="sidebar-active-line"></span>
+
+                    <span class="sidebar-icon">
+                        <i class="fa-solid fa-border-all"></i>
+                    </span>
+
+                    <span class="sidebar-text">
+                        Inicio
+                    </span>
+
+                </a>
+
+
+
+                <!-- ACTIVOS -->
+
+                <a href="activos.html"
+                   class="sidebar-link"
+                   data-page="activos.html">
+
+                    <span class="sidebar-active-line"></span>
+
+                    <span class="sidebar-icon">
+                        <i class="fa-regular fa-folder"></i>
+                    </span>
+
+                    <span class="sidebar-text">
+                        Activos asignados
+                    </span>
+
+                </a>
+
+            </div>
+
+
+
+            <!-- ACCESO -->
+
+            <div class="sidebar-section">
+
+                <span class="sidebar-section-title">
+                    ACCESO
+                </span>
+
+
+                <!-- HISTORIAL -->
+
+                <a href="sesiones.html"
+                   class="sidebar-link active"
+                   data-page="sesiones.html">
+
+                    <span class="sidebar-active-line"></span>
+
+                    <span class="sidebar-icon">
+                        <i class="fa-solid fa-clock-rotate-left"></i>
+                    </span>
+
+                    <span class="sidebar-text">
+                        Historial de sesiones
+                    </span>
+
+                </a>
+
+            </div>
+
+        </nav>
+
+
+
+        <!-- =================================================
+             USUARIO
+        ================================================== -->
+
+        <div class="sidebar-user">
+
+
+            <div class="sidebar-user-avatar">
+                CE
+            </div>
+
+
+            <div class="sidebar-user-info">
+
+                <strong>
+                    Consultor externo
+                </strong>
+
+                <span>
+                    Cuenta institucional
+                </span>
+
+            </div>
+
+
+            <button type="button"
+                    class="sidebar-logout"
+                    data-action="logout"
+                    title="Cerrar sesión">
+
+                <i class="fa-solid fa-arrow-right-from-bracket"></i>
+
+            </button>
+
+
+        </div>
+
+
+    </aside>
+
+
+
+    <!-- =====================================================
+         CONTENEDOR PRINCIPAL
+    ====================================================== -->
+
+    <div class="consultor-layout">
+
+
+
+        <!-- =================================================
+             TOPBAR
+        ================================================== -->
+
+        <header class="topbar">
+
+
+            <div class="breadcrumb">
+
+
+                <button type="button"
+                        class="mobile-menu-button"
+                        aria-label="Abrir menú">
+
+                    <i class="fa-solid fa-bars"></i>
+
+                </button>
+
+
+                <span>
+                    SISCAE
+                </span>
+
+
+                <i class="fa-solid fa-chevron-right"></i>
+
+
+                <strong>
+                    Historial de sesiones
+                </strong>
+
+
+            </div>
+
+
+
+            <!-- USUARIO -->
+
+            <div class="topbar-user">
+
+
+                <button class="notification-button"
+                        type="button"
+                        title="Notificaciones">
+
+                    <i class="fa-regular fa-bell"></i>
+
+                </button>
+
+
+                <div class="user-avatar">
+                    CE
+                </div>
+
+
+                <div class="user-info">
+
+                    <strong>
+                        Consultor externo
+                    </strong>
+
+                    <span>
+                        Usuario autorizado
+                    </span>
+
+                </div>
+
+
+                <i class="fa-solid fa-chevron-down user-arrow"></i>
+
+
+            </div>
+
+
+        </header>
+
+
+
+        <!-- =================================================
+             CONTENIDO
+        ================================================== -->
+
+        <main class="main-content">
+
+
+            <!-- AROS DE FONDO -->
+
+            <div class="background-rings rings-right"></div>
+
+            <div class="background-rings rings-left"></div>
+
+
+
+            <!-- =================================================
+                 ENCABEZADO
+            ================================================== -->
+
+            <section class="page-header">
+
+
+                <div class="page-title">
+
+
+                    <span class="section-label">
+                        REGISTRO DE ACTIVIDAD
+                    </span>
+
+
+                    <h1>
+                        Historial de sesiones
+                    </h1>
+
+
+                    <p>
+                        Consulta el registro de tus accesos recientes
+                        a los recursos editoriales asignados.
+                    </p>
+
+
+                </div>
+
+
+
+                <!-- FECHA -->
+
+                <div class="current-date">
+
+
+                    <div class="date-line"></div>
+
+
+                    <div class="date-icon">
+
+                        <i class="fa-regular fa-calendar"></i>
+
+                    </div>
+
+
+                    <div class="date-info">
+
+                        <span>
+                            FECHA ACTUAL
+                        </span>
+
+                        <strong id="currentDate">
+                            7 de octubre de 2026
+                        </strong>
+
+                    </div>
+
+
+                </div>
+
+
+            </section>
+
+
+
+            <!-- =================================================
+                 RESUMEN
+            ================================================== -->
+
+            <section class="status-panel">
+
+
+                <div class="panel-header">
+
+
+                    <div>
+
+                        <span class="section-label">
+                            INFORMACIÓN GENERAL
+                        </span>
+
+                        <h2>
+                            Resumen de actividad
+                        </h2>
+
+                    </div>
+
+
+                    <div class="system-status">
+
+                        <span class="status-dot"></span>
+
+                        Registro actualizado
+
+                    </div>
+
+
+                </div>
+
+
+
+                <div class="summary-row">
+
+
+                    <!-- SESIONES -->
+
+                    <div class="summary-item">
+
+
+                        <div class="summary-icon">
+
+                            <i class="fa-solid fa-clock-rotate-left"></i>
+
+                        </div>
+
+
+                        <div class="summary-info">
+
+                            <span>
+                                Sesiones registradas
+                            </span>
+
+                            <strong>
+                                8
+                            </strong>
+
+                            <small>
+                                Accesos recientes
+                            </small>
+
+                        </div>
+
+
+                    </div>
+
+
+
+                    <!-- ACTIVOS -->
+
+                    <div class="summary-item">
+
+
+                        <div class="summary-icon">
+
+                            <i class="fa-regular fa-folder-open"></i>
+
+                        </div>
+
+
+                        <div class="summary-info">
+
+                            <span>
+                                Activos consultados
+                            </span>
+
+                            <strong>
+                                3
+                            </strong>
+
+                            <small>
+                                Recursos diferentes
+                            </small>
+
+                        </div>
+
+
+                    </div>
+
+
+
+                    <!-- VERSIONES -->
+
+                    <div class="summary-item">
+
+
+                        <div class="summary-icon">
+
+                            <i class="fa-solid fa-code-branch"></i>
+
+                        </div>
+
+
+                        <div class="summary-info">
+
+                            <span>
+                                Versiones registradas
+                            </span>
+
+                            <strong>
+                                3
+                            </strong>
+
+                            <small>
+                                Cambios registrados
+                            </small>
+
+                        </div>
+
+
+                    </div>
+
+
+
+                    <!-- ÚLTIMO ACCESO -->
+
+                    <div class="summary-item">
+
+
+                        <div class="summary-icon">
+
+                            <i class="fa-regular fa-calendar-check"></i>
+
+                        </div>
+
+
+                        <div class="summary-info">
+
+                            <span>
+                                Último acceso
+                            </span>
+
+                            <strong style="font-size: 17px;">
+                                Hoy
+                            </strong>
+
+                            <small>
+                                8:21 a. m.
+                            </small>
+
+                        </div>
+
+
+                    </div>
+
+
+                </div>
+
+
+            </section>
+
+
+
+            <!-- =================================================
+                 HISTORIAL
+            ================================================== -->
+
+            <section class="dashboard-section">
+
+
+                <div class="section-title">
+
+
+                    <span class="section-label">
+                        ACTIVIDAD DE ACCESO
+                    </span>
+
+
+                    <div class="section-title-row">
+
+
+                        <div>
+
+                            <h2>
+                                Mis sesiones
+                            </h2>
+
+                            <p>
+                                Registro de accesos y versiones generadas
+                                durante el trabajo con los activos editoriales.
+                            </p>
+
+                        </div>
+
+
+                    </div>
+
+
+                </div>
+
+
+
+                <!-- =================================================
+                     FILTROS
+                ================================================== -->
+
+                <div class="filters-bar">
+
+
+                    <!-- BUSCADOR -->
+
+                    <div class="form-group grow">
+
+                        <label for="buscarSesion">
+                            Buscar
+                        </label>
+
+                        <input type="search"
+                               id="buscarSesion"
+                               class="form-control"
+                               placeholder="Buscar por activo o código">
+
+                    </div>
+
+
+
+                    <!-- ESTADO -->
+
+                    <div class="form-group">
+
+                        <label for="filtroSesion">
+                            Estado
+                        </label>
+
+
+                        <select id="filtroSesion"
+                                class="form-control">
+
+                            <option value="todos">
+                                Todos
+                            </option>
+
+                            <option value="finalizada">
+                                Finalizada
+                            </option>
+
+                            <option value="activa">
+                                Activa
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                </div>
+
+
+
+                <!-- =================================================
+                     TABLA
+                ================================================== -->
+
+                <div class="content-panel">
+
+
+                    <div class="table-container">
+
+
+                        <table class="consultor-table">
+
+
+                            <!-- =============================
+                                 ENCABEZADO
+                            ============================== -->
+
+                            <thead>
+
+                                <tr>
+
+                                    <th>
+                                        Activo editorial
+                                    </th>
+
+                                    <th>
+                                        Código
+                                    </th>
+
+                                    <th>
+                                        Versión
+                                    </th>
+
+                                    <th>
+                                        Fecha
+                                    </th>
+
+                                    <th>
+                                        Inicio
+                                    </th>
+
+                                    <th>
+                                        Finalización
+                                    </th>
+
+                                    <th>
+                                        Estado
+                                    </th>
+
+                                </tr>
+
+                            </thead>
+
+
+
+                            <!-- =============================
+                                 CUERPO
+                            ============================== -->
+
+                            <tbody>
+
+
+                                <!-- =================================================
+                                     SESIÓN 1
+                                     HUBO CAMBIO DE VERSIÓN
+                                ================================================== -->
+
+                                <tr data-session-row
+                                    data-activo="Guía de Matemática 5.º"
+                                    data-codigo="ACT-2026-001"
+                                    data-estado="finalizada">
+
+                                    <td>
+
+                                        <strong>
+                                            Guía de Matemática 5.º
+                                        </strong>
+
+                                    </td>
+
+
+                                    <td>
+                                        ACT-2026-001
+                                    </td>
+
+
+                                    <td>
+
+                                        <span class="version-change">
+                                            2.0 → 2.1
+                                        </span>
+
+                                    </td>
+
+
+                                    <td>
+                                        07/10/2026
+                                    </td>
+
+
+                                    <td>
+                                        8:21 a. m.
+                                    </td>
+
+
+                                    <td>
+                                        8:43 a. m.
+                                    </td>
+
+
+                                    <td>
+
+                                        <span class="badge badge-success">
+                                            Finalizada
+                                        </span>
+
+                                    </td>
+
+                                </tr>
+
+
+
+                                <!-- =================================================
+                                     SESIÓN 2
+                                     SIN CAMBIO DE VERSIÓN
+                                ================================================== -->
+
+                                <tr data-session-row
+                                    data-activo="Material de Ciencias Naturales"
+                                    data-codigo="ACT-2026-002"
+                                    data-estado="finalizada">
+
+                                    <td>
+
+                                        <strong>
+                                            Material de Ciencias Naturales
+                                        </strong>
+
+                                    </td>
+
+
+                                    <td>
+                                        ACT-2026-002
+                                    </td>
+
+
+                                    <td>
+
+                                        <span class="version-static">
+                                            1.2
+                                        </span>
+
+                                    </td>
+
+
+                                    <td>
+                                        06/10/2026
+                                    </td>
+
+
+                                    <td>
+                                        2:45 p. m.
+                                    </td>
+
+
+                                    <td>
+                                        3:12 p. m.
+                                    </td>
+
+
+                                    <td>
+
+                                        <span class="badge badge-success">
+                                            Finalizada
+                                        </span>
+
+                                    </td>
+
+                                </tr>
+
+
+
+                                <!-- =================================================
+                                     SESIÓN 3
+                                     HUBO CAMBIO DE VERSIÓN
+                                ================================================== -->
+
+                                <tr data-session-row
+                                    data-activo="Documento de Lenguaje"
+                                    data-codigo="ACT-2026-003"
+                                    data-estado="finalizada">
+
+                                    <td>
+
+                                        <strong>
+                                            Documento de Lenguaje
+                                        </strong>
+
+                                    </td>
+
+
+                                    <td>
+                                        ACT-2026-003
+                                    </td>
+
+
+                                    <td>
+
+                                        <span class="version-change">
+                                            1.0 → 1.1
+                                        </span>
+
+                                    </td>
+
+
+                                    <td>
+                                        05/10/2026
+                                    </td>
+
+
+                                    <td>
+                                        9:47 a. m.
+                                    </td>
+
+
+                                    <td>
+                                        10:18 a. m.
+                                    </td>
+
+
+                                    <td>
+
+                                        <span class="badge badge-success">
+                                            Finalizada
+                                        </span>
+
+                                    </td>
+
+                                </tr>
+
+
+
+                                <!-- =================================================
+                                     SESIÓN 4
+                                     SIN CAMBIO
+                                ================================================== -->
+
+                                <tr data-session-row
+                                    data-activo="Guía de Matemática 5.º"
+                                    data-codigo="ACT-2026-001"
+                                    data-estado="finalizada">
+
+                                    <td>
+
+                                        <strong>
+                                            Guía de Matemática 5.º
+                                        </strong>
+
+                                    </td>
+
+
+                                    <td>
+                                        ACT-2026-001
+                                    </td>
+
+
+                                    <td>
+
+                                        <span class="version-static">
+                                            2.0
+                                        </span>
+
+                                    </td>
+
+
+                                    <td>
+                                        03/10/2026
+                                    </td>
+
+
+                                    <td>
+                                        1:30 p. m.
+                                    </td>
+
+
+                                    <td>
+                                        2:05 p. m.
+                                    </td>
+
+
+                                    <td>
+
+                                        <span class="badge badge-success">
+                                            Finalizada
+                                        </span>
+
+                                    </td>
+
+                                </tr>
+
+
+
+                                <!-- =================================================
+                                     SESIÓN 5
+                                     HUBO CAMBIO
+                                ================================================== -->
+
+                                <tr data-session-row
+                                    data-activo="Material de Ciencias Naturales"
+                                    data-codigo="ACT-2026-002"
+                                    data-estado="finalizada">
+
+                                    <td>
+
+                                        <strong>
+                                            Material de Ciencias Naturales
+                                        </strong>
+
+                                    </td>
+
+
+                                    <td>
+                                        ACT-2026-002
+                                    </td>
+
+
+                                    <td>
+
+                                        <span class="version-change">
+                                            1.1 → 1.2
+                                        </span>
+
+                                    </td>
+
+
+                                    <td>
+                                        02/10/2026
+                                    </td>
+
+
+                                    <td>
+                                        10:15 a. m.
+                                    </td>
+
+
+                                    <td>
+                                        10:42 a. m.
+                                    </td>
+
+
+                                    <td>
+
+                                        <span class="badge badge-success">
+                                            Finalizada
+                                        </span>
+
+                                    </td>
+
+                                </tr>
+
+
+
+                                <!-- =================================================
+                                     SESIÓN 6
+                                     SIN CAMBIO
+                                ================================================== -->
+
+                                <tr data-session-row
+                                    data-activo="Documento de Lenguaje"
+                                    data-codigo="ACT-2026-003"
+                                    data-estado="finalizada">
+
+                                    <td>
+
+                                        <strong>
+                                            Documento de Lenguaje
+                                        </strong>
+
+                                    </td>
+
+
+                                    <td>
+                                        ACT-2026-003
+                                    </td>
+
+
+                                    <td>
+
+                                        <span class="version-static">
+                                            1.0
+                                        </span>
+
+                                    </td>
+
+
+                                    <td>
+                                        01/10/2026
+                                    </td>
+
+
+                                    <td>
+                                        3:08 p. m.
+                                    </td>
+
+
+                                    <td>
+                                        3:37 p. m.
+                                    </td>
+
+
+                                    <td>
+
+                                        <span class="badge badge-success">
+                                            Finalizada
+                                        </span>
+
+                                    </td>
+
+                                </tr>
+
+
+                            </tbody>
+
+
+                        </table>
+
+
+                    </div>
+
+
+
+                    <!-- =================================================
+                         SIN RESULTADOS
+                    ================================================== -->
+
+                    <div id="emptySessions"
+                         class="empty-state"
+                         style="display: none;">
+
+
+                        <i class="fa-solid fa-clock-rotate-left"></i>
+
+
+                        <h3>
+                            No se encontraron sesiones
+                        </h3>
+
+
+                        <p>
+                            No existen registros que coincidan con
+                            los criterios de búsqueda seleccionados.
+                        </p>
+
+
+                    </div>
+
+
+                </div>
+
+
+            </section>
+
+
+        </main>
+
+
+    </div>
+
+
+
+    <!-- =====================================================
+         JAVASCRIPT GENERAL DEL CONSULTOR
+    ====================================================== -->
+
+    <script src="../../js/consultor.js"></script>
+
+
+</body>
+
+</html>

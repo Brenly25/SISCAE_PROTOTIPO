@@ -1278,13 +1278,13 @@ async function loadAuditorSidebar() {
     await loadSidebar({
 
         file:
-            "sidebar_auditor.txt",
+            "sidebar_auditor.html",
 
         role:
             "Sidebar Auditor",
 
         home:
-            "dashboardAuditor.html"
+            "dashboard.html"
 
     });
 

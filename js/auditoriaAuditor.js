@@ -1,306 +1,272 @@
-/* =========================================================
-   SISCAE - AUDITORÍA AUDITOR
-   auditoriaAuditor.js
-========================================================= */
-
 document.addEventListener("DOMContentLoaded", () => {
-
-    /* =====================================================
-       DATOS SIMULADOS DE AUDITORÍA
-    ====================================================== */
+    /* =========================================================
+       SISCAE
+       Módulo: Auditoría - Perfil Auditor
+       Archivo: js/auditoriaAuditor.js
+       ========================================================= */
 
     const auditRecords = [
         {
-            id: 1,
-            traceId: "AUD-2026-0108",
+            id: "AUD-2026-0108",
             date: "07/10/2026",
             time: "08:42 a. m.",
             user: "Ana Martínez",
             initials: "AM",
             role: "Autor / Editor",
             account: "ana.martinez@clases.edu.sv",
-            event: "Modificación",
+            eventType: "Modificación",
             action: "Actualización de activo",
             asset: "Libro de Ciencias 7.º",
             assetCode: "ACT-2026-041",
             version: "v3.3",
             result: "Registrado",
-            description:
-                "Se registró una nueva intervención sobre el activo editorial y se generó una nueva versión dentro del historial de trazabilidad.",
             ip: "192.168.10.24",
             integrity: true,
-            integrityStatus: "Integridad verificada",
-            hash: "91c4a8d3f7b25e109ab37e64c88f2d0b5a7f3129c6d48e10a3749bcd31e7f821"
+            hash: "91c4a8367d2f86b3e72a4bc923ac81e9c1247e0f5328b84545e7fef98231f821",
+            description:
+                "Se registró una nueva versión del activo editorial posterior a la versión previamente revisada."
         },
         {
-            id: 2,
-            traceId: "AUD-2026-0107",
+            id: "AUD-2026-0107",
             date: "07/10/2026",
             time: "08:26 a. m.",
             user: "Laura Hernández",
             initials: "LH",
             role: "Revisor",
             account: "laura.hernandez@clases.edu.sv",
-            event: "Revisión",
+            eventType: "Revisión",
             action: "Revisión de versión",
             asset: "Libro de Ciencias 7.º",
             assetCode: "ACT-2026-041",
             version: "v3.2",
             result: "Registrado",
-            description:
-                "Se registró la revisión correspondiente a la versión seleccionada del activo editorial.",
             ip: "192.168.10.31",
             integrity: false,
-            integrityStatus: "No aplica",
-            hash: ""
+            hash: "",
+            description:
+                "Se registró la revisión editorial correspondiente a la versión v3.2 del activo."
         },
         {
-            id: 3,
-            traceId: "AUD-2026-0106",
+            id: "AUD-2026-0106",
             date: "07/10/2026",
             time: "08:18 a. m.",
             user: "Carlos Martínez",
             initials: "CM",
             role: "Revisor",
             account: "carlos.martinez@clases.edu.sv",
-            event: "Aprobación",
-            action: "Aprobación de versión",
+            eventType: "Aprobación",
+            action: "Aprobación de contenido",
             asset: "Guía de Matemática 6.º",
             assetCode: "ACT-2026-038",
             version: "v2.1",
             result: "Aprobado",
-            description:
-                "La versión fue aprobada después de verificar las observaciones registradas durante el proceso editorial.",
             ip: "192.168.10.36",
             integrity: false,
-            integrityStatus: "No aplica",
-            hash: ""
+            hash: "",
+            description:
+                "La versión fue aprobada dentro del flujo editorial después de completar su proceso de revisión."
         },
         {
-            id: 4,
-            traceId: "AUD-2026-0105",
+            id: "AUD-2026-0105",
             date: "07/10/2026",
             time: "08:02 a. m.",
             user: "Sistema SISCAE",
             initials: "SI",
             role: "Administrador",
             account: "sistema@clases.edu.sv",
-            event: "Integridad",
+            eventType: "Integridad",
             action: "Verificación SHA-256",
             asset: "Guía de Matemática 6.º",
             assetCode: "ACT-2026-038",
             version: "v2.1",
             result: "Verificado",
-            description:
-                "Se verificó la correspondencia del hash SHA-256 almacenado para la versión del activo.",
             ip: "10.0.0.15",
             integrity: true,
-            integrityStatus: "Integridad verificada",
-            hash: "b6741a72fd3e8c2105b9247e31a9d850fe12a64c7d893e04b265ca0f2d1843aa"
+            hash: "b6745f52e70f2c1831d466f09e9c8245cc1b42771aa7939c7e8bd2a63c5d43aa",
+            description:
+                "El sistema verificó la integridad de la versión mediante la comparación de su huella SHA-256."
         },
         {
-            id: 5,
-            traceId: "AUD-2026-0104",
+            id: "AUD-2026-0104",
             date: "06/10/2026",
             time: "04:31 p. m.",
             user: "Ana Rodríguez",
             initials: "AR",
             role: "Revisor",
             account: "ana.rodriguez@clases.edu.sv",
-            event: "Observación",
+            eventType: "Observación",
             action: "Registro de observación",
             asset: "Material de Lenguaje 5.º",
             assetCode: "ACT-2026-036",
             version: "v4.0",
             result: "Registrado",
-            description:
-                "Se registró una observación relacionada con elementos de diseño identificados durante la revisión de la versión.",
             ip: "192.168.10.42",
             integrity: false,
-            integrityStatus: "No aplica",
-            hash: ""
+            hash: "",
+            description:
+                "Se incorporó una observación editorial asociada a la versión consultada del activo."
         },
         {
-            id: 6,
-            traceId: "AUD-2026-0103",
+            id: "AUD-2026-0103",
             date: "06/10/2026",
             time: "03:17 p. m.",
             user: "José Ramírez",
             initials: "JR",
             role: "Revisor",
             account: "jose.ramirez@clases.edu.sv",
-            event: "Aprobación",
-            action: "Aprobación de versión",
+            eventType: "Aprobación",
+            action: "Aprobación de contenido",
             asset: "Cuaderno de Estudios Sociales 4.º",
             assetCode: "ACT-2026-032",
             version: "v1.8",
             result: "Aprobado",
-            description:
-                "Se registró la aprobación de la versión luego de comprobar que las observaciones anteriores fueron atendidas.",
             ip: "192.168.10.19",
             integrity: false,
-            integrityStatus: "No aplica",
-            hash: ""
+            hash: "",
+            description:
+                "La versión fue aprobada y quedó registrada como parte del historial del flujo editorial."
         },
         {
-            id: 7,
-            traceId: "AUD-2026-0102",
+            id: "AUD-2026-0102",
             date: "06/10/2026",
             time: "01:44 p. m.",
             user: "Daniel Pérez",
             initials: "DP",
             role: "Autor / Editor",
             account: "daniel.perez@clases.edu.sv",
-            event: "Carga",
+            eventType: "Carga",
             action: "Carga de nueva versión",
             asset: "Libro de Matemática 9.º",
             assetCode: "ACT-2026-025",
             version: "v3.5",
             result: "Registrado",
-            description:
-                "El usuario cargó una nueva versión del activo editorial. La intervención quedó asociada al historial del recurso.",
             ip: "192.168.10.54",
             integrity: true,
-            integrityStatus: "Integridad verificada",
-            hash: "8f17c63b59ad8e721a364fc923f2b4d8906e34c51fa2d740b138c75a4d02ef19"
+            hash: "8f1752cb86a941a3b945cf9818e693843bf784e593fd846be8732b57e112ef19",
+            description:
+                "El autor/editor registró una nueva versión del activo dentro del proyecto editorial."
         },
         {
-            id: 8,
-            traceId: "AUD-2026-0101",
+            id: "AUD-2026-0101",
             date: "06/10/2026",
             time: "11:23 a. m.",
             user: "María López",
             initials: "ML",
             role: "Revisor",
             account: "maria.lopez@clases.edu.sv",
-            event: "Aprobación",
+            eventType: "Aprobación",
             action: "Rechazo de versión",
             asset: "Guía Docente de Ciencias 8.º",
             assetCode: "ACT-2026-029",
             version: "v2.4",
             result: "Requiere atención",
-            description:
-                "La versión no continuó en el flujo de aprobación debido a inconsistencias identificadas durante la revisión.",
             ip: "192.168.10.27",
             integrity: false,
-            integrityStatus: "No aplica",
-            hash: ""
+            hash: "",
+            description:
+                "La versión fue rechazada durante el proceso de validación y requiere correcciones antes de continuar."
         },
         {
-            id: 9,
-            traceId: "AUD-2026-0100",
+            id: "AUD-2026-0100",
             date: "06/10/2026",
             time: "09:05 a. m.",
             user: "Sofía Castillo",
             initials: "SC",
             role: "Autor / Editor",
             account: "sofia.castillo@clases.edu.sv",
-            event: "Acceso",
-            action: "Consulta de activo",
+            eventType: "Acceso",
+            action: "Acceso a activo editorial",
             asset: "Material Educativo de Inglés 6.º",
             assetCode: "ACT-2026-021",
             version: "v1.6",
             result: "Permitido",
-            description:
-                "Se registró el acceso del usuario al activo editorial mediante el portal institucional.",
             ip: "192.168.10.63",
             integrity: false,
-            integrityStatus: "No aplica",
-            hash: ""
+            hash: "",
+            description:
+                "Se registró un acceso autorizado al activo editorial desde una cuenta institucional."
         },
         {
-            id: 10,
-            traceId: "AUD-2026-0099",
+            id: "AUD-2026-0099",
             date: "05/10/2026",
             time: "04:12 p. m.",
             user: "Miguel Flores",
             initials: "MF",
             role: "Revisor",
             account: "miguel.flores@clases.edu.sv",
-            event: "Observación",
+            eventType: "Observación",
             action: "Registro de observación",
             asset: "Infografía del Sistema Solar",
             assetCode: "ACT-2026-018",
             version: "v2.0",
             result: "Registrado",
-            description:
-                "Se registró una observación de diseño asociada a la versión del recurso gráfico.",
             ip: "192.168.10.48",
             integrity: false,
-            integrityStatus: "No aplica",
-            hash: ""
+            hash: "",
+            description:
+                "Se registró una observación asociada al contenido gráfico de la versión."
         },
         {
-            id: 11,
-            traceId: "AUD-2026-0098",
+            id: "AUD-2026-0098",
             date: "05/10/2026",
             time: "02:38 p. m.",
             user: "Andrea Torres",
             initials: "AT",
             role: "Autor / Editor",
             account: "andrea.torres@clases.edu.sv",
-            event: "Carga",
-            action: "Carga de recurso audiovisual",
+            eventType: "Carga",
+            action: "Carga de nueva versión",
             asset: "Video introductorio de Ciencias",
             assetCode: "ACT-2026-015",
             version: "v1.3",
             result: "Registrado",
-            description:
-                "Se registró la carga de una nueva versión del recurso audiovisual dentro del proyecto editorial.",
             ip: "192.168.10.71",
             integrity: true,
-            integrityStatus: "Integridad verificada",
-            hash: "a4d80b71936e52c84f163a9b728ce05134fd607ec29185bb7d12ef946a3c0281"
+            hash: "a4d83e91662c711bfca3487f52af8398a674fd21d4311c25acfe41ad216a0281",
+            description:
+                "Se incorporó una nueva versión del recurso audiovisual y se registró su huella de integridad."
         },
         {
-            id: 12,
-            traceId: "AUD-2026-0097",
+            id: "AUD-2026-0097",
             date: "05/10/2026",
             time: "10:16 a. m.",
             user: "Administrador SISCAE",
             initials: "AD",
             role: "Administrador",
             account: "administrador@clases.edu.sv",
-            event: "Acceso",
+            eventType: "Acceso",
             action: "Actualización de permisos",
             asset: "Proyecto Editorial Ciencias 2026",
             assetCode: "PRY-2026-006",
             version: "N/A",
             result: "Registrado",
-            description:
-                "Se registró una actualización de permisos asociados al proyecto editorial y a sus usuarios autorizados.",
             ip: "192.168.10.10",
             integrity: false,
-            integrityStatus: "No aplica",
-            hash: ""
+            hash: "",
+            description:
+                "Se registró una actualización de permisos de acceso asociados al proyecto editorial."
         }
     ];
 
+    /* =========================================================
+       REFERENCIAS DEL DOM
+       ========================================================= */
 
-    /* =====================================================
-       REFERENCIAS DOM
-    ====================================================== */
-
-    const tableBody = document.getElementById("auditTableBody");
-    const auditTable = document.querySelector(".audit-table");
+    const auditTimeline = document.getElementById("auditTimeline");
     const emptyState = document.getElementById("emptyState");
+    const resultsCounter = document.getElementById("resultsCounter");
 
     const searchInput = document.getElementById("searchInput");
     const eventFilter = document.getElementById("eventFilter");
     const roleFilter = document.getElementById("roleFilter");
-
-    const resultsCounter = document.getElementById("resultsCounter");
 
     const totalEvents = document.getElementById("totalEvents");
     const usersInvolved = document.getElementById("usersInvolved");
     const assetsInvolved = document.getElementById("assetsInvolved");
     const integrityChecks = document.getElementById("integrityChecks");
 
-
-    /* DRAWER */
-
-    const auditDrawer = document.getElementById("auditDrawer");
     const drawerOverlay = document.getElementById("drawerOverlay");
+    const auditDrawer = document.getElementById("auditDrawer");
     const closeDrawerButton = document.getElementById("closeDrawer");
 
     const drawerEventType = document.getElementById("drawerEventType");
@@ -323,11 +289,10 @@ document.addEventListener("DOMContentLoaded", () => {
     const drawerIp = document.getElementById("drawerIp");
 
     const integritySection = document.getElementById("integritySection");
-    const drawerIntegrityStatus = document.getElementById("drawerIntegrityStatus");
+    const drawerIntegrityStatus = document.getElementById(
+        "drawerIntegrityStatus"
+    );
     const drawerHash = document.getElementById("drawerHash");
-
-
-    /* PERFIL */
 
     const profile = document.getElementById("profile");
     const profileButton = document.getElementById("profileButton");
@@ -335,22 +300,22 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const notificationButton = document.getElementById("notificationButton");
 
-
-    /* LOGOUT */
-
     const logoutModal = document.getElementById("logoutModal");
     const confirmLogout = document.getElementById("confirmLogout");
-    const closeLogoutElements = document.querySelectorAll(
+    const closeLogoutButtons = document.querySelectorAll(
         "[data-close-logout]"
     );
 
-
-    /* =====================================================
+    /* =========================================================
        UTILIDADES
-    ====================================================== */
+       ========================================================= */
 
     function escapeHTML(value) {
-        return String(value ?? "")
+        if (value === null || value === undefined) {
+            return "";
+        }
+
+        return String(value)
             .replace(/&/g, "&amp;")
             .replace(/</g, "&lt;")
             .replace(/>/g, "&gt;")
@@ -358,47 +323,36 @@ document.addEventListener("DOMContentLoaded", () => {
             .replace(/'/g, "&#039;");
     }
 
-
     function normalizeText(value) {
-        return String(value ?? "")
+        return String(value || "")
             .normalize("NFD")
             .replace(/[\u0300-\u036f]/g, "")
             .toLowerCase()
             .trim();
     }
 
-
-    /* =====================================================
-       CLASE SEGÚN EVENTO
-    ====================================================== */
-
-    function getEventClass(event) {
-
+    function getEventClass(eventType) {
         const classes = {
-            "Acceso": "event-access",
-            "Carga": "event-upload",
-            "Modificación": "event-modification",
-            "Revisión": "event-review",
-            "Observación": "event-observation",
-            "Aprobación": "event-approval",
-            "Integridad": "event-integrity"
+            Acceso: "event-access",
+            Carga: "event-upload",
+            Modificación: "event-modification",
+            Revisión: "event-review",
+            Observación: "event-observation",
+            Aprobación: "event-approval",
+            Integridad: "event-integrity"
         };
 
-        return classes[event] || "event-access";
+        return classes[eventType] || "event-access";
     }
 
-
-    /* =====================================================
-       CLASE SEGÚN RESULTADO
-    ====================================================== */
-
     function getResultClass(result) {
+        const successResults = [
+            "Aprobado",
+            "Verificado",
+            "Permitido"
+        ];
 
-        if (
-            result === "Aprobado" ||
-            result === "Verificado" ||
-            result === "Permitido"
-        ) {
+        if (successResults.includes(result)) {
             return "result-success";
         }
 
@@ -409,42 +363,294 @@ document.addEventListener("DOMContentLoaded", () => {
         return "result-info";
     }
 
+    function getEventIcon(eventType) {
+        const icons = {
+            Acceso: `
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.8"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"/>
+                    <path d="M10 17l5-5-5-5"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.8"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"/>
+                    <path d="M15 12H3"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.8"
+                        stroke-linecap="round"/>
+                </svg>
+            `,
 
-    /* =====================================================
-       ICONO DETALLE
-    ====================================================== */
+            Carga: `
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M12 16V4"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.8"
+                        stroke-linecap="round"/>
+                    <path d="M7.5 8.5L12 4l4.5 4.5"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.8"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"/>
+                    <path d="M5 14v5a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-5"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.8"
+                        stroke-linecap="round"/>
+                </svg>
+            `,
 
-    function detailIcon() {
+            Modificación: `
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M4 20h4l11-11a2.8 2.8 0 0 0-4-4L4 16v4z"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.8"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"/>
+                    <path d="M13.5 6.5l4 4"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.8"/>
+                </svg>
+            `,
+
+            Revisión: `
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M5 3h10l4 4v14H5z"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.8"
+                        stroke-linejoin="round"/>
+                    <path d="M15 3v5h5"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.8"
+                        stroke-linejoin="round"/>
+                    <path d="M8 14l2.2 2.2L16 10.5"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.8"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"/>
+                </svg>
+            `,
+
+            Observación: `
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M21 15a4 4 0 0 1-4 4H8l-5 3V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4z"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.8"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"/>
+                    <path d="M8 9h8M8 13h5"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.8"
+                        stroke-linecap="round"/>
+                </svg>
+            `,
+
+            Aprobación: `
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M12 3l8 3v5c0 5.2-3.4 8.4-8 10-4.6-1.6-8-4.8-8-10V6z"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.8"
+                        stroke-linejoin="round"/>
+                    <path d="M8.5 12l2.2 2.2 4.8-5"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.8"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"/>
+                </svg>
+            `,
+
+            Integridad: `
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M12 3l8 3v5c0 5.2-3.4 8.4-8 10-4.6-1.6-8-4.8-8-10V6z"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.8"
+                        stroke-linejoin="round"/>
+                    <path d="M9 12l2 2 4-4"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.8"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"/>
+                </svg>
+            `
+        };
+
+        return icons[eventType] || icons.Acceso;
+    }
+
+    function getUserIcon() {
         return `
             <svg viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6S2 12 2 12z"></path>
-                <circle cx="12" cy="12" r="2.5"></circle>
+                <circle cx="12" cy="8" r="3.5"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.7"/>
+                <path d="M5 20c.5-4 3-6 7-6s6.5 2 7 6"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.7"
+                    stroke-linecap="round"/>
             </svg>
         `;
     }
 
+    function getDocumentIcon() {
+        return `
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M6 3h8l4 4v14H6z"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.7"
+                    stroke-linejoin="round"/>
+                <path d="M14 3v5h5"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.7"
+                    stroke-linejoin="round"/>
+                <path d="M9 13h6M9 17h4"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.7"
+                    stroke-linecap="round"/>
+            </svg>
+        `;
+    }
 
-    /* =====================================================
-       INDICADORES
-    ====================================================== */
+    function getEyeIcon() {
+        return `
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M2.5 12s3.5-6 9.5-6 9.5 6 9.5 6-3.5 6-9.5 6-9.5-6-9.5-6z"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.7"
+                    stroke-linejoin="round"/>
+                <circle cx="12" cy="12" r="2.5"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.7"/>
+            </svg>
+        `;
+    }
 
-    function loadSummary() {
+    function getShieldIcon() {
+        return `
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M12 3l8 3v5c0 5.2-3.4 8.4-8 10-4.6-1.6-8-4.8-8-10V6z"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linejoin="round"/>
+                <path d="M8.5 12l2.2 2.2 4.8-5"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"/>
+            </svg>
+        `;
+    }
+
+    function splitTime(time) {
+        const match = String(time).match(
+            /^(\d{1,2}:\d{2})\s*(a\.\s*m\.|p\.\s*m\.)$/i
+        );
+
+        if (!match) {
+            return {
+                clock: time,
+                period: ""
+            };
+        }
+
+        return {
+            clock: match[1],
+            period: match[2]
+        };
+    }
+
+    function formatDateHeading(date) {
+        const months = [
+            "ENERO",
+            "FEBRERO",
+            "MARZO",
+            "ABRIL",
+            "MAYO",
+            "JUNIO",
+            "JULIO",
+            "AGOSTO",
+            "SEPTIEMBRE",
+            "OCTUBRE",
+            "NOVIEMBRE",
+            "DICIEMBRE"
+        ];
+
+        const parts = String(date).split("/");
+
+        if (parts.length !== 3) {
+            return date;
+        }
+
+        const day = Number(parts[0]);
+        const month = Number(parts[1]);
+        const year = parts[2];
+
+        if (!months[month - 1]) {
+            return date;
+        }
+
+        return `${String(day).padStart(2, "0")} ${months[month - 1]} ${year}`;
+    }
+
+    function getHashPreview(hash) {
+        if (!hash) {
+            return "";
+        }
+
+        if (hash.length <= 24) {
+            return hash;
+        }
+
+        return `${hash.slice(0, 12)}...${hash.slice(-12)}`;
+    }
+
+    /* =========================================================
+       RESUMEN GENERAL
+       ========================================================= */
+
+    function renderSummary() {
+        const uniqueUsers = new Set(
+            auditRecords.map((record) => record.account)
+        );
+
+        const uniqueAssets = new Set(
+            auditRecords.map((record) => record.assetCode)
+        );
+
+        const integrityRecords = auditRecords.filter(
+            (record) => record.integrity
+        );
 
         if (totalEvents) {
             totalEvents.textContent = auditRecords.length;
         }
-
-        const uniqueUsers = new Set(
-            auditRecords.map(record => record.account)
-        );
-
-        const uniqueAssets = new Set(
-            auditRecords.map(record => record.assetCode)
-        );
-
-        const integrityTotal = auditRecords.filter(
-            record => record.integrity
-        ).length;
 
         if (usersInvolved) {
             usersInvolved.textContent = uniqueUsers.size;
@@ -455,20 +661,18 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         if (integrityChecks) {
-            integrityChecks.textContent = integrityTotal;
+            integrityChecks.textContent = integrityRecords.length;
         }
     }
 
-
-    /* =====================================================
+    /* =========================================================
        FILTROS
-    ====================================================== */
+       ========================================================= */
 
     function getFilteredRecords() {
-
-        const search = searchInput
-            ? normalizeText(searchInput.value)
-            : "";
+        const search = normalizeText(
+            searchInput ? searchInput.value : ""
+        );
 
         const selectedEvent = eventFilter
             ? eventFilter.value
@@ -478,219 +682,269 @@ document.addEventListener("DOMContentLoaded", () => {
             ? roleFilter.value
             : "all";
 
-
-        return auditRecords.filter(record => {
-
-            const searchable = normalizeText(`
-                ${record.traceId}
-                ${record.user}
-                ${record.role}
-                ${record.account}
-                ${record.event}
-                ${record.action}
-                ${record.asset}
-                ${record.assetCode}
-                ${record.version}
-                ${record.result}
-                ${record.date}
-                ${record.time}
-                ${record.ip}
-            `);
+        return auditRecords.filter((record) => {
+            const searchableContent = normalizeText(
+                [
+                    record.id,
+                    record.user,
+                    record.role,
+                    record.account,
+                    record.eventType,
+                    record.action,
+                    record.asset,
+                    record.assetCode,
+                    record.version,
+                    record.result,
+                    record.description,
+                    record.ip
+                ].join(" ")
+            );
 
             const matchesSearch =
-                search === "" ||
-                searchable.includes(search);
+                !search || searchableContent.includes(search);
 
             const matchesEvent =
                 selectedEvent === "all" ||
-                record.event === selectedEvent;
+                record.eventType === selectedEvent;
 
             const matchesRole =
                 selectedRole === "all" ||
                 record.role === selectedRole;
 
-            return (
-                matchesSearch &&
-                matchesEvent &&
-                matchesRole
-            );
+            return matchesSearch && matchesEvent && matchesRole;
         });
     }
 
+    /* =========================================================
+       TARJETA DE EVENTO
+       ========================================================= */
 
-    /* =====================================================
-       FILA DE TABLA
-    ====================================================== */
+    function createEventMarkup(record) {
+        const time = splitTime(record.time);
+        const eventClass = getEventClass(record.eventType);
+        const resultClass = getResultClass(record.result);
 
-    function createAuditRow(record) {
+        const integrityMarkup = record.integrity
+            ? `
+                <div class="integrity-highlight">
+                    <div class="integrity-highlight-main">
+                        <span class="integrity-highlight-icon">
+                            ${getShieldIcon()}
+                        </span>
 
-        const row = document.createElement("tr");
+                        <div>
+                            <strong>Integridad verificada</strong>
+                            <span>
+                                Comprobación SHA-256 asociada a esta versión
+                            </span>
+                        </div>
+                    </div>
 
-        row.innerHTML = `
-            <td>
-                <div class="date-cell">
-                    <strong>${escapeHTML(record.date)}</strong>
-                    <span>${escapeHTML(record.time)}</span>
+                    <code class="integrity-hash-preview">
+                        ${escapeHTML(getHashPreview(record.hash))}
+                    </code>
                 </div>
-            </td>
+            `
+            : "";
 
-            <td>
-                <div class="user-cell">
+        return `
+            <div class="timeline-event ${eventClass}">
+                <div class="timeline-time">
+                    <strong>${escapeHTML(time.clock)}</strong>
+                    <span>${escapeHTML(time.period)}</span>
+                </div>
 
-                    <span class="user-avatar">
-                        ${escapeHTML(record.initials)}
-                    </span>
+                <div class="timeline-axis">
+                    <span class="timeline-node"></span>
+                </div>
 
-                    <div class="user-information">
-                        <strong title="${escapeHTML(record.user)}">
-                            ${escapeHTML(record.user)}
-                        </strong>
+                <article class="timeline-card">
+                    <div class="event-card-header">
+                        <div class="event-identity">
+                            <div class="event-icon">
+                                ${getEventIcon(record.eventType)}
+                            </div>
 
-                        <span>
-                            ${escapeHTML(record.role)}
+                            <div class="event-heading">
+                                <span class="event-type">
+                                    ${escapeHTML(record.eventType)}
+                                </span>
+
+                                <h3>
+                                    ${escapeHTML(record.asset)}
+                                </h3>
+
+                                <p>
+                                    ${escapeHTML(record.description)}
+                                </p>
+                            </div>
+                        </div>
+
+                        <span class="event-version">
+                            ${escapeHTML(record.version)}
                         </span>
                     </div>
 
-                </div>
-            </td>
+                    ${integrityMarkup}
 
-            <td>
-                <span class="event-badge ${getEventClass(record.event)}">
-                    ${escapeHTML(record.event)}
-                </span>
-            </td>
+                    <div class="event-card-body">
+                        <div class="event-detail">
+                            <span class="event-detail-icon">
+                                ${getUserIcon()}
+                            </span>
 
-            <td>
-                <div class="asset-cell">
+                            <div class="event-detail-text">
+                                <span>USUARIO</span>
+                                <strong>
+                                    ${escapeHTML(record.user)}
+                                </strong>
+                                <small>
+                                    ${escapeHTML(record.role)}
+                                </small>
+                            </div>
+                        </div>
 
-                    <strong title="${escapeHTML(record.asset)}">
-                        ${escapeHTML(record.asset)}
-                    </strong>
+                        <div class="event-detail">
+                            <span class="event-detail-icon">
+                                ${getDocumentIcon()}
+                            </span>
 
-                    <span>
-                        ${escapeHTML(record.assetCode)}
-                    </span>
+                            <div class="event-detail-text">
+                                <span>CÓDIGO</span>
+                                <strong>
+                                    ${escapeHTML(record.assetCode)}
+                                </strong>
+                                <small>
+                                    ${escapeHTML(record.action)}
+                                </small>
+                            </div>
+                        </div>
 
-                </div>
-            </td>
+                        <div class="event-action">
+                            <span class="event-result ${resultClass}">
+                                ${escapeHTML(record.result)}
+                            </span>
 
-            <td>
-                <span class="version-badge">
-                    ${escapeHTML(record.version)}
-                </span>
-            </td>
-
-            <td>
-                <span class="result-badge ${getResultClass(record.result)}">
-                    ${escapeHTML(record.result)}
-                </span>
-            </td>
-
-            <td class="action-column">
-
-                <button
-                    class="detail-button"
-                    type="button"
-                    data-audit-id="${record.id}"
-                    aria-label="Consultar evento ${escapeHTML(record.traceId)}"
-                >
-                    ${detailIcon()}
-                    <span>Consultar</span>
-                </button>
-
-            </td>
+                            <button
+                                type="button"
+                                class="consult-button"
+                                data-audit-id="${escapeHTML(record.id)}"
+                                aria-label="Consultar ${escapeHTML(record.id)}"
+                                style="margin-left: 8px;"
+                            >
+                                ${getEyeIcon()}
+                                <span>Consultar</span>
+                            </button>
+                        </div>
+                    </div>
+                </article>
+            </div>
         `;
-
-        return row;
     }
 
+    /* =========================================================
+       LÍNEA DE TIEMPO
+       ========================================================= */
 
-    /* =====================================================
-       RENDER TABLA
-    ====================================================== */
-
-    function renderAuditRecords() {
-
-        if (!tableBody) {
+    function renderAuditTimeline() {
+        if (!auditTimeline) {
             return;
         }
 
-        const records = getFilteredRecords();
-
-        tableBody.innerHTML = "";
-
-        records.forEach(record => {
-            tableBody.appendChild(
-                createAuditRow(record)
-            );
-        });
+        const filteredRecords = getFilteredRecords();
 
         if (resultsCounter) {
-            resultsCounter.textContent = records.length;
+            resultsCounter.textContent =
+                filteredRecords.length === 1
+                    ? "1 registro"
+                    : `${filteredRecords.length} registros`;
         }
 
-        if (auditTable) {
-            auditTable.style.display =
-                records.length > 0
-                    ? "table"
-                    : "none";
+        if (filteredRecords.length === 0) {
+            auditTimeline.innerHTML = "";
+
+            if (emptyState) {
+                emptyState.hidden = false;
+            }
+
+            return;
         }
 
         if (emptyState) {
-            emptyState.hidden = records.length > 0;
+            emptyState.hidden = true;
         }
+
+        const groupedRecords = new Map();
+
+        filteredRecords.forEach((record) => {
+            if (!groupedRecords.has(record.date)) {
+                groupedRecords.set(record.date, []);
+            }
+
+            groupedRecords.get(record.date).push(record);
+        });
+
+        let markup = "";
+
+        groupedRecords.forEach((records, date) => {
+            markup += `
+                <section class="timeline-day">
+                    <div class="timeline-date">
+                        <span>${escapeHTML(formatDateHeading(date))}</span>
+                    </div>
+
+                    <div class="timeline-day-events">
+                        ${records
+                            .map((record) =>
+                                createEventMarkup(record)
+                            )
+                            .join("")}
+                    </div>
+                </section>
+            `;
+        });
+
+        auditTimeline.innerHTML = markup;
+
+        attachAuditButtons();
     }
 
+    /* =========================================================
+       DRAWER DE CONSULTA
+       ========================================================= */
 
-    /* =====================================================
-       FILTROS - EVENTOS
-    ====================================================== */
-
-    if (searchInput) {
-        searchInput.addEventListener(
-            "input",
-            renderAuditRecords
+    function findAuditRecord(id) {
+        return auditRecords.find(
+            (record) => record.id === id
         );
     }
 
-    if (eventFilter) {
-        eventFilter.addEventListener(
-            "change",
-            renderAuditRecords
-        );
-    }
-
-    if (roleFilter) {
-        roleFilter.addEventListener(
-            "change",
-            renderAuditRecords
-        );
-    }
-
-
-    /* =====================================================
-       DRAWER - CARGAR INFORMACIÓN
-    ====================================================== */
-
-    function loadDrawer(record) {
+    function openDrawer(record) {
+        if (!record || !auditDrawer || !drawerOverlay) {
+            return;
+        }
 
         if (drawerEventType) {
-            drawerEventType.textContent = record.event;
+            drawerEventType.textContent = record.eventType;
         }
 
         if (drawerEventId) {
-            drawerEventId.textContent = record.traceId;
+            drawerEventId.textContent = record.id;
         }
 
         if (drawerResult) {
             drawerResult.textContent = record.result;
 
-            drawerResult.className =
-                `result-badge ${getResultClass(record.result)}`;
+            drawerResult.classList.remove(
+                "result-success",
+                "result-warning",
+                "result-info"
+            );
+
+            drawerResult.classList.add(
+                getResultClass(record.result)
+            );
         }
-
-
-        /* Usuario */
 
         if (drawerUser) {
             drawerUser.textContent = record.user;
@@ -704,9 +958,6 @@ document.addEventListener("DOMContentLoaded", () => {
             drawerAccount.textContent = record.account;
         }
 
-
-        /* Acción */
-
         if (drawerActionLabel) {
             drawerActionLabel.textContent = record.action;
         }
@@ -714,9 +965,6 @@ document.addEventListener("DOMContentLoaded", () => {
         if (drawerDescription) {
             drawerDescription.textContent = record.description;
         }
-
-
-        /* Activo */
 
         if (drawerAsset) {
             drawerAsset.textContent = record.asset;
@@ -730,63 +978,50 @@ document.addEventListener("DOMContentLoaded", () => {
             drawerVersion.textContent = record.version;
         }
 
-
-        /* Datos técnicos */
-
         if (drawerDate) {
             drawerDate.textContent =
                 `${record.date} · ${record.time}`;
         }
 
         if (drawerTraceId) {
-            drawerTraceId.textContent = record.traceId;
+            drawerTraceId.textContent = record.id;
         }
 
         if (drawerIp) {
             drawerIp.textContent = record.ip;
         }
 
-
-        /* Integridad */
-
         if (integritySection) {
+            integritySection.hidden = !record.integrity;
+        }
 
-            if (record.integrity) {
+        if (record.integrity) {
+            if (drawerIntegrityStatus) {
+                drawerIntegrityStatus.textContent =
+                    "Integridad verificada";
+            }
 
-                integritySection.style.display = "";
+            if (drawerHash) {
+                drawerHash.textContent = record.hash;
+            }
+        } else {
+            if (drawerIntegrityStatus) {
+                drawerIntegrityStatus.textContent =
+                    "Sin verificación asociada";
+            }
 
-                if (drawerIntegrityStatus) {
-                    drawerIntegrityStatus.textContent =
-                        record.integrityStatus;
-                }
-
-                if (drawerHash) {
-                    drawerHash.textContent =
-                        record.hash;
-                }
-
-            } else {
-
-                integritySection.style.display = "none";
+            if (drawerHash) {
+                drawerHash.textContent = "No disponible";
             }
         }
-    }
 
-
-    /* =====================================================
-       ABRIR DRAWER
-    ====================================================== */
-
-    function openDrawer(record) {
-
-        if (!auditDrawer || !drawerOverlay) {
-            return;
-        }
-
-        loadDrawer(record);
-
-        auditDrawer.classList.add("active");
         drawerOverlay.classList.add("active");
+        auditDrawer.classList.add("active");
+
+        drawerOverlay.setAttribute(
+            "aria-hidden",
+            "false"
+        );
 
         auditDrawer.setAttribute(
             "aria-hidden",
@@ -796,68 +1031,164 @@ document.addEventListener("DOMContentLoaded", () => {
         document.body.classList.add("locked");
     }
 
-
-    /* =====================================================
-       CERRAR DRAWER
-    ====================================================== */
-
     function closeDrawer() {
-
-        if (!auditDrawer || !drawerOverlay) {
-            return;
+        if (drawerOverlay) {
+            drawerOverlay.classList.remove("active");
+            drawerOverlay.setAttribute(
+                "aria-hidden",
+                "true"
+            );
         }
 
-        auditDrawer.classList.remove("active");
-        drawerOverlay.classList.remove("active");
-
-        auditDrawer.setAttribute(
-            "aria-hidden",
-            "true"
-        );
+        if (auditDrawer) {
+            auditDrawer.classList.remove("active");
+            auditDrawer.setAttribute(
+                "aria-hidden",
+                "true"
+            );
+        }
 
         document.body.classList.remove("locked");
     }
 
+    function attachAuditButtons() {
+        const buttons = document.querySelectorAll(
+            "[data-audit-id]"
+        );
 
-    /* =====================================================
-       CLICK CONSULTAR
-    ====================================================== */
+        buttons.forEach((button) => {
+            button.addEventListener("click", () => {
+                const id = button.dataset.auditId;
+                const record = findAuditRecord(id);
 
-    if (tableBody) {
+                if (record) {
+                    openDrawer(record);
+                }
+            });
+        });
+    }
 
-        tableBody.addEventListener(
+    /* =========================================================
+       PERFIL
+       ========================================================= */
+
+    function closeProfile() {
+        if (!profile) {
+            return;
+        }
+
+        profile.classList.remove("open");
+
+        if (profileButton) {
+            profileButton.setAttribute(
+                "aria-expanded",
+                "false"
+            );
+        }
+    }
+
+    if (profileButton && profile) {
+        profileButton.addEventListener("click", (event) => {
+            event.stopPropagation();
+
+            const isOpen =
+                profile.classList.toggle("open");
+
+            profileButton.setAttribute(
+                "aria-expanded",
+                String(isOpen)
+            );
+        });
+    }
+
+    document.addEventListener("click", (event) => {
+        if (
+            profile &&
+            !profile.contains(event.target)
+        ) {
+            closeProfile();
+        }
+    });
+
+    /* =========================================================
+       NOTIFICACIONES
+       ========================================================= */
+
+    if (notificationButton) {
+        notificationButton.addEventListener(
             "click",
-            event => {
-
-                const button = event.target.closest(
-                    "[data-audit-id]"
-                );
-
-                if (!button) {
-                    return;
-                }
-
-                const id = Number(
-                    button.dataset.auditId
-                );
-
-                const record = auditRecords.find(
-                    item => item.id === id
-                );
-
-                if (!record) {
-                    return;
-                }
-
-                openDrawer(record);
+            () => {
+                window.location.href =
+                    "alertasAuditor.html";
             }
         );
     }
 
+    /* =========================================================
+       MODAL DE CIERRE DE SESIÓN
+       ========================================================= */
 
-    /* =====================================================
-       CERRAR DRAWER
-    ====================================================== */
+    function openLogoutModal() {
+        if (!logoutModal) {
+            return;
+        }
+
+        closeProfile();
+
+        logoutModal.classList.add("active");
+        logoutModal.setAttribute(
+            "aria-hidden",
+            "false"
+        );
+
+        document.body.classList.add("locked");
+    }
+
+    function closeLogoutModal() {
+        if (!logoutModal) {
+            return;
+        }
+
+        logoutModal.classList.remove("active");
+        logoutModal.setAttribute(
+            "aria-hidden",
+            "true"
+        );
+
+        if (
+            !auditDrawer ||
+            !auditDrawer.classList.contains("active")
+        ) {
+            document.body.classList.remove("locked");
+        }
+    }
+
+    if (profileLogout) {
+        profileLogout.addEventListener(
+            "click",
+            openLogoutModal
+        );
+    }
+
+    closeLogoutButtons.forEach((button) => {
+        button.addEventListener(
+            "click",
+            closeLogoutModal
+        );
+    });
+
+    if (confirmLogout) {
+        confirmLogout.addEventListener(
+            "click",
+            () => {
+                window.location.href = "login.html";
+            }
+        );
+    }
+
+    /* =========================================================
+       EVENTOS DEL DRAWER
+       ========================================================= */
 
     if (closeDrawerButton) {
         closeDrawerButton.addEventListener(
@@ -873,216 +1204,61 @@ document.addEventListener("DOMContentLoaded", () => {
         );
     }
 
+    /* =========================================================
+       EVENTOS DE FILTROS
+       ========================================================= */
 
-    /* =====================================================
-       PERFIL
-    ====================================================== */
+    if (searchInput) {
+        searchInput.addEventListener(
+            "input",
+            renderAuditTimeline
+        );
+    }
 
-    function closeProfileMenu() {
+    if (eventFilter) {
+        eventFilter.addEventListener(
+            "change",
+            renderAuditTimeline
+        );
+    }
 
-        if (!profile) {
+    if (roleFilter) {
+        roleFilter.addEventListener(
+            "change",
+            renderAuditTimeline
+        );
+    }
+
+    /* =========================================================
+       TECLADO
+       ========================================================= */
+
+    document.addEventListener("keydown", (event) => {
+        if (event.key !== "Escape") {
             return;
         }
 
-        profile.classList.remove("open");
-
-        if (profileButton) {
-            profileButton.setAttribute(
-                "aria-expanded",
-                "false"
-            );
-        }
-    }
-
-
-    if (profile && profileButton) {
-
-        profileButton.addEventListener(
-            "click",
-            event => {
-
-                event.stopPropagation();
-
-                const isOpen =
-                    profile.classList.toggle("open");
-
-                profileButton.setAttribute(
-                    "aria-expanded",
-                    String(isOpen)
-                );
-            }
-        );
-
-
-        document.addEventListener(
-            "click",
-            event => {
-
-                if (
-                    profile.classList.contains("open") &&
-                    !profile.contains(event.target)
-                ) {
-                    closeProfileMenu();
-                }
-            }
-        );
-    }
-
-
-    /* =====================================================
-       ALERTAS
-    ====================================================== */
-
-    if (notificationButton) {
-
-        notificationButton.addEventListener(
-            "click",
-            () => {
-                window.location.href =
-                    "alertasAuditor.html";
-            }
-        );
-    }
-
-
-    /* =====================================================
-       MODAL LOGOUT
-    ====================================================== */
-
-    function openLogoutModal() {
-
-        if (!logoutModal) {
-            return;
+        if (
+            auditDrawer &&
+            auditDrawer.classList.contains("active")
+        ) {
+            closeDrawer();
         }
 
-        closeProfileMenu();
-
-        logoutModal.classList.add("active");
-
-        logoutModal.setAttribute(
-            "aria-hidden",
-            "false"
-        );
-
-        document.body.classList.add("locked");
-    }
-
-
-    function closeLogoutModal() {
-
-        if (!logoutModal) {
-            return;
+        if (
+            logoutModal &&
+            logoutModal.classList.contains("active")
+        ) {
+            closeLogoutModal();
         }
 
-        logoutModal.classList.remove("active");
-
-        logoutModal.setAttribute(
-            "aria-hidden",
-            "true"
-        );
-
-        document.body.classList.remove("locked");
-    }
-
-
-    /* Desde perfil */
-
-    if (profileLogout) {
-        profileLogout.addEventListener(
-            "click",
-            openLogoutModal
-        );
-    }
-
-
-    /* Desde sidebar cargado dinámicamente */
-
-    document.addEventListener(
-        "click",
-        event => {
-
-            const sidebarLogout =
-                event.target.closest("#sidebarLogout");
-
-            if (!sidebarLogout) {
-                return;
-            }
-
-            event.preventDefault();
-
-            openLogoutModal();
-        }
-    );
-
-
-    /* Cancelar */
-
-    closeLogoutElements.forEach(element => {
-
-        element.addEventListener(
-            "click",
-            closeLogoutModal
-        );
+        closeProfile();
     });
 
-
-    /* Confirmar */
-
-    if (confirmLogout) {
-
-        confirmLogout.addEventListener(
-            "click",
-            () => {
-                window.location.href =
-                    "login.html";
-            }
-        );
-    }
-
-
-    /* =====================================================
-       TECLA ESCAPE
-    ====================================================== */
-
-    document.addEventListener(
-        "keydown",
-        event => {
-
-            if (event.key !== "Escape") {
-                return;
-            }
-
-            if (
-                auditDrawer &&
-                auditDrawer.classList.contains("active")
-            ) {
-                closeDrawer();
-                return;
-            }
-
-            if (
-                logoutModal &&
-                logoutModal.classList.contains("active")
-            ) {
-                closeLogoutModal();
-                return;
-            }
-
-            if (
-                profile &&
-                profile.classList.contains("open")
-            ) {
-                closeProfileMenu();
-            }
-        }
-    );
-
-
-    /* =====================================================
+    /* =========================================================
        INICIALIZACIÓN
-    ====================================================== */
+       ========================================================= */
 
-    loadSummary();
-    renderAuditRecords();
-
+    renderSummary();
+    renderAuditTimeline();
 });

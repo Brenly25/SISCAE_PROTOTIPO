@@ -1,0 +1,1059 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Auditoría | SISCAE</title>
+
+    <!-- ESTILOS GENERALES -->
+    <link
+        rel="stylesheet"
+        href="../css/global.css"
+    >
+
+    <!-- SIDEBAR AUDITOR -->
+    <link
+        rel="stylesheet"
+        href="../css/components/sidebar_auditor.css"
+    >
+
+    <!-- ESTILOS DE LA PÁGINA -->
+    <link
+        rel="stylesheet"
+        href="../css/pages/auditoriaAuditor.css"
+    >
+</head>
+
+
+<body>
+
+    <!-- =====================================================
+         SIDEBAR
+    ====================================================== -->
+
+    <div id="sidebar-component"></div>
+
+
+    <!-- =====================================================
+         CONTENIDO PRINCIPAL
+    ====================================================== -->
+
+    <main class="main">
+
+
+        <!-- =================================================
+             DECORACIÓN DE FONDO
+        ================================================== -->
+
+        <div
+            class="audit-background"
+            aria-hidden="true"
+        >
+            <span class="background-circle circle-one"></span>
+            <span class="background-circle circle-two"></span>
+            <span class="background-circle circle-three"></span>
+            <span class="background-line line-one"></span>
+        </div>
+
+
+        <!-- =================================================
+             TOPBAR
+        ================================================== -->
+
+        <header class="topbar">
+
+            <div class="topbar-left">
+
+                <button
+                    class="menu-button"
+                    id="menuButton"
+                    type="button"
+                    aria-label="Abrir menú"
+                >
+                    <svg viewBox="0 0 24 24">
+                        <path d="M4 7h16"></path>
+                        <path d="M4 12h16"></path>
+                        <path d="M4 17h16"></path>
+                    </svg>
+                </button>
+
+
+                <div class="topbar-route">
+
+                    <span>Panel del Auditor</span>
+
+                    <svg viewBox="0 0 24 24">
+                        <path d="m9 18 6-6-6-6"></path>
+                    </svg>
+
+                    <strong>Auditoría</strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="topbar-right">
+
+                <!-- NOTIFICACIONES -->
+
+                <button
+                    class="notification-button"
+                    id="notificationButton"
+                    type="button"
+                    aria-label="Ver alertas"
+                >
+                    <svg viewBox="0 0 24 24">
+                        <path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9"></path>
+                        <path d="M10 21h4"></path>
+                    </svg>
+
+                    <span class="notification-count">
+                        3
+                    </span>
+                </button>
+
+
+                <!-- PERFIL -->
+
+                <div
+                    class="profile"
+                    id="profile"
+                >
+
+                    <button
+                        class="profile-button"
+                        id="profileButton"
+                        type="button"
+                        aria-expanded="false"
+                    >
+
+                        <span class="profile-avatar">
+                            AU
+                        </span>
+
+                        <span class="profile-information">
+                            <strong>Auditor</strong>
+                            <small>Cuenta institucional</small>
+                        </span>
+
+                        <svg
+                            class="profile-arrow"
+                            viewBox="0 0 24 24"
+                        >
+                            <path d="m6 9 6 6 6-6"></path>
+                        </svg>
+
+                    </button>
+
+
+                    <div class="profile-menu">
+
+                        <div class="profile-menu-header">
+
+                            <span class="profile-menu-avatar">
+                                AU
+                            </span>
+
+                            <div>
+                                <strong>Auditor</strong>
+                                <span>Cuenta institucional</span>
+                            </div>
+
+                        </div>
+
+
+                        <div class="profile-menu-divider"></div>
+
+
+                        <button
+                            class="profile-menu-option danger"
+                            id="profileLogout"
+                            type="button"
+                        >
+
+                            <svg viewBox="0 0 24 24">
+                                <path d="M10 17l5-5-5-5"></path>
+                                <path d="M15 12H3"></path>
+                                <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"></path>
+                            </svg>
+
+                            <span>Cerrar sesión</span>
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- =================================================
+             CONTENIDO
+        ================================================== -->
+
+        <div class="page-content">
+
+
+            <!-- =============================================
+                 PRESENTACIÓN DEL MÓDULO
+            ============================================== -->
+
+            <section class="audit-intro">
+
+                <div class="intro-main">
+
+                    <div class="intro-symbol">
+
+                        <svg viewBox="0 0 24 24">
+                            <rect
+                                x="5"
+                                y="3"
+                                width="14"
+                                height="18"
+                                rx="1"
+                            ></rect>
+
+                            <path d="M8 8h8"></path>
+                            <path d="M8 12h8"></path>
+                            <path d="M8 16h5"></path>
+                        </svg>
+
+                    </div>
+
+
+                    <div class="intro-content">
+
+                        <span class="intro-eyebrow">
+                            CONTROL Y TRAZABILIDAD
+                        </span>
+
+                        <h1>
+                            Auditoría
+                        </h1>
+
+                        <p>
+                            Seguimiento cronológico de acciones,
+                            intervenciones y verificaciones registradas
+                            sobre los activos editoriales.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="intro-profile">
+
+                    <span>
+                        PERFIL DE CONSULTA
+                    </span>
+
+                    <strong>
+                        Auditor
+                    </strong>
+
+                    <small>
+                        Acceso de solo lectura
+                    </small>
+
+                </div>
+
+            </section>
+
+
+            <!-- =============================================
+                 RESUMEN DE TRAZABILIDAD
+            ============================================== -->
+
+            <section
+                class="trace-summary"
+                aria-label="Resumen de auditoría"
+            >
+
+                <!-- EVENTOS -->
+
+                <article class="trace-item">
+
+                    <div class="trace-icon">
+
+                        <svg viewBox="0 0 24 24">
+                            <rect
+                                x="5"
+                                y="3"
+                                width="14"
+                                height="18"
+                                rx="1"
+                            ></rect>
+                            <path d="M8 8h8"></path>
+                            <path d="M8 12h8"></path>
+                            <path d="M8 16h5"></path>
+                        </svg>
+
+                    </div>
+
+                    <div>
+                        <strong id="totalEvents">0</strong>
+                        <span>Eventos registrados</span>
+                    </div>
+
+                </article>
+
+
+                <!-- USUARIOS -->
+
+                <article class="trace-item">
+
+                    <div class="trace-icon">
+
+                        <svg viewBox="0 0 24 24">
+                            <circle
+                                cx="12"
+                                cy="8"
+                                r="3"
+                            ></circle>
+                            <path d="M6 20c0-3.5 2.5-6 6-6s6 2.5 6 6"></path>
+                        </svg>
+
+                    </div>
+
+                    <div>
+                        <strong id="usersInvolved">0</strong>
+                        <span>Usuarios involucrados</span>
+                    </div>
+
+                </article>
+
+
+                <!-- ACTIVOS -->
+
+                <article class="trace-item">
+
+                    <div class="trace-icon">
+
+                        <svg viewBox="0 0 24 24">
+                            <path d="M7 3h7l4 4v14H7z"></path>
+                            <path d="M14 3v5h5"></path>
+                        </svg>
+
+                    </div>
+
+                    <div>
+                        <strong id="assetsInvolved">0</strong>
+                        <span>Activos involucrados</span>
+                    </div>
+
+                </article>
+
+
+                <!-- INTEGRIDAD -->
+
+                <article class="trace-item integrity">
+
+                    <div class="trace-icon">
+
+                        <svg viewBox="0 0 24 24">
+                            <path d="M12 3l7 3v5c0 4.6-2.9 8.1-7 10-4.1-1.9-7-5.4-7-10V6z"></path>
+                            <path d="m9 12 2 2 4-4"></path>
+                        </svg>
+
+                    </div>
+
+                    <div>
+                        <strong id="integrityChecks">0</strong>
+                        <span>Verificaciones de integridad</span>
+                    </div>
+
+                </article>
+
+            </section>
+
+
+            <!-- =============================================
+                 HERRAMIENTAS
+            ============================================== -->
+
+            <section class="audit-toolbar">
+
+                <div class="toolbar-heading">
+
+                    <div class="toolbar-mark"></div>
+
+                    <div>
+
+                        <span>
+                            BITÁCORA DEL SISTEMA
+                        </span>
+
+                        <h2>
+                            Historial de actividad
+                        </h2>
+
+                    </div>
+
+                </div>
+
+
+                <div class="toolbar-results">
+
+                    <span>REGISTROS</span>
+
+                    <strong id="resultsCounter">
+                        0
+                    </strong>
+
+                </div>
+
+
+                <div class="toolbar-controls">
+
+                    <!-- BUSCADOR -->
+
+                    <div class="audit-search">
+
+                        <svg viewBox="0 0 24 24">
+                            <circle
+                                cx="11"
+                                cy="11"
+                                r="7"
+                            ></circle>
+                            <path d="m20 20-4-4"></path>
+                        </svg>
+
+                        <input
+                            type="search"
+                            id="searchInput"
+                            placeholder="Buscar usuario, activo, código o acción..."
+                            autocomplete="off"
+                        >
+
+                    </div>
+
+
+                    <!-- EVENTO -->
+
+                    <label class="filter-control">
+
+                        <span>
+                            Tipo de evento
+                        </span>
+
+                        <select id="eventFilter">
+
+                            <option value="all">
+                                Todos
+                            </option>
+
+                            <option value="Acceso">
+                                Acceso
+                            </option>
+
+                            <option value="Carga">
+                                Carga
+                            </option>
+
+                            <option value="Modificación">
+                                Modificación
+                            </option>
+
+                            <option value="Revisión">
+                                Revisión
+                            </option>
+
+                            <option value="Observación">
+                                Observación
+                            </option>
+
+                            <option value="Aprobación">
+                                Aprobación
+                            </option>
+
+                            <option value="Integridad">
+                                Integridad
+                            </option>
+
+                        </select>
+
+                    </label>
+
+
+                    <!-- ROL -->
+
+                    <label class="filter-control">
+
+                        <span>
+                            Rol
+                        </span>
+
+                        <select id="roleFilter">
+
+                            <option value="all">
+                                Todos
+                            </option>
+
+                            <option value="Administrador">
+                                Administrador
+                            </option>
+
+                            <option value="Autor / Editor">
+                                Autor / Editor
+                            </option>
+
+                            <option value="Revisor">
+                                Revisor
+                            </option>
+
+                        </select>
+
+                    </label>
+
+                </div>
+
+            </section>
+
+
+            <!-- =============================================
+                 LÍNEA DE TIEMPO
+            ============================================== -->
+
+            <section class="timeline-section">
+
+                <div
+                    class="timeline"
+                    id="auditTimeline"
+                >
+                    <!-- JS -->
+                </div>
+
+
+                <!-- SIN RESULTADOS -->
+
+                <div
+                    class="audit-empty"
+                    id="emptyState"
+                    hidden
+                >
+
+                    <div class="audit-empty-icon">
+
+                        <svg viewBox="0 0 24 24">
+                            <circle
+                                cx="11"
+                                cy="11"
+                                r="7"
+                            ></circle>
+                            <path d="m20 20-4-4"></path>
+                        </svg>
+
+                    </div>
+
+                    <h3>
+                        No se encontraron registros
+                    </h3>
+
+                    <p>
+                        No existen eventos de auditoría que coincidan
+                        con los filtros seleccionados.
+                    </p>
+
+                </div>
+
+            </section>
+
+
+            <!-- =============================================
+                 NOTA DE CONTROL
+            ============================================== -->
+
+            <section class="audit-security-note">
+
+                <div class="security-icon">
+
+                    <svg viewBox="0 0 24 24">
+                        <path d="M12 3l7 3v5c0 4.6-2.9 8.1-7 10-4.1-1.9-7-5.4-7-10V6z"></path>
+                        <path d="m9 12 2 2 4-4"></path>
+                    </svg>
+
+                </div>
+
+
+                <div>
+
+                    <strong>
+                        Registro de auditoría
+                    </strong>
+
+                    <p>
+                        La información presentada corresponde al
+                        historial de trazabilidad del sistema.
+                        El perfil Auditor dispone únicamente de
+                        permisos de consulta.
+                    </p>
+
+                </div>
+
+            </section>
+
+        </div>
+
+    </main>
+
+
+    <!-- =====================================================
+         OVERLAY DRAWER
+    ====================================================== -->
+
+    <div
+        class="drawer-overlay"
+        id="drawerOverlay"
+    ></div>
+
+
+    <!-- =====================================================
+         DRAWER DETALLE
+    ====================================================== -->
+
+    <aside
+        class="audit-drawer"
+        id="auditDrawer"
+        aria-hidden="true"
+    >
+
+        <!-- HEADER -->
+
+        <div class="drawer-header">
+
+            <div>
+
+                <span class="drawer-eyebrow">
+                    TRAZABILIDAD DEL EVENTO
+                </span>
+
+                <h2>
+                    Detalle de auditoría
+                </h2>
+
+            </div>
+
+
+            <button
+                class="drawer-close"
+                id="closeDrawer"
+                type="button"
+                aria-label="Cerrar detalle"
+            >
+
+                <svg viewBox="0 0 24 24">
+                    <path d="M6 6l12 12"></path>
+                    <path d="M18 6 6 18"></path>
+                </svg>
+
+            </button>
+
+        </div>
+
+
+        <!-- CONTENIDO -->
+
+        <div class="drawer-content">
+
+
+            <!-- EVENTO -->
+
+            <section class="drawer-event">
+
+                <div class="drawer-event-main">
+
+                    <div class="drawer-event-icon">
+
+                        <svg viewBox="0 0 24 24">
+                            <path d="M5 12h14"></path>
+                            <path d="m14 7 5 5-5 5"></path>
+                        </svg>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            Tipo de evento
+                        </span>
+
+                        <h3 id="drawerEventType">
+                            -
+                        </h3>
+
+                        <small id="drawerEventId">
+                            -
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <div class="drawer-event-result">
+
+                    <span>
+                        Resultado
+                    </span>
+
+                    <strong
+                        class="result-badge"
+                        id="drawerResult"
+                    >
+                        -
+                    </strong>
+
+                </div>
+
+            </section>
+
+
+            <!-- USUARIO -->
+
+            <section class="drawer-section">
+
+                <div class="drawer-section-heading">
+
+                    <span class="section-number">
+                        01
+                    </span>
+
+                    <div>
+                        <h3>Usuario responsable</h3>
+                        <p>Identidad asociada al registro.</p>
+                    </div>
+
+                </div>
+
+
+                <dl class="detail-grid">
+
+                    <div>
+                        <dt>Usuario</dt>
+                        <dd id="drawerUser">-</dd>
+                    </div>
+
+                    <div>
+                        <dt>Rol</dt>
+                        <dd id="drawerRole">-</dd>
+                    </div>
+
+                    <div class="full-row">
+                        <dt>Cuenta institucional</dt>
+                        <dd id="drawerAccount">-</dd>
+                    </div>
+
+                </dl>
+
+            </section>
+
+
+            <!-- ACCIÓN -->
+
+            <section class="drawer-section">
+
+                <div class="drawer-section-heading">
+
+                    <span class="section-number">
+                        02
+                    </span>
+
+                    <div>
+                        <h3>Acción registrada</h3>
+                        <p>Intervención almacenada en la bitácora.</p>
+                    </div>
+
+                </div>
+
+
+                <div class="action-description">
+
+                    <span id="drawerActionLabel">
+                        -
+                    </span>
+
+                    <p id="drawerDescription">
+                        -
+                    </p>
+
+                </div>
+
+            </section>
+
+
+            <!-- ACTIVO -->
+
+            <section class="drawer-section">
+
+                <div class="drawer-section-heading">
+
+                    <span class="section-number">
+                        03
+                    </span>
+
+                    <div>
+                        <h3>Activo relacionado</h3>
+                        <p>Recurso asociado con la intervención.</p>
+                    </div>
+
+                </div>
+
+
+                <dl class="detail-grid">
+
+                    <div class="full-row">
+                        <dt>Activo editorial</dt>
+                        <dd id="drawerAsset">-</dd>
+                    </div>
+
+                    <div>
+                        <dt>Código</dt>
+                        <dd id="drawerAssetCode">-</dd>
+                    </div>
+
+                    <div>
+                        <dt>Versión</dt>
+                        <dd id="drawerVersion">-</dd>
+                    </div>
+
+                </dl>
+
+            </section>
+
+
+            <!-- DATOS TÉCNICOS -->
+
+            <section class="drawer-section">
+
+                <div class="drawer-section-heading">
+
+                    <span class="section-number">
+                        04
+                    </span>
+
+                    <div>
+                        <h3>Datos de trazabilidad</h3>
+                        <p>Información técnica del registro.</p>
+                    </div>
+
+                </div>
+
+
+                <dl class="detail-grid">
+
+                    <div class="full-row">
+                        <dt>Fecha y hora</dt>
+                        <dd id="drawerDate">-</dd>
+                    </div>
+
+                    <div>
+                        <dt>ID de trazabilidad</dt>
+                        <dd id="drawerTraceId">-</dd>
+                    </div>
+
+                    <div>
+                        <dt>Dirección IP</dt>
+                        <dd id="drawerIp">-</dd>
+                    </div>
+
+                </dl>
+
+            </section>
+
+
+            <!-- INTEGRIDAD -->
+
+            <section
+                class="drawer-section integrity-section"
+                id="integritySection"
+            >
+
+                <div class="drawer-section-heading">
+
+                    <span class="section-number">
+                        05
+                    </span>
+
+                    <div>
+                        <h3>Integridad del activo</h3>
+                        <p>
+                            Comprobación de integridad asociada
+                            a la versión.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="hash-record">
+
+                    <div class="hash-status">
+
+                        <span class="hash-status-icon">
+
+                            <svg viewBox="0 0 24 24">
+                                <path d="M12 3l7 3v5c0 4.6-2.9 8.1-7 10-4.1-1.9-7-5.4-7-10V6z"></path>
+                                <path d="m9 12 2 2 4-4"></path>
+                            </svg>
+
+                        </span>
+
+
+                        <div>
+
+                            <strong id="drawerIntegrityStatus">
+                                Integridad verificada
+                            </strong>
+
+                            <span>
+                                Verificación SHA-256
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="hash-value">
+
+                        <span>
+                            HASH REGISTRADO
+                        </span>
+
+                        <code id="drawerHash">
+                            -
+                        </code>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- NOTA -->
+
+            <div class="auditor-note">
+
+                <svg viewBox="0 0 24 24">
+                    <path d="M12 3l7 3v5c0 4.6-2.9 8.1-7 10-4.1-1.9-7-5.4-7-10V6z"></path>
+                    <path d="m9 12 2 2 4-4"></path>
+                </svg>
+
+
+                <div>
+
+                    <strong>
+                        Consulta de auditoría
+                    </strong>
+
+                    <p>
+                        Este registro forma parte de la trazabilidad
+                        del sistema. El Auditor puede consultar la
+                        evidencia, pero no modificarla ni eliminarla.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </aside>
+
+
+    <!-- =====================================================
+         MODAL CERRAR SESIÓN
+    ====================================================== -->
+
+    <div
+        class="modal"
+        id="logoutModal"
+        aria-hidden="true"
+    >
+
+        <div
+            class="modal-backdrop"
+            data-close-logout
+        ></div>
+
+
+        <div
+            class="modal-dialog"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="logoutTitle"
+        >
+
+            <div class="modal-icon">
+
+                <svg viewBox="0 0 24 24">
+                    <path d="M10 17l5-5-5-5"></path>
+                    <path d="M15 12H3"></path>
+                    <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"></path>
+                </svg>
+
+            </div>
+
+
+            <h2 id="logoutTitle">
+                Cerrar sesión
+            </h2>
+
+            <p>
+                ¿Deseás salir de tu cuenta institucional?
+            </p>
+
+
+            <div class="modal-actions">
+
+                <button
+                    class="modal-button secondary"
+                    type="button"
+                    data-close-logout
+                >
+                    Cancelar
+                </button>
+
+                <button
+                    class="modal-button danger"
+                    id="confirmLogout"
+                    type="button"
+                >
+                    Cerrar sesión
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         SCRIPTS
+    ====================================================== -->
+
+    <script src="../js/components.js"></script>
+
+    <script>
+        loadAuditorSidebar();
+    </script>
+
+    <script src="../js/auditoriaAuditor.js"></script>
+
+</body>
+
+</html>

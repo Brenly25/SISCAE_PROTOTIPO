@@ -1,0 +1,1352 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Revisión | SISCAE</title>
+
+    <!-- =====================================================
+         CSS GLOBAL
+    ====================================================== -->
+
+    <link
+        rel="stylesheet"
+        href="../css/global.css"
+    >
+
+    <!-- =====================================================
+         SIDEBAR AUDITOR
+    ====================================================== -->
+
+    <link
+        rel="stylesheet"
+        href="../css/components/sidebar_auditor.css"
+    >
+
+    <!-- =====================================================
+         CSS DE LA PÁGINA
+    ====================================================== -->
+
+    <link
+        rel="stylesheet"
+        href="../css/pages/revisionAuditor.css"
+    >
+
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+         SIDEBAR
+    ====================================================== -->
+
+    <div id="sidebar-component"></div>
+
+
+    <!-- =====================================================
+         CONTENIDO PRINCIPAL
+    ====================================================== -->
+
+    <main class="main">
+
+
+        <!-- =================================================
+             DECORACIÓN DE FONDO
+        ================================================== -->
+
+        <div
+            class="background-rings"
+            aria-hidden="true"
+        >
+
+            <span class="background-ring ring-one"></span>
+
+            <span class="background-ring ring-two"></span>
+
+            <span class="background-ring ring-three"></span>
+
+        </div>
+
+
+        <!-- =================================================
+             TOPBAR
+        ================================================== -->
+
+        <header class="topbar">
+
+            <div class="topbar-left">
+
+                <!-- BOTÓN MÓVIL -->
+
+                <button
+                    class="menu-button"
+                    id="menuButton"
+                    type="button"
+                    aria-label="Abrir menú"
+                >
+
+                    <svg
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                    >
+                        <line
+                            x1="4"
+                            y1="7"
+                            x2="20"
+                            y2="7"
+                        ></line>
+
+                        <line
+                            x1="4"
+                            y1="12"
+                            x2="20"
+                            y2="12"
+                        ></line>
+
+                        <line
+                            x1="4"
+                            y1="17"
+                            x2="20"
+                            y2="17"
+                        ></line>
+                    </svg>
+
+                </button>
+
+
+                <div class="topbar-title">
+
+                    <span class="topbar-section">
+                        Panel del Auditor
+                    </span>
+
+                    <span class="topbar-separator">
+                        /
+                    </span>
+
+                    <strong>
+                        Revisión
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="topbar-right">
+
+
+                <!-- =========================================
+                     NOTIFICACIONES
+                ========================================== -->
+
+                <button
+                    class="notification-button"
+                    type="button"
+                    aria-label="Notificaciones"
+                    id="notificationButton"
+                >
+
+                    <svg
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                    >
+                        <path
+                            d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9"
+                        ></path>
+
+                        <path
+                            d="M10 21h4"
+                        ></path>
+                    </svg>
+
+                    <span
+                        class="notification-count"
+                        id="notificationCount"
+                    >
+                        3
+                    </span>
+
+                </button>
+
+
+                <!-- =========================================
+                     PERFIL
+                ========================================== -->
+
+                <div
+                    class="profile"
+                    id="profile"
+                >
+
+                    <button
+                        class="profile-button"
+                        id="profileButton"
+                        type="button"
+                        aria-haspopup="true"
+                        aria-expanded="false"
+                    >
+
+                        <span class="profile-avatar">
+                            AU
+                        </span>
+
+                        <span class="profile-information">
+
+                            <strong>
+                                Auditor
+                            </strong>
+
+                            <small>
+                                Cuenta institucional
+                            </small>
+
+                        </span>
+
+                        <svg
+                            class="profile-arrow"
+                            viewBox="0 0 24 24"
+                            aria-hidden="true"
+                        >
+                            <polyline
+                                points="6 9 12 15 18 9"
+                            ></polyline>
+                        </svg>
+
+                    </button>
+
+
+                    <!-- MENÚ PERFIL -->
+
+                    <div class="profile-menu">
+
+                        <div class="profile-menu-header">
+
+                            <span class="profile-menu-avatar">
+                                AU
+                            </span>
+
+                            <div>
+
+                                <strong>
+                                    Auditor
+                                </strong>
+
+                                <span>
+                                    Cuenta institucional
+                                </span>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="profile-menu-divider"></div>
+
+
+                        <button
+                            class="profile-menu-option danger"
+                            id="profileLogout"
+                            type="button"
+                        >
+
+                            <svg
+                                viewBox="0 0 24 24"
+                                aria-hidden="true"
+                            >
+                                <path
+                                    d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"
+                                ></path>
+
+                                <polyline
+                                    points="16 17 21 12 16 7"
+                                ></polyline>
+
+                                <line
+                                    x1="21"
+                                    y1="12"
+                                    x2="9"
+                                    y2="12"
+                                ></line>
+                            </svg>
+
+                            Cerrar sesión
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- =================================================
+             CONTENIDO
+        ================================================== -->
+
+        <div class="page-content">
+
+
+            <!-- =============================================
+                 ENCABEZADO DE LA PÁGINA
+            ============================================== -->
+
+            <section class="page-heading">
+
+                <div class="page-heading-content">
+
+                    <span class="page-eyebrow">
+                        CONTROL EDITORIAL
+                    </span>
+
+                    <h1>
+                        Revisión de contenidos
+                    </h1>
+
+                    <p>
+                        Consulta los contenidos que se encuentran
+                        dentro del proceso de revisión editorial
+                        y verifica su estado, versión y responsable.
+                    </p>
+
+                </div>
+
+
+                <div class="page-heading-icon">
+
+                    <svg
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                    >
+                        <path
+                            d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"
+                        ></path>
+
+                        <polyline
+                            points="14 2 14 8 20 8"
+                        ></polyline>
+
+                        <polyline
+                            points="9 15 11 17 15 13"
+                        ></polyline>
+                    </svg>
+
+                </div>
+
+            </section>
+
+
+            <!-- =============================================
+                 RESUMEN
+            ============================================== -->
+
+            <section
+                class="summary-grid"
+                aria-label="Resumen de revisiones"
+            >
+
+
+                <!-- EN REVISIÓN -->
+
+                <article class="summary-card">
+
+                    <div class="summary-card-top">
+
+                        <span class="summary-icon review">
+
+                            <svg
+                                viewBox="0 0 24 24"
+                                aria-hidden="true"
+                            >
+                                <path
+                                    d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"
+                                ></path>
+
+                                <polyline
+                                    points="14 2 14 8 20 8"
+                                ></polyline>
+                            </svg>
+
+                        </span>
+
+                        <span class="summary-label">
+                            En revisión
+                        </span>
+
+                    </div>
+
+                    <strong
+                        class="summary-number"
+                        id="reviewCount"
+                    >
+                        0
+                    </strong>
+
+                    <span class="summary-description">
+                        Contenidos actualmente en revisión
+                    </span>
+
+                </article>
+
+
+                <!-- CON OBSERVACIONES -->
+
+                <article class="summary-card">
+
+                    <div class="summary-card-top">
+
+                        <span class="summary-icon observation">
+
+                            <svg
+                                viewBox="0 0 24 24"
+                                aria-hidden="true"
+                            >
+                                <path
+                                    d="M21 15a4 4 0 0 1-4 4H8l-5 3V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4z"
+                                ></path>
+
+                                <line
+                                    x1="8"
+                                    y1="9"
+                                    x2="16"
+                                    y2="9"
+                                ></line>
+
+                                <line
+                                    x1="8"
+                                    y1="13"
+                                    x2="13"
+                                    y2="13"
+                                ></line>
+                            </svg>
+
+                        </span>
+
+                        <span class="summary-label">
+                            Con observaciones
+                        </span>
+
+                    </div>
+
+                    <strong
+                        class="summary-number"
+                        id="observedCount"
+                    >
+                        0
+                    </strong>
+
+                    <span class="summary-description">
+                        Revisiones que registran observaciones
+                    </span>
+
+                </article>
+
+
+                <!-- PENDIENTES DE APROBACIÓN -->
+
+                <article class="summary-card">
+
+                    <div class="summary-card-top">
+
+                        <span class="summary-icon approval">
+
+                            <svg
+                                viewBox="0 0 24 24"
+                                aria-hidden="true"
+                            >
+                                <path
+                                    d="M12 3l7 3v5c0 4.6-2.8 8.1-7 10-4.2-1.9-7-5.4-7-10V6l7-3z"
+                                ></path>
+
+                                <polyline
+                                    points="9 12 11 14 15 10"
+                                ></polyline>
+                            </svg>
+
+                        </span>
+
+                        <span class="summary-label">
+                            Pendientes de aprobación
+                        </span>
+
+                    </div>
+
+                    <strong
+                        class="summary-number"
+                        id="pendingCount"
+                    >
+                        0
+                    </strong>
+
+                    <span class="summary-description">
+                        Contenidos próximos a decisión editorial
+                    </span>
+
+                </article>
+
+            </section>
+
+
+            <!-- =============================================
+                 PANEL DE REVISIONES
+            ============================================== -->
+
+            <section class="review-panel">
+
+
+                <!-- =========================================
+                     ENCABEZADO DEL PANEL
+                ========================================== -->
+
+                <div class="panel-header">
+
+                    <div>
+
+                        <span class="section-eyebrow">
+                            SEGUIMIENTO
+                        </span>
+
+                        <h2>
+                            Contenidos en proceso
+                        </h2>
+
+                        <p>
+                            Consulta la información registrada
+                            durante cada proceso de revisión.
+                        </p>
+
+                    </div>
+
+                    <span
+                        class="results-counter"
+                        id="resultsCounter"
+                    >
+                        0 registros
+                    </span>
+
+                </div>
+
+
+                <!-- =========================================
+                     FILTROS
+                ========================================== -->
+
+                <div class="filters">
+
+
+                    <!-- BUSCADOR -->
+
+                    <div class="search-field">
+
+                        <svg
+                            viewBox="0 0 24 24"
+                            aria-hidden="true"
+                        >
+                            <circle
+                                cx="11"
+                                cy="11"
+                                r="7"
+                            ></circle>
+
+                            <line
+                                x1="20"
+                                y1="20"
+                                x2="16.65"
+                                y2="16.65"
+                            ></line>
+                        </svg>
+
+                        <input
+                            type="search"
+                            id="searchInput"
+                            placeholder="Buscar contenido o responsable..."
+                            autocomplete="off"
+                            aria-label="Buscar contenido"
+                        >
+
+                    </div>
+
+
+                    <!-- ESTADO -->
+
+                    <div class="filter-field">
+
+                        <label for="statusFilter">
+                            Estado
+                        </label>
+
+                        <select id="statusFilter">
+
+                            <option value="all">
+                                Todos
+                            </option>
+
+                            <option value="En revisión">
+                                En revisión
+                            </option>
+
+                            <option value="Con observaciones">
+                                Con observaciones
+                            </option>
+
+                            <option value="Pendiente de aprobación">
+                                Pendiente de aprobación
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- TIPO -->
+
+                    <div class="filter-field">
+
+                        <label for="typeFilter">
+                            Tipo
+                        </label>
+
+                        <select id="typeFilter">
+
+                            <option value="all">
+                                Todos
+                            </option>
+
+                            <option value="Documento">
+                                Documento
+                            </option>
+
+                            <option value="Imagen">
+                                Imagen
+                            </option>
+
+                            <option value="Video">
+                                Video
+                            </option>
+
+                            <option value="Material editorial">
+                                Material editorial
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- LIMPIAR -->
+
+                    <button
+                        class="clear-filter-button"
+                        id="clearFilters"
+                        type="button"
+                    >
+
+                        <svg
+                            viewBox="0 0 24 24"
+                            aria-hidden="true"
+                        >
+                            <polyline
+                                points="3 6 5 6 21 6"
+                            ></polyline>
+
+                            <path
+                                d="M19 6l-1 14H6L5 6"
+                            ></path>
+
+                            <path
+                                d="M10 11v5"
+                            ></path>
+
+                            <path
+                                d="M14 11v5"
+                            ></path>
+
+                            <path
+                                d="M9 6V4h6v2"
+                            ></path>
+                        </svg>
+
+                        Limpiar
+
+                    </button>
+
+                </div>
+
+
+                <!-- =========================================
+                     TABLA
+                ========================================== -->
+
+                <div class="table-wrapper">
+
+                    <table class="review-table">
+
+                        <thead>
+
+                            <tr>
+
+                                <th>
+                                    Contenido
+                                </th>
+
+                                <th>
+                                    Tipo
+                                </th>
+
+                                <th>
+                                    Versión
+                                </th>
+
+                                <th>
+                                    Responsable
+                                </th>
+
+                                <th>
+                                    Última actualización
+                                </th>
+
+                                <th>
+                                    Estado
+                                </th>
+
+                                <th class="action-column">
+                                    Acción
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody id="reviewTableBody">
+
+                            <!--
+                                CONTENIDO GENERADO
+                                DESDE revisionAuditor.js
+                            -->
+
+                        </tbody>
+
+                    </table>
+
+
+                    <!-- =====================================
+                         ESTADO VACÍO
+                    ====================================== -->
+
+                    <div
+                        class="empty-state"
+                        id="emptyState"
+                        hidden
+                    >
+
+                        <span class="empty-state-icon">
+
+                            <svg
+                                viewBox="0 0 24 24"
+                                aria-hidden="true"
+                            >
+                                <circle
+                                    cx="11"
+                                    cy="11"
+                                    r="7"
+                                ></circle>
+
+                                <line
+                                    x1="20"
+                                    y1="20"
+                                    x2="16.65"
+                                    y2="16.65"
+                                ></line>
+                            </svg>
+
+                        </span>
+
+                        <h3>
+                            No se encontraron resultados
+                        </h3>
+
+                        <p>
+                            Modifica los filtros o realiza
+                            una búsqueda diferente.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </div>
+
+    </main>
+
+
+    <!-- =====================================================
+         PANEL LATERAL - DETALLE DE REVISIÓN
+    ====================================================== -->
+
+    <div
+        class="drawer-overlay"
+        id="drawerOverlay"
+    ></div>
+
+
+    <aside
+        class="detail-drawer"
+        id="reviewDrawer"
+        aria-hidden="true"
+        aria-labelledby="drawerTitle"
+    >
+
+
+        <!-- =============================================
+             CABECERA
+        ============================================== -->
+
+        <div class="drawer-header">
+
+            <div>
+
+                <span class="drawer-eyebrow">
+                    DETALLE DE REVISIÓN
+                </span>
+
+                <h2 id="drawerTitle">
+                    Información del contenido
+                </h2>
+
+            </div>
+
+
+            <button
+                class="drawer-close"
+                id="closeDrawer"
+                type="button"
+                aria-label="Cerrar detalle"
+            >
+
+                <svg
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                >
+                    <line
+                        x1="18"
+                        y1="6"
+                        x2="6"
+                        y2="18"
+                    ></line>
+
+                    <line
+                        x1="6"
+                        y1="6"
+                        x2="18"
+                        y2="18"
+                    ></line>
+                </svg>
+
+            </button>
+
+        </div>
+
+
+        <!-- =============================================
+             CONTENIDO DEL DRAWER
+        ============================================== -->
+
+        <div class="drawer-content">
+
+
+            <!-- INFORMACIÓN PRINCIPAL -->
+
+            <section class="drawer-section">
+
+                <div class="drawer-content-heading">
+
+                    <span
+                        class="drawer-file-icon"
+                        id="drawerFileIcon"
+                    >
+
+                        <svg
+                            viewBox="0 0 24 24"
+                            aria-hidden="true"
+                        >
+                            <path
+                                d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"
+                            ></path>
+
+                            <polyline
+                                points="14 2 14 8 20 8"
+                            ></polyline>
+                        </svg>
+
+                    </span>
+
+                    <div>
+
+                        <h3 id="drawerContentName">
+                            -
+                        </h3>
+
+                        <span id="drawerContentType">
+                            -
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="drawer-status-row">
+
+                    <span>
+                        Estado actual
+                    </span>
+
+                    <span
+                        class="status-badge"
+                        id="drawerStatus"
+                    >
+                        -
+                    </span>
+
+                </div>
+
+            </section>
+
+
+            <!-- DATOS -->
+
+            <section class="drawer-section">
+
+                <div class="drawer-section-title">
+
+                    <span class="drawer-section-icon">
+
+                        <svg
+                            viewBox="0 0 24 24"
+                            aria-hidden="true"
+                        >
+                            <circle
+                                cx="12"
+                                cy="12"
+                                r="9"
+                            ></circle>
+
+                            <line
+                                x1="12"
+                                y1="10"
+                                x2="12"
+                                y2="16"
+                            ></line>
+
+                            <line
+                                x1="12"
+                                y1="7"
+                                x2="12.01"
+                                y2="7"
+                            ></line>
+                        </svg>
+
+                    </span>
+
+                    <h3>
+                        Información general
+                    </h3>
+
+                </div>
+
+
+                <dl class="detail-list">
+
+                    <div>
+
+                        <dt>
+                            Versión
+                        </dt>
+
+                        <dd id="drawerVersion">
+                            -
+                        </dd>
+
+                    </div>
+
+
+                    <div>
+
+                        <dt>
+                            Responsable
+                        </dt>
+
+                        <dd id="drawerResponsible">
+                            -
+                        </dd>
+
+                    </div>
+
+
+                    <div>
+
+                        <dt>
+                            Última actualización
+                        </dt>
+
+                        <dd id="drawerDate">
+                            -
+                        </dd>
+
+                    </div>
+
+
+                    <div>
+
+                        <dt>
+                            Tipo de contenido
+                        </dt>
+
+                        <dd id="drawerType">
+                            -
+                        </dd>
+
+                    </div>
+
+                </dl>
+
+            </section>
+
+
+            <!-- PROGRESO -->
+
+            <section class="drawer-section">
+
+                <div class="drawer-section-title">
+
+                    <span class="drawer-section-icon">
+
+                        <svg
+                            viewBox="0 0 24 24"
+                            aria-hidden="true"
+                        >
+                            <polyline
+                                points="20 6 9 17 4 12"
+                            ></polyline>
+                        </svg>
+
+                    </span>
+
+                    <h3>
+                        Progreso editorial
+                    </h3>
+
+                </div>
+
+
+                <div class="review-progress">
+
+
+                    <div
+                        class="progress-step completed"
+                        id="progressUpload"
+                    >
+
+                        <span class="progress-marker">
+
+                            <svg
+                                viewBox="0 0 24 24"
+                                aria-hidden="true"
+                            >
+                                <polyline
+                                    points="20 6 9 17 4 12"
+                                ></polyline>
+                            </svg>
+
+                        </span>
+
+                        <div>
+
+                            <strong>
+                                Contenido registrado
+                            </strong>
+
+                            <span>
+                                Archivo incorporado al flujo editorial
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div
+                        class="progress-step"
+                        id="progressReview"
+                    >
+
+                        <span class="progress-marker">
+
+                            <svg
+                                viewBox="0 0 24 24"
+                                aria-hidden="true"
+                            >
+                                <polyline
+                                    points="20 6 9 17 4 12"
+                                ></polyline>
+                            </svg>
+
+                        </span>
+
+                        <div>
+
+                            <strong>
+                                Revisión
+                            </strong>
+
+                            <span>
+                                Verificación del contenido y su versión
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div
+                        class="progress-step"
+                        id="progressObservation"
+                    >
+
+                        <span class="progress-marker">
+
+                            <svg
+                                viewBox="0 0 24 24"
+                                aria-hidden="true"
+                            >
+                                <polyline
+                                    points="20 6 9 17 4 12"
+                                ></polyline>
+                            </svg>
+
+                        </span>
+
+                        <div>
+
+                            <strong>
+                                Observaciones
+                            </strong>
+
+                            <span>
+                                Registro de comentarios o cambios
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div
+                        class="progress-step"
+                        id="progressApproval"
+                    >
+
+                        <span class="progress-marker">
+
+                            <svg
+                                viewBox="0 0 24 24"
+                                aria-hidden="true"
+                            >
+                                <polyline
+                                    points="20 6 9 17 4 12"
+                                ></polyline>
+                            </svg>
+
+                        </span>
+
+                        <div>
+
+                            <strong>
+                                Aprobación
+                            </strong>
+
+                            <span>
+                                Decisión correspondiente al contenido
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- HISTORIAL -->
+
+            <section class="drawer-section">
+
+                <div class="drawer-section-title">
+
+                    <span class="drawer-section-icon">
+
+                        <svg
+                            viewBox="0 0 24 24"
+                            aria-hidden="true"
+                        >
+                            <circle
+                                cx="12"
+                                cy="12"
+                                r="9"
+                            ></circle>
+
+                            <polyline
+                                points="12 7 12 12 15 14"
+                            ></polyline>
+                        </svg>
+
+                    </span>
+
+                    <h3>
+                        Historial de revisión
+                    </h3>
+
+                </div>
+
+
+                <div
+                    class="history-list"
+                    id="drawerHistory"
+                >
+
+                    <!--
+                        GENERADO DESDE
+                        revisionAuditor.js
+                    -->
+
+                </div>
+
+            </section>
+
+        </div>
+
+    </aside>
+
+
+    <!-- =====================================================
+         MODAL CERRAR SESIÓN
+    ====================================================== -->
+
+    <div
+        class="modal"
+        id="logoutModal"
+        aria-hidden="true"
+    >
+
+        <div
+            class="modal-backdrop"
+            data-close-logout
+        ></div>
+
+
+        <div
+            class="modal-dialog"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="logoutTitle"
+        >
+
+            <div class="modal-icon danger">
+
+                <svg
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                >
+                    <path
+                        d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"
+                    ></path>
+
+                    <polyline
+                        points="16 17 21 12 16 7"
+                    ></polyline>
+
+                    <line
+                        x1="21"
+                        y1="12"
+                        x2="9"
+                        y2="12"
+                    ></line>
+                </svg>
+
+            </div>
+
+
+            <h2 id="logoutTitle">
+                ¿Cerrar sesión?
+            </h2>
+
+            <p>
+                Tu sesión actual finalizará y tendrás
+                que iniciar sesión nuevamente para acceder
+                a SISCAE.
+            </p>
+
+
+            <div class="modal-actions">
+
+                <button
+                    class="button secondary"
+                    type="button"
+                    data-close-logout
+                >
+                    Cancelar
+                </button>
+
+                <button
+                    class="button danger"
+                    id="confirmLogout"
+                    type="button"
+                >
+                    Cerrar sesión
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         COMPONENTES
+    ====================================================== -->
+
+    <script src="../js/components.js"></script>
+
+
+    <script>
+        loadAuditorSidebar();
+    </script>
+
+
+    <!-- =====================================================
+         JS DE LA PÁGINA
+    ====================================================== -->
+
+    <script src="../js/revisionAuditor.js"></script>
+
+
+</body>
+
+</html>

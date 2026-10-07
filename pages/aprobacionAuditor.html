@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Aprobación | SISCAE</title>
+
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/components/sidebar_auditor.css">
+    <link rel="stylesheet" href="../css/pages/aprobacionAuditor.css">
+</head>
+
+<body>
+
+    <!-- =====================================================
+         SIDEBAR
+    ====================================================== -->
+    <div id="sidebar-component"></div>
+
+
+    <!-- =====================================================
+         CONTENIDO PRINCIPAL
+    ====================================================== -->
+    <main class="main">
+
+        <!-- Fondo decorativo -->
+        <div class="background-rings" aria-hidden="true">
+            <span class="background-ring ring-one"></span>
+            <span class="background-ring ring-two"></span>
+            <span class="background-ring ring-three"></span>
+        </div>
+
+
+        <!-- =================================================
+             TOPBAR
+        ================================================== -->
+        <header class="topbar">
+
+            <div class="topbar-left">
+
+                <button
+                    class="menu-button"
+                    id="menuButton"
+                    type="button"
+                    aria-label="Abrir menú"
+                >
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <line x1="4" y1="7" x2="20" y2="7"></line>
+                        <line x1="4" y1="12" x2="20" y2="12"></line>
+                        <line x1="4" y1="17" x2="20" y2="17"></line>
+                    </svg>
+                </button>
+
+
+                <div class="topbar-route">
+
+                    <span>Panel del Auditor</span>
+
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <polyline points="9 18 15 12 9 6"></polyline>
+                    </svg>
+
+                    <strong>Aprobación</strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="topbar-right">
+
+                <!-- Alertas -->
+                <button
+                    class="notification-button"
+                    id="notificationButton"
+                    type="button"
+                    aria-label="Ver alertas"
+                >
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9"></path>
+                        <path d="M10 21h4"></path>
+                    </svg>
+
+                    <span class="notification-count">3</span>
+                </button>
+
+
+                <!-- Perfil -->
+                <div class="profile" id="profile">
+
+                    <button
+                        class="profile-button"
+                        id="profileButton"
+                        type="button"
+                        aria-expanded="false"
+                    >
+                        <span class="profile-avatar">AU</span>
+
+                        <span class="profile-information">
+                            <strong>Auditor</strong>
+                            <small>Cuenta institucional</small>
+                        </span>
+
+                        <svg
+                            class="profile-arrow"
+                            viewBox="0 0 24 24"
+                            aria-hidden="true"
+                        >
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </button>
+
+
+                    <div class="profile-menu">
+
+                        <div class="profile-menu-header">
+
+                            <span class="profile-menu-avatar">AU</span>
+
+                            <div>
+                                <strong>Auditor</strong>
+                                <span>Cuenta institucional</span>
+                            </div>
+
+                        </div>
+
+                        <div class="profile-menu-divider"></div>
+
+                        <button
+                            class="profile-menu-option danger"
+                            id="profileLogout"
+                            type="button"
+                        >
+                            <svg viewBox="0 0 24 24" aria-hidden="true">
+                                <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                                <polyline points="16 17 21 12 16 7"></polyline>
+                                <line x1="21" y1="12" x2="9" y2="12"></line>
+                            </svg>
+
+                            Cerrar sesión
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- =================================================
+             CONTENIDO
+        ================================================== -->
+        <div class="page-content">
+
+
+            <!-- =================================================
+                 ENCABEZADO DEL MÓDULO
+            ================================================== -->
+            <section class="approval-header">
+
+                <div class="approval-header-line"></div>
+
+
+                <div class="approval-header-content">
+
+                    <div class="approval-heading">
+
+                        <div class="approval-icon">
+
+                            <svg viewBox="0 0 24 24" aria-hidden="true">
+                                <path d="M12 3l7 3v5c0 4.6-2.8 8.1-7 10-4.2-1.9-7-5.4-7-10V6l7-3z"></path>
+                                <polyline points="8.5 12 11 14.5 15.5 9.5"></polyline>
+                            </svg>
+
+                        </div>
+
+
+                        <div>
+
+                            <span class="approval-eyebrow">
+                                CONTROL DEL FLUJO EDITORIAL
+                            </span>
+
+                            <h1>Aprobación</h1>
+
+                            <p>
+                                Consulta las decisiones registradas sobre las
+                                versiones de los activos editoriales.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="approval-access">
+
+                        <span class="access-label">
+                            PERFIL
+                        </span>
+
+                        <strong>Auditor</strong>
+
+                        <span class="access-mode">
+                            <svg viewBox="0 0 24 24" aria-hidden="true">
+                                <path d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6S2 12 2 12z"></path>
+                                <circle cx="12" cy="12" r="2.5"></circle>
+                            </svg>
+
+                            Solo consulta
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =============================================
+                     RESUMEN
+                ============================================== -->
+                <div class="approval-summary">
+
+                    <article class="summary-item">
+
+                        <span class="summary-indicator total"></span>
+
+                        <div class="summary-information">
+
+                            <span>Decisiones registradas</span>
+
+                            <strong id="totalDecisions">0</strong>
+
+                        </div>
+
+                        <small>
+                            Historial disponible
+                        </small>
+
+                    </article>
+
+
+                    <article class="summary-item">
+
+                        <span class="summary-indicator approved"></span>
+
+                        <div class="summary-information">
+
+                            <span>Aprobadas</span>
+
+                            <strong id="approvedDecisions">0</strong>
+
+                        </div>
+
+                        <small>
+                            Versiones autorizadas
+                        </small>
+
+                    </article>
+
+
+                    <article class="summary-item">
+
+                        <span class="summary-indicator rejected"></span>
+
+                        <div class="summary-information">
+
+                            <span>Rechazadas</span>
+
+                            <strong id="rejectedDecisions">0</strong>
+
+                        </div>
+
+                        <small>
+                            Con decisión negativa
+                        </small>
+
+                    </article>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 HISTORIAL DE DECISIONES
+            ================================================== -->
+            <section class="approval-register">
+
+
+                <!-- =============================================
+                     CABECERA
+                ============================================== -->
+                <header class="register-header">
+
+                    <div class="register-heading">
+
+                        <span class="register-mark"></span>
+
+                        <div>
+
+                            <span class="register-eyebrow">
+                                TRAZABILIDAD DE APROBACIÓN
+                            </span>
+
+                            <h2>Historial de decisiones</h2>
+
+                            <p>
+                                Evidencia de las decisiones registradas
+                                para cada versión editorial.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="register-counter">
+
+                        <span>REGISTROS</span>
+
+                        <strong id="resultsCounter">0</strong>
+
+                    </div>
+
+                </header>
+
+
+                <!-- =============================================
+                     FILTROS
+                ============================================== -->
+                <div class="approval-filters">
+
+                    <div class="filter-search">
+
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <circle cx="11" cy="11" r="7"></circle>
+                            <line x1="20" y1="20" x2="16.65" y2="16.65"></line>
+                        </svg>
+
+                        <input
+                            type="search"
+                            id="searchInput"
+                            placeholder="Buscar contenido, código o responsable..."
+                            autocomplete="off"
+                        >
+
+                    </div>
+
+
+                    <label class="filter-control">
+
+                        <span>Decisión</span>
+
+                        <select id="decisionFilter">
+
+                            <option value="all">
+                                Todas
+                            </option>
+
+                            <option value="Aprobado">
+                                Aprobado
+                            </option>
+
+                            <option value="Rechazado">
+                                Rechazado
+                            </option>
+
+                        </select>
+
+                    </label>
+
+
+                    <label class="filter-control">
+
+                        <span>Tipo</span>
+
+                        <select id="typeFilter">
+
+                            <option value="all">
+                                Todos
+                            </option>
+
+                            <option value="Documento">
+                                Documento
+                            </option>
+
+                            <option value="Imagen">
+                                Imagen
+                            </option>
+
+                            <option value="Video">
+                                Video
+                            </option>
+
+                            <option value="Material editorial">
+                                Material editorial
+                            </option>
+
+                        </select>
+
+                    </label>
+
+                </div>
+
+
+                <!-- =============================================
+                     TABLA
+                ============================================== -->
+                <div class="approval-table-wrapper">
+
+                    <table class="approval-table">
+
+                        <thead>
+
+                            <tr>
+                                <th>Activo editorial</th>
+                                <th>Versión</th>
+                                <th>Decisión</th>
+                                <th>Responsable</th>
+                                <th>Fecha</th>
+                                <th class="action-column">Evidencia</th>
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody id="approvalTableBody">
+                            <!-- Generado desde JS -->
+                        </tbody>
+
+                    </table>
+
+
+                    <!-- SIN RESULTADOS -->
+                    <div
+                        class="approval-empty"
+                        id="emptyState"
+                        hidden
+                    >
+
+                        <div class="approval-empty-icon">
+
+                            <svg viewBox="0 0 24 24" aria-hidden="true">
+                                <circle cx="11" cy="11" r="7"></circle>
+                                <line x1="20" y1="20" x2="16.65" y2="16.65"></line>
+                            </svg>
+
+                        </div>
+
+                        <h3>No se encontraron decisiones</h3>
+
+                        <p>
+                            Cambia los criterios de búsqueda para consultar
+                            otros registros del historial.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =============================================
+                     PIE
+                ============================================== -->
+                <footer class="register-footer">
+
+                    <div class="register-note">
+
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M12 3l7 3v5c0 4.6-2.8 8.1-7 10-4.2-1.9-7-5.4-7-10V6l7-3z"></path>
+                            <polyline points="9 12 11 14 15 10"></polyline>
+                        </svg>
+
+                        <div>
+
+                            <strong>
+                                Evidencia protegida
+                            </strong>
+
+                            <span>
+                                Las decisiones permanecen registradas como
+                                parte de la trazabilidad del activo editorial.
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </footer>
+
+            </section>
+
+        </div>
+
+    </main>
+
+
+    <!-- =====================================================
+         OVERLAY DEL DRAWER
+    ====================================================== -->
+    <div
+        class="drawer-overlay"
+        id="drawerOverlay"
+    ></div>
+
+
+    <!-- =====================================================
+         DRAWER - EVIDENCIA DE APROBACIÓN
+    ====================================================== -->
+    <aside
+        class="approval-drawer"
+        id="approvalDrawer"
+        aria-hidden="true"
+    >
+
+        <!-- CABECERA -->
+        <header class="drawer-header">
+
+            <div>
+
+                <span class="drawer-eyebrow">
+                    TRAZABILIDAD EDITORIAL
+                </span>
+
+                <h2>Evidencia de decisión</h2>
+
+            </div>
+
+
+            <button
+                class="drawer-close"
+                id="closeDrawer"
+                type="button"
+                aria-label="Cerrar detalle"
+            >
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+
+        </header>
+
+
+        <!-- CONTENIDO -->
+        <div class="drawer-content">
+
+
+            <!-- ACTIVO -->
+            <section class="drawer-asset">
+
+                <div class="drawer-asset-top">
+
+                    <span class="drawer-file-icon">
+
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                            <polyline points="14 2 14 8 20 8"></polyline>
+                        </svg>
+
+                    </span>
+
+
+                    <div>
+
+                        <span>Activo editorial</span>
+
+                        <h3 id="drawerAssetName">-</h3>
+
+                        <small id="drawerAssetCode">-</small>
+
+                    </div>
+
+                </div>
+
+
+                <div class="drawer-decision">
+
+                    <span>Decisión registrada</span>
+
+                    <strong
+                        class="decision-badge"
+                        id="drawerDecision"
+                    >
+                        -
+                    </strong>
+
+                </div>
+
+            </section>
+
+
+            <!-- INFORMACIÓN DE VERSIÓN -->
+            <section class="drawer-section">
+
+                <div class="drawer-section-heading">
+
+                    <span class="drawer-number">01</span>
+
+                    <div>
+                        <h3>Versión evaluada</h3>
+                        <p>Identificación de la versión asociada.</p>
+                    </div>
+
+                </div>
+
+
+                <div class="version-information">
+
+                    <div>
+                        <span>Versión</span>
+                        <strong id="drawerVersion">-</strong>
+                    </div>
+
+                    <div>
+                        <span>Tipo</span>
+                        <strong id="drawerType">-</strong>
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- DECISIÓN -->
+            <section class="drawer-section">
+
+                <div class="drawer-section-heading">
+
+                    <span class="drawer-number">02</span>
+
+                    <div>
+                        <h3>Registro de decisión</h3>
+                        <p>Responsable y momento de la intervención.</p>
+                    </div>
+
+                </div>
+
+
+                <dl class="decision-information">
+
+                    <div>
+                        <dt>Responsable</dt>
+                        <dd id="drawerResponsible">-</dd>
+                    </div>
+
+                    <div>
+                        <dt>Rol</dt>
+                        <dd id="drawerRole">-</dd>
+                    </div>
+
+                    <div class="full-row">
+                        <dt>Fecha y hora</dt>
+                        <dd id="drawerDate">-</dd>
+                    </div>
+
+                </dl>
+
+            </section>
+
+
+            <!-- JUSTIFICACIÓN -->
+            <section class="drawer-section">
+
+                <div class="drawer-section-heading">
+
+                    <span class="drawer-number">03</span>
+
+                    <div>
+                        <h3>Resultado registrado</h3>
+                        <p>Evidencia asociada con la decisión.</p>
+                    </div>
+
+                </div>
+
+
+                <div
+                    class="decision-message"
+                    id="decisionMessage"
+                >
+
+                    <span id="drawerResultLabel">
+                        Resultado
+                    </span>
+
+                    <p id="drawerReason">
+                        -
+                    </p>
+
+                </div>
+
+            </section>
+
+
+            <!-- TRAZABILIDAD -->
+            <section class="drawer-section">
+
+                <div class="drawer-section-heading">
+
+                    <span class="drawer-number">04</span>
+
+                    <div>
+                        <h3>Trazabilidad</h3>
+                        <p>Referencia del registro dentro del sistema.</p>
+                    </div>
+
+                </div>
+
+
+                <div class="trace-record">
+
+                    <div class="trace-icon">
+
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <circle cx="12" cy="12" r="9"></circle>
+                            <polyline points="12 7 12 12 15 14"></polyline>
+                        </svg>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            Registro de intervención
+                        </span>
+
+                        <strong id="drawerTraceId">
+                            -
+                        </strong>
+
+                        <small>
+                            Conservado en el historial del activo.
+                        </small>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- NOTA AUDITOR -->
+            <div class="auditor-readonly">
+
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M12 3l7 3v5c0 4.6-2.8 8.1-7 10-4.2-1.9-7-5.4-7-10V6l7-3z"></path>
+                    <path d="M9 12l2 2 4-4"></path>
+                </svg>
+
+
+                <div>
+
+                    <strong>
+                        Consulta de auditoría
+                    </strong>
+
+                    <p>
+                        Esta vista permite verificar la evidencia de la
+                        decisión registrada. El Auditor no puede aprobar,
+                        rechazar, modificar ni eliminar este registro.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </aside>
+
+
+    <!-- =====================================================
+         MODAL CERRAR SESIÓN
+    ====================================================== -->
+    <div
+        class="modal"
+        id="logoutModal"
+        aria-hidden="true"
+    >
+
+        <div
+            class="modal-backdrop"
+            data-close-logout
+        ></div>
+
+
+        <div
+            class="modal-dialog"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="logoutTitle"
+        >
+
+            <div class="modal-icon">
+
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                    <polyline points="16 17 21 12 16 7"></polyline>
+                    <line x1="21" y1="12" x2="9" y2="12"></line>
+                </svg>
+
+            </div>
+
+
+            <h2 id="logoutTitle">
+                Cerrar sesión
+            </h2>
+
+
+            <p>
+                ¿Deseas finalizar tu sesión actual en SISCAE?
+            </p>
+
+
+            <div class="modal-actions">
+
+                <button
+                    class="modal-button secondary"
+                    type="button"
+                    data-close-logout
+                >
+                    Cancelar
+                </button>
+
+
+                <button
+                    class="modal-button danger"
+                    id="confirmLogout"
+                    type="button"
+                >
+                    Cerrar sesión
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         COMPONENTES COMPARTIDOS
+    ====================================================== -->
+    <script src="../js/components.js"></script>
+
+    <script>
+        loadAuditorSidebar();
+    </script>
+
+
+    <!-- =====================================================
+         JS DE APROBACIÓN
+    ====================================================== -->
+    <script src="../js/aprobacionAuditor.js"></script>
+
+</body>
+
+</html>

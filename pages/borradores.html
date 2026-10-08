@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Borradores | Autor / Editor | SISCAE</title>
+
+  <link rel="stylesheet" href="../css/pages/borradores.css">
+  <script src="../js/borradores.js" defer></script>
+</head>
+
+<body>
+  <a class="author-skip" href="#contenido">Ir al contenido</a>
+
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-logo">
+      <img
+        src="../assets/img/logo.png"
+        alt="Ministerio de Educación"
+      >
+    </div>
+
+    <nav class="sidebar-nav" aria-label="Autor / Editor">
+      <span class="nav-title">MI ESPACIO</span>
+
+      <a href="dashboard.html" class="nav-item">
+        <span class="author-nav-icon" aria-hidden="true">▦</span>
+        Dashboard
+      </a>
+
+      <a href="carga.html" class="nav-item">
+        <span class="author-nav-icon" aria-hidden="true">+</span>
+        Registrar activo
+      </a>
+
+      <a href="versiones.html" class="nav-item">
+        <span class="author-nav-icon" aria-hidden="true">↻</span>
+        Versiones
+      </a>
+
+      <a href="firma.html" class="nav-item">
+        <span class="author-nav-icon" aria-hidden="true">✓</span>
+        Firma
+      </a>
+
+      <a href="comentarios.html" class="nav-item">
+        <span class="author-nav-icon" aria-hidden="true">☷</span>
+        Observaciones
+      </a>
+
+      <a
+        href="borradores.html"
+        class="nav-item active"
+        aria-current="page"
+      >
+        <span class="author-nav-icon" aria-hidden="true">✎</span>
+        Borradores
+      </a>
+    </nav>
+
+    <div class="sidebar-footer">
+      <div class="sidebar-user">
+        <div class="sidebar-avatar">AM</div>
+
+        <div class="sidebar-user-info">
+          <strong>Ana Martínez</strong>
+          <span>Autor / Editor</span>
+        </div>
+      </div>
+
+      <a class="author-logout" href="login.html">
+        Salir al acceso
+      </a>
+    </div>
+  </aside>
+
+  <div class="mobile-overlay" id="mobileOverlay"></div>
+
+  <main class="main" id="contenido">
+    <header class="topbar">
+      <div class="topbar-left">
+        <button
+          id="menuButton"
+          class="author-menu"
+          type="button"
+          aria-label="Abrir menú"
+          aria-expanded="false"
+          aria-controls="sidebar"
+        >
+          ☰
+        </button>
+
+        <div class="breadcrumb">
+          <span>SISCAE</span>
+          <span aria-hidden="true">/</span>
+          <strong>Borradores</strong>
+        </div>
+      </div>
+
+      <span class="author-role">Autor / Editor</span>
+    </header>
+
+    <div class="content">
+      <section class="page-header">
+        <div>
+          <span class="section-label">AUTOR / EDITOR</span>
+          <h1>Borradores</h1>
+          <p>
+            Guarde sus avances y continúe trabajando en sus libros.
+          </p>
+        </div>
+
+        <time id="currentDate" class="muted"></time>
+      </section>
+
+      <div
+        id="feedback"
+        role="status"
+        aria-live="polite"
+        hidden
+      ></div>
+
+      <div class="draft-layout">
+        <section class="panel" aria-labelledby="formTitle">
+          <h2 id="formTitle">Nuevo borrador</h2>
+
+          <p class="muted">
+            Los borradores se guardan en este navegador y todavía
+            no forman parte de los activos registrados.
+          </p>
+
+          <form id="draftForm">
+            <fieldset id="formFields" disabled>
+              <label for="nombre">Nombre del borrador *</label>
+              <input
+                id="nombre"
+                name="nombre"
+                maxlength="160"
+                placeholder="Ej. Libro de Ciencias — unidad 1"
+                required
+              >
+
+              <label for="archivo">Archivo del borrador</label>
+              <input
+                id="archivo"
+                name="archivo"
+                type="file"
+                accept=".pdf,.doc,.docx,.epub,.txt"
+                aria-describedby="fileHelp"
+                required
+              >
+
+              <small id="fileHelp">
+                Seleccione un archivo PDF, DOC, DOCX, EPUB o TXT
+                de hasta 50 MB.
+              </small>
+
+              <label for="notas">Notas de trabajo</label>
+              <textarea
+                id="notas"
+                name="notas"
+                rows="5"
+                maxlength="2000"
+                placeholder="Anote qué falta completar o qué desea revisar."
+              ></textarea>
+
+              <div class="form-actions">
+                <button
+                  id="saveButton"
+                  class="primary"
+                  type="submit"
+                >
+                  Guardar borrador
+                </button>
+
+                <button
+                  id="cancelEdit"
+                  class="secondary"
+                  type="button"
+                  hidden
+                >
+                  Cancelar edición
+                </button>
+              </div>
+            </fieldset>
+          </form>
+        </section>
+
+        <section class="panel" aria-labelledby="listTitle">
+          <div class="panel-heading">
+            <h2 id="listTitle">Mis borradores</h2>
+            <span id="draftCount" class="count">0</span>
+          </div>
+
+          <label for="search">Buscar borrador</label>
+          <input
+            id="search"
+            type="search"
+            placeholder="Nombre del borrador o archivo"
+          >
+
+          <p
+            id="resultsText"
+            class="muted results"
+            aria-live="polite"
+          >
+            Cargando borradores…
+          </p>
+
+          <div id="draftList"></div>
+        </section>
+      </div>
+    </div>
+
+    <footer class="author-footer">
+      <strong>SISCAE</strong>
+      <span>
+        Sistema Integral de Seguridad y Control de Activos Editoriales
+      </span>
+    </footer>
+  </main>
+</body>
+</html>

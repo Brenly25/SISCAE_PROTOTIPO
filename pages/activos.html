@@ -1,6 +1,6 @@
-
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -119,143 +119,49 @@
             gap: 18px;
         }
 
-        .project-card {
-            background: #fff;
-            border: 1px solid #e0e8f0;
-            border-radius: 15px;
-            padding: 21px;
-            box-shadow: 0 4px 18px rgba(13, 49, 83, .05);
-            transition: transform .2s, box-shadow .2s;
-        }
+        
+/* CORRECCIÓN DE TARJETAS DE PROYECTOS */
 
-        .project-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 9px 23px rgba(13, 49, 83, .1);
-        }
+.project-card {
+    min-width: 0;
+    overflow: hidden;
+}
 
-        .project-card-top {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 15px;
-        }
+.project-meta-row {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+    min-width: 0;
+}
 
-        .project-folder {
-            width: 43px;
-            height: 43px;
-            display: grid;
-            place-items: center;
-            border-radius: 11px;
-            background: #e8f1fa;
-            color: #245f93;
-        }
+.project-meta-row span {
+    font-size: 13px;
+    flex-shrink: 0;
+}
 
-        .project-folder svg {
-            width: 23px;
-            height: 23px;
-            fill: none;
-            stroke: currentColor;
-            stroke-width: 1.8;
-        }
+.project-meta-row strong {
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 1.5;
+    text-align: right;
+    overflow-wrap: anywhere;
+    min-width: 0;
+}
 
-        .project-status {
-            font-size: 12px;
-            font-weight: 600;
-            padding: 6px 10px;
-            border-radius: 30px;
-            background: #e8f5ed;
-            color: #27754a;
-        }
+/* TARJETAS DEL RESUMEN */
 
-        .project-status.inactive {
-            background: #f0f1f3;
-            color: #687582;
-        }
+.asset-summary .asset-stat-link {
+    text-decoration: none;
+    color: inherit;
+    min-width: 0;
+}
 
-        .project-card h3 {
-            color: #163e65;
-            font-size: 16px;
-            margin: 0 0 9px;
-            line-height: 1.45;
-        }
+.asset-summary .asset-stat-link:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 22px rgba(12, 52, 93, 0.12);
+}
 
-        .project-description {
-            color: #697d8e;
-            font-size: 13px;
-            line-height: 1.65;
-            min-height: 43px;
-            margin-bottom: 16px;
-        }
-
-        .project-meta {
-            border-top: 1px solid #edf1f5;
-            padding-top: 14px;
-            display: grid;
-            gap: 11px;
-        }
-
-        .project-meta-row {
-            display: flex;
-            justify-content: space-between;
-            gap: 12px;
-            font-size: 13px;
-        }
-
-        .project-meta-row span {
-            color: #7a8b9a;
-        }
-
-        .project-meta-row strong {
-            color: #274b6b;
-            text-align: right;
-        }
-
-        .project-responsibles {
-            margin-top: 15px;
-        }
-
-        .project-responsibles > span {
-            color: #74889a;
-            font-size: 12px;
-        }
-
-        .responsible-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 7px;
-            margin-top: 9px;
-        }
-
-        .responsible-tag {
-            font-size: 12px;
-            padding: 6px 9px;
-            border-radius: 7px;
-            color: #245b8b;
-            background: #eaf2f9;
-        }
-
-        .project-card-actions {
-            display: flex;
-            gap: 8px;
-            margin-top: 18px;
-        }
-
-        .project-card-actions button {
-            flex: 1;
-            padding: 10px;
-            border-radius: 8px;
-            border: 1px solid #d3e1ec;
-            background: #f7fafc;
-            color: #245b8b;
-            font-family: inherit;
-            font-weight: 600;
-            cursor: pointer;
-        }
-
-        .project-card-actions button:hover {
-            background: #eaf2f9;
-        }
 
         .management-modal {
             display: none;
@@ -511,6 +417,43 @@
                 font-size: 19px;
             }
         }
+
+        /* Tarjetas de proyectos: estilos completos y aislados */
+        .siscae-management, .siscae-management * { box-sizing: border-box; }
+        .siscae-management { min-width: 0; width: 100%; }
+        .siscae-management .assets-panel { min-width: 0; }
+        .siscae-management .project-grid { width: 100%; grid-template-columns: repeat(3,minmax(0,1fr)); align-items: stretch; }
+        .siscae-management .project-card {
+            min-width: 0; width: 100%; padding: 24px; border: 1px solid #dce6ef;
+            border-radius: 17px; background: #fff; display: flex; flex-direction: column;
+            gap: 0; overflow: hidden; box-shadow: 0 4px 18px rgba(20,57,93,.045);
+        }
+        .siscae-management .project-card-top { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 20px; }
+        .siscae-management .project-folder { width: 48px; height: 48px; display: grid; place-items: center; flex-shrink: 0; border-radius: 13px; background: #e8f2fb; color: #1c629a; }
+        .siscae-management .project-folder svg { width: 24px; height: 24px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linejoin: round; }
+        .siscae-management .project-status { display: inline-flex; align-items: center; justify-content: center; padding: 7px 12px; border-radius: 999px; background: #e6f5ed; color: #23764d; font-size: 12px; font-weight: 700; white-space: nowrap; }
+        .siscae-management .project-status.inactive { background: #f0f1f3; color: #66717d; }
+        .siscae-management .project-card h3 { font-size: 18px; line-height: 1.45; color: #123e65; margin: 0 0 12px; font-weight: 700; overflow-wrap: anywhere; }
+        .siscae-management .project-description { margin: 0 0 20px; color: #627b90; font-size: 14px; line-height: 1.65; min-height: 46px; overflow-wrap: anywhere; }
+        .siscae-management .project-meta { display: grid; gap: 12px; padding: 16px 0; border-top: 1px solid #e8edf3; border-bottom: 1px solid #e8edf3; }
+        .siscae-management .project-meta-row { display: grid; grid-template-columns: 68px minmax(0,1fr); align-items: start; gap: 10px; width: 100%; min-width: 0; }
+        .siscae-management .project-meta-row span { display: block; color: #6c8092; font-size: 12px; line-height: 1.5; font-weight: 400; }
+        .siscae-management .project-meta-row strong { display: block; width: 100%; min-width: 0; max-width: 100%; font-size: 12px !important; line-height: 1.5; color: #244b6b; font-weight: 600; text-align: right; white-space: normal; overflow-wrap: anywhere; word-break: normal; }
+        .siscae-management .project-responsibles { margin-top: 17px; }
+        .siscae-management .project-responsibles > span { display: block; font-size: 10px; letter-spacing: .075em; font-weight: 700; color: #7890a3; margin-bottom: 10px; }
+        .siscae-management .responsible-tags { display: flex; flex-wrap: wrap; gap: 7px; }
+        .siscae-management .responsible-tag { font-size: 11px; font-weight: 500; color: #245c87; padding: 6px 9px; border-radius: 7px; background: #edf5fb; overflow-wrap: anywhere; }
+        .siscae-management .project-card-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: auto; padding-top: 20px; }
+        .siscae-management .project-card-actions button { flex: 1 1 115px; min-height: 38px; padding: 9px 11px; font-family: inherit; font-size: 12px; font-weight: 600; border-radius: 8px; border: 1px solid #c6d9e9; background: #fff; color: #1c5682; cursor: pointer; }
+        .siscae-management .project-card-actions button:first-child { background: #174d7c; border-color: #174d7c; color: #fff; }
+        .siscae-management .project-card-actions button:hover { filter: brightness(.95); }
+        .siscae-management .asset-summary { min-width: 0; }
+        .siscae-management .asset-stat-link { text-decoration: none; color: inherit; }
+        .siscae-management .asset-stat-link:hover { transform: translateY(-2px); }
+        @media (max-width: 1350px) { .siscae-management .project-grid { grid-template-columns: repeat(2,minmax(0,1fr)); } }
+        @media (max-width: 800px) { .siscae-management .project-grid { grid-template-columns: minmax(0,1fr); } }
+        @media (max-width: 450px) { .siscae-management .project-card { padding: 18px; } }
+
     </style>
 </head>
 
@@ -542,8 +485,7 @@
 
         <header class="topbar">
             <div class="topbar-left">
-                <button class="menu-button" id="menuButton"
-                        type="button" aria-label="Abrir menú">
+                <button class="menu-button" id="menuButton" type="button" aria-label="Abrir menú">
                     <svg viewBox="0 0 24 24">
                         <line x1="3" y1="6" x2="21" y2="6"></line>
                         <line x1="3" y1="12" x2="21" y2="12"></line>
@@ -561,8 +503,7 @@
             </div>
 
             <div class="topbar-right">
-                <button class="notification" id="notificationButton"
-                        type="button" aria-label="Ver alertas">
+                <button class="notification" id="notificationButton" type="button" aria-label="Ver alertas">
                     <svg viewBox="0 0 24 24">
                         <path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9"></path>
                         <path d="M10 21h4"></path>
@@ -571,8 +512,7 @@
                 </button>
 
                 <div class="profile" id="profile">
-                    <button class="profile-button" id="profileButton"
-                            type="button">
+                    <button class="profile-button" id="profileButton" type="button">
                         <div class="profile-avatar">AD</div>
                         <div class="profile-info">
                             <strong>Administrador</strong>
@@ -605,8 +545,7 @@
                 </div>
 
                 <div class="management-actions">
-                    <button class="management-button secondary"
-                            id="newProjectButton" type="button">
+                    <button class="management-button secondary" id="newProjectButton" type="button">
                         <svg viewBox="0 0 24 24">
                             <path d="M3 7h7l2 2h9v11H3z"></path>
                             <path d="M17 12v6M14 15h6"></path>
@@ -614,8 +553,7 @@
                         Crear proyecto
                     </button>
 
-                    <button class="management-button"
-                            id="newAssetButton" type="button">
+                    <button class="management-button" id="newAssetButton" type="button">
                         <svg viewBox="0 0 24 24">
                             <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
                             <path d="M14 2v6h6M12 12v7M8.5 15.5h7"></path>
@@ -668,31 +606,45 @@
                     </div>
                 </article>
 
-                <article class="asset-stat">
+                <!-- TARJETA APROBADOS -->
+                <a href="aprobados.html" class="asset-stat asset-stat-link">
                     <div class="stat-icon">
                         <svg viewBox="0 0 24 24">
                             <path d="M20 6 9 17l-5-5"></path>
                         </svg>
                     </div>
+
+                    <div>
+                        <span>Aprobados</span>
+                        <strong id="approvedAssets">0</strong>
+                        <small>Proceso aprobado</small>
+                    </div>
+                </a>
+
+                <!-- TARJETA PUBLICADOS -->
+                <a href="publicados.html" class="asset-stat asset-stat-link">
+                    <div class="stat-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M20 6 9 17l-5-5"></path>
+                        </svg>
+                    </div>
+
                     <div>
                         <span>Publicados</span>
                         <strong id="publishedAssets">0</strong>
                         <small>Proceso finalizado</small>
                     </div>
-                </article>
+                </a>
+
             </section>
 
             <section class="assets-panel">
 
                 <div class="management-tabs" role="tablist">
-                    <button class="management-tab active" type="button"
-                            data-tab="projectsPanel"
-                            aria-selected="true">
+                    <button class="management-tab active" type="button" data-tab="projectsPanel" aria-selected="true">
                         Proyectos editoriales
                     </button>
-                    <button class="management-tab" type="button"
-                            data-tab="assetsPanel"
-                            aria-selected="false">
+                    <button class="management-tab" type="button" data-tab="assetsPanel" aria-selected="false">
                         Activos registrados
                     </button>
                 </div>
@@ -742,8 +694,7 @@
                                 <circle cx="11" cy="11" r="7"></circle>
                                 <line x1="20" y1="20" x2="16.65" y2="16.65"></line>
                             </svg>
-                            <input type="text" id="assetSearch"
-                                   placeholder="Buscar por nombre o responsable...">
+                            <input type="text" id="assetSearch" placeholder="Buscar por nombre o responsable...">
                         </div>
 
                         <div class="select-wrapper">
@@ -765,8 +716,7 @@
                             </select>
                         </div>
 
-                        <button class="clear-filters" id="clearFilters"
-                                type="button">
+                        <button class="clear-filters" id="clearFilters" type="button">
                             Limpiar filtros
                         </button>
                     </div>
@@ -783,8 +733,7 @@
 
                     <div class="asset-list" id="assetList"></div>
 
-                    <div class="management-empty" id="emptyState"
-                         style="display:none">
+                    <div class="management-empty" id="emptyState" style="display:none">
                         <strong>No se encontraron activos</strong>
                         <span>
                             Modifique los filtros o registre un nuevo activo.
@@ -808,14 +757,10 @@
 
     <!-- MODAL CREAR / EDITAR PROYECTO -->
 
-    <div class="management-modal" id="projectModal"
-         aria-hidden="true">
-        <div class="management-modal-overlay"
-             data-close-modal="projectModal"></div>
+    <div class="management-modal" id="projectModal" aria-hidden="true">
+        <div class="management-modal-overlay" data-close-modal="projectModal"></div>
 
-        <div class="management-modal-dialog wide"
-             role="dialog" aria-modal="true"
-             aria-labelledby="projectModalTitle">
+        <div class="management-modal-dialog wide" role="dialog" aria-modal="true" aria-labelledby="projectModalTitle">
 
             <div class="management-modal-heading">
                 <div>
@@ -825,9 +770,8 @@
                         Defina el proyecto y sus responsables autorizados.
                     </p>
                 </div>
-                <button class="management-modal-close" type="button"
-                        data-close-modal="projectModal"
-                        aria-label="Cerrar">&times;</button>
+                <button class="management-modal-close" type="button" data-close-modal="projectModal"
+                    aria-label="Cerrar">&times;</button>
             </div>
 
             <form class="management-form" id="projectForm">
@@ -836,8 +780,7 @@
                 <div class="management-form-grid">
                     <div class="management-field full">
                         <label for="projectName">Nombre del proyecto *</label>
-                        <input type="text" id="projectName" required
-                               placeholder="Ej. Libros de Ciencias 2026">
+                        <input type="text" id="projectName" required placeholder="Ej. Libros de Ciencias 2026">
                     </div>
 
                     <div class="management-field">
@@ -862,9 +805,8 @@
                         <label for="projectDescription">
                             Descripción del proyecto *
                         </label>
-                        <textarea id="projectDescription" rows="3"
-                                  required
-                                  placeholder="Describa el objetivo del proyecto editorial."></textarea>
+                        <textarea id="projectDescription" rows="3" required
+                            placeholder="Describa el objetivo del proyecto editorial."></textarea>
                     </div>
 
                     <div class="management-field">
@@ -877,8 +819,7 @@
 
                     <div class="management-field full">
                         <label>Responsables autorizados *</label>
-                        <div class="responsible-selector"
-                             id="projectResponsibleList"></div>
+                        <div class="responsible-selector" id="projectResponsibleList"></div>
                         <small>
                             Seleccione uno o varios usuarios. Solamente ellos
                             podrán asignarse a los activos del proyecto.
@@ -892,9 +833,7 @@
                 </div>
 
                 <div class="management-modal-actions">
-                    <button class="management-button secondary"
-                            type="button"
-                            data-close-modal="projectModal">
+                    <button class="management-button secondary" type="button" data-close-modal="projectModal">
                         Cancelar
                     </button>
                     <button class="management-button" type="submit">
@@ -907,14 +846,10 @@
 
     <!-- MODAL REGISTRAR ACTIVO -->
 
-    <div class="management-modal" id="assetModal"
-         aria-hidden="true">
-        <div class="management-modal-overlay"
-             data-close-modal="assetModal"></div>
+    <div class="management-modal" id="assetModal" aria-hidden="true">
+        <div class="management-modal-overlay" data-close-modal="assetModal"></div>
 
-        <div class="management-modal-dialog wide"
-             role="dialog" aria-modal="true"
-             aria-labelledby="assetModalTitle">
+        <div class="management-modal-dialog wide" role="dialog" aria-modal="true" aria-labelledby="assetModalTitle">
 
             <div class="management-modal-heading">
                 <div>
@@ -924,9 +859,8 @@
                         Incorpore un recurso a un proyecto existente.
                     </p>
                 </div>
-                <button class="management-modal-close" type="button"
-                        data-close-modal="assetModal"
-                        aria-label="Cerrar">&times;</button>
+                <button class="management-modal-close" type="button" data-close-modal="assetModal"
+                    aria-label="Cerrar">&times;</button>
             </div>
 
             <form class="management-form" id="assetForm">
@@ -943,8 +877,7 @@
 
                     <div class="management-field full">
                         <label for="assetName">Nombre del activo *</label>
-                        <input type="text" id="assetName" required
-                               placeholder="Ej. Libro de Ciencias Naturales">
+                        <input type="text" id="assetName" required placeholder="Ej. Libro de Ciencias Naturales">
                     </div>
 
                     <div class="management-field">
@@ -972,8 +905,7 @@
 
                     <div class="management-field">
                         <label for="assetVersion">Versión inicial</label>
-                        <input type="text" id="assetVersion"
-                               value="v1.0" readonly>
+                        <input type="text" id="assetVersion" value="v1.0" readonly>
                     </div>
 
                     <div class="management-field">
@@ -990,15 +922,13 @@
 
                     <div class="management-field full">
                         <label for="assetDescription">Descripción *</label>
-                        <textarea id="assetDescription" rows="3"
-                                  required
-                                  placeholder="Descripción del recurso editorial."></textarea>
+                        <textarea id="assetDescription" rows="3" required
+                            placeholder="Descripción del recurso editorial."></textarea>
                     </div>
 
                     <div class="management-field full">
                         <label for="assetFile">Archivo inicial *</label>
-                        <input type="file" id="assetFile" required
-                               accept=".pdf,.doc,.docx,.ppt,.pptx,.jpg,.jpeg,.png">
+                        <input type="file" id="assetFile" required accept=".pdf,.doc,.docx,.ppt,.pptx,.jpg,.jpeg,.png">
                         <small>
                             Carga simulada: se registra el nombre del archivo,
                             no su contenido.
@@ -1012,9 +942,7 @@
                 </div>
 
                 <div class="management-modal-actions">
-                    <button class="management-button secondary"
-                            type="button"
-                            data-close-modal="assetModal">
+                    <button class="management-button secondary" type="button" data-close-modal="assetModal">
                         Cancelar
                     </button>
                     <button class="management-button" type="submit">
@@ -1027,14 +955,10 @@
 
     <!-- MODAL DETALLE ACTIVO -->
 
-    <div class="management-modal" id="detailModal"
-         aria-hidden="true">
-        <div class="management-modal-overlay"
-             data-close-modal="detailModal"></div>
+    <div class="management-modal" id="detailModal" aria-hidden="true">
+        <div class="management-modal-overlay" data-close-modal="detailModal"></div>
 
-        <div class="management-modal-dialog wide"
-             role="dialog" aria-modal="true"
-             aria-labelledby="detailAssetName">
+        <div class="management-modal-dialog wide" role="dialog" aria-modal="true" aria-labelledby="detailAssetName">
 
             <div class="management-modal-heading">
                 <div>
@@ -1042,9 +966,8 @@
                     <h2 id="detailAssetName">Detalle del activo</h2>
                     <p id="detailAssetCode"></p>
                 </div>
-                <button class="management-modal-close" type="button"
-                        data-close-modal="detailModal"
-                        aria-label="Cerrar">&times;</button>
+                <button class="management-modal-close" type="button" data-close-modal="detailModal"
+                    aria-label="Cerrar">&times;</button>
             </div>
 
             <div class="management-form">
@@ -1090,8 +1013,7 @@
                         Reasignar responsable
                     </label>
                     <select id="detailResponsibleSelect"></select>
-                    <button class="management-button secondary"
-                            type="button" id="saveResponsibleButton">
+                    <button class="management-button secondary" type="button" id="saveResponsibleButton">
                         Guardar asignación
                     </button>
                 </div>
@@ -1113,12 +1035,10 @@
                 </div>
 
                 <div class="management-modal-actions">
-                    <button class="management-button secondary"
-                            type="button" id="viewAuditButton">
+                    <button class="management-button secondary" type="button" id="viewAuditButton">
                         Ver auditoría
                     </button>
-                    <button class="management-button" type="button"
-                            data-close-modal="detailModal">
+                    <button class="management-button" type="button" data-close-modal="detailModal">
                         Cerrar
                     </button>
                 </div>
@@ -1128,21 +1048,16 @@
 
     <!-- MODAL CERRAR SESIÓN -->
 
-    <div class="management-modal" id="logoutModal"
-         aria-hidden="true">
-        <div class="management-modal-overlay"
-             data-close-modal="logoutModal"></div>
+    <div class="management-modal" id="logoutModal" aria-hidden="true">
+        <div class="management-modal-overlay" data-close-modal="logoutModal"></div>
 
-        <div class="management-modal-dialog"
-             role="dialog" aria-modal="true"
-             aria-labelledby="logoutTitle">
+        <div class="management-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="logoutTitle">
             <div class="management-modal-heading">
                 <div>
                     <span class="section-label">SEGURIDAD</span>
                     <h2 id="logoutTitle">Cerrar sesión</h2>
                 </div>
-                <button class="management-modal-close" type="button"
-                        data-close-modal="logoutModal">
+                <button class="management-modal-close" type="button" data-close-modal="logoutModal">
                     &times;
                 </button>
             </div>
@@ -1150,21 +1065,17 @@
                 ¿Está seguro de que desea cerrar su sesión?
             </p>
             <div class="management-modal-actions">
-                <button class="management-button secondary"
-                        type="button"
-                        data-close-modal="logoutModal">
+                <button class="management-button secondary" type="button" data-close-modal="logoutModal">
                     Cancelar
                 </button>
-                <button class="management-button"
-                        id="confirmLogout" type="button">
+                <button class="management-button" id="confirmLogout" type="button">
                     Cerrar sesión
                 </button>
             </div>
         </div>
     </div>
 
-    <div class="management-toast" id="managementToast"
-         role="status" aria-live="polite"></div>
+    <div class="management-toast" id="managementToast" role="status" aria-live="polite"></div>
 
     <script src="../js/components.js"></script>
 
@@ -1177,336 +1088,338 @@
     <!-- LÓGICA INTEGRADA: NO CARGAR EL ACTIVOS.JS ANTERIOR -->
 
     <script>
-    (() => {
-        "use strict";
+        (() => {
+            "use strict";
 
-        const $ = id => document.getElementById(id);
+            const $ = id => document.getElementById(id);
 
-        const STORAGE = "siscae_management_integrated_v1";
+            const STORAGE = "siscae_management_integrated_v1";
 
-        const usuarios = [
-            "María López",
-            "Carlos Hernández",
-            "Ana Martínez",
-            "José Ramírez",
-            "Sofía Castro",
-            "Laura Gómez"
-        ];
+            const usuarios = [
+                "María López",
+                "Carlos Hernández",
+                "Ana Martínez",
+                "José Ramírez",
+                "Sofía Castro",
+                "Laura Gómez"
+            ];
 
-        const proyectosBase = [
-            {
-                id: "PRY-2026-001",
-                nombre: "Libros de Ciencias - Tercer Ciclo 2026",
-                area: "Educación Básica",
-                descripcion: "Producción de recursos editoriales de Ciencias Naturales.",
-                fecha: "2026-09-01",
-                estado: "activo",
-                responsables: ["María López", "Ana Martínez", "José Ramírez"]
-            },
-            {
-                id: "PRY-2026-002",
-                nombre: "Formación Docente 2026",
-                area: "Formación docente",
-                descripcion: "Desarrollo de guías y recursos para formación docente.",
-                fecha: "2026-09-02",
-                estado: "activo",
-                responsables: ["Carlos Hernández", "María López"]
-            },
-            {
-                id: "PRY-2026-003",
-                nombre: "Matemática - Educación Básica 2026",
-                area: "Educación Básica",
-                descripcion: "Material educativo complementario de Matemática.",
-                fecha: "2026-09-03",
-                estado: "activo",
-                responsables: ["Ana Martínez", "Laura Gómez"]
-            },
-            {
-                id: "PRY-2026-004",
-                nombre: "Estudios Sociales - Segundo Ciclo 2026",
-                area: "Segundo Ciclo",
-                descripcion: "Guías de Estudios Sociales para Segundo Ciclo.",
-                fecha: "2026-09-04",
-                estado: "activo",
-                responsables: ["José Ramírez", "Carlos Hernández"]
-            },
-            {
-                id: "PRY-2026-005",
-                nombre: "Lenguaje - Primer Ciclo 2026",
-                area: "Primer Ciclo",
-                descripcion: "Producción editorial de materiales de Lenguaje.",
-                fecha: "2026-09-05",
-                estado: "activo",
-                responsables: ["Sofía Castro", "Carlos Hernández"]
-            },
-            {
-                id: "PRY-2026-006",
-                nombre: "Primera Infancia 2026",
-                area: "Primera Infancia",
-                descripcion: "Recursos educativos destinados a Primera Infancia.",
-                fecha: "2026-09-06",
-                estado: "activo",
-                responsables: ["Laura Gómez", "Sofía Castro"]
-            }
-        ];
+            const proyectosBase = [
+                {
+                    id: "PRY-2026-001",
+                    nombre: "Libros de Ciencias - Tercer Ciclo 2026",
+                    area: "Educación Básica",
+                    descripcion: "Producción de recursos editoriales de Ciencias Naturales.",
+                    fecha: "2026-09-01",
+                    estado: "activo",
+                    responsables: ["María López", "Ana Martínez", "José Ramírez"]
+                },
+                {
+                    id: "PRY-2026-002",
+                    nombre: "Formación Docente 2026",
+                    area: "Formación docente",
+                    descripcion: "Desarrollo de guías y recursos para formación docente.",
+                    fecha: "2026-09-02",
+                    estado: "activo",
+                    responsables: ["Carlos Hernández", "María López"]
+                },
+                {
+                    id: "PRY-2026-003",
+                    nombre: "Matemática - Educación Básica 2026",
+                    area: "Educación Básica",
+                    descripcion: "Material educativo complementario de Matemática.",
+                    fecha: "2026-09-03",
+                    estado: "activo",
+                    responsables: ["Ana Martínez", "Laura Gómez"]
+                },
+                {
+                    id: "PRY-2026-004",
+                    nombre: "Estudios Sociales - Segundo Ciclo 2026",
+                    area: "Segundo Ciclo",
+                    descripcion: "Guías de Estudios Sociales para Segundo Ciclo.",
+                    fecha: "2026-09-04",
+                    estado: "activo",
+                    responsables: ["José Ramírez", "Carlos Hernández"]
+                },
+                {
+                    id: "PRY-2026-005",
+                    nombre: "Lenguaje - Primer Ciclo 2026",
+                    area: "Primer Ciclo",
+                    descripcion: "Producción editorial de materiales de Lenguaje.",
+                    fecha: "2026-09-05",
+                    estado: "activo",
+                    responsables: ["Sofía Castro", "Carlos Hernández"]
+                },
+                {
+                    id: "PRY-2026-006",
+                    nombre: "Primera Infancia 2026",
+                    area: "Primera Infancia",
+                    descripcion: "Recursos educativos destinados a Primera Infancia.",
+                    fecha: "2026-09-06",
+                    estado: "activo",
+                    responsables: ["Laura Gómez", "Sofía Castro"]
+                }
+            ];
 
-        const datosActivos = [
-            ["041", "Libro de Ciencias Naturales", 0, "libro",
-             "v3.2", "María López", "revision", "24 sep. 2026"],
-            ["037", "Guía metodológica", 1, "guia",
-             "v2.0", "Carlos Hernández", "publicado", "23 sep. 2026"],
-            ["034", "Material de apoyo de Matemática", 2, "material",
-             "v1.4", "Ana Martínez", "aprobado", "22 sep. 2026"],
-            ["031", "Guía de Estudios Sociales", 3, "guia",
-             "v1.7", "José Ramírez", "revision", "21 sep. 2026"],
-            ["025", "Libro de Lenguaje", 4, "libro",
-             "v4.1", "Sofía Castro", "publicado", "19 sep. 2026"],
-            ["019", "Cuaderno de actividades", 5, "material",
-             "v2.3", "Laura Gómez", "aprobado", "18 sep. 2026"]
-        ];
+            const datosActivos = [
+                ["041", "Libro de Ciencias Naturales", 0, "libro",
+                    "v3.2", "María López", "revision", "24 sep. 2026"],
+                ["037", "Guía metodológica", 1, "guia",
+                    "v2.0", "Carlos Hernández", "publicado", "23 sep. 2026"],
+                ["034", "Material de apoyo de Matemática", 2, "material",
+                    "v1.4", "Ana Martínez", "aprobado", "22 sep. 2026"],
+                ["031", "Guía de Estudios Sociales", 3, "guia",
+                    "v1.7", "José Ramírez", "revision", "21 sep. 2026"],
+                ["025", "Libro de Lenguaje", 4, "libro",
+                    "v4.1", "Sofía Castro", "publicado", "19 sep. 2026"],
+                ["019", "Cuaderno de actividades", 5, "material",
+                    "v2.3", "Laura Gómez", "aprobado", "18 sep. 2026"]
+            ];
 
-        const activosBase = datosActivos.map(d => ({
-            id: "ACT-2026-" + d[0],
-            nombre: d[1],
-            proyectoId: proyectosBase[d[2]].id,
-            area: proyectosBase[d[2]].area,
-            tipo: d[3],
-            version: d[4],
-            responsable: d[5],
-            estado: d[6],
-            actualizado: d[7],
-            descripcion: "Recurso editorial del proyecto " +
-                         proyectosBase[d[2]].nombre + ".",
-            archivo: "",
-            historial: [{
+            const activosBase = datosActivos.map(d => ({
+                id: "ACT-2026-" + d[0],
+                nombre: d[1],
+                proyectoId: proyectosBase[d[2]].id,
+                area: proyectosBase[d[2]].area,
+                tipo: d[3],
                 version: d[4],
-                fecha: d[7],
-                autor: d[5],
-                accion: "Versión registrada"
-            }],
-            trazabilidad: [{
-                titulo: "Registro editorial",
-                descripcion: "Recurso incorporado al sistema.",
-                fecha: d[7]
-            }]
-        }));
+                responsable: d[5],
+                estado: d[6],
+                actualizado: d[7],
+                descripcion: "Recurso editorial del proyecto " +
+                    proyectosBase[d[2]].nombre + ".",
+                archivo: "",
+                historial: [{
+                    version: d[4],
+                    fecha: d[7],
+                    autor: d[5],
+                    accion: "Versión registrada"
+                }],
+                trazabilidad: [{
+                    titulo: "Registro editorial",
+                    descripcion: "Recurso incorporado al sistema.",
+                    fecha: d[7]
+                }]
+            }));
 
-        let estado;
+            let estado;
 
-        try {
-            const guardado = JSON.parse(localStorage.getItem(STORAGE));
-            estado = guardado &&
-                     Array.isArray(guardado.proyectos) &&
-                     Array.isArray(guardado.activos)
-                ? guardado
-                : null;
-        } catch (error) {
-            console.warn("Datos locales no disponibles:", error);
-        }
-
-        if (!estado) {
-            estado = {
-                proyectos: structuredClone(proyectosBase),
-                activos: structuredClone(activosBase)
-            };
-        }
-
-        let activoActual = null;
-        let avisoTimer = null;
-
-        function guardar() {
             try {
-                localStorage.setItem(STORAGE, JSON.stringify(estado));
-                return true;
+                const guardado = JSON.parse(localStorage.getItem(STORAGE));
+                estado = guardado &&
+                    Array.isArray(guardado.proyectos) &&
+                    Array.isArray(guardado.activos)
+                    ? guardado
+                    : null;
             } catch (error) {
-                console.error("No se pudieron guardar los datos:", error);
-                avisar("No se pudo guardar en este navegador.");
-                return false;
+                console.warn("Datos locales no disponibles:", error);
             }
-        }
 
-        function escapar(valor) {
-            return String(valor ?? "")
-                .replace(/&/g, "&amp;")
-                .replace(/</g, "&lt;")
-                .replace(/>/g, "&gt;")
-                .replace(/"/g, "&quot;")
-                .replace(/'/g, "&#39;");
-        }
-
-        function normalizar(valor) {
-            return String(valor || "")
-                .normalize("NFD")
-                .replace(/[\u0300-\u036f]/g, "")
-                .toLowerCase();
-        }
-
-        function hoyISO() {
-            const d = new Date();
-            const y = d.getFullYear();
-            const m = String(d.getMonth() + 1).padStart(2, "0");
-            const day = String(d.getDate()).padStart(2, "0");
-            return `${y}-${m}-${day}`;
-        }
-
-        function fechaVisible(valor) {
-            if (!valor) return "—";
-            const partes = valor.split("-");
-            if (partes.length !== 3) return valor;
-            return `${partes[2]}/${partes[1]}/${partes[0]}`;
-        }
-
-        function ahora() {
-            return new Date().toLocaleString("es-SV");
-        }
-
-        function iniciales(nombre) {
-            return String(nombre || "")
-                .split(" ")
-                .filter(Boolean)
-                .slice(0, 2)
-                .map(p => p[0].toUpperCase())
-                .join("");
-        }
-
-        function nombreTipo(tipo) {
-            return {
-                libro: "Libro",
-                guia: "Guía",
-                material: "Material educativo"
-            }[tipo] || tipo;
-        }
-
-        function nombreEstado(estadoActivo) {
-            return {
-                registrado: "Registrado",
-                revision: "En revisión",
-                aprobado: "Aprobado",
-                publicado: "Publicado"
-            }[estadoActivo] || estadoActivo;
-        }
-
-        function claseEstado(valor) {
-            return {
-                registrado: "status-registered",
-                revision: "status-review",
-                aprobado: "status-approved",
-                publicado: "status-published"
-            }[valor] || "status-registered";
-        }
-
-        function buscarProyecto(id) {
-            return estado.proyectos.find(p => p.id === id);
-        }
-
-        function buscarActivo(id) {
-            return estado.activos.find(a => a.id === id);
-        }
-
-        function codigoNuevo(prefijo, registros) {
-            const anio = new Date().getFullYear();
-            const base = `${prefijo}-${anio}-`;
-            const numeros = registros
-                .filter(r => r.id.startsWith(base))
-                .map(r => Number(r.id.slice(base.length)) || 0);
-
-            const siguiente = Math.max(0, ...numeros) + 1;
-            return base + String(siguiente).padStart(3, "0");
-        }
-
-        function avisar(mensaje) {
-            const toast = $("managementToast");
-            toast.textContent = mensaje;
-            toast.classList.add("active");
-            clearTimeout(avisoTimer);
-            avisoTimer = setTimeout(
-                () => toast.classList.remove("active"),
-                3500
-            );
-        }
-
-        function abrirModal(id) {
-            const modal = $(id);
-            if (!modal) return;
-
-            modal.classList.add("active");
-            modal.setAttribute("aria-hidden", "false");
-            document.body.style.overflow = "hidden";
-        }
-
-        function cerrarModal(id) {
-            const modal = $(id);
-            if (!modal) return;
-
-            modal.classList.remove("active");
-            modal.setAttribute("aria-hidden", "true");
-
-            if (!document.querySelector(".management-modal.active")) {
-                document.body.style.removeProperty("overflow");
+            if (!estado) {
+                estado = {
+                    proyectos: structuredClone(proyectosBase),
+                    activos: structuredClone(activosBase)
+                };
             }
-        }
 
-        function activarPestana(id) {
-            document.querySelectorAll(".management-tab")
-                .forEach(boton => {
-                    const activa = boton.dataset.tab === id;
-                    boton.classList.toggle("active", activa);
-                    boton.setAttribute("aria-selected", String(activa));
-                });
+            let activoActual = null;
+            let avisoTimer = null;
 
-            document.querySelectorAll(".management-panel")
-                .forEach(panel => {
-                    panel.classList.toggle("active", panel.id === id);
-                });
-        }
+            function guardar() {
+                try {
+                    localStorage.setItem(STORAGE, JSON.stringify(estado));
+                    return true;
+                } catch (error) {
+                    console.error("No se pudieron guardar los datos:", error);
+                    avisar("No se pudo guardar en este navegador.");
+                    return false;
+                }
+            }
 
-        function actualizarResumen() {
-            $("totalProjects").textContent = estado.proyectos.length;
-            $("totalAssets").textContent = estado.activos.length;
+            function escapar(valor) {
+                return String(valor ?? "")
+                    .replace(/&/g, "&amp;")
+                    .replace(/</g, "&lt;")
+                    .replace(/>/g, "&gt;")
+                    .replace(/"/g, "&quot;")
+                    .replace(/'/g, "&#39;");
+            }
 
-            $("reviewAssets").textContent =
-                estado.activos.filter(a => a.estado === "revision").length;
+            function normalizar(valor) {
+                return String(valor || "")
+                    .normalize("NFD")
+                    .replace(/[\u0300-\u036f]/g, "")
+                    .toLowerCase();
+            }
 
-            $("publishedAssets").textContent =
-                estado.activos.filter(a => a.estado === "publicado").length;
-        }
+            function hoyISO() {
+                const d = new Date();
+                const y = d.getFullYear();
+                const m = String(d.getMonth() + 1).padStart(2, "0");
+                const day = String(d.getDate()).padStart(2, "0");
+                return `${y}-${m}-${day}`;
+            }
 
-        function renderizarProyectos() {
-            const contenedor = $("projectList");
-            contenedor.replaceChildren();
+            function fechaVisible(valor) {
+                if (!valor) return "—";
+                const partes = valor.split("-");
+                if (partes.length !== 3) return valor;
+                return `${partes[2]}/${partes[1]}/${partes[0]}`;
+            }
 
-            $("projectCount").textContent = estado.proyectos.length;
+            function ahora() {
+                return new Date().toLocaleString("es-SV");
+            }
 
-            if (!estado.proyectos.length) {
-                contenedor.innerHTML = `
+            function iniciales(nombre) {
+                return String(nombre || "")
+                    .split(" ")
+                    .filter(Boolean)
+                    .slice(0, 2)
+                    .map(p => p[0].toUpperCase())
+                    .join("");
+            }
+
+            function nombreTipo(tipo) {
+                return {
+                    libro: "Libro",
+                    guia: "Guía",
+                    material: "Material educativo"
+                }[tipo] || tipo;
+            }
+
+            function nombreEstado(estadoActivo) {
+                return {
+                    registrado: "Registrado",
+                    revision: "En revisión",
+                    aprobado: "Aprobado",
+                    publicado: "Publicado"
+                }[estadoActivo] || estadoActivo;
+            }
+
+            function claseEstado(valor) {
+                return {
+                    registrado: "status-registered",
+                    revision: "status-review",
+                    aprobado: "status-approved",
+                    publicado: "status-published"
+                }[valor] || "status-registered";
+            }
+
+            function buscarProyecto(id) {
+                return estado.proyectos.find(p => p.id === id);
+            }
+
+            function buscarActivo(id) {
+                return estado.activos.find(a => a.id === id);
+            }
+
+            function codigoNuevo(prefijo, registros) {
+                const anio = new Date().getFullYear();
+                const base = `${prefijo}-${anio}-`;
+                const numeros = registros
+                    .filter(r => r.id.startsWith(base))
+                    .map(r => Number(r.id.slice(base.length)) || 0);
+
+                const siguiente = Math.max(0, ...numeros) + 1;
+                return base + String(siguiente).padStart(3, "0");
+            }
+
+            function avisar(mensaje) {
+                const toast = $("managementToast");
+                toast.textContent = mensaje;
+                toast.classList.add("active");
+                clearTimeout(avisoTimer);
+                avisoTimer = setTimeout(
+                    () => toast.classList.remove("active"),
+                    3500
+                );
+            }
+
+            function abrirModal(id) {
+                const modal = $(id);
+                if (!modal) return;
+
+                modal.classList.add("active");
+                modal.setAttribute("aria-hidden", "false");
+                document.body.style.overflow = "hidden";
+            }
+
+            function cerrarModal(id) {
+                const modal = $(id);
+                if (!modal) return;
+
+                modal.classList.remove("active");
+                modal.setAttribute("aria-hidden", "true");
+
+                if (!document.querySelector(".management-modal.active")) {
+                    document.body.style.removeProperty("overflow");
+                }
+            }
+
+            function activarPestana(id) {
+                document.querySelectorAll(".management-tab")
+                    .forEach(boton => {
+                        const activa = boton.dataset.tab === id;
+                        boton.classList.toggle("active", activa);
+                        boton.setAttribute("aria-selected", String(activa));
+                    });
+
+                document.querySelectorAll(".management-panel")
+                    .forEach(panel => {
+                        panel.classList.toggle("active", panel.id === id);
+                    });
+            }
+
+            function actualizarResumen() {
+                $("totalProjects").textContent = estado.proyectos.length;
+                $("totalAssets").textContent = estado.activos.length;
+
+                $("reviewAssets").textContent =
+                    estado.activos.filter(a => a.estado === "revision").length;
+
+                $("approvedAssets").textContent =
+                    estado.activos.filter(a => a.estado === "aprobado").length;
+
+                $("publishedAssets").textContent =
+                    estado.activos.filter(a => a.estado === "publicado").length;
+            }
+
+            function renderizarProyectos() {
+                const contenedor = $("projectList");
+                contenedor.replaceChildren();
+
+                $("projectCount").textContent = estado.proyectos.length;
+
+                if (!estado.proyectos.length) {
+                    contenedor.innerHTML = `
                     <div class="management-empty">
                         <strong>No hay proyectos registrados</strong>
                         <span>Creá el primer proyecto editorial.</span>
                     </div>
                 `;
-                return;
-            }
+                    return;
+                }
 
-            estado.proyectos.forEach(proyecto => {
-                const cantidad = estado.activos.filter(
-                    a => a.proyectoId === proyecto.id
-                ).length;
+                estado.proyectos.forEach(proyecto => {
+                    const cantidad = estado.activos.filter(
+                        a => a.proyectoId === proyecto.id
+                    ).length;
 
-                const tarjeta = document.createElement("article");
-                tarjeta.className = "project-card";
+                    const tarjeta = document.createElement("article");
+                    tarjeta.className = "project-card";
 
-                tarjeta.innerHTML = `
+                    tarjeta.innerHTML = `
                     <div class="project-card-top">
                         <div class="project-folder">
                             <svg viewBox="0 0 24 24">
                                 <path d="M3 7h7l2 2h9v11H3z"></path>
                             </svg>
                         </div>
-                        <span class="project-status ${
-                            proyecto.estado === "inactivo" ? "inactive" : ""
+                        <span class="project-status ${proyecto.estado === "inactivo" ? "inactive" : ""
                         }">
                             ${proyecto.estado === "activo"
-                                ? "Activo" : "Inactivo"}
+                            ? "Activo" : "Inactivo"}
                         </span>
                     </div>
 
@@ -1558,279 +1471,279 @@
                     </div>
                 `;
 
-                contenedor.appendChild(tarjeta);
-            });
-        }
+                    contenedor.appendChild(tarjeta);
+                });
+            }
 
-        function renderizarUsuarios(seleccionados = []) {
-            $("projectResponsibleList").innerHTML = usuarios.map(
-                (nombre, indice) => `
+            function renderizarUsuarios(seleccionados = []) {
+                $("projectResponsibleList").innerHTML = usuarios.map(
+                    (nombre, indice) => `
                     <label>
                         <input type="checkbox"
                                value="${escapar(nombre)}"
                                id="projectUser${indice}"
                                ${seleccionados.includes(nombre)
-                                   ? "checked" : ""}>
+                            ? "checked" : ""}>
                         <span>${escapar(nombre)}</span>
                     </label>
                 `
-            ).join("");
-        }
-
-        function abrirCrearProyecto() {
-            $("projectForm").reset();
-            $("editingProjectId").value = "";
-            $("projectModalTitle").textContent =
-                "Crear proyecto editorial";
-            $("projectDate").value = hoyISO();
-            $("projectStatus").value = "activo";
-            renderizarUsuarios();
-            abrirModal("projectModal");
-        }
-
-        function abrirEditarProyecto(id) {
-            const proyecto = buscarProyecto(id);
-            if (!proyecto) return;
-
-            $("projectForm").reset();
-            $("editingProjectId").value = proyecto.id;
-            $("projectModalTitle").textContent =
-                "Editar proyecto editorial";
-            $("projectName").value = proyecto.nombre;
-            $("projectArea").value = proyecto.area;
-            $("projectDate").value = proyecto.fecha;
-            $("projectDescription").value = proyecto.descripcion;
-            $("projectStatus").value = proyecto.estado;
-
-            renderizarUsuarios(proyecto.responsables);
-            abrirModal("projectModal");
-        }
-
-        function guardarProyecto(evento) {
-            evento.preventDefault();
-
-            const nombre = $("projectName").value.trim();
-            const area = $("projectArea").value;
-            const fecha = $("projectDate").value;
-            const descripcion = $("projectDescription").value.trim();
-            const estadoProyecto = $("projectStatus").value;
-            const editando = $("editingProjectId").value;
-
-            const responsables = Array.from(
-                $("projectResponsibleList").querySelectorAll(
-                    'input[type="checkbox"]:checked'
-                )
-            ).map(input => input.value);
-
-            if (!responsables.length) {
-                avisar("Seleccioná al menos un responsable.");
-                return;
+                ).join("");
             }
 
-            const repetido = estado.proyectos.some(
-                p => normalizar(p.nombre) === normalizar(nombre) &&
-                     p.id !== editando
-            );
-
-            if (repetido) {
-                avisar("Ya existe un proyecto con ese nombre.");
-                return;
+            function abrirCrearProyecto() {
+                $("projectForm").reset();
+                $("editingProjectId").value = "";
+                $("projectModalTitle").textContent =
+                    "Crear proyecto editorial";
+                $("projectDate").value = hoyISO();
+                $("projectStatus").value = "activo";
+                renderizarUsuarios();
+                abrirModal("projectModal");
             }
 
-            if (editando) {
-                const proyecto = buscarProyecto(editando);
+            function abrirEditarProyecto(id) {
+                const proyecto = buscarProyecto(id);
                 if (!proyecto) return;
 
-                proyecto.nombre = nombre;
-                proyecto.area = area;
-                proyecto.fecha = fecha;
-                proyecto.descripcion = descripcion;
-                proyecto.estado = estadoProyecto;
-                proyecto.responsables = responsables;
+                $("projectForm").reset();
+                $("editingProjectId").value = proyecto.id;
+                $("projectModalTitle").textContent =
+                    "Editar proyecto editorial";
+                $("projectName").value = proyecto.nombre;
+                $("projectArea").value = proyecto.area;
+                $("projectDate").value = proyecto.fecha;
+                $("projectDescription").value = proyecto.descripcion;
+                $("projectStatus").value = proyecto.estado;
 
-                /*
-                 * No se borran activos al modificar un proyecto.
-                 * Las asignaciones existentes se conservan como
-                 * historial, aunque el usuario sea desautorizado.
-                 */
-            } else {
-                estado.proyectos.unshift({
-                    id: codigoNuevo("PRY", estado.proyectos),
-                    nombre,
-                    area,
-                    fecha,
-                    descripcion,
-                    estado: estadoProyecto,
-                    responsables
-                });
+                renderizarUsuarios(proyecto.responsables);
+                abrirModal("projectModal");
             }
 
-            if (!guardar()) return;
+            function guardarProyecto(evento) {
+                evento.preventDefault();
 
-            renderizarTodo();
-            cerrarModal("projectModal");
-            activarPestana("projectsPanel");
+                const nombre = $("projectName").value.trim();
+                const area = $("projectArea").value;
+                const fecha = $("projectDate").value;
+                const descripcion = $("projectDescription").value.trim();
+                const estadoProyecto = $("projectStatus").value;
+                const editando = $("editingProjectId").value;
 
-            avisar(editando
-                ? "Proyecto actualizado correctamente."
-                : "Proyecto creado correctamente.");
-        }
+                const responsables = Array.from(
+                    $("projectResponsibleList").querySelectorAll(
+                        'input[type="checkbox"]:checked'
+                    )
+                ).map(input => input.value);
 
-        function cargarProyectosEnFormulario() {
-            const select = $("assetProject");
+                if (!responsables.length) {
+                    avisar("Seleccioná al menos un responsable.");
+                    return;
+                }
 
-            select.innerHTML =
-                '<option value="">Seleccionar proyecto</option>';
+                const repetido = estado.proyectos.some(
+                    p => normalizar(p.nombre) === normalizar(nombre) &&
+                        p.id !== editando
+                );
 
-            estado.proyectos
-                .filter(p => p.estado === "activo")
-                .forEach(p => {
+                if (repetido) {
+                    avisar("Ya existe un proyecto con ese nombre.");
+                    return;
+                }
+
+                if (editando) {
+                    const proyecto = buscarProyecto(editando);
+                    if (!proyecto) return;
+
+                    proyecto.nombre = nombre;
+                    proyecto.area = area;
+                    proyecto.fecha = fecha;
+                    proyecto.descripcion = descripcion;
+                    proyecto.estado = estadoProyecto;
+                    proyecto.responsables = responsables;
+
+                    /*
+                     * No se borran activos al modificar un proyecto.
+                     * Las asignaciones existentes se conservan como
+                     * historial, aunque el usuario sea desautorizado.
+                     */
+                } else {
+                    estado.proyectos.unshift({
+                        id: codigoNuevo("PRY", estado.proyectos),
+                        nombre,
+                        area,
+                        fecha,
+                        descripcion,
+                        estado: estadoProyecto,
+                        responsables
+                    });
+                }
+
+                if (!guardar()) return;
+
+                renderizarTodo();
+                cerrarModal("projectModal");
+                activarPestana("projectsPanel");
+
+                avisar(editando
+                    ? "Proyecto actualizado correctamente."
+                    : "Proyecto creado correctamente.");
+            }
+
+            function cargarProyectosEnFormulario() {
+                const select = $("assetProject");
+
+                select.innerHTML =
+                    '<option value="">Seleccionar proyecto</option>';
+
+                estado.proyectos
+                    .filter(p => p.estado === "activo")
+                    .forEach(p => {
+                        const opcion = document.createElement("option");
+                        opcion.value = p.id;
+                        opcion.textContent = p.nombre;
+                        select.appendChild(opcion);
+                    });
+            }
+
+            function cargarResponsablesDeProyecto() {
+                const proyecto = buscarProyecto($("assetProject").value);
+                const select = $("assetResponsible");
+
+                select.innerHTML =
+                    '<option value="">Seleccionar responsable</option>';
+
+                select.disabled = !proyecto;
+
+                if (!proyecto) return;
+
+                proyecto.responsables.forEach(nombre => {
                     const opcion = document.createElement("option");
-                    opcion.value = p.id;
-                    opcion.textContent = p.nombre;
+                    opcion.value = nombre;
+                    opcion.textContent = nombre;
                     select.appendChild(opcion);
                 });
-        }
 
-        function cargarResponsablesDeProyecto() {
-            const proyecto = buscarProyecto($("assetProject").value);
-            const select = $("assetResponsible");
+                $("assetArea").value = proyecto.area;
+            }
 
-            select.innerHTML =
-                '<option value="">Seleccionar responsable</option>';
-
-            select.disabled = !proyecto;
-
-            if (!proyecto) return;
-
-            proyecto.responsables.forEach(nombre => {
-                const opcion = document.createElement("option");
-                opcion.value = nombre;
-                opcion.textContent = nombre;
-                select.appendChild(opcion);
-            });
-
-            $("assetArea").value = proyecto.area;
-        }
-
-        function abrirRegistroActivo() {
-            const activosDisponibles = estado.proyectos.some(
-                p => p.estado === "activo" && p.responsables.length
-            );
-
-            if (!activosDisponibles) {
-                avisar(
-                    "Primero creá un proyecto activo con responsables."
+            function abrirRegistroActivo() {
+                const activosDisponibles = estado.proyectos.some(
+                    p => p.estado === "activo" && p.responsables.length
                 );
-                activarPestana("projectsPanel");
-                return;
+
+                if (!activosDisponibles) {
+                    avisar(
+                        "Primero creá un proyecto activo con responsables."
+                    );
+                    activarPestana("projectsPanel");
+                    return;
+                }
+
+                $("assetForm").reset();
+                $("assetVersion").value = "v1.0";
+                cargarProyectosEnFormulario();
+                cargarResponsablesDeProyecto();
+                abrirModal("assetModal");
             }
 
-            $("assetForm").reset();
-            $("assetVersion").value = "v1.0";
-            cargarProyectosEnFormulario();
-            cargarResponsablesDeProyecto();
-            abrirModal("assetModal");
-        }
+            function registrarActivo(evento) {
+                evento.preventDefault();
 
-        function registrarActivo(evento) {
-            evento.preventDefault();
+                const proyecto = buscarProyecto($("assetProject").value);
+                const responsable = $("assetResponsible").value;
+                const archivo = $("assetFile").files[0];
 
-            const proyecto = buscarProyecto($("assetProject").value);
-            const responsable = $("assetResponsible").value;
-            const archivo = $("assetFile").files[0];
+                if (
+                    !proyecto ||
+                    proyecto.estado !== "activo" ||
+                    !proyecto.responsables.includes(responsable) ||
+                    !archivo
+                ) {
+                    avisar("Revisá el proyecto, responsable y archivo.");
+                    return;
+                }
 
-            if (
-                !proyecto ||
-                proyecto.estado !== "activo" ||
-                !proyecto.responsables.includes(responsable) ||
-                !archivo
-            ) {
-                avisar("Revisá el proyecto, responsable y archivo.");
-                return;
-            }
+                const nombre = $("assetName").value.trim();
+                const tipo = $("assetType").value;
+                const area = $("assetArea").value;
+                const descripcion = $("assetDescription").value.trim();
+                const fecha = ahora();
 
-            const nombre = $("assetName").value.trim();
-            const tipo = $("assetType").value;
-            const area = $("assetArea").value;
-            const descripcion = $("assetDescription").value.trim();
-            const fecha = ahora();
-
-            const nuevo = {
-                id: codigoNuevo("ACT", estado.activos),
-                nombre,
-                proyectoId: proyecto.id,
-                area,
-                tipo,
-                version: "v1.0",
-                responsable,
-                estado: "registrado",
-                actualizado: fecha,
-                descripcion,
-                archivo: archivo.name,
-                historial: [{
+                const nuevo = {
+                    id: codigoNuevo("ACT", estado.activos),
+                    nombre,
+                    proyectoId: proyecto.id,
+                    area,
+                    tipo,
                     version: "v1.0",
-                    fecha,
-                    autor: responsable,
-                    accion: "Registro de versión inicial"
-                }],
-                trazabilidad: [
-                    {
-                        titulo: "Registro del activo",
-                        descripcion: "Activo incorporado al proyecto " +
-                                     proyecto.nombre + ".",
-                        fecha
-                    },
-                    {
-                        titulo: "Asignación de responsable",
-                        descripcion: responsable +
-                                     " fue asignado al activo.",
-                        fecha
-                    },
-                    {
-                        titulo: "Archivo inicial seleccionado",
-                        descripcion: "Archivo: " + archivo.name +
-                                     ". Carga simulada.",
-                        fecha
-                    }
-                ]
-            };
+                    responsable,
+                    estado: "registrado",
+                    actualizado: fecha,
+                    descripcion,
+                    archivo: archivo.name,
+                    historial: [{
+                        version: "v1.0",
+                        fecha,
+                        autor: responsable,
+                        accion: "Registro de versión inicial"
+                    }],
+                    trazabilidad: [
+                        {
+                            titulo: "Registro del activo",
+                            descripcion: "Activo incorporado al proyecto " +
+                                proyecto.nombre + ".",
+                            fecha
+                        },
+                        {
+                            titulo: "Asignación de responsable",
+                            descripcion: responsable +
+                                " fue asignado al activo.",
+                            fecha
+                        },
+                        {
+                            titulo: "Archivo inicial seleccionado",
+                            descripcion: "Archivo: " + archivo.name +
+                                ". Carga simulada.",
+                            fecha
+                        }
+                    ]
+                };
 
-            estado.activos.unshift(nuevo);
+                estado.activos.unshift(nuevo);
 
-            if (!guardar()) {
-                estado.activos.shift();
-                return;
+                if (!guardar()) {
+                    estado.activos.shift();
+                    return;
+                }
+
+                renderizarTodo();
+                cerrarModal("assetModal");
+                activarPestana("assetsPanel");
+                avisar("Activo " + nuevo.id + " registrado correctamente.");
             }
 
-            renderizarTodo();
-            cerrarModal("assetModal");
-            activarPestana("assetsPanel");
-            avisar("Activo " + nuevo.id + " registrado correctamente.");
-        }
+            function renderizarActivos() {
+                const contenedor = $("assetList");
+                contenedor.replaceChildren();
 
-        function renderizarActivos() {
-            const contenedor = $("assetList");
-            contenedor.replaceChildren();
+                estado.activos.forEach(activo => {
+                    const fila = document.createElement("article");
+                    fila.className = "asset-row";
+                    fila.dataset.id = activo.id;
+                    fila.dataset.status = activo.estado;
+                    fila.dataset.type = activo.tipo;
 
-            estado.activos.forEach(activo => {
-                const fila = document.createElement("article");
-                fila.className = "asset-row";
-                fila.dataset.id = activo.id;
-                fila.dataset.status = activo.estado;
-                fila.dataset.type = activo.tipo;
+                    const proyecto = buscarProyecto(activo.proyectoId);
 
-                const proyecto = buscarProyecto(activo.proyectoId);
+                    fila.dataset.search = normalizar([
+                        activo.nombre,
+                        activo.responsable,
+                        activo.area,
+                        activo.id,
+                        proyecto?.nombre || ""
+                    ].join(" "));
 
-                fila.dataset.search = normalizar([
-                    activo.nombre,
-                    activo.responsable,
-                    activo.area,
-                    activo.id,
-                    proyecto?.nombre || ""
-                ].join(" "));
-
-                fila.innerHTML = `
+                    fila.innerHTML = `
                     <div class="asset-name">
                         <div class="file-icon">
                             <svg viewBox="0 0 24 24">
@@ -1871,336 +1784,337 @@
                     </button>
                 `;
 
-                contenedor.appendChild(fila);
-            });
-
-            aplicarFiltros();
-        }
-
-        function aplicarFiltros() {
-            const texto = normalizar($("assetSearch").value.trim());
-            const estadoFiltro = $("statusFilter").value;
-            const tipoFiltro = $("typeFilter").value;
-            let visibles = 0;
-
-            document.querySelectorAll("#assetList .asset-row")
-                .forEach(fila => {
-                    const coincide =
-                        (!texto || fila.dataset.search.includes(texto)) &&
-                        (estadoFiltro === "all" ||
-                         fila.dataset.status === estadoFiltro) &&
-                        (tipoFiltro === "all" ||
-                         fila.dataset.type === tipoFiltro);
-
-                    fila.hidden = !coincide;
-                    if (coincide) visibles++;
+                    contenedor.appendChild(fila);
                 });
 
-            $("resultCount").textContent = visibles;
-            $("emptyState").style.display =
-                visibles ? "none" : "block";
-        }
-
-        function renderizarEventos(contenedorId, eventos, tipo) {
-            const contenedor = $(contenedorId);
-            contenedor.replaceChildren();
-
-            (eventos || []).forEach(evento => {
-                const bloque = document.createElement("div");
-                bloque.style.cssText =
-                    "border-bottom:1px solid #e7edf3;padding:12px 0";
-
-                const titulo = document.createElement("strong");
-                titulo.style.color = "#285579";
-                titulo.textContent = tipo === "version"
-                    ? `${evento.version} · ${evento.accion}`
-                    : evento.titulo;
-
-                const descripcion = document.createElement("p");
-                descripcion.style.cssText =
-                    "margin:6px 0;color:#60798e;font-size:13px";
-                descripcion.textContent = tipo === "version"
-                    ? evento.autor
-                    : evento.descripcion;
-
-                const fecha = document.createElement("small");
-                fecha.style.color = "#8a9aa8";
-                fecha.textContent = evento.fecha;
-
-                bloque.append(titulo, descripcion, fecha);
-                contenedor.appendChild(bloque);
-            });
-        }
-
-        function abrirDetalle(id) {
-            const activo = buscarActivo(id);
-            if (!activo) return;
-
-            activoActual = id;
-            const proyecto = buscarProyecto(activo.proyectoId);
-
-            $("detailAssetName").textContent = activo.nombre;
-            $("detailAssetCode").textContent = activo.id;
-            $("detailProject").textContent =
-                proyecto?.nombre || "Proyecto no disponible";
-            $("detailType").textContent = nombreTipo(activo.tipo);
-            $("detailArea").textContent = activo.area;
-            $("detailAssetStatus").textContent =
-                nombreEstado(activo.estado);
-            $("detailVersion").textContent = activo.version;
-            $("detailUpdated").textContent = activo.actualizado;
-            $("detailDescription").textContent = activo.descripcion;
-            $("detailResponsible").textContent = activo.responsable;
-
-            const selector = $("detailResponsibleSelect");
-            selector.replaceChildren();
-
-            const responsables = proyecto?.responsables || [];
-
-            /*
-             * Se incluye el responsable histórico aunque
-             * ya no esté autorizado, para mostrarlo.
-             */
-            const opciones = Array.from(new Set([
-                activo.responsable,
-                ...responsables
-            ]));
-
-            opciones.forEach(nombre => {
-                const opcion = document.createElement("option");
-                opcion.value = nombre;
-                opcion.textContent = responsables.includes(nombre)
-                    ? nombre
-                    : nombre + " (asignación anterior)";
-                selector.appendChild(opcion);
-            });
-
-            selector.value = activo.responsable;
-
-            renderizarEventos(
-                "detailVersionHistory",
-                activo.historial,
-                "version"
-            );
-
-            renderizarEventos(
-                "detailTraceability",
-                activo.trazabilidad,
-                "evento"
-            );
-
-            abrirModal("detailModal");
-        }
-
-        function guardarReasignacion() {
-            const activo = buscarActivo(activoActual);
-            if (!activo) return;
-
-            const proyecto = buscarProyecto(activo.proyectoId);
-            const nuevo = $("detailResponsibleSelect").value;
-
-            if (!proyecto?.responsables.includes(nuevo)) {
-                avisar(
-                    "Seleccioná un responsable autorizado en el proyecto."
-                );
-                return;
+                aplicarFiltros();
             }
 
-            if (nuevo === activo.responsable) {
-                avisar("El responsable no ha cambiado.");
-                return;
+            function aplicarFiltros() {
+                const texto = normalizar($("assetSearch").value.trim());
+                const estadoFiltro = $("statusFilter").value;
+                const tipoFiltro = $("typeFilter").value;
+                let visibles = 0;
+
+                document.querySelectorAll("#assetList .asset-row")
+                    .forEach(fila => {
+                        const coincide =
+                            (!texto || fila.dataset.search.includes(texto)) &&
+                            (estadoFiltro === "all" ||
+                                fila.dataset.status === estadoFiltro) &&
+                            (tipoFiltro === "all" ||
+                                fila.dataset.type === tipoFiltro);
+
+                        fila.hidden = !coincide;
+                        if (coincide) visibles++;
+                    });
+
+                $("resultCount").textContent = visibles;
+                $("emptyState").style.display =
+                    visibles ? "none" : "block";
             }
 
-            const anterior = activo.responsable;
-            const fecha = ahora();
+            function renderizarEventos(contenedorId, eventos, tipo) {
+                const contenedor = $(contenedorId);
+                contenedor.replaceChildren();
 
-            activo.responsable = nuevo;
-            activo.actualizado = fecha;
-            activo.trazabilidad.unshift({
-                titulo: "Reasignación de responsable",
-                descripcion: `Cambio de ${anterior} a ${nuevo}.`,
-                fecha
-            });
+                (eventos || []).forEach(evento => {
+                    const bloque = document.createElement("div");
+                    bloque.style.cssText =
+                        "border-bottom:1px solid #e7edf3;padding:12px 0";
 
-            if (!guardar()) {
-                activo.responsable = anterior;
-                activo.trazabilidad.shift();
-                return;
+                    const titulo = document.createElement("strong");
+                    titulo.style.color = "#285579";
+                    titulo.textContent = tipo === "version"
+                        ? `${evento.version} · ${evento.accion}`
+                        : evento.titulo;
+
+                    const descripcion = document.createElement("p");
+                    descripcion.style.cssText =
+                        "margin:6px 0;color:#60798e;font-size:13px";
+                    descripcion.textContent = tipo === "version"
+                        ? evento.autor
+                        : evento.descripcion;
+
+                    const fecha = document.createElement("small");
+                    fecha.style.color = "#8a9aa8";
+                    fecha.textContent = evento.fecha;
+
+                    bloque.append(titulo, descripcion, fecha);
+                    contenedor.appendChild(bloque);
+                });
             }
 
-            renderizarTodo();
-            abrirDetalle(activo.id);
-            avisar("Responsable actualizado correctamente.");
-        }
+            function abrirDetalle(id) {
+                const activo = buscarActivo(id);
+                if (!activo) return;
 
-        function renderizarTodo() {
-            renderizarProyectos();
-            renderizarActivos();
-            actualizarResumen();
-        }
+                activoActual = id;
+                const proyecto = buscarProyecto(activo.proyectoId);
 
-        /* EVENTOS DE LOS BOTONES PRINCIPALES */
+                $("detailAssetName").textContent = activo.nombre;
+                $("detailAssetCode").textContent = activo.id;
+                $("detailProject").textContent =
+                    proyecto?.nombre || "Proyecto no disponible";
+                $("detailType").textContent = nombreTipo(activo.tipo);
+                $("detailArea").textContent = activo.area;
+                $("detailAssetStatus").textContent =
+                    nombreEstado(activo.estado);
+                $("detailVersion").textContent = activo.version;
+                $("detailUpdated").textContent = activo.actualizado;
+                $("detailDescription").textContent = activo.descripcion;
+                $("detailResponsible").textContent = activo.responsable;
 
-        $("newProjectButton").addEventListener(
-            "click",
-            abrirCrearProyecto
-        );
+                const selector = $("detailResponsibleSelect");
+                selector.replaceChildren();
 
-        $("newAssetButton").addEventListener(
-            "click",
-            abrirRegistroActivo
-        );
+                const responsables = proyecto?.responsables || [];
 
-        $("projectForm").addEventListener(
-            "submit",
-            guardarProyecto
-        );
+                /*
+                 * Se incluye el responsable histórico aunque
+                 * ya no esté autorizado, para mostrarlo.
+                 */
+                const opciones = Array.from(new Set([
+                    activo.responsable,
+                    ...responsables
+                ]));
 
-        $("assetForm").addEventListener(
-            "submit",
-            registrarActivo
-        );
+                opciones.forEach(nombre => {
+                    const opcion = document.createElement("option");
+                    opcion.value = nombre;
+                    opcion.textContent = responsables.includes(nombre)
+                        ? nombre
+                        : nombre + " (asignación anterior)";
+                    selector.appendChild(opcion);
+                });
 
-        $("assetProject").addEventListener(
-            "change",
-            cargarResponsablesDeProyecto
-        );
+                selector.value = activo.responsable;
 
-        $("saveResponsibleButton").addEventListener(
-            "click",
-            guardarReasignacion
-        );
-
-        $("assetSearch").addEventListener(
-            "input",
-            aplicarFiltros
-        );
-
-        $("statusFilter").addEventListener(
-            "change",
-            aplicarFiltros
-        );
-
-        $("typeFilter").addEventListener(
-            "change",
-            aplicarFiltros
-        );
-
-        $("clearFilters").addEventListener("click", () => {
-            $("assetSearch").value = "";
-            $("statusFilter").value = "all";
-            $("typeFilter").value = "all";
-            aplicarFiltros();
-        });
-
-        $("profileButton").addEventListener("click", () => {
-            $("profile").classList.toggle("open");
-        });
-
-        $("profileLogout").addEventListener("click", () => {
-            $("profile").classList.remove("open");
-            abrirModal("logoutModal");
-        });
-
-        $("confirmLogout").addEventListener("click", () => {
-            window.location.href = "login.html";
-        });
-
-        $("notificationButton").addEventListener("click", () => {
-            window.location.href = "alertas.html";
-        });
-
-        $("viewAuditButton").addEventListener("click", () => {
-            if (activoActual) {
-                window.location.href =
-                    "auditoria.html?activo=" +
-                    encodeURIComponent(activoActual);
-            }
-        });
-
-        /* DELEGACIÓN DE EVENTOS */
-
-        document.addEventListener("click", evento => {
-            const cerrar = evento.target.closest(
-                "[data-close-modal]"
-            );
-
-            if (cerrar) {
-                cerrarModal(cerrar.dataset.closeModal);
-                return;
-            }
-
-            const pestana = evento.target.closest("[data-tab]");
-
-            if (pestana) {
-                activarPestana(pestana.dataset.tab);
-                return;
-            }
-
-            const editar = evento.target.closest(
-                "[data-edit-project]"
-            );
-
-            if (editar) {
-                abrirEditarProyecto(editar.dataset.editProject);
-                return;
-            }
-
-            const verProyecto = evento.target.closest(
-                "[data-project-assets]"
-            );
-
-            if (verProyecto) {
-                const proyecto = buscarProyecto(
-                    verProyecto.dataset.projectAssets
+                renderizarEventos(
+                    "detailVersionHistory",
+                    activo.historial,
+                    "version"
                 );
 
-                activarPestana("assetsPanel");
+                renderizarEventos(
+                    "detailTraceability",
+                    activo.trazabilidad,
+                    "evento"
+                );
 
-                $("assetSearch").value = proyecto?.nombre || "";
+                abrirModal("detailModal");
+            }
+
+            function guardarReasignacion() {
+                const activo = buscarActivo(activoActual);
+                if (!activo) return;
+
+                const proyecto = buscarProyecto(activo.proyectoId);
+                const nuevo = $("detailResponsibleSelect").value;
+
+                if (!proyecto?.responsables.includes(nuevo)) {
+                    avisar(
+                        "Seleccioná un responsable autorizado en el proyecto."
+                    );
+                    return;
+                }
+
+                if (nuevo === activo.responsable) {
+                    avisar("El responsable no ha cambiado.");
+                    return;
+                }
+
+                const anterior = activo.responsable;
+                const fecha = ahora();
+
+                activo.responsable = nuevo;
+                activo.actualizado = fecha;
+                activo.trazabilidad.unshift({
+                    titulo: "Reasignación de responsable",
+                    descripcion: `Cambio de ${anterior} a ${nuevo}.`,
+                    fecha
+                });
+
+                if (!guardar()) {
+                    activo.responsable = anterior;
+                    activo.trazabilidad.shift();
+                    return;
+                }
+
+                renderizarTodo();
+                abrirDetalle(activo.id);
+                avisar("Responsable actualizado correctamente.");
+            }
+
+            function renderizarTodo() {
+                renderizarProyectos();
+                renderizarActivos();
+                actualizarResumen();
+            }
+
+            /* EVENTOS DE LOS BOTONES PRINCIPALES */
+
+            $("newProjectButton").addEventListener(
+                "click",
+                abrirCrearProyecto
+            );
+
+            $("newAssetButton").addEventListener(
+                "click",
+                abrirRegistroActivo
+            );
+
+            $("projectForm").addEventListener(
+                "submit",
+                guardarProyecto
+            );
+
+            $("assetForm").addEventListener(
+                "submit",
+                registrarActivo
+            );
+
+            $("assetProject").addEventListener(
+                "change",
+                cargarResponsablesDeProyecto
+            );
+
+            $("saveResponsibleButton").addEventListener(
+                "click",
+                guardarReasignacion
+            );
+
+            $("assetSearch").addEventListener(
+                "input",
+                aplicarFiltros
+            );
+
+            $("statusFilter").addEventListener(
+                "change",
+                aplicarFiltros
+            );
+
+            $("typeFilter").addEventListener(
+                "change",
+                aplicarFiltros
+            );
+
+            $("clearFilters").addEventListener("click", () => {
+                $("assetSearch").value = "";
                 $("statusFilter").value = "all";
                 $("typeFilter").value = "all";
                 aplicarFiltros();
-                return;
-            }
+            });
 
-            const verActivo = evento.target.closest(
-                "[data-view-id]"
-            );
+            $("profileButton").addEventListener("click", () => {
+                $("profile").classList.toggle("open");
+            });
 
-            if (verActivo) {
-                abrirDetalle(verActivo.dataset.viewId);
-                return;
-            }
-
-            const salirSidebar = evento.target.closest(
-                "#sidebarLogout, [data-logout]"
-            );
-
-            if (salirSidebar) {
-                evento.preventDefault();
+            $("profileLogout").addEventListener("click", () => {
+                $("profile").classList.remove("open");
                 abrirModal("logoutModal");
-            }
-        });
+            });
 
-        document.addEventListener("keydown", evento => {
-            if (evento.key !== "Escape") return;
+            $("confirmLogout").addEventListener("click", () => {
+                window.location.href = "login.html";
+            });
 
-            document.querySelectorAll(
-                ".management-modal.active"
-            ).forEach(modal => cerrarModal(modal.id));
-        });
+            $("notificationButton").addEventListener("click", () => {
+                window.location.href = "alertas.html";
+            });
 
-        /* INICIALIZACIÓN */
+            $("viewAuditButton").addEventListener("click", () => {
+                if (activoActual) {
+                    window.location.href =
+                        "auditoria.html?activo=" +
+                        encodeURIComponent(activoActual);
+                }
+            });
 
-        renderizarTodo();
+            /* DELEGACIÓN DE EVENTOS */
 
-        console.info(
-            "SISCAE: Proyectos y activos inicializados correctamente."
-        );
+            document.addEventListener("click", evento => {
+                const cerrar = evento.target.closest(
+                    "[data-close-modal]"
+                );
 
-    })();
+                if (cerrar) {
+                    cerrarModal(cerrar.dataset.closeModal);
+                    return;
+                }
+
+                const pestana = evento.target.closest("[data-tab]");
+
+                if (pestana) {
+                    activarPestana(pestana.dataset.tab);
+                    return;
+                }
+
+                const editar = evento.target.closest(
+                    "[data-edit-project]"
+                );
+
+                if (editar) {
+                    abrirEditarProyecto(editar.dataset.editProject);
+                    return;
+                }
+
+                const verProyecto = evento.target.closest(
+                    "[data-project-assets]"
+                );
+
+                if (verProyecto) {
+                    const proyecto = buscarProyecto(
+                        verProyecto.dataset.projectAssets
+                    );
+
+                    activarPestana("assetsPanel");
+
+                    $("assetSearch").value = proyecto?.nombre || "";
+                    $("statusFilter").value = "all";
+                    $("typeFilter").value = "all";
+                    aplicarFiltros();
+                    return;
+                }
+
+                const verActivo = evento.target.closest(
+                    "[data-view-id]"
+                );
+
+                if (verActivo) {
+                    abrirDetalle(verActivo.dataset.viewId);
+                    return;
+                }
+
+                const salirSidebar = evento.target.closest(
+                    "#sidebarLogout, [data-logout]"
+                );
+
+                if (salirSidebar) {
+                    evento.preventDefault();
+                    abrirModal("logoutModal");
+                }
+            });
+
+            document.addEventListener("keydown", evento => {
+                if (evento.key !== "Escape") return;
+
+                document.querySelectorAll(
+                    ".management-modal.active"
+                ).forEach(modal => cerrarModal(modal.id));
+            });
+
+            /* INICIALIZACIÓN */
+
+            renderizarTodo();
+
+            console.info(
+                "SISCAE: Proyectos y activos inicializados correctamente."
+            );
+
+        })();
     </script>
 
 </body>
+
 </html>

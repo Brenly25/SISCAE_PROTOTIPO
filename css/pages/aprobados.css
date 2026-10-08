@@ -1,0 +1,1457 @@
+
+/* ==========================================================
+   SISCAE - ACTIVOS APROBADOS
+   Archivo: css/pages/aprobados.css
+   Diseño institucional - Administrador
+========================================================== */
+
+/* ==========================================================
+   1. VARIABLES
+========================================================== */
+
+:root {
+    --approved-primary: #082d73;
+    --approved-blue: #0d47ae;
+    --approved-blue-light: #eaf1fb;
+    --approved-yellow: #f4c430;
+
+    --approved-text: #14294a;
+    --approved-muted: #667892;
+    --approved-border: #dce5f0;
+    --approved-background: #f6f9fd;
+
+    --approved-white: #ffffff;
+    --approved-green: #168354;
+    --approved-red: #c73645;
+
+    --approved-sidebar-width: 320px;
+
+    --approved-radius: 10px;
+    --approved-shadow: 0 10px 28px rgba(13, 48, 101, 0.055);
+}
+
+/* ==========================================================
+   2. CONFIGURACIÓN GENERAL
+========================================================== */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    min-height: 100%;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+
+    background: var(--approved-background);
+    color: var(--approved-text);
+
+    font-family: Roboto, Arial, sans-serif;
+}
+
+button,
+input,
+select {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible {
+    outline: 3px solid rgba(13, 71, 174, 0.25);
+    outline-offset: 2px;
+}
+
+/*
+   El sidebar se administra exclusivamente desde:
+   css/components/sidebar_admin.css
+
+   No se modifican sus estilos internos.
+*/
+
+/* ==========================================================
+   3. CONTENEDOR PRINCIPAL
+========================================================== */
+
+body > .main {
+    position: relative;
+    isolation: isolate;
+
+    width: calc(100% - var(--approved-sidebar-width));
+    min-width: 0;
+    min-height: 100vh;
+
+    margin: 0 0 0 var(--approved-sidebar-width);
+    padding: 0;
+
+    background: #f7faff;
+    overflow-x: clip;
+}
+
+/* ==========================================================
+   4. DECORACIÓN INSTITUCIONAL
+========================================================== */
+
+.dashboard-decoration {
+    position: absolute;
+    inset: 92px 0 0;
+
+    z-index: -1;
+
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.dashboard-decoration .ring-group {
+    position: absolute;
+    border-radius: 50%;
+}
+
+.dashboard-decoration .ring-group-one {
+    width: 620px;
+    height: 620px;
+
+    top: 150px;
+    right: -330px;
+
+    border: 52px solid rgba(13, 71, 174, 0.045);
+}
+
+.dashboard-decoration .ring-group-two {
+    width: 430px;
+    height: 430px;
+
+    top: 480px;
+    right: -220px;
+
+    border: 37px solid rgba(13, 71, 174, 0.055);
+}
+
+.dashboard-decoration .ring-group-three {
+    width: 290px;
+    height: 290px;
+
+    top: 900px;
+    right: 5%;
+
+    border: 23px solid rgba(244, 196, 48, 0.075);
+}
+
+/* ==========================================================
+   5. TOPBAR
+========================================================== */
+
+body > .main > .topbar {
+    position: relative;
+    z-index: 20;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+
+    width: 100%;
+    min-height: 92px;
+
+    margin: 0;
+    padding: 0 44px;
+
+    background: #ffffff;
+    border-bottom: 1px solid var(--approved-border);
+}
+
+.topbar-left,
+.topbar-right {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    min-width: 0;
+}
+
+/* ==========================================================
+   6. BREADCRUMB
+========================================================== */
+
+.breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    min-width: 0;
+
+    color: #71809a;
+    font-size: 13px;
+}
+
+.breadcrumb span,
+.breadcrumb strong {
+    white-space: nowrap;
+}
+
+.breadcrumb strong {
+    color: var(--approved-text);
+    font-weight: 700;
+}
+
+.breadcrumb a {
+    color: var(--approved-blue);
+    text-decoration: none;
+}
+
+.breadcrumb a:hover {
+    text-decoration: underline;
+}
+
+.breadcrumb svg {
+    width: 14px;
+    height: 14px;
+
+    flex-shrink: 0;
+
+    fill: none;
+    stroke: #9aa9bf;
+    stroke-width: 2;
+
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+/* ==========================================================
+   7. MENÚ MÓVIL
+========================================================== */
+
+.menu-button {
+    display: none;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 38px;
+    height: 38px;
+
+    padding: 7px;
+
+    background: transparent;
+    border: none;
+
+    color: var(--approved-primary);
+}
+
+.menu-button svg {
+    width: 23px;
+    height: 23px;
+
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+/* ==========================================================
+   8. NOTIFICACIONES
+========================================================== */
+
+.notification {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 42px;
+    height: 42px;
+    padding: 0;
+
+    background: transparent;
+    border: none;
+
+    color: #597194;
+}
+
+.notification svg {
+    width: 22px;
+    height: 22px;
+
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.7;
+
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.notification > span {
+    position: absolute;
+    top: 1px;
+    right: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    min-width: 17px;
+    height: 17px;
+    padding: 2px;
+
+    border-radius: 50%;
+
+    background: #dc3545;
+    color: #ffffff;
+
+    font-size: 10px;
+    font-weight: 700;
+}
+
+/* ==========================================================
+   9. PERFIL ADMINISTRADOR
+========================================================== */
+
+.profile {
+    position: relative;
+}
+
+.profile-button {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    padding: 0;
+
+    background: transparent;
+    border: none;
+
+    color: var(--approved-text);
+}
+
+.profile-avatar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 45px;
+    height: 45px;
+    flex-shrink: 0;
+
+    border-radius: 50%;
+
+    background: #0835a3;
+    color: #ffffff;
+
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.profile-info {
+    min-width: 140px;
+    text-align: left;
+}
+
+.profile-info strong,
+.profile-info span {
+    display: block;
+}
+
+.profile-info strong {
+    color: var(--approved-text);
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.profile-info span {
+    margin-top: 5px;
+
+    color: #75839a;
+    font-size: 10px;
+}
+
+.profile-arrow {
+    width: 14px;
+    height: 14px;
+
+    fill: none;
+    stroke: #71819c;
+    stroke-width: 2;
+
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+/* ==========================================================
+   10. MENÚ DESPLEGABLE
+========================================================== */
+
+.profile-menu {
+    display: none;
+
+    position: absolute;
+    top: calc(100% + 16px);
+    right: 0;
+
+    z-index: 50;
+
+    min-width: 190px;
+    padding: 7px;
+
+    background: #ffffff;
+
+    border: 1px solid var(--approved-border);
+    border-radius: 10px;
+
+    box-shadow: 0 12px 28px rgba(10, 35, 80, 0.12);
+}
+
+.profile.open .profile-menu,
+.profile-menu.open {
+    display: block;
+}
+
+.profile-menu a,
+.profile-menu button {
+    display: block;
+
+    width: 100%;
+    padding: 12px;
+
+    border: none;
+    border-radius: 6px;
+
+    background: transparent;
+    color: var(--approved-text);
+
+    text-align: left;
+    text-decoration: none;
+
+    font-size: 13px;
+}
+
+.profile-menu a:hover,
+.profile-menu button:hover {
+    background: #edf3fc;
+}
+
+/* ==========================================================
+   11. CONTENIDO
+========================================================== */
+
+body > .main > .content {
+    position: relative;
+    z-index: 1;
+
+    width: 100%;
+    min-width: 0;
+
+    margin: 0;
+    padding: 72px 44px 70px;
+}
+
+/* ==========================================================
+   12. ENCABEZADO DE PÁGINA
+========================================================== */
+
+.page-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 28px;
+
+    margin-bottom: 54px;
+}
+
+.page-header > div:first-child {
+    min-width: 0;
+}
+
+.section-label {
+    display: block;
+
+    margin-bottom: 14px;
+
+    color: #0842b5;
+
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+}
+
+.page-header h1 {
+    margin: 0 0 13px;
+
+    color: #092b73;
+
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.page-header p {
+    margin: 0;
+
+    color: var(--approved-muted);
+
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+/* ==========================================================
+   13. FECHA
+========================================================== */
+
+.date-block {
+    flex-shrink: 0;
+    min-width: 190px;
+
+    padding: 5px 0 5px 20px;
+
+    border-left: 3px solid var(--approved-yellow);
+}
+
+.date-block span {
+    display: block;
+    margin-bottom: 10px;
+
+    color: var(--approved-muted);
+
+    font-size: 10px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.date-block strong {
+    display: block;
+
+    color: var(--approved-text);
+
+    font-size: 13px;
+    font-weight: 700;
+}
+
+/* ==========================================================
+   14. PANEL RESUMEN
+========================================================== */
+
+.approval-summary {
+    width: 100%;
+    min-width: 0;
+
+    margin-bottom: 48px;
+
+    background: rgba(255, 255, 255, 0.97);
+
+    border: 1px solid var(--approved-border);
+    border-top: 4px solid var(--approved-primary);
+    border-radius: var(--approved-radius);
+
+    overflow: hidden;
+
+    box-shadow: var(--approved-shadow);
+}
+
+.summary-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+
+    padding: 29px 32px;
+
+    border-bottom: 1px solid var(--approved-border);
+}
+
+.summary-header .section-label {
+    margin-bottom: 9px;
+}
+
+.summary-header h2 {
+    margin: 0;
+
+    color: #112e68;
+
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.summary-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+
+    color: #a16a00;
+
+    font-size: 12px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.summary-status::before {
+    content: "";
+
+    width: 8px;
+    height: 8px;
+
+    border-radius: 50%;
+    background: #d7a316;
+}
+
+/* ==========================================================
+   15. INDICADORES
+========================================================== */
+
+.summary-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+
+    background: linear-gradient(
+        110deg,
+        #ffffff 0%,
+        #eef4fd 100%
+    );
+}
+
+.summary-item {
+    min-width: 0;
+    padding: 35px 32px;
+
+    border-right: 1px solid var(--approved-border);
+}
+
+.summary-item:last-child {
+    border-right: none;
+}
+
+.summary-item > span {
+    display: block;
+
+    margin-bottom: 18px;
+
+    color: var(--approved-muted);
+    font-size: 13px;
+}
+
+.summary-item > strong {
+    display: block;
+
+    margin-bottom: 18px;
+
+    color: #092e80;
+
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.summary-item > small {
+    display: block;
+
+    color: #8392a8;
+
+    font-size: 11px;
+    line-height: 1.5;
+}
+
+/* ==========================================================
+   16. SECCIÓN DE APROBADOS
+========================================================== */
+
+.approved-section {
+    width: 100%;
+    min-width: 0;
+}
+
+.section-heading {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 20px;
+
+    margin-bottom: 22px;
+}
+
+.section-heading .section-label {
+    margin-bottom: 9px;
+}
+
+.section-heading h2 {
+    margin: 0 0 9px;
+
+    color: #102e70;
+
+    font-size: 25px;
+    font-weight: 700;
+}
+
+.section-heading p {
+    margin: 0;
+
+    color: var(--approved-muted);
+
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+/* ==========================================================
+   17. PANEL DEL LISTADO
+========================================================== */
+
+.approved-panel {
+    width: 100%;
+    min-width: 0;
+
+    padding: 28px 30px;
+
+    background: rgba(255, 255, 255, 0.97);
+
+    border: 1px solid var(--approved-border);
+    border-top: 4px solid var(--approved-primary);
+    border-radius: var(--approved-radius);
+
+    box-shadow: var(--approved-shadow);
+}
+
+/* ==========================================================
+   18. FILTROS
+========================================================== */
+
+.filters {
+    display: grid;
+
+    grid-template-columns:
+        minmax(220px, 2fr)
+        minmax(150px, 1fr)
+        minmax(150px, 1fr);
+
+    align-items: end;
+    gap: 18px;
+}
+
+.filter-group {
+    min-width: 0;
+}
+
+.filter-group label {
+    display: block;
+
+    margin-bottom: 10px;
+
+    color: #667892;
+
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+.filter-group input,
+.filter-group select {
+    width: 100%;
+    height: 46px;
+
+    padding: 0 14px;
+
+    background: #ffffff;
+
+    border: 1px solid #d6e0ed;
+    border-radius: 7px;
+
+    color: var(--approved-text);
+
+    font-size: 13px;
+    outline: none;
+}
+
+.filter-group input:focus,
+.filter-group select:focus {
+    border-color: #0c4fbd;
+    box-shadow: 0 0 0 3px rgba(12, 79, 189, 0.08);
+}
+
+/* ==========================================================
+   19. CONTADOR DE RESULTADOS
+========================================================== */
+
+.results-count {
+    margin: 24px 0 16px;
+
+    color: var(--approved-muted);
+
+    font-size: 12px;
+}
+
+/* ==========================================================
+   20. TABLA DE APROBADOS
+========================================================== */
+
+.table-responsive {
+    width: 100%;
+    overflow-x: auto;
+
+    border: 1px solid var(--approved-border);
+    border-radius: 8px;
+}
+
+.approved-table {
+    width: 100%;
+    min-width: 850px;
+
+    border-collapse: collapse;
+    background: #ffffff;
+}
+
+.approved-table thead {
+    background: #edf3fb;
+}
+
+.approved-table th {
+    padding: 16px 15px;
+
+    color: #62758f;
+
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.6px;
+
+    text-align: left;
+    white-space: nowrap;
+
+    border-bottom: 1px solid var(--approved-border);
+}
+
+.approved-table td {
+    padding: 18px 15px;
+
+    color: var(--approved-text);
+
+    font-size: 12px;
+    line-height: 1.5;
+    vertical-align: middle;
+
+    border-bottom: 1px solid #e9eef5;
+}
+
+.approved-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.approved-table tbody tr:hover {
+    background: #f8fbff;
+}
+
+.approved-table td strong {
+    display: block;
+
+    color: #14345e;
+
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.approved-table td small {
+    display: block;
+
+    margin-top: 5px;
+
+    color: #8190a5;
+
+    font-size: 10px;
+}
+
+/* ==========================================================
+   21. ESTADO APROBADO
+========================================================== */
+
+.status-approved,
+.approved-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+
+    padding: 7px 11px;
+
+    border-radius: 6px;
+
+    background: #e8f6ee;
+    color: var(--approved-green);
+
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.status-approved::before,
+.approved-badge::before {
+    content: "";
+
+    width: 6px;
+    height: 6px;
+
+    border-radius: 50%;
+    background: currentColor;
+}
+
+/* ==========================================================
+   22. BOTONES
+========================================================== */
+
+.btn-primary,
+.btn-secondary,
+.btn-publish {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    min-height: 40px;
+    padding: 10px 16px;
+
+    border-radius: 7px;
+
+    font-size: 12px;
+    font-weight: 600;
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.btn-primary,
+.btn-publish {
+    background: var(--approved-primary);
+    color: #ffffff;
+
+    border: 1px solid var(--approved-primary);
+}
+
+.btn-secondary {
+    background: #ffffff;
+    color: var(--approved-primary);
+
+    border: 1px solid #cbd8e9;
+}
+
+.btn-primary:hover,
+.btn-publish:hover {
+    background: #0c4195;
+    transform: translateY(-2px);
+}
+
+.btn-secondary:hover {
+    background: #eef4fc;
+}
+
+.btn-primary:disabled,
+.btn-publish:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* ==========================================================
+   23. ESTADO VACÍO
+========================================================== */
+
+.empty-state {
+    padding: 55px 24px;
+
+    text-align: center;
+    color: var(--approved-muted);
+}
+
+.empty-state[hidden] {
+    display: none !important;
+}
+
+.empty-state h3 {
+    margin: 0 0 10px;
+
+    color: var(--approved-text);
+    font-size: 17px;
+}
+
+.empty-state p {
+    margin: 0;
+
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+/* ==========================================================
+   24. MODAL DE PUBLICACIÓN
+========================================================== */
+
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+
+    z-index: 500;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+
+    background: rgba(5, 23, 55, 0.6);
+}
+
+.modal-overlay[hidden] {
+    display: none !important;
+}
+
+.modal-overlay > .modal {
+    position: relative;
+
+    width: min(100%, 560px);
+    max-height: 90vh;
+
+    overflow-y: auto;
+
+    background: #ffffff;
+
+    border-top: 4px solid var(--approved-primary);
+    border-radius: 12px;
+
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+}
+
+/* ==========================================================
+   25. ENCABEZADO DEL MODAL
+========================================================== */
+
+.modal-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 15px;
+
+    padding: 24px 27px;
+
+    border-bottom: 1px solid var(--approved-border);
+}
+
+.modal-header .section-label {
+    margin-bottom: 8px;
+}
+
+.modal-header h2 {
+    margin: 0;
+
+    color: var(--approved-text);
+    font-size: 21px;
+}
+
+.modal-close {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 32px;
+    height: 32px;
+    flex-shrink: 0;
+
+    padding: 0;
+
+    background: #f0f4f9;
+    color: var(--approved-muted);
+
+    border: none;
+    border-radius: 7px;
+
+    font-size: 22px;
+}
+
+.modal-close:hover {
+    background: #e4ebf5;
+}
+
+/* ==========================================================
+   26. CONTENIDO DEL MODAL
+========================================================== */
+
+.modal-body {
+    padding: 25px 27px;
+}
+
+.modal-body > p {
+    margin: 0 0 18px;
+
+    color: var(--approved-muted);
+
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+.publication-asset {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+
+    margin-bottom: 24px;
+    padding: 17px;
+
+    background: #f3f7fc;
+
+    border: 1px solid var(--approved-border);
+    border-radius: 8px;
+}
+
+.publication-asset strong {
+    color: var(--approved-text);
+
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.publication-asset span {
+    color: var(--approved-muted);
+    font-size: 11px;
+}
+
+/* ==========================================================
+   27. CAMPO DE VERIFICACIÓN
+========================================================== */
+
+.form-group {
+    margin-bottom: 18px;
+}
+
+.form-group label {
+    display: block;
+
+    margin-bottom: 10px;
+
+    color: var(--approved-text);
+
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.form-group input {
+    width: 100%;
+    height: 48px;
+
+    padding: 0 14px;
+
+    background: #ffffff;
+
+    border: 1px solid #d6e0ed;
+    border-radius: 7px;
+
+    color: var(--approved-text);
+
+    font-size: 16px;
+    letter-spacing: 3px;
+    outline: none;
+}
+
+.form-group input:focus {
+    border-color: var(--approved-blue);
+
+    box-shadow: 0 0 0 3px rgba(13, 71, 174, 0.08);
+}
+
+.form-group small {
+    display: block;
+
+    margin-top: 9px;
+
+    color: var(--approved-muted);
+
+    font-size: 11px;
+    line-height: 1.6;
+}
+
+/* ==========================================================
+   28. ERRORES
+========================================================== */
+
+.form-error {
+    margin: 12px 0 0;
+    padding: 12px 14px;
+
+    background: #fff0f1;
+    color: var(--approved-red);
+
+    border: 1px solid #f4ccd0;
+    border-radius: 7px;
+
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+.form-error[hidden] {
+    display: none !important;
+}
+
+/* ==========================================================
+   29. PIE DEL MODAL
+========================================================== */
+
+.modal-footer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 10px;
+
+    padding: 18px 27px;
+
+    border-top: 1px solid var(--approved-border);
+}
+
+/* ==========================================================
+   30. PIE DE PÁGINA
+========================================================== */
+
+.page-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    flex-wrap: wrap;
+    gap: 16px;
+
+    margin-top: 50px;
+    padding-top: 25px;
+
+    border-top: 1px solid var(--approved-border);
+
+    color: var(--approved-muted);
+    font-size: 12px;
+}
+
+.page-footer span {
+    line-height: 1.6;
+}
+
+/* ==========================================================
+   31. OVERLAY MÓVIL
+========================================================== */
+
+.mobile-overlay {
+    display: none;
+}
+
+/* ==========================================================
+   32. RESPONSIVE - PANTALLAS MEDIANAS
+========================================================== */
+
+@media (max-width: 1200px) {
+
+    body > .main > .topbar {
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+
+    body > .main > .content {
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+
+    .summary-item {
+        padding: 28px 22px;
+    }
+
+    .approved-panel {
+        padding: 24px;
+    }
+}
+
+/* ==========================================================
+   33. RESPONSIVE - TABLETS
+========================================================== */
+
+@media (max-width: 1100px) and (min-width: 801px) {
+
+    :root {
+        --approved-sidebar-width: 280px;
+    }
+
+    .filters {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .filter-group:first-child {
+        grid-column: 1 / -1;
+    }
+
+    .page-header {
+        margin-bottom: 38px;
+    }
+}
+
+/* ==========================================================
+   34. RESPONSIVE - MÓVILES
+========================================================== */
+
+@media (max-width: 800px) {
+
+    :root {
+        --approved-sidebar-width: 0px;
+    }
+
+    body > .main {
+        width: 100%;
+        margin-left: 0;
+    }
+
+    body > .main > .topbar {
+        min-height: 75px;
+        padding: 0 18px;
+    }
+
+    body > .main > .content {
+        padding: 38px 18px 55px;
+    }
+
+    .menu-button {
+        display: inline-flex;
+    }
+
+    .page-header {
+        align-items: flex-start;
+        flex-direction: column;
+
+        margin-bottom: 35px;
+    }
+
+    .date-block {
+        display: none;
+    }
+
+    .summary-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .summary-item {
+        border-right: none;
+        border-bottom: 1px solid var(--approved-border);
+    }
+
+    .summary-item:last-child {
+        border-bottom: none;
+    }
+
+    .summary-header {
+        padding: 23px;
+    }
+
+    .approved-panel {
+        padding: 20px;
+    }
+
+    .mobile-overlay.active {
+        display: block;
+
+        position: fixed;
+        inset: 0;
+
+        z-index: 90;
+
+        background: rgba(0, 0, 0, 0.35);
+    }
+}
+
+/* ==========================================================
+   35. RESPONSIVE - CELULARES
+========================================================== */
+
+@media (max-width: 580px) {
+
+    .topbar-left,
+    .topbar-right {
+        gap: 10px;
+    }
+
+    .breadcrumb {
+        gap: 7px;
+        font-size: 11px;
+    }
+
+    .breadcrumb span,
+    .breadcrumb a {
+        display: none;
+    }
+
+    .profile-info {
+        display: none;
+    }
+
+    .profile-avatar {
+        width: 38px;
+        height: 38px;
+    }
+
+    .page-header h1 {
+        font-size: 29px;
+    }
+
+    .summary-header {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .summary-header h2 {
+        font-size: 19px;
+    }
+
+    .summary-item {
+        padding: 25px;
+    }
+
+    .filters {
+        grid-template-columns: 1fr;
+    }
+
+    .filter-group:first-child {
+        grid-column: auto;
+    }
+
+    .section-heading h2 {
+        font-size: 22px;
+    }
+
+    .approved-panel {
+        padding: 16px;
+    }
+
+    .modal-header,
+    .modal-body {
+        padding: 20px;
+    }
+
+    .modal-footer {
+        flex-direction: column-reverse;
+        padding: 18px 20px;
+    }
+
+    .modal-footer button {
+        width: 100%;
+    }
+}
+
+/* ==========================================================
+   36. CORRECCIÓN FINAL DE ALINEACIÓN
+========================================================== */
+
+body > .main > .topbar,
+body > .main > .content {
+    box-sizing: border-box;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+body > .main > .content,
+.approval-summary,
+.approved-panel,
+.table-responsive {
+    min-width: 0;
+}

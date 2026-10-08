@@ -1,0 +1,332 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Alertas | SISCAE Revisor</title>
+
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/components/sidebar_revisor.css">
+    <link rel="stylesheet" href="../css/pages/alertasRevisor.css">
+</head>
+
+<body class="alertas-revisor-page">
+
+    <div id="sidebar-component"></div>
+
+    <main class="alertas-main">
+
+        <header class="alertas-topbar">
+            <div class="alertas-topbar-left">
+                <button id="menuButton"
+                        class="alertas-menu"
+                        type="button"
+                        aria-label="Abrir menú"
+                        aria-expanded="false">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+
+                <div class="alertas-breadcrumb">
+                    SISCAE <span>/</span>
+                    Revisor <span>/</span>
+                    <strong>Alertas</strong>
+                </div>
+            </div>
+
+            <div class="alertas-user">
+                <span class="alertas-avatar">CP</span>
+                <div>
+                    <strong>Carlos Pérez</strong>
+                    <small>Revisor editorial</small>
+                </div>
+            </div>
+        </header>
+
+        <div class="alertas-content">
+
+            <div class="alertas-ring ring-one"></div>
+            <div class="alertas-ring ring-two"></div>
+
+            <section class="alertas-heading">
+                <div>
+                    <span class="alertas-eyebrow">
+                        CENTRO DE NOTIFICACIONES
+                    </span>
+
+                    <h1>Alertas y notificaciones</h1>
+
+                    <p>
+                        Consulte los avisos relacionados con revisiones
+                        pendientes, observaciones y movimientos
+                        de los activos editoriales.
+                    </p>
+                </div>
+
+                <button type="button"
+                        id="markAllRead"
+                        class="alertas-secondary">
+                    Marcar todas como leídas
+                </button>
+            </section>
+
+            <section class="alertas-stats">
+
+                <article class="alertas-stat">
+                    <span>Total de alertas</span>
+                    <strong id="statTotal">0</strong>
+                    <small>Notificaciones registradas</small>
+                </article>
+
+                <article class="alertas-stat">
+                    <span>Sin leer</span>
+                    <strong id="statUnread">0</strong>
+                    <small>Requieren revisión</small>
+                </article>
+
+                <article class="alertas-stat">
+                    <span>Prioridad alta</span>
+                    <strong id="statHigh">0</strong>
+                    <small>Avisos importantes</small>
+                </article>
+
+                <article class="alertas-stat">
+                    <span>Atendidas</span>
+                    <strong id="statAttended">0</strong>
+                    <small>Alertas gestionadas</small>
+                </article>
+
+            </section>
+
+            <section class="alertas-panel">
+
+                <div class="alertas-panel-head">
+                    <div>
+                        <span class="alertas-eyebrow">
+                            BANDEJA DE ALERTAS
+                        </span>
+
+                        <h2>Notificaciones del Revisor</h2>
+
+                        <p>
+                            Identifique las situaciones que requieren
+                            atención y consulte sus detalles.
+                        </p>
+                    </div>
+
+                    <span id="resultsCount"
+                          class="alertas-total">
+                        0 alertas
+                    </span>
+                </div>
+
+                <div class="alertas-filters">
+
+                    <label class="alertas-search">
+                        <span>Buscar notificación</span>
+                        <input type="search"
+                               id="searchAlert"
+                               placeholder="Título, activo o código...">
+                    </label>
+
+                    <label>
+                        <span>Tipo de alerta</span>
+                        <select id="filterType">
+                            <option value="todos">Todos los tipos</option>
+                            <option value="Revisión">Revisión</option>
+                            <option value="Observación">Observación</option>
+                            <option value="Corrección">Corrección</option>
+                            <option value="Decisión">Decisión</option>
+                        </select>
+                    </label>
+
+                    <label>
+                        <span>Prioridad</span>
+                        <select id="filterPriority">
+                            <option value="todos">Todas</option>
+                            <option value="Alta">Alta</option>
+                            <option value="Media">Media</option>
+                            <option value="Baja">Baja</option>
+                        </select>
+                    </label>
+
+                    <label>
+                        <span>Lectura</span>
+                        <select id="filterRead">
+                            <option value="todos">Todas</option>
+                            <option value="no-leida">Sin leer</option>
+                            <option value="leida">Leídas</option>
+                        </select>
+                    </label>
+
+                    <button type="button"
+                            id="clearFilters"
+                            class="alertas-secondary">
+                        Limpiar
+                    </button>
+
+                </div>
+
+                <div class="alertas-list" id="alertsList"></div>
+
+                <div id="alertsEmpty"
+                     class="alertas-empty"
+                     hidden>
+                    No se encontraron notificaciones con los filtros seleccionados.
+                </div>
+
+                <div class="alertas-panel-foot">
+                    <span id="listSummary">Mostrando 0 alertas</span>
+                    <span>Notificaciones locales del prototipo</span>
+                </div>
+
+            </section>
+
+            <section class="alertas-bottom-grid">
+
+                <article class="alertas-info-card">
+                    <span class="alertas-eyebrow">
+                        PRIORIDADES
+                    </span>
+
+                    <h2>Clasificación de alertas</h2>
+
+                    <div class="alertas-priority-guide">
+                        <div>
+                            <span class="alertas-priority high">Alta</span>
+                            <p>Situaciones que requieren atención prioritaria.</p>
+                        </div>
+
+                        <div>
+                            <span class="alertas-priority medium">Media</span>
+                            <p>Revisiones o seguimientos pendientes.</p>
+                        </div>
+
+                        <div>
+                            <span class="alertas-priority low">Baja</span>
+                            <p>Avisos informativos y movimientos recientes.</p>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="alertas-info-card">
+                    <span class="alertas-eyebrow">
+                        ACCESOS RÁPIDOS
+                    </span>
+
+                    <h2>Continuar la gestión</h2>
+
+                    <div class="alertas-quick-links">
+                        <a href="observacionesRevisor.html">
+                            <strong>Observaciones</strong>
+                            <span>Consultar seguimiento editorial →</span>
+                        </a>
+
+                        <a href="aprobacionRevisor.html">
+                            <strong>Aprobación</strong>
+                            <span>Revisar versiones pendientes →</span>
+                        </a>
+
+                        <a href="auditoriaRevisor.html">
+                            <strong>Auditoría</strong>
+                            <span>Consultar el historial de acciones →</span>
+                        </a>
+                    </div>
+                </article>
+
+            </section>
+
+            <footer class="alertas-footer">
+                <span>
+                    SISCAE · Sistema Integral de Seguridad y Control
+                    de Activos Editoriales
+                </span>
+                <span>Panel del Revisor · Prototipo</span>
+            </footer>
+
+        </div>
+    </main>
+
+    <!-- MODAL DE DETALLE -->
+
+    <div id="alertDetailModal"
+         class="alertas-modal"
+         aria-hidden="true">
+
+        <div class="alertas-backdrop" data-close-alert></div>
+
+        <section class="alertas-dialog"
+                 role="dialog"
+                 aria-modal="true"
+                 aria-labelledby="alertDetailTitle">
+
+            <div class="alertas-dialog-head">
+                <div>
+                    <span class="alertas-eyebrow">
+                        DETALLE DE NOTIFICACIÓN
+                    </span>
+
+                    <h2 id="alertDetailTitle">Detalle de alerta</h2>
+                    <p id="alertDetailSubtitle"></p>
+                </div>
+
+                <button type="button"
+                        class="alertas-close"
+                        data-close-alert
+                        aria-label="Cerrar">
+                    ×
+                </button>
+            </div>
+
+            <div class="alertas-dialog-body">
+
+                <div id="alertDetailFields"
+                     class="alertas-detail-grid"></div>
+
+                <div class="alertas-detail-section">
+                    <h3>Descripción</h3>
+                    <p id="alertDetailDescription"></p>
+                </div>
+
+                <div class="alertas-detail-section">
+                    <h3>Acción recomendada</h3>
+                    <p id="alertDetailAction"></p>
+                </div>
+
+                <div class="alertas-dialog-foot">
+                    <button type="button"
+                            id="attendAlert"
+                            class="alertas-primary">
+                        Marcar como atendida
+                    </button>
+
+                    <button type="button"
+                            id="goToAlert"
+                            class="alertas-secondary">
+                        Ir a la sección
+                    </button>
+
+                    <button type="button"
+                            data-close-alert
+                            class="alertas-secondary">
+                        Cerrar
+                    </button>
+                </div>
+
+            </div>
+        </section>
+    </div>
+
+    <div id="alertToast"
+         class="alertas-toast"
+         role="status"
+         aria-live="polite"></div>
+
+    <script src="../js/components.js"></script>
+    <script src="../js/alertasRevisor.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,425 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Observaciones | SISCAE</title>
+
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/components/sidebar_revisor.css">
+    <link rel="stylesheet" href="../css/pages/observacionesRevisor.css">
+</head>
+
+<body class="observaciones-page">
+
+    <div id="sidebar-component"></div>
+
+    <main class="observaciones-main">
+
+        <header class="observaciones-topbar">
+            <div class="observaciones-topbar-left">
+                <button type="button" id="menuButton"
+                        class="observaciones-menu"
+                        aria-label="Abrir menú"
+                        aria-expanded="false">
+                    <span></span><span></span><span></span>
+                </button>
+
+                <div class="observaciones-breadcrumb">
+                    SISCAE <span>/</span> Revisor <span>/</span>
+                    <strong>Observaciones</strong>
+                </div>
+            </div>
+
+            <div class="observaciones-user">
+                <span class="observaciones-avatar">CP</span>
+                <div>
+                    <strong>Carlos Pérez</strong>
+                    <small>Revisor editorial</small>
+                </div>
+            </div>
+        </header>
+
+        <div class="observaciones-content">
+
+            <div class="observaciones-ring ring-one"></div>
+            <div class="observaciones-ring ring-two"></div>
+
+            <section class="observaciones-heading">
+                <div>
+                    <span class="observaciones-eyebrow">
+                        SEGUIMIENTO EDITORIAL
+                    </span>
+
+                    <h1>Gestión de observaciones</h1>
+
+                    <p>
+                        Registre observaciones sobre los activos editoriales,
+                        solicite correcciones y consulte el seguimiento de
+                        cada versión.
+                    </p>
+                </div>
+
+                <button type="button" id="newObservation"
+                        class="observaciones-primary">
+                    <span class="button-plus">+</span>
+                    Nueva observación
+                </button>
+            </section>
+
+            <section class="observaciones-stats">
+
+                <article class="observaciones-stat">
+                    <span>Total de observaciones</span>
+                    <strong id="statTotal">0</strong>
+                    <small>Registros de seguimiento</small>
+                </article>
+
+                <article class="observaciones-stat">
+                    <span>Pendientes del autor</span>
+                    <strong id="statPending">0</strong>
+                    <small>Esperando correcciones</small>
+                </article>
+
+                <article class="observaciones-stat">
+                    <span>Correcciones recibidas</span>
+                    <strong id="statReceived">0</strong>
+                    <small>Pendientes de verificación</small>
+                </article>
+
+                <article class="observaciones-stat">
+                    <span>Resueltas</span>
+                    <strong id="statResolved">0</strong>
+                    <small>Seguimiento finalizado</small>
+                </article>
+
+            </section>
+
+            <section class="observaciones-panel">
+
+                <div class="observaciones-panel-head">
+                    <div>
+                        <span class="observaciones-eyebrow">
+                            REGISTRO DE OBSERVACIONES
+                        </span>
+
+                        <h2>Seguimiento de correcciones</h2>
+
+                        <p>
+                            Consulte, edite y dé seguimiento a las
+                            observaciones registradas.
+                        </p>
+                    </div>
+
+                    <span class="observaciones-total" id="resultsCount">
+                        0 registros
+                    </span>
+                </div>
+
+                <div class="observaciones-filters">
+
+                    <label class="observaciones-search">
+                        <span>Buscar observación</span>
+                        <input type="search" id="searchObservation"
+                               placeholder="Activo, autor o código...">
+                    </label>
+
+                    <label>
+                        <span>Estado</span>
+                        <select id="filterStatus">
+                            <option value="todos">Todos los estados</option>
+                            <option value="Pendiente del autor">
+                                Pendiente del autor
+                            </option>
+                            <option value="Corrección recibida">
+                                Corrección recibida
+                            </option>
+                            <option value="Resuelta">
+                                Resuelta
+                            </option>
+                        </select>
+                    </label>
+
+                    <label>
+                        <span>Prioridad</span>
+                        <select id="filterPriority">
+                            <option value="todas">Todas</option>
+                            <option value="Alta">Alta</option>
+                            <option value="Media">Media</option>
+                            <option value="Baja">Baja</option>
+                        </select>
+                    </label>
+
+                    <button type="button" id="clearFilters"
+                            class="observaciones-clear">
+                        Limpiar filtros
+                    </button>
+
+                </div>
+
+                <div class="observaciones-table-wrap">
+                    <table class="observaciones-table">
+                        <thead>
+                            <tr>
+                                <th>Código</th>
+                                <th>Activo editorial</th>
+                                <th>Autor</th>
+                                <th>Fecha</th>
+                                <th>Prioridad</th>
+                                <th>Seguimiento</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="observationsBody"></tbody>
+                    </table>
+                </div>
+
+                <div id="observationsEmpty"
+                     class="observaciones-empty" hidden>
+                    No se encontraron observaciones.
+                </div>
+
+                <div class="observaciones-panel-foot">
+                    <span id="tableSummary">Mostrando 0 registros</span>
+                    <span>Datos del prototipo</span>
+                </div>
+
+            </section>
+
+            <footer class="observaciones-footer">
+                <span>
+                    SISCAE · Sistema Integral de Seguridad y Control
+                    de Activos Editoriales
+                </span>
+                <span>Panel del Revisor · Prototipo</span>
+            </footer>
+
+        </div>
+    </main>
+
+    <!-- MODAL CREAR / EDITAR -->
+    <div class="observaciones-modal" id="formModal"
+         aria-hidden="true">
+
+        <div class="observaciones-modal-backdrop"
+             data-close-form></div>
+
+        <section class="observaciones-dialog"
+                 role="dialog"
+                 aria-modal="true"
+                 aria-labelledby="formModalTitle">
+
+            <div class="observaciones-dialog-head">
+                <div>
+                    <span class="observaciones-eyebrow">
+                        REGISTRO EDITORIAL
+                    </span>
+                    <h2 id="formModalTitle">Nueva observación</h2>
+                    <p>
+                        Complete la información de la corrección solicitada.
+                    </p>
+                </div>
+
+                <button type="button"
+                        class="observaciones-close"
+                        data-close-form
+                        aria-label="Cerrar">×</button>
+            </div>
+
+            <form id="observationForm"
+                  class="observaciones-dialog-body">
+
+                <input type="hidden" id="editingId">
+
+                <div class="observaciones-form-grid">
+
+                    <label class="observaciones-field">
+                        <span>Proyecto <b>*</b></span>
+                        <select id="formProject" required>
+                            <option value="">Seleccionar proyecto</option>
+                            <option value="Materiales de Matemática">
+                                Materiales de Matemática
+                            </option>
+                            <option value="Recursos de Lenguaje">
+                                Recursos de Lenguaje
+                            </option>
+                            <option value="Ciencias Naturales">
+                                Ciencias Naturales
+                            </option>
+                            <option value="Estudios Sociales">
+                                Estudios Sociales
+                            </option>
+                        </select>
+                    </label>
+
+                    <label class="observaciones-field">
+                        <span>Activo editorial <b>*</b></span>
+                        <select id="formAsset" required disabled>
+                            <option value="">Seleccione un proyecto</option>
+                        </select>
+                    </label>
+
+                    <label class="observaciones-field">
+                        <span>Versión</span>
+                        <input id="formVersion" type="text"
+                               readonly placeholder="—">
+                    </label>
+
+                    <label class="observaciones-field">
+                        <span>Autor</span>
+                        <input id="formAuthor" type="text"
+                               readonly placeholder="—">
+                    </label>
+
+                    <label class="observaciones-field">
+                        <span>Tipo de observación <b>*</b></span>
+                        <select id="formType" required>
+                            <option value="">Seleccionar tipo</option>
+                            <option value="Contenido">Contenido</option>
+                            <option value="Ortografía y redacción">
+                                Ortografía y redacción
+                            </option>
+                            <option value="Diseño y formato">
+                                Diseño y formato
+                            </option>
+                            <option value="Multimedia">Multimedia</option>
+                            <option value="Referencias y créditos">
+                                Referencias y créditos
+                            </option>
+                            <option value="Otro">Otro</option>
+                        </select>
+                    </label>
+
+                    <label class="observaciones-field">
+                        <span>Prioridad <b>*</b></span>
+                        <select id="formPriority" required>
+                            <option value="">Seleccionar prioridad</option>
+                            <option value="Alta">Alta</option>
+                            <option value="Media">Media</option>
+                            <option value="Baja">Baja</option>
+                        </select>
+                    </label>
+
+                    <label class="observaciones-field full">
+                        <span>Descripción de la observación <b>*</b></span>
+                        <textarea id="formMessage" rows="5"
+                                  maxlength="1500"
+                                  placeholder="Describa el problema identificado y la corrección que debe realizar el autor..."
+                                  required></textarea>
+                        <small>
+                            Indique de forma clara qué debe corregirse.
+                        </small>
+                    </label>
+
+                </div>
+
+                <div class="observaciones-form-note">
+                    Al registrar una observación, su seguimiento iniciará
+                    como <strong>Pendiente del autor</strong>. El activo
+                    conservará su estado editorial hasta que se registre
+                    una decisión de revisión.
+                </div>
+
+                <div class="observaciones-dialog-foot">
+                    <button type="button"
+                            class="observaciones-secondary"
+                            data-close-form>
+                        Cancelar
+                    </button>
+
+                    <button type="submit"
+                            class="observaciones-primary"
+                            id="saveObservation">
+                        Guardar observación
+                    </button>
+                </div>
+
+            </form>
+        </section>
+    </div>
+
+    <!-- MODAL DETALLE -->
+    <div class="observaciones-modal" id="detailModal"
+         aria-hidden="true">
+
+        <div class="observaciones-modal-backdrop"
+             data-close-detail></div>
+
+        <section class="observaciones-dialog"
+                 role="dialog"
+                 aria-modal="true"
+                 aria-labelledby="detailModalTitle">
+
+            <div class="observaciones-dialog-head">
+                <div>
+                    <span class="observaciones-eyebrow">
+                        DETALLE DE SEGUIMIENTO
+                    </span>
+                    <h2 id="detailModalTitle">Observación</h2>
+                </div>
+
+                <button type="button"
+                        class="observaciones-close"
+                        data-close-detail
+                        aria-label="Cerrar">×</button>
+            </div>
+
+            <div class="observaciones-dialog-body">
+
+                <div class="observaciones-detail-grid"
+                     id="observationDetails"></div>
+
+                <div class="observaciones-detail-section">
+                    <h3>Corrección solicitada</h3>
+                    <p id="observationMessage"></p>
+                </div>
+
+                <div class="observaciones-detail-section">
+                    <h3>Historial de seguimiento</h3>
+                    <div id="observationTimeline"></div>
+                </div>
+
+                <div class="observaciones-detail-section"
+                     id="detailActionsSection">
+                    <h3>Actualizar seguimiento</h3>
+
+                    <div class="observaciones-followup-actions">
+                        <button type="button" id="markReceived"
+                                class="observaciones-secondary">
+                            Registrar corrección recibida
+                        </button>
+
+                        <button type="button" id="markResolved"
+                                class="observaciones-primary">
+                            Marcar como resuelta
+                        </button>
+                    </div>
+
+                    <small class="observaciones-demo-note">
+                        Estas acciones simulan el seguimiento del prototipo.
+                    </small>
+                </div>
+
+                <div class="observaciones-dialog-foot">
+                    <button type="button"
+                            class="observaciones-secondary"
+                            data-close-detail>
+                        Cerrar
+                    </button>
+                </div>
+
+            </div>
+        </section>
+    </div>
+
+    <!-- NOTIFICACIÓN -->
+    <div class="observaciones-toast" id="observationToast"
+         role="status" aria-live="polite"></div>
+
+    <script src="../js/components.js"></script>
+    <script src="../js/observacionesRevisor.js"></script>
+</body>
+</html>

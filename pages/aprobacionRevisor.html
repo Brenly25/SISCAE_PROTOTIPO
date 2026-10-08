@@ -1,0 +1,315 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aprobación editorial | SISCAE</title>
+
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/components/sidebar_revisor.css">
+    <link rel="stylesheet" href="../css/pages/aprobacionRevisor.css">
+</head>
+
+<body class="aprobacion-page">
+
+    <div id="sidebar-component"></div>
+
+    <main class="aprobacion-main">
+
+        <header class="aprobacion-topbar">
+            <div class="aprobacion-topbar-left">
+                <button id="menuButton" class="aprobacion-menu"
+                        type="button" aria-label="Abrir menú"
+                        aria-expanded="false">
+                    <span></span><span></span><span></span>
+                </button>
+
+                <div class="aprobacion-breadcrumb">
+                    SISCAE <span>/</span> Revisor <span>/</span>
+                    <strong>Aprobación</strong>
+                </div>
+            </div>
+
+            <div class="aprobacion-user">
+                <span class="aprobacion-avatar">CP</span>
+                <div>
+                    <strong>Carlos Pérez</strong>
+                    <small>Revisor editorial</small>
+                </div>
+            </div>
+        </header>
+
+        <div class="aprobacion-content">
+            <div class="aprobacion-ring ring-one"></div>
+            <div class="aprobacion-ring ring-two"></div>
+
+            <section class="aprobacion-heading">
+                <div>
+                    <span class="aprobacion-eyebrow">CONTROL DE CALIDAD EDITORIAL</span>
+                    <h1>Revisión y aprobación</h1>
+                    <p>
+                        Evalúe las versiones de los activos editoriales,
+                        consulte sus observaciones y registre una decisión
+                        de revisión.
+                    </p>
+                </div>
+
+                <span class="aprobacion-mode">
+                    Panel del Revisor
+                </span>
+            </section>
+
+            <section class="aprobacion-stats">
+                <article class="aprobacion-stat">
+                    <span>En revisión</span>
+                    <strong id="statReview">0</strong>
+                    <small>Pendientes de decisión</small>
+                </article>
+
+                <article class="aprobacion-stat">
+                    <span>Con observaciones</span>
+                    <strong id="statObserved">0</strong>
+                    <small>Requieren seguimiento</small>
+                </article>
+
+                <article class="aprobacion-stat">
+                    <span>Aprobados</span>
+                    <strong id="statApproved">0</strong>
+                    <small>Decisiones registradas</small>
+                </article>
+
+                <article class="aprobacion-stat">
+                    <span>Rechazados</span>
+                    <strong id="statRejected">0</strong>
+                    <small>Decisiones registradas</small>
+                </article>
+            </section>
+
+            <section class="aprobacion-panel">
+                <div class="aprobacion-panel-head">
+                    <div>
+                        <span class="aprobacion-eyebrow">BANDEJA EDITORIAL</span>
+                        <h2>Activos asignados para revisión</h2>
+                        <p>
+                            Seleccione un activo para consultar su versión
+                            y registrar una decisión.
+                        </p>
+                    </div>
+                    <span class="aprobacion-total" id="resultsCount">
+                        0 activos
+                    </span>
+                </div>
+
+                <div class="aprobacion-filters">
+                    <label>
+                        <span>Buscar activo</span>
+                        <input id="searchAsset" type="search"
+                               placeholder="Nombre, código o autor...">
+                    </label>
+
+                    <label>
+                        <span>Estado editorial</span>
+                        <select id="filterStatus">
+                            <option value="todos">Todos los estados</option>
+                            <option value="En revisión">En revisión</option>
+                            <option value="Aprobado">Aprobado</option>
+                            <option value="Rechazado">Rechazado</option>
+                        </select>
+                    </label>
+
+                    <label>
+                        <span>Tipo de recurso</span>
+                        <select id="filterType">
+                            <option value="todos">Todos los tipos</option>
+                            <option value="Documento">Documento</option>
+                            <option value="Video">Video</option>
+                            <option value="Imagen">Imagen</option>
+                        </select>
+                    </label>
+
+                    <button type="button" id="clearFilters"
+                            class="aprobacion-secondary">
+                        Limpiar filtros
+                    </button>
+                </div>
+
+                <div class="aprobacion-table-wrap">
+                    <table class="aprobacion-table">
+                        <thead>
+                            <tr>
+                                <th>Código</th>
+                                <th>Activo editorial</th>
+                                <th>Autor</th>
+                                <th>Versión</th>
+                                <th>Observaciones</th>
+                                <th>Estado</th>
+                                <th>Acción</th>
+                            </tr>
+                        </thead>
+                        <tbody id="assetsBody"></tbody>
+                    </table>
+                </div>
+
+                <div class="aprobacion-empty" id="assetsEmpty" hidden>
+                    No se encontraron activos con los filtros seleccionados.
+                </div>
+
+                <div class="aprobacion-panel-foot">
+                    <span id="tableSummary">Mostrando 0 activos</span>
+                    <span>Información de demostración</span>
+                </div>
+            </section>
+
+            <section class="aprobacion-bottom-grid">
+                <article class="aprobacion-info-card">
+                    <span class="aprobacion-eyebrow">CRITERIOS DE REVISIÓN</span>
+                    <h2>Antes de tomar una decisión</h2>
+                    <p>
+                        Verifique el contenido, la versión presentada,
+                        los datos del autor y las observaciones pendientes.
+                        Una versión con observaciones sin resolver no
+                        podrá aprobarse desde este prototipo.
+                    </p>
+                </article>
+
+                <article class="aprobacion-info-card">
+                    <span class="aprobacion-eyebrow">TRAZABILIDAD</span>
+                    <h2>Historial de decisiones</h2>
+                    <div id="recentDecisions" class="aprobacion-recent"></div>
+                </article>
+            </section>
+
+            <footer class="aprobacion-footer">
+                <span>
+                    SISCAE · Sistema Integral de Seguridad y Control
+                    de Activos Editoriales
+                </span>
+                <span>Panel del Revisor · Prototipo</span>
+            </footer>
+        </div>
+    </main>
+
+    <!-- MODAL DE REVISIÓN -->
+    <div id="reviewModal" class="aprobacion-modal"
+         aria-hidden="true">
+        <div class="aprobacion-backdrop" data-close-review></div>
+
+        <section class="aprobacion-dialog"
+                 role="dialog" aria-modal="true"
+                 aria-labelledby="reviewModalTitle">
+
+            <div class="aprobacion-dialog-head">
+                <div>
+                    <span class="aprobacion-eyebrow">
+                        EVALUACIÓN DE VERSIÓN
+                    </span>
+                    <h2 id="reviewModalTitle">Revisión editorial</h2>
+                    <p id="reviewModalSubtitle"></p>
+                </div>
+
+                <button type="button" class="aprobacion-close"
+                        data-close-review aria-label="Cerrar">
+                    ×
+                </button>
+            </div>
+
+            <div class="aprobacion-dialog-body">
+
+                <div class="aprobacion-detail-grid"
+                     id="assetDetails"></div>
+
+                <div class="aprobacion-section">
+                    <div class="aprobacion-section-title">
+                        <h3>Observaciones de la versión</h3>
+                        <span id="observationCount"
+                              class="aprobacion-count">0</span>
+                    </div>
+
+                    <div id="assetObservations"></div>
+                </div>
+
+                <div class="aprobacion-section">
+                    <h3>Historial de decisiones</h3>
+                    <div id="assetHistory"></div>
+                </div>
+
+                <div id="decisionSection"
+                     class="aprobacion-section">
+                    <h3>Registrar decisión editorial</h3>
+
+                    <p class="aprobacion-helper">
+                        Seleccione una acción y escriba el motivo.
+                        El registro se conservará en este navegador.
+                    </p>
+
+                    <label class="aprobacion-field">
+                        <span>Justificación de la decisión</span>
+                        <textarea id="decisionReason" rows="4"
+                                  maxlength="1500"
+                                  placeholder="Describa los criterios de la revisión y el motivo de la decisión..."></textarea>
+                    </label>
+
+                    <div class="aprobacion-decision-buttons">
+                        <button type="button" id="approveButton"
+                                class="aprobacion-btn approve">
+                            Aprobar versión
+                        </button>
+
+                        <button type="button" id="changesButton"
+                                class="aprobacion-btn changes">
+                            Solicitar correcciones
+                        </button>
+
+                        <button type="button" id="rejectButton"
+                                class="aprobacion-btn reject">
+                            Rechazar versión
+                        </button>
+                    </div>
+
+                    <p id="decisionWarning"
+                       class="aprobacion-warning" hidden></p>
+                </div>
+
+                <div class="aprobacion-dialog-foot">
+                    <button type="button" data-close-review
+                            class="aprobacion-secondary">
+                        Cerrar
+                    </button>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- CONFIRMACIÓN -->
+    <div id="confirmModal" class="aprobacion-modal confirm-layer"
+         aria-hidden="true">
+        <div class="aprobacion-backdrop" data-cancel-decision></div>
+
+        <section class="aprobacion-confirm-dialog"
+                 role="dialog" aria-modal="true"
+                 aria-labelledby="confirmTitle">
+
+            <h2 id="confirmTitle">Confirmar decisión</h2>
+            <p id="confirmMessage"></p>
+
+            <div class="aprobacion-confirm-actions">
+                <button type="button" data-cancel-decision
+                        class="aprobacion-secondary">
+                    Cancelar
+                </button>
+                <button type="button" id="confirmDecision"
+                        class="aprobacion-primary">
+                    Confirmar
+                </button>
+            </div>
+        </section>
+    </div>
+
+    <div id="approvalToast" class="aprobacion-toast"
+         role="status" aria-live="polite"></div>
+
+    <script src="../js/components.js"></script>
+    <script src="../js/aprobacionRevisor.js"></script>
+</body>
+</html>

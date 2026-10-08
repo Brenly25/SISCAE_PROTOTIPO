@@ -1,91 +1,107 @@
-
 /* =========================================================
-   SISCAE - DASHBOARD REVISOR
-   JavaScript completo
+   SISCAE - DASHBOARD DEL REVISOR
+   Prototipo con información simulada
 ========================================================= */
 
-document.addEventListener("DOMContentLoaded", async () => {
+document.addEventListener("DOMContentLoaded", async function () {
 
     /* =====================================================
-       CARGAR SIDEBAR
+       CARGAR SIDEBAR COMPARTIDO
     ===================================================== */
 
     try {
+
         if (typeof loadRevisorSidebar === "function") {
+
             await loadRevisorSidebar();
+
         } else {
+
             console.error(
                 "No se encontró loadRevisorSidebar() en components.js"
             );
+
         }
+
     } catch (error) {
-        console.error("Error al cargar el sidebar:", error);
+
+        console.error(
+            "Error al cargar el sidebar del Revisor:",
+            error
+        );
+
     }
 
-    initDashboardRevisor();
+    iniciarDashboardRevisor();
 
 });
 
 
-function initDashboardRevisor() {
+/* =========================================================
+   INICIALIZACIÓN
+========================================================= */
 
-    const $ = id => document.getElementById(id);
+function iniciarDashboardRevisor() {
+
+    const obtener = id => document.getElementById(id);
 
     /* =====================================================
        DATOS DE DEMOSTRACIÓN
     ===================================================== */
 
-    const data = {
+    const datos = {
 
         revisiones: [
+
             {
                 id: "ACT-010",
-                nombre: "Portada Guía de Estudios Sociales",
-                tipo: "Imagen",
+                nombre: "Portada de Estudios Sociales",
                 autor: "Sofía Castro",
                 version: 2,
-                estado: "En revisión",
+                tipo: "Imagen",
                 diasRestantes: -1
             },
+
             {
                 id: "ACT-009",
-                nombre: "Video: Fracciones en la vida diaria",
-                tipo: "Multimedia",
+                nombre: "Video de fracciones",
                 autor: "José Ramírez",
                 version: 2,
-                estado: "En revisión",
+                tipo: "Video",
                 diasRestantes: 1
             },
+
             {
                 id: "ACT-001",
                 nombre: "Libro de Matemática",
-                tipo: "Libro",
                 autor: "Ana Martínez",
                 version: 3,
-                estado: "En revisión",
+                tipo: "Documento",
                 diasRestantes: 2
             },
+
             {
                 id: "ACT-007",
                 nombre: "Guía metodológica de Ciencias",
-                tipo: "Documento",
                 autor: "María López",
                 version: 2,
-                estado: "En revisión",
+                tipo: "Documento",
                 diasRestantes: 4
             },
+
             {
                 id: "ACT-008",
-                nombre: "Cuaderno de actividades de Lenguaje",
-                tipo: "Documento",
+                nombre: "Cuaderno de Lenguaje",
                 autor: "Laura Gómez",
                 version: 1,
-                estado: "En revisión",
+                tipo: "Documento",
                 diasRestantes: 6
             }
+
         ],
 
         observaciones: [
+
             {
                 id: "OBS-001",
                 activo: "Guía docente",
@@ -93,6 +109,7 @@ function initDashboardRevisor() {
                 cantidad: 2,
                 estado: "Pendiente del autor"
             },
+
             {
                 id: "OBS-002",
                 activo: "Cuadernillo de Lenguaje",
@@ -100,639 +117,576 @@ function initDashboardRevisor() {
                 cantidad: 1,
                 estado: "Pendiente del autor"
             }
+
         ],
 
         decisiones: [
+
             {
-                id: "REV-001",
                 activo: "Guía docente",
                 accion: "Cambios solicitados",
                 fecha: "Hoy",
                 tipo: "warning"
             },
+
             {
-                id: "REV-002",
                 activo: "Cuadernillo de Lenguaje",
                 accion: "Cambios solicitados",
                 fecha: "Ayer",
                 tipo: "warning"
             },
+
             {
-                id: "REV-003",
                 activo: "Portada Unidad 4",
                 accion: "Versión aprobada",
                 fecha: "Hace 2 días",
                 tipo: "success"
             },
+
             {
-                id: "REV-004",
                 activo: "Afiche Día del Maestro",
                 accion: "Versión rechazada",
                 fecha: "Hace 4 días",
                 tipo: "danger"
             }
+
         ],
 
-        alertas: [
-            {
-                id: "ALT-001",
-                leida: false
-            }
-        ]
+        alertas: 1
 
     };
 
+
     /* =====================================================
-       UTILIDADES
+       FUNCIONES AUXILIARES
     ===================================================== */
 
-    function escapeHTML(value) {
-        const div = document.createElement("div");
-        div.textContent = String(value ?? "");
-        return div.innerHTML;
-    }
+    function establecerTexto(id, valor) {
 
-    function setText(id, value) {
-        const element = $(id);
+        const elemento = obtener(id);
 
-        if (element) {
-            element.textContent = value;
+        if (elemento) {
+            elemento.textContent = valor;
         }
+
     }
 
-    function getGreeting() {
-        const hour = new Date().getHours();
 
-        if (hour >= 5 && hour < 12) {
+    function escaparHTML(valor) {
+
+        const elemento = document.createElement("div");
+
+        elemento.textContent = String(valor ?? "");
+
+        return elemento.innerHTML;
+
+    }
+
+
+    function obtenerSaludo() {
+
+        const hora = new Date().getHours();
+
+        if (hora >= 5 && hora < 12) {
             return "Buenos días";
         }
 
-        if (hour >= 12 && hour < 18) {
+        if (hora >= 12 && hora < 18) {
             return "Buenas tardes";
         }
 
         return "Buenas noches";
+
     }
 
-    function getDueLabel(days) {
-        if (days < 0) {
+
+    function obtenerVencimiento(dias) {
+
+        if (dias < 0) {
+
             return {
-                texto: `Vencido hace ${Math.abs(days)} día(s)`,
-                clase: "urgent"
+                texto: "Vencido",
+                clase: "danger"
             };
+
         }
 
-        if (days === 0) {
+        if (dias === 0) {
+
             return {
                 texto: "Vence hoy",
-                clase: "urgent"
+                clase: "danger"
             };
+
         }
 
-        if (days === 1) {
+        if (dias === 1) {
+
             return {
                 texto: "Vence mañana",
-                clase: "pending"
+                clase: "warning"
             };
+
         }
 
         return {
-            texto: `En ${days} días`,
+            texto: `En ${dias} días`,
             clase: ""
         };
+
     }
 
-    function iconSVG(name) {
-
-        const icons = {
-
-            file: `
-                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                <path d="M14 2v6h6M8 13h8M8 17h5"></path>
-            `,
-
-            comment: `
-                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-            `,
-
-            check: `
-                <circle cx="12" cy="12" r="9"></circle>
-                <path d="m8 12 3 3 5-6"></path>
-            `,
-
-            reject: `
-                <circle cx="12" cy="12" r="9"></circle>
-                <path d="M9 9l6 6M15 9l-6 6"></path>
-            `,
-
-            clock: `
-                <circle cx="12" cy="12" r="9"></circle>
-                <path d="M12 7v5l3 2"></path>
-            `
-        };
-
-        return `
-            <svg
-                viewBox="0 0 24 24"
-                width="20"
-                height="20"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.7"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                aria-hidden="true"
-            >
-                ${icons[name] || icons.file}
-            </svg>
-        `;
-    }
 
     /* =====================================================
-       ENCABEZADO
+       BIENVENIDA
     ===================================================== */
 
-    function renderWelcome() {
+    function mostrarBienvenida() {
 
-        setText(
-            "greeting",
-            `${getGreeting()}, Carlos`
+        establecerTexto(
+            "revisorGreeting",
+            `${obtenerSaludo()}, Carlos`
         );
 
-        setText(
-            "currentDate",
-            new Intl.DateTimeFormat("es-SV", {
-                day: "numeric",
-                month: "long",
-                year: "numeric"
-            }).format(new Date())
+        const fecha = new Intl.DateTimeFormat("es-SV", {
+
+            day: "numeric",
+            month: "long",
+            year: "numeric"
+
+        }).format(new Date());
+
+        establecerTexto(
+            "revisorCurrentDate",
+            fecha
         );
+
     }
+
 
     /* =====================================================
        ESTADÍSTICAS
     ===================================================== */
 
-    function getStats() {
+    function mostrarEstadisticas() {
 
-        const revisiones = data.revisiones.filter(
-            item => item.estado === "En revisión"
+        const urgentes = datos.revisiones.filter(
+            revision => revision.diasRestantes <= 0
+        ).length;
+
+        const pendientes = datos.observaciones.filter(
+            observacion => observacion.estado === "Pendiente del autor"
+        ).length;
+
+        establecerTexto(
+            "statReview",
+            datos.revisiones.length
         );
 
-        const urgentes = revisiones.filter(
-            item => item.diasRestantes <= 0
+        establecerTexto(
+            "statUrgent",
+            urgentes
         );
 
-        const observaciones = data.observaciones.filter(
-            item => item.estado === "Pendiente del autor"
+        establecerTexto(
+            "statObservations",
+            pendientes
         );
 
-        const alertas = data.alertas.filter(
-            item => !item.leida
+        establecerTexto(
+            "statDecisions",
+            datos.decisiones.length
         );
 
-        return {
-            revisiones: revisiones.length,
-            urgentes: urgentes.length,
-            observaciones: observaciones.length,
-            decisiones: data.decisiones.length,
-            alertas: alertas.length
-        };
-    }
+        establecerTexto(
+            "priorityCount",
+            datos.revisiones.length
+        );
 
-    function renderStats() {
+        const notificacion = obtener("notificationCount");
 
-        const stats = getStats();
+        if (notificacion) {
 
-        setText("statReview", stats.revisiones);
-        setText("statUrgent", stats.urgentes);
-        setText("statObservations", stats.observaciones);
-        setText("statDecisions", stats.decisiones);
-        setText("priorityCount", stats.revisiones);
+            notificacion.textContent = datos.alertas;
 
-        const notification = $("notificationCount");
+            notificacion.hidden = datos.alertas === 0;
 
-        if (notification) {
-            notification.textContent = stats.alertas;
-            notification.hidden = stats.alertas === 0;
         }
 
-        const counts = {
-            cola: stats.revisiones,
-            seguimiento: stats.observaciones,
-            urgentes: stats.alertas,
-            alertas: stats.alertas
+        /* Contadores del sidebar, si existen */
+
+        const contadores = {
+
+            cola: datos.revisiones.length,
+            seguimiento: pendientes,
+            urgentes: urgentes,
+            alertas: datos.alertas
+
         };
 
-        document
-            .querySelectorAll("[data-sidebar-count]")
-            .forEach(element => {
+        document.querySelectorAll(
+            "[data-sidebar-count]"
+        ).forEach(elemento => {
 
-                const key = element.dataset.sidebarCount;
-                const count = counts[key] ?? 0;
+            const tipo = elemento.dataset.sidebarCount;
 
-                element.textContent = count;
-                element.dataset.empty = String(count === 0);
-            });
+            if (Object.prototype.hasOwnProperty.call(contadores, tipo)) {
+
+                elemento.textContent = contadores[tipo];
+
+            }
+
+        });
+
     }
+
 
     /* =====================================================
        REVISIONES ORDENADAS
     ===================================================== */
 
-    function getSortedReviews() {
+    function obtenerRevisiones() {
 
-        return data.revisiones
-            .filter(item => item.estado === "En revisión")
-            .sort((a, b) => a.diasRestantes - b.diasRestantes);
+        return [...datos.revisiones].sort(
+            (a, b) => a.diasRestantes - b.diasRestantes
+        );
+
     }
 
+
     /* =====================================================
-       BANNER PRIORITARIO
+       REVISIÓN PRIORITARIA
     ===================================================== */
 
-    function renderPriorityBanner() {
+    function mostrarPrioridad() {
 
-        const next = getSortedReviews()[0];
+        const revisiones = obtenerRevisiones();
 
-        if (!next) {
-            setText("priorityTitle", "No hay revisiones pendientes");
-            setText(
-                "priorityDescription",
-                "Las nuevas versiones aparecerán aquí."
+        if (!revisiones.length) {
+
+            establecerTexto(
+                "priorityTitle",
+                "No hay revisiones pendientes"
             );
+
+            establecerTexto(
+                "priorityDescription",
+                "Todas las revisiones asignadas están al día."
+            );
+
             return;
+
         }
 
-        const due = getDueLabel(next.diasRestantes);
+        const revision = revisiones[0];
 
-        setText("priorityTitle", next.nombre);
-
-        setText(
-            "priorityDescription",
-            `v${next.version} · ${next.tipo} · ${next.autor} · ${due.texto}`
+        const vencimiento = obtenerVencimiento(
+            revision.diasRestantes
         );
+
+        establecerTexto(
+            "priorityTitle",
+            revision.nombre
+        );
+
+        establecerTexto(
+            "priorityDescription",
+            `Versión ${revision.version} · ${revision.tipo} · ` +
+            `${revision.autor} · ${vencimiento.texto}`
+        );
+
     }
 
+
     /* =====================================================
-       REVISIONES PENDIENTES
+       LISTADO DE REVISIONES
     ===================================================== */
 
-    function renderPriorityList() {
+    function mostrarRevisiones() {
 
-        const container = $("priorityList");
+        const contenedor = obtener("priorityList");
 
-        if (!container) return;
+        if (!contenedor) return;
 
-        const reviews = getSortedReviews().slice(0, 4);
+        const revisiones = obtenerRevisiones().slice(0, 4);
 
-        if (!reviews.length) {
-            container.innerHTML = `
-                <div class="empty-state">
+        if (!revisiones.length) {
+
+            contenedor.innerHTML = `
+                <div class="revisor-empty">
                     No hay activos pendientes de revisión.
                 </div>
             `;
+
             return;
+
         }
 
-        container.innerHTML = reviews.map(item => {
+        contenedor.innerHTML = revisiones.map(revision => {
 
-            const due = getDueLabel(item.diasRestantes);
+            const vencimiento = obtenerVencimiento(
+                revision.diasRestantes
+            );
 
             return `
-                <div class="dashboard-row">
 
-                    <div class="row-icon">
-                        ${iconSVG("file")}
-                    </div>
+                <div class="revisor-list-item">
 
-                    <div class="row-content">
-                        <strong>${escapeHTML(item.nombre)}</strong>
+                    <span class="revisor-item-indicator"></span>
+
+                    <div class="revisor-item-content">
+
+                        <strong>
+                            ${escaparHTML(revision.nombre)}
+                        </strong>
+
                         <span>
-                            v${item.version} · ${escapeHTML(item.autor)}
+                            Versión ${revision.version}
+                            · ${escaparHTML(revision.autor)}
                         </span>
+
                     </div>
 
-                    <span class="row-badge ${due.clase}">
-                        ${escapeHTML(due.texto)}
+                    <span class="revisor-item-badge ${vencimiento.clase}">
+                        ${escaparHTML(vencimiento.texto)}
                     </span>
 
                     <a
                         href="aprobacionRevisor.html"
-                        class="row-link"
+                        class="revisor-item-link"
                     >
                         Revisar
                     </a>
 
                 </div>
+
             `;
 
         }).join("");
+
     }
+
 
     /* =====================================================
        OBSERVACIONES
     ===================================================== */
 
-    function renderObservations() {
+    function mostrarObservaciones() {
 
-        const container = $("observationList");
+        const contenedor = obtener("observationList");
 
-        if (!container) return;
+        if (!contenedor) return;
 
-        const observations = data.observaciones.filter(
-            item => item.estado === "Pendiente del autor"
-        );
+        if (!datos.observaciones.length) {
 
-        if (!observations.length) {
-            container.innerHTML = `
-                <div class="empty-state">
+            contenedor.innerHTML = `
+                <div class="revisor-empty">
                     No hay observaciones pendientes.
                 </div>
             `;
+
             return;
+
         }
 
-        container.innerHTML = observations.slice(0, 4).map(item => `
-            <div class="dashboard-row">
+        contenedor.innerHTML = datos.observaciones.map(item => `
 
-                <div class="row-icon warning">
-                    ${iconSVG("comment")}
-                </div>
+            <div class="revisor-list-item">
 
-                <div class="row-content">
-                    <strong>${escapeHTML(item.activo)}</strong>
+                <span class="revisor-item-indicator warning"></span>
+
+                <div class="revisor-item-content">
+
+                    <strong>
+                        ${escaparHTML(item.activo)}
+                    </strong>
+
                     <span>
-                        ${escapeHTML(item.autor)} ·
-                        ${item.cantidad} observación(es)
+                        ${escaparHTML(item.autor)}
+                        · ${item.cantidad} observación(es)
                     </span>
+
                 </div>
 
-                <span class="row-badge pending">
+                <span class="revisor-item-badge warning">
                     Pendiente
                 </span>
 
                 <a
                     href="observacionesRevisor.html"
-                    class="row-link"
+                    class="revisor-item-link"
                 >
                     Ver
                 </a>
 
             </div>
+
         `).join("");
+
     }
+
 
     /* =====================================================
        ACTIVIDAD RECIENTE
     ===================================================== */
 
-    function renderActivity() {
+    function mostrarActividad() {
 
-        const container = $("activityList");
+        const contenedor = obtener("activityList");
 
-        if (!container) return;
+        if (!contenedor) return;
 
-        if (!data.decisiones.length) {
-            container.innerHTML = `
-                <div class="empty-state">
-                    No hay actividad registrada.
+        if (!datos.decisiones.length) {
+
+            contenedor.innerHTML = `
+                <div class="revisor-empty">
+                    No hay actividad reciente.
                 </div>
             `;
+
             return;
+
         }
 
-        container.innerHTML = data.decisiones.slice(0, 4).map(item => {
+        contenedor.innerHTML = datos.decisiones.map(item => `
 
-            const icon = item.tipo === "success"
-                ? "check"
-                : item.tipo === "danger"
-                    ? "reject"
-                    : "comment";
+            <div class="revisor-list-item">
 
-            return `
-                <div class="dashboard-row">
+                <span class="revisor-item-indicator ${item.tipo}"></span>
 
-                    <div class="row-icon ${escapeHTML(item.tipo)}">
-                        ${iconSVG(icon)}
-                    </div>
+                <div class="revisor-item-content">
 
-                    <div class="row-content">
-                        <strong>${escapeHTML(item.accion)}</strong>
-                        <span>
-                            ${escapeHTML(item.activo)} ·
-                            ${escapeHTML(item.fecha)}
-                        </span>
-                    </div>
+                    <strong>
+                        ${escaparHTML(item.accion)}
+                    </strong>
 
-                    <a
-                        href="auditoriaRevisor.html"
-                        class="row-link"
-                    >
-                        Detalles
-                    </a>
+                    <span>
+                        ${escaparHTML(item.activo)}
+                        · ${escaparHTML(item.fecha)}
+                    </span>
 
                 </div>
-            `;
 
-        }).join("");
+                <a
+                    href="auditoriaRevisor.html"
+                    class="revisor-item-link"
+                >
+                    Detalles
+                </a>
+
+            </div>
+
+        `).join("");
+
     }
 
+
     /* =====================================================
-       SIDEBAR
+       SIDEBAR Y MENÚ RESPONSIVE
     ===================================================== */
 
-    function initSidebar() {
+    function configurarSidebar() {
 
-        const sidebar = $("sidebar");
-        const overlay = $("mobileOverlay");
-        const menuButton = $("menuButton");
+        const sidebar = obtener("sidebar");
+        const overlay = obtener("mobileOverlay");
+        const botonMenu = obtener("menuButton");
 
         if (!sidebar) return;
 
-        document.querySelectorAll("#sidebar .nav-item").forEach(link => {
+        /* Marcar Inicio como página activa */
 
-            const page = (
-                link.dataset.page ||
-                link.getAttribute("href") ||
-                ""
-            ).split("#")[0].split("/").pop();
+        document.querySelectorAll(
+            "#sidebar .nav-item"
+        ).forEach(enlace => {
 
-            const active = page === "dashboardRevisor.html";
+            const destino = (
+                enlace.getAttribute("href") || ""
+            ).split("?")[0].split("#")[0].split("/").pop();
 
-            link.classList.toggle("active", active);
+            const pagina = enlace.dataset.page || "";
 
-            if (active) {
-                link.setAttribute("aria-current", "page");
+            const activo =
+                destino === "dashboardRevisor.html" ||
+                pagina === "dashboardRevisor" ||
+                pagina === "dashboardRevisor.html";
+
+            enlace.classList.toggle("active", activo);
+
+            if (activo) {
+
+                enlace.setAttribute(
+                    "aria-current",
+                    "page"
+                );
+
             } else {
-                link.removeAttribute("aria-current");
+
+                enlace.removeAttribute("aria-current");
+
             }
+
         });
 
-        function setMenuOpen(open) {
+        /* Menú móvil */
 
-            sidebar.classList.toggle("open", open);
-            overlay?.classList.toggle("active", open);
+        if (botonMenu) {
 
-            menuButton?.setAttribute(
-                "aria-expanded",
-                String(open)
-            );
-        }
+            botonMenu.addEventListener("click", () => {
 
-        if (menuButton) {
-            menuButton.onclick = () => {
-                setMenuOpen(!sidebar.classList.contains("open"));
-            };
+                const abierto = sidebar.classList.toggle("open");
+
+                if (overlay) {
+                    overlay.classList.toggle("active", abierto);
+                }
+
+                botonMenu.setAttribute(
+                    "aria-expanded",
+                    String(abierto)
+                );
+
+            });
+
         }
 
         if (overlay) {
-            overlay.onclick = () => setMenuOpen(false);
+
+            overlay.addEventListener("click", () => {
+
+                sidebar.classList.remove("open");
+                overlay.classList.remove("active");
+
+                if (botonMenu) {
+
+                    botonMenu.setAttribute(
+                        "aria-expanded",
+                        "false"
+                    );
+
+                }
+
+            });
+
         }
 
-        sidebar.querySelectorAll(".nav-item").forEach(link => {
-            link.addEventListener("click", () => setMenuOpen(false));
-        });
-
-        window.addEventListener("resize", () => {
-            if (window.innerWidth > 950) {
-                setMenuOpen(false);
-            }
-        });
     }
 
-    /* =====================================================
-       PERFIL
-    ===================================================== */
-
-    function initProfile() {
-
-        const profile = $("profile");
-        const button = $("profileButton");
-
-        if (!profile || !button) return;
-
-        button.addEventListener("click", event => {
-
-            event.stopPropagation();
-
-            const open = profile.classList.toggle("open");
-
-            button.setAttribute("aria-expanded", String(open));
-        });
-
-        document.addEventListener("click", event => {
-
-            if (!profile.contains(event.target)) {
-                profile.classList.remove("open");
-                button.setAttribute("aria-expanded", "false");
-            }
-        });
-    }
 
     /* =====================================================
-       CIERRE DE SESIÓN
+       EJECUCIÓN
     ===================================================== */
 
-    function initLogout() {
+    mostrarBienvenida();
 
-        const modal = $("logoutModal");
-        const sidebarLogout = $("sidebarLogout");
-        const profileLogout = $("profileLogout");
+    mostrarEstadisticas();
 
-        if (!modal) return;
+    mostrarPrioridad();
 
-        function openModal() {
+    mostrarRevisiones();
 
-            modal.classList.add("active");
-            modal.setAttribute("aria-hidden", "false");
+    mostrarObservaciones();
 
-            document.body.classList.add("modal-locked");
+    mostrarActividad();
 
-            $("profile")?.classList.remove("open");
-
-            $("confirmLogout")?.focus();
-        }
-
-        function closeModal() {
-
-            modal.classList.remove("active");
-            modal.setAttribute("aria-hidden", "true");
-
-            document.body.classList.remove("modal-locked");
-        }
-
-        function logout() {
-
-            window.location.href = new URL(
-                "interfaces.html",
-                window.location.href
-            ).href;
-        }
-
-        /*
-           Se usa captura para que el modal tenga prioridad
-           frente al manejador de components.js.
-        */
-
-        document.addEventListener("click", event => {
-
-            const trigger = event.target.closest(
-                "#sidebarLogout, #profileLogout"
-            );
-
-            if (trigger) {
-                event.preventDefault();
-                event.stopImmediatePropagation();
-                openModal();
-                return;
-            }
-
-            if (event.target.closest("#confirmLogout")) {
-                event.preventDefault();
-                logout();
-                return;
-            }
-
-            if (event.target.closest("[data-close-logout]")) {
-                event.preventDefault();
-                closeModal();
-            }
-
-        }, true);
-
-        if (sidebarLogout) {
-            sidebarLogout.onclick = null;
-        }
-
-        if (profileLogout) {
-            profileLogout.onclick = null;
-        }
-
-        document.addEventListener("keydown", event => {
-
-            if (
-                event.key === "Escape" &&
-                modal.classList.contains("active")
-            ) {
-                closeModal();
-            }
-        });
-    }
-
-    /* =====================================================
-       EJECUTAR
-    ===================================================== */
-
-    renderWelcome();
-    renderStats();
-    renderPriorityBanner();
-    renderPriorityList();
-    renderObservations();
-    renderActivity();
-
-    initSidebar();
-    initProfile();
-    initLogout();
+    configurarSidebar();
 
 }

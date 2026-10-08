@@ -1,106 +1,68 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Dashboard Revisor | SISCAE</title>
+    <title>Inicio del Revisor | SISCAE</title>
 
     <link rel="stylesheet" href="../css/global.css">
     <link rel="stylesheet" href="../css/components/sidebar_revisor.css">
-    <link rel="stylesheet" href="../css/dashboardRevisor.css">
+    <link rel="stylesheet" href="../css/pages/dashboardRevisor.css">
 </head>
 
-<body class="revisor-page">
+<body class="revisor-dashboard-page">
 
-    <!-- SIDEBAR COMPARTIDO DEL REVISOR -->
+    <!-- SIDEBAR COMPARTIDO -->
     <div id="sidebar-component"></div>
 
     <!-- CONTENIDO PRINCIPAL -->
-    <main class="revisor-main">
+    <main class="revisor-dashboard">
 
-        <!-- BARRA SUPERIOR -->
-        <header class="revisor-topbar">
+        <!-- ENCABEZADO -->
+        <header class="revisor-header">
 
-            <div class="topbar-left">
+            <div class="revisor-header-left">
 
                 <button
-                    class="menu-toggle"
-                    id="menuButton"
                     type="button"
+                    class="revisor-menu-button"
+                    id="menuButton"
                     aria-label="Abrir menú"
                     aria-expanded="false"
                 >
-                    <svg viewBox="0 0 24 24">
-                        <path d="M4 7h16M4 12h16M4 17h16"></path>
-                    </svg>
+                    <span></span>
+                    <span></span>
+                    <span></span>
                 </button>
 
-                <div class="breadcrumb">
+                <div class="revisor-breadcrumb">
                     <span>SISCAE</span>
-                    <span class="breadcrumb-separator">/</span>
-                    <strong>Inicio del Revisor</strong>
+                    <span class="revisor-breadcrumb-separator">/</span>
+                    <strong>Panel del Revisor</strong>
                 </div>
 
             </div>
 
-            <div class="topbar-right">
+            <div class="revisor-header-right">
 
                 <a
                     href="alertasRevisor.html"
-                    class="topbar-notification"
-                    aria-label="Ver alertas"
+                    class="revisor-notification"
+                    aria-label="Consultar alertas"
                     title="Alertas"
                 >
-                    <svg viewBox="0 0 24 24">
-                        <path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9"></path>
-                        <path d="M10 21h4"></path>
-                    </svg>
-
-                    <span id="notificationCount" hidden>0</span>
+                    <span class="revisor-notification-symbol">!</span>
+                    <span class="revisor-notification-count" id="notificationCount">0</span>
                 </a>
 
-                <div class="profile-wrapper" id="profile">
+                <div class="revisor-profile">
 
-                    <button
-                        class="profile-button"
-                        id="profileButton"
-                        type="button"
-                        aria-expanded="false"
-                    >
-                        <span class="profile-avatar">CP</span>
+                    <div class="revisor-profile-avatar">CP</div>
 
-                        <span class="profile-details">
-                            <strong>Carlos Pérez</strong>
-                            <small>Revisor editorial</small>
-                        </span>
-
-                        <svg class="profile-chevron" viewBox="0 0 24 24">
-                            <path d="m6 9 6 6 6-6"></path>
-                        </svg>
-                    </button>
-
-                    <div class="profile-dropdown">
-
-                        <div class="dropdown-user">
-                            <strong>Carlos Pérez</strong>
-                            <span>Revisor editorial</span>
-                        </div>
-
-                        <button
-                            type="button"
-                            id="profileLogout"
-                            class="dropdown-logout"
-                        >
-                            <svg viewBox="0 0 24 24">
-                                <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
-                                <path d="m16 17 5-5-5-5M21 12H9"></path>
-                            </svg>
-
-                            Cerrar sesión
-                        </button>
-
+                    <div class="revisor-profile-info">
+                        <strong>Carlos Pérez</strong>
+                        <span>Revisor editorial</span>
                     </div>
 
                 </div>
@@ -109,137 +71,142 @@
 
         </header>
 
-        <!-- DASHBOARD -->
-        <div class="dashboard-content">
+        <!-- CONTENIDO -->
+        <div class="revisor-content">
 
-            <!-- CÍRCULOS DECORATIVOS -->
-            <div class="background-ring ring-one" aria-hidden="true"></div>
-            <div class="background-ring ring-two" aria-hidden="true"></div>
+            <!-- DECORACIÓN DE FONDO -->
+            <div class="revisor-background-circle circle-one"></div>
+            <div class="revisor-background-circle circle-two"></div>
+            <div class="revisor-background-circle circle-three"></div>
 
             <!-- BIENVENIDA -->
-            <section class="welcome-section">
+            <section class="revisor-welcome">
 
-                <div class="welcome-text">
-
-                    <span class="section-eyebrow">
-                        REVISOR EDITORIAL
+                <div>
+                    <span class="revisor-section-label">
+                        PANEL DE CONTROL
                     </span>
 
-                    <h1 id="greeting">Bienvenido, Carlos</h1>
+                    <h1 id="revisorGreeting">
+                        Bienvenido, Carlos
+                    </h1>
 
                     <p>
-                        Consulte las revisiones asignadas y dé seguimiento
-                        al flujo editorial.
+                        Supervise las revisiones editoriales asignadas,
+                        consulte las observaciones y dé seguimiento
+                        a las decisiones registradas.
                     </p>
-
                 </div>
 
-                <div class="date-display">
-
-                    <span class="date-icon">
-                        <svg viewBox="0 0 24 24">
-                            <rect x="3" y="5" width="18" height="16" rx="2"></rect>
-                            <path d="M7 3v4M17 3v4M3 10h18"></path>
-                        </svg>
-                    </span>
-
-                    <div>
-                        <small>FECHA ACTUAL</small>
-                        <strong id="currentDate">—</strong>
-                    </div>
-
+                <div class="revisor-date-card">
+                    <span>FECHA ACTUAL</span>
+                    <strong id="revisorCurrentDate">—</strong>
                 </div>
 
             </section>
 
-            <!-- RESUMEN -->
-            <section class="dashboard-panel summary-panel">
+            <!-- RESUMEN GENERAL -->
+            <section class="revisor-section">
 
-                <div class="panel-heading">
+                <div class="revisor-section-heading">
 
                     <div>
-                        <span class="section-eyebrow">MI RESUMEN</span>
-                        <h2>Estado de mis revisiones</h2>
-                    </div>
+                        <span class="revisor-section-label">
+                            RESUMEN GENERAL
+                        </span>
 
-                    <span class="panel-status">
-                        <span class="status-dot"></span>
-                        Seguimiento editorial
-                    </span>
+                        <h2>Estado de las revisiones</h2>
+
+                        <p>
+                            Información general de las actividades
+                            asignadas al Revisor.
+                        </p>
+                    </div>
 
                 </div>
 
-                <div class="stats-grid">
+                <div class="revisor-stats">
 
-                    <!-- EN REVISIÓN -->
-                    <a href="aprobacionRevisor.html" class="stat-card">
+                    <a href="aprobacionRevisor.html" class="revisor-stat-card">
 
-                        <span class="stat-icon">
-                            <svg viewBox="0 0 24 24">
-                                <path d="M9 4H7a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-2"></path>
-                                <rect x="9" y="2.5" width="6" height="3.5" rx="1"></rect>
-                                <path d="m9 13 2 2 4-4"></path>
-                            </svg>
-                        </span>
+                        <div class="revisor-stat-top">
+                            <span class="revisor-stat-icon">01</span>
+                            <span class="revisor-stat-category">REVISIÓN</span>
+                        </div>
 
-                        <span class="stat-info">
-                            <span>En revisión</span>
-                            <strong id="statReview">0</strong>
-                            <small>Versiones pendientes</small>
-                        </span>
+                        <strong id="statReview">0</strong>
 
-                    </a>
+                        <h3>Activos en revisión</h3>
 
-                    <!-- URGENTES -->
-                    <a href="alertasRevisor.html" class="stat-card">
+                        <p>
+                            Versiones pendientes de evaluación.
+                        </p>
 
-                        <span class="stat-icon">
-                            <svg viewBox="0 0 24 24">
-                                <circle cx="12" cy="12" r="9"></circle>
-                                <path d="M12 7v5l3 2"></path>
-                            </svg>
-                        </span>
-
-                        <span class="stat-info">
-                            <span>Urgentes</span>
-                            <strong id="statUrgent">0</strong>
-                            <small>Requieren atención</small>
+                        <span class="revisor-stat-link">
+                            Consultar revisiones →
                         </span>
 
                     </a>
 
-                    <!-- OBSERVACIONES -->
-                    <a href="observacionesRevisor.html" class="stat-card">
+                    <a href="alertasRevisor.html" class="revisor-stat-card">
 
-                        <span class="stat-icon">
-                            <svg viewBox="0 0 24 24">
-                                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-                                <path d="M8 9h8M8 13h5"></path>
-                            </svg>
-                        </span>
+                        <div class="revisor-stat-top">
+                            <span class="revisor-stat-icon">02</span>
+                            <span class="revisor-stat-category">PRIORIDAD</span>
+                        </div>
 
-                        <span class="stat-info">
-                            <span>Observaciones</span>
-                            <strong id="statObservations">0</strong>
-                            <small>En seguimiento</small>
+                        <strong id="statUrgent">0</strong>
+
+                        <h3>Revisiones urgentes</h3>
+
+                        <p>
+                            Actividades que requieren atención.
+                        </p>
+
+                        <span class="revisor-stat-link">
+                            Consultar alertas →
                         </span>
 
                     </a>
 
-                    <!-- DECISIONES -->
-                    <a href="auditoriaRevisor.html" class="stat-card">
+                    <a href="observacionesRevisor.html" class="revisor-stat-card">
 
-                        <span class="stat-icon">
-                            <svg viewBox="0 0 24 24">
-                                <path d="M12 2 20 6v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6z"></path>
-                                <path d="m9 12 2 2 4-4"></path>
-                            </svg>
+                        <div class="revisor-stat-top">
+                            <span class="revisor-stat-icon">03</span>
+                            <span class="revisor-stat-category">SEGUIMIENTO</span>
+                        </div>
+
+                        <strong id="statObservations">0</strong>
+
+                        <h3>Observaciones pendientes</h3>
+
+                        <p>
+                            Correcciones pendientes de respuesta.
+                        </p>
+
+                        <span class="revisor-stat-link">
+                            Ver observaciones →
                         </span>
 
-                        <span class="stat-info">
-                            <span>Decisiones</span>
-                            <strong id="statDecisions">0</strong>
-                            <small>Registradas</small>
+                    </a>
+
+                    <a href="auditoriaRevisor.html" class="revisor-stat-card">
+
+                        <div class="revisor-stat-top">
+                            <span class="revisor-stat-icon">04</span>
+                            <span class="revisor-stat-category">HISTORIAL</span>
+                        </div>
+
+                        <strong id="statDecisions">0</strong>
+
+                        <h3>Decisiones registradas</h3>
+
+                        <p>
+                            Aprobaciones y rechazos realizados.
+                        </p>
+
+                        <span class="revisor-stat-link">
+                            Consultar auditoría →
                         </span>
 
                     </a>
@@ -249,194 +216,186 @@
             </section>
 
             <!-- SIGUIENTE REVISIÓN -->
-            <section class="priority-banner">
+            <section class="revisor-priority">
 
-                <div class="priority-main">
+                <div class="revisor-priority-content">
 
-                    <span class="priority-icon">
-                        <svg viewBox="0 0 24 24">
-                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                            <path d="M14 2v6h6M8 13h8M8 17h5"></path>
-                        </svg>
+                    <span class="revisor-priority-label">
+                        ATENCIÓN PRIORITARIA
                     </span>
 
-                    <div class="priority-copy">
+                    <h2 id="priorityTitle">
+                        Consultando revisiones pendientes
+                    </h2>
 
-                        <span>SIGUIENTE EN LA COLA</span>
-
-                        <h2 id="priorityTitle">
-                            Consultando revisiones...
-                        </h2>
-
-                        <p id="priorityDescription">—</p>
-
-                    </div>
+                    <p id="priorityDescription">
+                        —
+                    </p>
 
                 </div>
 
-                <div class="priority-side">
+                <div class="revisor-priority-action">
 
-                    <div class="priority-counter">
-                        <small>En cola</small>
+                    <div class="revisor-priority-total">
+                        <span>EN COLA</span>
                         <strong id="priorityCount">0</strong>
                     </div>
 
-                    <a href="aprobacionRevisor.html" class="priority-button">
-                        Revisar ahora
-
-                        <svg viewBox="0 0 24 24">
-                            <path d="M5 12h14m-6-6 6 6-6 6"></path>
-                        </svg>
+                    <a href="aprobacionRevisor.html">
+                        Ir a aprobación →
                     </a>
 
                 </div>
 
             </section>
 
-            <!-- REVISIONES Y OBSERVACIONES -->
-            <div class="dashboard-columns">
+            <!-- DOS COLUMNAS -->
+            <div class="revisor-grid">
 
-                <section class="dashboard-panel">
+                <!-- ACTIVOS POR REVISAR -->
+                <section class="revisor-panel">
 
-                    <div class="panel-heading">
+                    <div class="revisor-panel-heading">
 
                         <div>
-                            <span class="section-eyebrow">COLA DE REVISIÓN</span>
+                            <span class="revisor-section-label">
+                                COLA DE REVISIÓN
+                            </span>
+
                             <h2>Activos por revisar</h2>
-                            <p>Versiones pendientes de decisión.</p>
+
+                            <p>
+                                Versiones que requieren evaluación.
+                            </p>
                         </div>
 
-                        <a href="aprobacionRevisor.html" class="panel-link">
+                        <a href="aprobacionRevisor.html">
                             Ver todos →
                         </a>
 
                     </div>
 
-                    <div class="dashboard-list" id="priorityList"></div>
+                    <div class="revisor-panel-body" id="priorityList">
+                    </div>
 
                 </section>
 
-                <section class="dashboard-panel">
+                <!-- OBSERVACIONES -->
+                <section class="revisor-panel">
 
-                    <div class="panel-heading">
+                    <div class="revisor-panel-heading">
 
                         <div>
-                            <span class="section-eyebrow">SEGUIMIENTO</span>
+                            <span class="revisor-section-label">
+                                SEGUIMIENTO EDITORIAL
+                            </span>
+
                             <h2>Observaciones recientes</h2>
-                            <p>Correcciones solicitadas a los autores.</p>
+
+                            <p>
+                                Solicitudes de corrección pendientes.
+                            </p>
                         </div>
 
-                        <a href="observacionesRevisor.html" class="panel-link">
+                        <a href="observacionesRevisor.html">
                             Ver todas →
                         </a>
 
                     </div>
 
-                    <div class="dashboard-list" id="observationList"></div>
+                    <div class="revisor-panel-body" id="observationList">
+                    </div>
 
                 </section>
 
             </div>
 
-            <!-- ACTIVIDAD Y ACCESOS -->
-            <div class="dashboard-columns">
+            <!-- SEGUNDA FILA -->
+            <div class="revisor-grid">
 
-                <section class="dashboard-panel">
+                <!-- ACTIVIDAD RECIENTE -->
+                <section class="revisor-panel">
 
-                    <div class="panel-heading">
+                    <div class="revisor-panel-heading">
 
                         <div>
-                            <span class="section-eyebrow">TRAZABILIDAD</span>
+                            <span class="revisor-section-label">
+                                TRAZABILIDAD
+                            </span>
+
                             <h2>Actividad reciente</h2>
-                            <p>Últimas acciones de revisión.</p>
+
+                            <p>
+                                Últimas decisiones de revisión.
+                            </p>
                         </div>
 
-                        <a href="auditoriaRevisor.html" class="panel-link">
+                        <a href="auditoriaRevisor.html">
                             Ver historial →
                         </a>
 
                     </div>
 
-                    <div class="dashboard-list" id="activityList"></div>
+                    <div class="revisor-panel-body" id="activityList">
+                    </div>
 
                 </section>
 
-                <section class="dashboard-panel">
+                <!-- ACCESOS RÁPIDOS -->
+                <section class="revisor-panel">
 
-                    <div class="panel-heading">
+                    <div class="revisor-panel-heading">
 
                         <div>
-                            <span class="section-eyebrow">HERRAMIENTAS</span>
+                            <span class="revisor-section-label">
+                                HERRAMIENTAS
+                            </span>
+
                             <h2>Accesos rápidos</h2>
-                            <p>Gestión y seguimiento editorial.</p>
+
+                            <p>
+                                Funciones disponibles para el Revisor.
+                            </p>
                         </div>
 
                     </div>
 
-                    <div class="quick-grid">
+                    <div class="revisor-quick-links">
 
-                        <a href="observacionesRevisor.html" class="quick-card">
-                            <span class="quick-icon">
-                                <svg viewBox="0 0 24 24">
-                                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-                                </svg>
-                            </span>
-
-                            <span class="quick-info">
+                        <a href="observacionesRevisor.html">
+                            <span class="revisor-quick-number">01</span>
+                            <span>
                                 <strong>Observaciones</strong>
-                                <small>Dar seguimiento</small>
+                                <small>Seguimiento de correcciones</small>
                             </span>
-
-                            <span class="quick-arrow">→</span>
+                            <span class="revisor-quick-arrow">→</span>
                         </a>
 
-                        <a href="aprobacionRevisor.html" class="quick-card">
-                            <span class="quick-icon">
-                                <svg viewBox="0 0 24 24">
-                                    <path d="M9 4H7a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-2"></path>
-                                    <path d="m9 13 2 2 4-4"></path>
-                                </svg>
-                            </span>
-
-                            <span class="quick-info">
+                        <a href="aprobacionRevisor.html">
+                            <span class="revisor-quick-number">02</span>
+                            <span>
                                 <strong>Aprobación</strong>
-                                <small>Revisar versiones</small>
+                                <small>Evaluación de versiones</small>
                             </span>
-
-                            <span class="quick-arrow">→</span>
+                            <span class="revisor-quick-arrow">→</span>
                         </a>
 
-                        <a href="auditoriaRevisor.html" class="quick-card">
-                            <span class="quick-icon">
-                                <svg viewBox="0 0 24 24">
-                                    <path d="M3 3v5h5"></path>
-                                    <path d="M3.05 13A9 9 0 1 0 6 5.3L3 8"></path>
-                                    <path d="M12 7v5l4 2"></path>
-                                </svg>
-                            </span>
-
-                            <span class="quick-info">
+                        <a href="auditoriaRevisor.html">
+                            <span class="revisor-quick-number">03</span>
+                            <span>
                                 <strong>Auditoría</strong>
-                                <small>Ver trazabilidad</small>
+                                <small>Historial de acciones</small>
                             </span>
-
-                            <span class="quick-arrow">→</span>
+                            <span class="revisor-quick-arrow">→</span>
                         </a>
 
-                        <a href="alertasRevisor.html" class="quick-card">
-                            <span class="quick-icon">
-                                <svg viewBox="0 0 24 24">
-                                    <path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9"></path>
-                                    <path d="M10 21h4"></path>
-                                </svg>
-                            </span>
-
-                            <span class="quick-info">
+                        <a href="alertasRevisor.html">
+                            <span class="revisor-quick-number">04</span>
+                            <span>
                                 <strong>Alertas</strong>
-                                <small>Ver notificaciones</small>
+                                <small>Notificaciones editoriales</small>
                             </span>
-
-                            <span class="quick-arrow">→</span>
+                            <span class="revisor-quick-arrow">→</span>
                         </a>
 
                     </div>
@@ -445,65 +404,22 @@
 
             </div>
 
-            <!-- FOOTER -->
-            <footer class="dashboard-footer">
+            <!-- PIE -->
+            <footer class="revisor-footer">
                 <span>
                     SISCAE · Sistema Integral de Seguridad y Control de Activos Editoriales
                 </span>
-                <span>Panel del Revisor · Prototipo</span>
+
+                <span>
+                    Panel del Revisor · Prototipo
+                </span>
             </footer>
 
         </div>
 
     </main>
 
-    <!-- MODAL CERRAR SESIÓN -->
-    <div class="logout-modal" id="logoutModal" aria-hidden="true">
-
-        <div class="logout-backdrop" data-close-logout></div>
-
-        <div
-            class="logout-dialog"
-            role="dialog"
-            aria-modal="true"
-            aria-labelledby="logoutTitle"
-        >
-
-            <span class="logout-dialog-icon">
-                <svg viewBox="0 0 24 24">
-                    <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
-                    <path d="m16 17 5-5-5-5M21 12H9"></path>
-                </svg>
-            </span>
-
-            <h2 id="logoutTitle">Cerrar sesión</h2>
-            <p>¿Desea salir del panel del Revisor?</p>
-
-            <div class="logout-actions">
-
-                <button
-                    type="button"
-                    class="btn-cancel"
-                    data-close-logout
-                >
-                    Cancelar
-                </button>
-
-                <button
-                    type="button"
-                    class="btn-confirm"
-                    id="confirmLogout"
-                >
-                    Cerrar sesión
-                </button>
-
-            </div>
-
-        </div>
-
-    </div>
-
-    <!-- SCRIPTS -->
+    <!-- CARGA DE COMPONENTES -->
     <script src="../js/components.js"></script>
     <script src="../js/dashboardRevisor.js"></script>
 

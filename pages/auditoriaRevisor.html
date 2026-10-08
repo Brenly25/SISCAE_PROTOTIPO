@@ -1,0 +1,314 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Auditoría editorial | SISCAE</title>
+
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/components/sidebar_revisor.css">
+    <link rel="stylesheet" href="../css/pages/auditoriaRevisor.css">
+</head>
+
+<body class="auditoria-revisor-page">
+
+    <div id="sidebar-component"></div>
+
+    <main class="auditoria-main">
+
+        <header class="auditoria-topbar">
+            <div class="auditoria-topbar-left">
+                <button type="button"
+                        id="menuButton"
+                        class="auditoria-menu"
+                        aria-label="Abrir menú"
+                        aria-expanded="false">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+
+                <div class="auditoria-breadcrumb">
+                    SISCAE
+                    <span>/</span>
+                    Revisor
+                    <span>/</span>
+                    <strong>Auditoría</strong>
+                </div>
+            </div>
+
+            <div class="auditoria-user">
+                <span class="auditoria-avatar">CP</span>
+
+                <div>
+                    <strong>Carlos Pérez</strong>
+                    <small>Revisor editorial</small>
+                </div>
+            </div>
+        </header>
+
+        <div class="auditoria-content">
+
+            <div class="auditoria-ring ring-one"></div>
+            <div class="auditoria-ring ring-two"></div>
+
+            <section class="auditoria-heading">
+                <div>
+                    <span class="auditoria-eyebrow">
+                        SUPERVISIÓN Y TRAZABILIDAD
+                    </span>
+
+                    <h1>Auditoría editorial</h1>
+
+                    <p>
+                        Consulte el historial de acciones realizadas durante
+                        la revisión de los activos editoriales y dé
+                        seguimiento a las decisiones registradas.
+                    </p>
+                </div>
+
+                <button type="button"
+                        id="exportAudit"
+                        class="auditoria-primary">
+                    Exportar registros CSV
+                </button>
+            </section>
+
+            <section class="auditoria-stats">
+
+                <article class="auditoria-stat">
+                    <span>Total de eventos</span>
+                    <strong id="statTotal">0</strong>
+                    <small>Acciones registradas</small>
+                </article>
+
+                <article class="auditoria-stat">
+                    <span>Observaciones</span>
+                    <strong id="statObservations">0</strong>
+                    <small>Eventos de seguimiento</small>
+                </article>
+
+                <article class="auditoria-stat">
+                    <span>Aprobaciones</span>
+                    <strong id="statApprovals">0</strong>
+                    <small>Versiones aprobadas</small>
+                </article>
+
+                <article class="auditoria-stat">
+                    <span>Rechazos</span>
+                    <strong id="statRejections">0</strong>
+                    <small>Versiones rechazadas</small>
+                </article>
+
+            </section>
+
+            <section class="auditoria-panel">
+
+                <div class="auditoria-panel-head">
+                    <div>
+                        <span class="auditoria-eyebrow">
+                            BITÁCORA DE ACTIVIDAD
+                        </span>
+
+                        <h2>Registro de eventos editoriales</h2>
+
+                        <p>
+                            Historial de acciones relacionadas con
+                            observaciones, revisiones y decisiones.
+                        </p>
+                    </div>
+
+                    <span class="auditoria-total" id="resultsCount">
+                        0 eventos
+                    </span>
+                </div>
+
+                <div class="auditoria-filters">
+
+                    <label class="auditoria-search">
+                        <span>Buscar evento</span>
+                        <input type="search"
+                               id="searchAudit"
+                               placeholder="Código, activo, usuario...">
+                    </label>
+
+                    <label>
+                        <span>Tipo de evento</span>
+                        <select id="filterType">
+                            <option value="todos">Todos los eventos</option>
+                            <option value="Observación">Observación</option>
+                            <option value="Aprobación">Aprobación</option>
+                            <option value="Rechazo">Rechazo</option>
+                            <option value="Corrección">Corrección</option>
+                            <option value="Revisión">Revisión</option>
+                        </select>
+                    </label>
+
+                    <label>
+                        <span>Desde</span>
+                        <input type="date" id="filterFrom">
+                    </label>
+
+                    <label>
+                        <span>Hasta</span>
+                        <input type="date" id="filterTo">
+                    </label>
+
+                    <button type="button"
+                            id="clearFilters"
+                            class="auditoria-secondary">
+                        Limpiar filtros
+                    </button>
+
+                </div>
+
+                <div class="auditoria-table-wrap">
+                    <table class="auditoria-table">
+                        <thead>
+                            <tr>
+                                <th>Fecha y hora</th>
+                                <th>Evento</th>
+                                <th>Activo editorial</th>
+                                <th>Usuario</th>
+                                <th>Tipo</th>
+                                <th>Detalle</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="auditBody"></tbody>
+                    </table>
+                </div>
+
+                <div id="auditEmpty"
+                     class="auditoria-empty"
+                     hidden>
+                    No se encontraron eventos con los filtros seleccionados.
+                </div>
+
+                <div class="auditoria-panel-foot">
+                    <span id="tableSummary">
+                        Mostrando 0 eventos
+                    </span>
+
+                    <span>
+                        Registro local del prototipo
+                    </span>
+                </div>
+
+            </section>
+
+            <section class="auditoria-bottom-grid">
+
+                <article class="auditoria-info-card">
+                    <span class="auditoria-eyebrow">
+                        CONTROL EDITORIAL
+                    </span>
+
+                    <h2>Seguimiento de acciones</h2>
+
+                    <p>
+                        Cada registro permite identificar qué acción se
+                        realizó, sobre qué activo editorial y cuál fue
+                        su resultado. Los eventos se presentan en
+                        orden cronológico, comenzando por el más reciente.
+                    </p>
+                </article>
+
+                <article class="auditoria-info-card">
+                    <span class="auditoria-eyebrow">
+                        ACTIVIDAD RECIENTE
+                    </span>
+
+                    <h2>Últimos movimientos</h2>
+
+                    <div id="recentActivity"
+                         class="auditoria-recent"></div>
+                </article>
+
+            </section>
+
+            <footer class="auditoria-footer">
+                <span>
+                    SISCAE · Sistema Integral de Seguridad y Control
+                    de Activos Editoriales
+                </span>
+
+                <span>
+                    Panel del Revisor · Prototipo
+                </span>
+            </footer>
+
+        </div>
+    </main>
+
+    <!-- MODAL DETALLE -->
+
+    <div class="auditoria-modal"
+         id="detailModal"
+         aria-hidden="true">
+
+        <div class="auditoria-backdrop"
+             data-close-detail></div>
+
+        <section class="auditoria-dialog"
+                 role="dialog"
+                 aria-modal="true"
+                 aria-labelledby="detailTitle">
+
+            <div class="auditoria-dialog-head">
+                <div>
+                    <span class="auditoria-eyebrow">
+                        DETALLE DEL EVENTO
+                    </span>
+
+                    <h2 id="detailTitle">
+                        Registro de auditoría
+                    </h2>
+
+                    <p>
+                        Información asociada al movimiento editorial.
+                    </p>
+                </div>
+
+                <button type="button"
+                        class="auditoria-close"
+                        data-close-detail
+                        aria-label="Cerrar">
+                    ×
+                </button>
+            </div>
+
+            <div class="auditoria-dialog-body">
+
+                <div id="auditDetails"
+                     class="auditoria-detail-grid"></div>
+
+                <div class="auditoria-detail-section">
+                    <h3>Descripción de la acción</h3>
+                    <p id="auditDescription"></p>
+                </div>
+
+                <div class="auditoria-dialog-foot">
+                    <button type="button"
+                            class="auditoria-secondary"
+                            data-close-detail>
+                        Cerrar
+                    </button>
+                </div>
+
+            </div>
+        </section>
+    </div>
+
+    <div class="auditoria-toast"
+         id="auditToast"
+         role="status"
+         aria-live="polite"></div>
+
+    <script src="../js/components.js"></script>
+    <script src="../js/auditoriaRevisor.js"></script>
+
+</body>
+</html>

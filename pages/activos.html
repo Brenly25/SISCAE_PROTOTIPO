@@ -1,1360 +1,2206 @@
+
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
-
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Activos editoriales | SISCAE</title>
 
-    <!-- =====================================================
-         ESTILOS
-    ====================================================== -->
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/components/sidebar_admin.css">
+    <link rel="stylesheet" href="../css/pages/activos.css">
 
-    <link
-        rel="stylesheet"
-        href="../css/global.css"
-    >
+    <style>
+        .siscae-management {
+            position: relative;
+            z-index: 1;
+        }
 
-    <link
-        rel="stylesheet"
-        href="../css/components/sidebar_admin.css"
-    >
+        .management-actions {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
 
-    <link
-        rel="stylesheet"
-        href="../css/pages/activos.css"
-    >
+        .management-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 9px;
+            padding: 13px 20px;
+            border: 0;
+            border-radius: 11px;
+            background: linear-gradient(135deg, #123c69, #24679d);
+            color: white;
+            font-family: inherit;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform .2s, box-shadow .2s;
+        }
 
+        .management-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 7px 18px rgba(12, 52, 93, .2);
+        }
+
+        .management-button.secondary {
+            background: #fff;
+            color: #174b78;
+            border: 1px solid #b7ccdd;
+        }
+
+        .management-button svg {
+            width: 17px;
+            height: 17px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 2;
+        }
+
+        .management-tabs {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 24px;
+            padding: 6px;
+            border-radius: 13px;
+            background: #eaf1f7;
+            width: fit-content;
+        }
+
+        .management-tab {
+            padding: 12px 22px;
+            border: none;
+            border-radius: 9px;
+            background: transparent;
+            color: #526a80;
+            font: 600 14px inherit;
+            cursor: pointer;
+        }
+
+        .management-tab.active {
+            background: #fff;
+            color: #164a78;
+            box-shadow: 0 2px 9px rgba(0, 36, 75, .09);
+        }
+
+        .management-panel {
+            display: none;
+        }
+
+        .management-panel.active {
+            display: block;
+        }
+
+        .management-section-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 23px;
+        }
+
+        .management-section-header h2 {
+            color: #163e65;
+            margin: 5px 0;
+        }
+
+        .management-section-header p {
+            margin: 0;
+            color: #66798a;
+            font-size: 14px;
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 18px;
+        }
+
+        .project-card {
+            background: #fff;
+            border: 1px solid #e0e8f0;
+            border-radius: 15px;
+            padding: 21px;
+            box-shadow: 0 4px 18px rgba(13, 49, 83, .05);
+            transition: transform .2s, box-shadow .2s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 9px 23px rgba(13, 49, 83, .1);
+        }
+
+        .project-card-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .project-folder {
+            width: 43px;
+            height: 43px;
+            display: grid;
+            place-items: center;
+            border-radius: 11px;
+            background: #e8f1fa;
+            color: #245f93;
+        }
+
+        .project-folder svg {
+            width: 23px;
+            height: 23px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 1.8;
+        }
+
+        .project-status {
+            font-size: 12px;
+            font-weight: 600;
+            padding: 6px 10px;
+            border-radius: 30px;
+            background: #e8f5ed;
+            color: #27754a;
+        }
+
+        .project-status.inactive {
+            background: #f0f1f3;
+            color: #687582;
+        }
+
+        .project-card h3 {
+            color: #163e65;
+            font-size: 16px;
+            margin: 0 0 9px;
+            line-height: 1.45;
+        }
+
+        .project-description {
+            color: #697d8e;
+            font-size: 13px;
+            line-height: 1.65;
+            min-height: 43px;
+            margin-bottom: 16px;
+        }
+
+        .project-meta {
+            border-top: 1px solid #edf1f5;
+            padding-top: 14px;
+            display: grid;
+            gap: 11px;
+        }
+
+        .project-meta-row {
+            display: flex;
+            justify-content: space-between;
+            gap: 12px;
+            font-size: 13px;
+        }
+
+        .project-meta-row span {
+            color: #7a8b9a;
+        }
+
+        .project-meta-row strong {
+            color: #274b6b;
+            text-align: right;
+        }
+
+        .project-responsibles {
+            margin-top: 15px;
+        }
+
+        .project-responsibles > span {
+            color: #74889a;
+            font-size: 12px;
+        }
+
+        .responsible-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 7px;
+            margin-top: 9px;
+        }
+
+        .responsible-tag {
+            font-size: 12px;
+            padding: 6px 9px;
+            border-radius: 7px;
+            color: #245b8b;
+            background: #eaf2f9;
+        }
+
+        .project-card-actions {
+            display: flex;
+            gap: 8px;
+            margin-top: 18px;
+        }
+
+        .project-card-actions button {
+            flex: 1;
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid #d3e1ec;
+            background: #f7fafc;
+            color: #245b8b;
+            font-family: inherit;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .project-card-actions button:hover {
+            background: #eaf2f9;
+        }
+
+        .management-modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 100000;
+            align-items: center;
+            justify-content: center;
+            padding: 18px;
+        }
+
+        .management-modal.active {
+            display: flex !important;
+        }
+
+        .management-modal-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(8, 26, 48, .65);
+        }
+
+        .management-modal-dialog {
+            position: relative;
+            z-index: 1;
+            background: #fff;
+            border-radius: 17px;
+            width: 100%;
+            max-width: 660px;
+            max-height: 91vh;
+            overflow-y: auto;
+            padding: 28px;
+            box-shadow: 0 20px 70px rgba(0, 19, 45, .25);
+        }
+
+        .management-modal-dialog.wide {
+            max-width: 780px;
+        }
+
+        .management-modal-heading {
+            display: flex;
+            justify-content: space-between;
+            gap: 12px;
+            align-items: flex-start;
+            padding-bottom: 17px;
+            border-bottom: 1px solid #e7edf3;
+        }
+
+        .management-modal-heading h2 {
+            margin: 5px 0;
+            color: #153e66;
+            font-size: 23px;
+        }
+
+        .management-modal-heading p {
+            margin: 6px 0 0;
+            color: #718395;
+            font-size: 13px;
+        }
+
+        .management-modal-close {
+            width: 34px;
+            height: 34px;
+            border: none;
+            background: #eef3f7;
+            color: #526e86;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 23px;
+        }
+
+        .management-form {
+            padding-top: 21px;
+        }
+
+        .management-form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .management-field {
+            display: flex;
+            flex-direction: column;
+            gap: 7px;
+            margin-bottom: 17px;
+            min-width: 0;
+        }
+
+        .management-field.full {
+            grid-column: 1 / -1;
+        }
+
+        .management-field label {
+            font-size: 13px;
+            font-weight: 600;
+            color: #315471;
+        }
+
+        .management-field input,
+        .management-field select,
+        .management-field textarea {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 12px 13px;
+            border: 1px solid #d6e1eb;
+            border-radius: 9px;
+            background: #fff;
+            color: #263f54;
+            font: 14px inherit;
+            outline: none;
+        }
+
+        .management-field input:focus,
+        .management-field select:focus,
+        .management-field textarea:focus {
+            border-color: #347fb8;
+            box-shadow: 0 0 0 3px rgba(52, 127, 184, .1);
+        }
+
+        .management-field small {
+            color: #8493a1;
+            font-size: 12px;
+        }
+
+        .responsible-selector {
+            border: 1px solid #dbe5ed;
+            border-radius: 10px;
+            padding: 12px;
+            max-height: 190px;
+            overflow-y: auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+        }
+
+        .responsible-selector label {
+            display: flex;
+            align-items: center;
+            gap: 9px;
+            font-size: 13px;
+            font-weight: 400;
+            color: #36566f;
+            cursor: pointer;
+            padding: 7px;
+            border-radius: 7px;
+        }
+
+        .responsible-selector label:hover {
+            background: #f1f6fa;
+        }
+
+        .responsible-selector input {
+            width: auto;
+            accent-color: #236a9e;
+        }
+
+        .management-modal-actions {
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+            padding-top: 18px;
+            border-top: 1px solid #e9eef3;
+        }
+
+        .management-note {
+            background: #f1f6fb;
+            color: #4b6880;
+            border-left: 3px solid #c49b32;
+            padding: 13px 15px;
+            border-radius: 7px;
+            font-size: 13px;
+            line-height: 1.6;
+            margin-bottom: 18px;
+        }
+
+        .management-empty {
+            text-align: center;
+            padding: 48px 20px;
+            color: #73879a;
+        }
+
+        .management-empty strong {
+            display: block;
+            color: #315775;
+            margin-bottom: 8px;
+        }
+
+        .management-toast {
+            display: none;
+            position: fixed;
+            right: 24px;
+            bottom: 24px;
+            z-index: 100010;
+            background: #153f67;
+            color: #fff;
+            border-radius: 10px;
+            padding: 15px 20px;
+            max-width: 360px;
+            box-shadow: 0 8px 25px rgba(0, 25, 55, .25);
+            font-size: 14px;
+        }
+
+        .management-toast.active {
+            display: block;
+        }
+
+        .asset-list .asset-row {
+            cursor: default;
+        }
+
+        .asset-list .asset-row[hidden] {
+            display: none !important;
+        }
+
+        @media (max-width: 1100px) {
+            .project-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 700px) {
+            .project-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .management-actions {
+                width: 100%;
+            }
+
+            .management-button {
+                flex: 1;
+            }
+
+            .management-tabs {
+                width: 100%;
+            }
+
+            .management-tab {
+                flex: 1;
+                padding: 12px 8px;
+            }
+
+            .management-form-grid,
+            .responsible-selector {
+                grid-template-columns: 1fr;
+            }
+
+            .management-modal-dialog {
+                padding: 19px;
+            }
+
+            .management-modal-heading h2 {
+                font-size: 19px;
+            }
+        }
+    </style>
 </head>
 
 <body>
 
-    <!-- =====================================================
-         SIDEBAR ADMINISTRADOR
-    ====================================================== -->
-
     <div id="sidebar-component"></div>
-
-
-    <!-- =====================================================
-         OVERLAY MÓVIL DEL SIDEBAR
-    ====================================================== -->
-
-    <div
-        class="mobile-overlay"
-        id="mobileOverlay"
-    ></div>
-
-
-    <!-- =====================================================
-         MAIN
-    ====================================================== -->
+    <div class="mobile-overlay" id="mobileOverlay"></div>
 
     <main class="main">
 
-        <!-- =================================================
-             FONDO DECORATIVO
-        ================================================== -->
-
-        <div
-            class="dashboard-decoration"
-            aria-hidden="true"
-        >
-
+        <div class="dashboard-decoration" aria-hidden="true">
             <div class="ring-group ring-group-one">
                 <span class="ring ring-a"></span>
                 <span class="ring ring-b"></span>
                 <span class="ring ring-c"></span>
                 <span class="ring ring-d"></span>
             </div>
-
             <div class="ring-group ring-group-two">
                 <span class="ring ring-a"></span>
                 <span class="ring ring-b"></span>
                 <span class="ring ring-c"></span>
             </div>
-
             <div class="ring-group ring-group-three">
                 <span class="ring ring-a"></span>
                 <span class="ring ring-b"></span>
                 <span class="ring ring-yellow"></span>
             </div>
-
         </div>
 
-
-        <!-- =================================================
-             TOPBAR
-        ================================================== -->
-
         <header class="topbar">
-
             <div class="topbar-left">
-
-                <button
-                    class="menu-button"
-                    id="menuButton"
-                    type="button"
-                    aria-label="Abrir menú"
-                >
-
+                <button class="menu-button" id="menuButton"
+                        type="button" aria-label="Abrir menú">
                     <svg viewBox="0 0 24 24">
                         <line x1="3" y1="6" x2="21" y2="6"></line>
                         <line x1="3" y1="12" x2="21" y2="12"></line>
                         <line x1="3" y1="18" x2="21" y2="18"></line>
                     </svg>
-
                 </button>
 
-
                 <div class="breadcrumb">
-
                     <span>SISCAE</span>
-
                     <svg viewBox="0 0 24 24">
                         <polyline points="9 18 15 12 9 6"></polyline>
                     </svg>
-
                     <strong>Activos editoriales</strong>
-
                 </div>
-
             </div>
 
-
             <div class="topbar-right">
-
-                <button
-                    class="notification"
-                    id="notificationButton"
-                    type="button"
-                    aria-label="Ver alertas"
-                >
-
+                <button class="notification" id="notificationButton"
+                        type="button" aria-label="Ver alertas">
                     <svg viewBox="0 0 24 24">
                         <path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9"></path>
                         <path d="M10 21h4"></path>
                     </svg>
-
                     <span>3</span>
-
                 </button>
 
-
-                <div
-                    class="profile"
-                    id="profile"
-                >
-
-                    <button
-                        class="profile-button"
-                        id="profileButton"
-                        type="button"
-                    >
-
-                        <div class="profile-avatar">
-                            AD
-                        </div>
-
+                <div class="profile" id="profile">
+                    <button class="profile-button" id="profileButton"
+                            type="button">
+                        <div class="profile-avatar">AD</div>
                         <div class="profile-info">
-
-                            <strong>
-                                Administrador
-                            </strong>
-
-                            <span>
-                                Administrador del sistema
-                            </span>
-
+                            <strong>Administrador</strong>
+                            <span>Administrador del sistema</span>
                         </div>
-
-                        <svg
-                            class="profile-arrow"
-                            viewBox="0 0 24 24"
-                        >
+                        <svg class="profile-arrow" viewBox="0 0 24 24">
                             <polyline points="6 9 12 15 18 9"></polyline>
                         </svg>
-
                     </button>
-
-
                     <div class="profile-menu">
-
-                        <a href="configuracion.html">
-                            Configuración
-                        </a>
-
-                        <button
-                            type="button"
-                            id="profileLogout"
-                        >
+                        <a href="configuracion.html">Configuración</a>
+                        <button type="button" id="profileLogout">
                             Cerrar sesión
                         </button>
-
                     </div>
-
                 </div>
-
             </div>
-
         </header>
 
-
-        <!-- =================================================
-             CONTENIDO
-        ================================================== -->
-
-        <div class="content">
-
-            <!-- =================================================
-                 ENCABEZADO
-            ================================================== -->
+        <div class="content siscae-management">
 
             <section class="page-header">
-
                 <div>
-
-                    <span class="section-label">
-                        GESTIÓN EDITORIAL
-                    </span>
-
-                    <h1>
-                        Activos editoriales
-                    </h1>
-
+                    <span class="section-label">GESTIÓN EDITORIAL</span>
+                    <h1>Activos editoriales</h1>
                     <p>
-                        Consulta y supervisión de los recursos editoriales
-                        registrados dentro de SISCAE.
+                        Administración de proyectos, responsables y recursos
+                        editoriales registrados en SISCAE.
                     </p>
-
                 </div>
 
+                <div class="management-actions">
+                    <button class="management-button secondary"
+                            id="newProjectButton" type="button">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M3 7h7l2 2h9v11H3z"></path>
+                            <path d="M17 12v6M14 15h6"></path>
+                        </svg>
+                        Crear proyecto
+                    </button>
 
-                <button
-                    class="primary-action"
-                    id="newAssetButton"
-                    type="button"
-                >
-
-                    <svg viewBox="0 0 24 24">
-                        <line x1="12" y1="5" x2="12" y2="19"></line>
-                        <line x1="5" y1="12" x2="19" y2="12"></line>
-                    </svg>
-
-                    Registrar activo
-
-                </button>
-
+                    <button class="management-button"
+                            id="newAssetButton" type="button">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                            <path d="M14 2v6h6M12 12v7M8.5 15.5h7"></path>
+                        </svg>
+                        Registrar activo
+                    </button>
+                </div>
             </section>
 
-
-            <!-- =================================================
-                 RESUMEN
-            ================================================== -->
-
             <section class="asset-summary">
-
                 <article class="asset-stat">
-
                     <div class="stat-icon">
-
                         <svg viewBox="0 0 24 24">
                             <path d="M3 7h6l2 2h10v10H3z"></path>
                             <path d="M3 7V5h6l2 2"></path>
                         </svg>
-
                     </div>
-
                     <div>
-
-                        <span>
-                            Total de activos
-                        </span>
-
-                        <strong>
-                            148
-                        </strong>
-
-                        <small>
-                            Recursos registrados
-                        </small>
-
+                        <span>Proyectos editoriales</span>
+                        <strong id="totalProjects">0</strong>
+                        <small>Proyectos registrados</small>
                     </div>
-
                 </article>
 
+                <article class="asset-stat">
+                    <div class="stat-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                            <polyline points="14 2 14 8 20 8"></polyline>
+                        </svg>
+                    </div>
+                    <div>
+                        <span>Activos registrados</span>
+                        <strong id="totalAssets">0</strong>
+                        <small>Recursos editoriales</small>
+                    </div>
+                </article>
 
                 <article class="asset-stat">
-
                     <div class="stat-icon">
-
                         <svg viewBox="0 0 24 24">
                             <circle cx="12" cy="12" r="9"></circle>
                             <polyline points="12 7 12 12 15 14"></polyline>
                         </svg>
-
                     </div>
-
                     <div>
-
-                        <span>
-                            En revisión
-                        </span>
-
-                        <strong>
-                            12
-                        </strong>
-
-                        <small>
-                            Proceso editorial activo
-                        </small>
-
+                        <span>En revisión</span>
+                        <strong id="reviewAssets">0</strong>
+                        <small>Proceso editorial activo</small>
                     </div>
-
                 </article>
 
-
                 <article class="asset-stat">
-
                     <div class="stat-icon">
-
                         <svg viewBox="0 0 24 24">
                             <path d="M20 6 9 17l-5-5"></path>
                         </svg>
-
                     </div>
-
                     <div>
-
-                        <span>
-                            Aprobados
-                        </span>
-
-                        <strong>
-                            40
-                        </strong>
-
-                        <small>
-                            Listos para publicación
-                        </small>
-
+                        <span>Publicados</span>
+                        <strong id="publishedAssets">0</strong>
+                        <small>Proceso finalizado</small>
                     </div>
-
                 </article>
-
-
-                <article class="asset-stat">
-
-                    <div class="stat-icon">
-
-                        <svg viewBox="0 0 24 24">
-                            <path d="M12 2v13"></path>
-                            <polyline points="7 10 12 15 17 10"></polyline>
-                            <path d="M5 22h14"></path>
-                        </svg>
-
-                    </div>
-
-                    <div>
-
-                        <span>
-                            Publicados
-                        </span>
-
-                        <strong>
-                            96
-                        </strong>
-
-                        <small>
-                            Proceso finalizado
-                        </small>
-
-                    </div>
-
-                </article>
-
             </section>
-
-
-            <!-- =================================================
-                 PANEL DE ACTIVOS
-            ================================================== -->
 
             <section class="assets-panel">
 
-                <div class="assets-panel-header">
-
-                    <div>
-
-                        <span class="section-label">
-                            RECURSOS REGISTRADOS
-                        </span>
-
-                        <h2>
-                            Listado de activos
-                        </h2>
-
-                        <p>
-                            Localice y consulte los activos incorporados al sistema.
-                        </p>
-
-                    </div>
-
-
-                    <div class="result-count">
-
-                        <strong id="resultCount">
-                            6
-                        </strong>
-
-                        <span>
-                            resultados mostrados
-                        </span>
-
-                    </div>
-
-                </div>
-
-
-                <!-- =================================================
-                     FILTROS
-                ================================================== -->
-
-                <div class="filters">
-
-                    <div class="search-box">
-
-                        <svg viewBox="0 0 24 24">
-                            <circle cx="11" cy="11" r="7"></circle>
-                            <line x1="20" y1="20" x2="16.65" y2="16.65"></line>
-                        </svg>
-
-                        <input
-                            type="text"
-                            id="assetSearch"
-                            placeholder="Buscar por nombre o responsable..."
-                        >
-
-                    </div>
-
-
-                    <div class="select-wrapper">
-
-                        <select id="statusFilter">
-
-                            <option value="all">
-                                Todos los estados
-                            </option>
-
-                            <option value="revision">
-                                En revisión
-                            </option>
-
-                            <option value="aprobado">
-                                Aprobado
-                            </option>
-
-                            <option value="publicado">
-                                Publicado
-                            </option>
-
-                        </select>
-
-                        <svg viewBox="0 0 24 24">
-                            <polyline points="6 9 12 15 18 9"></polyline>
-                        </svg>
-
-                    </div>
-
-
-                    <div class="select-wrapper">
-
-                        <select id="typeFilter">
-
-                            <option value="all">
-                                Todos los tipos
-                            </option>
-
-                            <option value="libro">
-                                Libro
-                            </option>
-
-                            <option value="guia">
-                                Guía
-                            </option>
-
-                            <option value="material">
-                                Material educativo
-                            </option>
-
-                        </select>
-
-                        <svg viewBox="0 0 24 24">
-                            <polyline points="6 9 12 15 18 9"></polyline>
-                        </svg>
-
-                    </div>
-
-
-                    <button
-                        class="clear-filters"
-                        id="clearFilters"
-                        type="button"
-                    >
-                        Limpiar filtros
+                <div class="management-tabs" role="tablist">
+                    <button class="management-tab active" type="button"
+                            data-tab="projectsPanel"
+                            aria-selected="true">
+                        Proyectos editoriales
                     </button>
-
+                    <button class="management-tab" type="button"
+                            data-tab="assetsPanel"
+                            aria-selected="false">
+                        Activos registrados
+                    </button>
                 </div>
 
+                <!-- PESTAÑA PROYECTOS -->
 
-                <!-- =================================================
-                     CABECERA
-                ================================================== -->
-
-                <div class="asset-table-header">
-
-                    <span>ACTIVO EDITORIAL</span>
-                    <span>TIPO</span>
-                    <span>VERSIÓN</span>
-                    <span>RESPONSABLE</span>
-                    <span>ESTADO</span>
-                    <span>ACTUALIZACIÓN</span>
-                    <span></span>
-
-                </div>
-
-
-                <!-- =================================================
-                     LISTADO
-                ================================================== -->
-
-                <div
-                    class="asset-list"
-                    id="assetList"
-                >
-
-                    <!-- ACTIVO 1 -->
-
-                    <article
-                        class="asset-row"
-                        data-status="revision"
-                        data-type="libro"
-                        data-search="libro de ciencias naturales maría lópez"
-                    >
-
-                        <div class="asset-name">
-
-                            <div class="file-icon">
-
-                                <svg viewBox="0 0 24 24">
-                                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                                    <polyline points="14 2 14 8 20 8"></polyline>
-                                </svg>
-
-                            </div>
-
-                            <div>
-
-                                <strong>
-                                    Libro de Ciencias Naturales
-                                </strong>
-
-                                <span>
-                                    Educación Básica
-                                </span>
-
-                            </div>
-
+                <div class="management-panel active" id="projectsPanel">
+                    <div class="management-section-header">
+                        <div>
+                            <span class="section-label">ADMINISTRACIÓN</span>
+                            <h2>Proyectos editoriales</h2>
+                            <p>
+                                Consulte los proyectos y administre
+                                sus responsables autorizados.
+                            </p>
                         </div>
-
-                        <span>
-                            Libro
-                        </span>
-
-                        <strong class="version">
-                            v3.2
-                        </strong>
-
-                        <div class="responsible">
-
-                            <span class="user-initials">
-                                ML
-                            </span>
-
-                            <span>
-                                María López
-                            </span>
-
+                        <div class="result-count">
+                            <strong id="projectCount">0</strong>
+                            <span>proyectos</span>
                         </div>
-
-                        <span class="status status-review">
-                            En revisión
-                        </span>
-
-                        <span>
-                            24 sep. 2026
-                        </span>
-
-                        <button
-                            class="row-action"
-                            type="button"
-                            aria-label="Ver activo"
-                            data-view-asset="Libro de Ciencias Naturales"
-                        >
-
-                            <svg viewBox="0 0 24 24">
-                                <polyline points="9 18 15 12 9 6"></polyline>
-                            </svg>
-
-                        </button>
-
-                    </article>
-
-
-                    <!-- ACTIVO 2 -->
-
-                    <article
-                        class="asset-row"
-                        data-status="publicado"
-                        data-type="guia"
-                        data-search="guía metodológica carlos hernández"
-                    >
-
-                        <div class="asset-name">
-
-                            <div class="file-icon">
-
-                                <svg viewBox="0 0 24 24">
-                                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                                    <polyline points="14 2 14 8 20 8"></polyline>
-                                </svg>
-
-                            </div>
-
-                            <div>
-
-                                <strong>
-                                    Guía metodológica
-                                </strong>
-
-                                <span>
-                                    Formación docente
-                                </span>
-
-                            </div>
-
-                        </div>
-
-                        <span>
-                            Guía
-                        </span>
-
-                        <strong class="version">
-                            v2.0
-                        </strong>
-
-                        <div class="responsible">
-
-                            <span class="user-initials">
-                                CH
-                            </span>
-
-                            <span>
-                                Carlos Hernández
-                            </span>
-
-                        </div>
-
-                        <span class="status status-published">
-                            Publicado
-                        </span>
-
-                        <span>
-                            23 sep. 2026
-                        </span>
-
-                        <button
-                            class="row-action"
-                            type="button"
-                            aria-label="Ver activo"
-                            data-view-asset="Guía metodológica"
-                        >
-
-                            <svg viewBox="0 0 24 24">
-                                <polyline points="9 18 15 12 9 6"></polyline>
-                            </svg>
-
-                        </button>
-
-                    </article>
-
-
-                    <!-- ACTIVO 3 -->
-
-                    <article
-                        class="asset-row"
-                        data-status="aprobado"
-                        data-type="material"
-                        data-search="material de apoyo matemática ana martínez"
-                    >
-
-                        <div class="asset-name">
-
-                            <div class="file-icon">
-
-                                <svg viewBox="0 0 24 24">
-                                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                                    <polyline points="14 2 14 8 20 8"></polyline>
-                                </svg>
-
-                            </div>
-
-                            <div>
-
-                                <strong>
-                                    Material de apoyo de Matemática
-                                </strong>
-
-                                <span>
-                                    Educación Básica
-                                </span>
-
-                            </div>
-
-                        </div>
-
-                        <span>
-                            Material educativo
-                        </span>
-
-                        <strong class="version">
-                            v1.4
-                        </strong>
-
-                        <div class="responsible">
-
-                            <span class="user-initials">
-                                AM
-                            </span>
-
-                            <span>
-                                Ana Martínez
-                            </span>
-
-                        </div>
-
-                        <span class="status status-approved">
-                            Aprobado
-                        </span>
-
-                        <span>
-                            22 sep. 2026
-                        </span>
-
-                        <button
-                            class="row-action"
-                            type="button"
-                            aria-label="Ver activo"
-                            data-view-asset="Material de apoyo de Matemática"
-                        >
-
-                            <svg viewBox="0 0 24 24">
-                                <polyline points="9 18 15 12 9 6"></polyline>
-                            </svg>
-
-                        </button>
-
-                    </article>
-
-
-                    <!-- ACTIVO 4 -->
-
-                    <article
-                        class="asset-row"
-                        data-status="revision"
-                        data-type="guia"
-                        data-search="guía de estudios sociales josé ramírez"
-                    >
-
-                        <div class="asset-name">
-
-                            <div class="file-icon">
-
-                                <svg viewBox="0 0 24 24">
-                                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                                    <polyline points="14 2 14 8 20 8"></polyline>
-                                </svg>
-
-                            </div>
-
-                            <div>
-
-                                <strong>
-                                    Guía de Estudios Sociales
-                                </strong>
-
-                                <span>
-                                    Segundo Ciclo
-                                </span>
-
-                            </div>
-
-                        </div>
-
-                        <span>
-                            Guía
-                        </span>
-
-                        <strong class="version">
-                            v1.7
-                        </strong>
-
-                        <div class="responsible">
-
-                            <span class="user-initials">
-                                JR
-                            </span>
-
-                            <span>
-                                José Ramírez
-                            </span>
-
-                        </div>
-
-                        <span class="status status-review">
-                            En revisión
-                        </span>
-
-                        <span>
-                            21 sep. 2026
-                        </span>
-
-                        <button
-                            class="row-action"
-                            type="button"
-                            aria-label="Ver activo"
-                            data-view-asset="Guía de Estudios Sociales"
-                        >
-
-                            <svg viewBox="0 0 24 24">
-                                <polyline points="9 18 15 12 9 6"></polyline>
-                            </svg>
-
-                        </button>
-
-                    </article>
-
-
-                    <!-- ACTIVO 5 -->
-
-                    <article
-                        class="asset-row"
-                        data-status="publicado"
-                        data-type="libro"
-                        data-search="libro de lenguaje sofía castro"
-                    >
-
-                        <div class="asset-name">
-
-                            <div class="file-icon">
-
-                                <svg viewBox="0 0 24 24">
-                                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                                    <polyline points="14 2 14 8 20 8"></polyline>
-                                </svg>
-
-                            </div>
-
-                            <div>
-
-                                <strong>
-                                    Libro de Lenguaje
-                                </strong>
-
-                                <span>
-                                    Primer Ciclo
-                                </span>
-
-                            </div>
-
-                        </div>
-
-                        <span>
-                            Libro
-                        </span>
-
-                        <strong class="version">
-                            v4.1
-                        </strong>
-
-                        <div class="responsible">
-
-                            <span class="user-initials">
-                                SC
-                            </span>
-
-                            <span>
-                                Sofía Castro
-                            </span>
-
-                        </div>
-
-                        <span class="status status-published">
-                            Publicado
-                        </span>
-
-                        <span>
-                            19 sep. 2026
-                        </span>
-
-                        <button
-                            class="row-action"
-                            type="button"
-                            aria-label="Ver activo"
-                            data-view-asset="Libro de Lenguaje"
-                        >
-
-                            <svg viewBox="0 0 24 24">
-                                <polyline points="9 18 15 12 9 6"></polyline>
-                            </svg>
-
-                        </button>
-
-                    </article>
-
-
-                    <!-- ACTIVO 6 -->
-
-                    <article
-                        class="asset-row"
-                        data-status="aprobado"
-                        data-type="material"
-                        data-search="cuaderno de actividades laura gómez"
-                    >
-
-                        <div class="asset-name">
-
-                            <div class="file-icon">
-
-                                <svg viewBox="0 0 24 24">
-                                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                                    <polyline points="14 2 14 8 20 8"></polyline>
-                                </svg>
-
-                            </div>
-
-                            <div>
-
-                                <strong>
-                                    Cuaderno de actividades
-                                </strong>
-
-                                <span>
-                                    Primera Infancia
-                                </span>
-
-                            </div>
-
-                        </div>
-
-                        <span>
-                            Material educativo
-                        </span>
-
-                        <strong class="version">
-                            v2.3
-                        </strong>
-
-                        <div class="responsible">
-
-                            <span class="user-initials">
-                                LG
-                            </span>
-
-                            <span>
-                                Laura Gómez
-                            </span>
-
-                        </div>
-
-                        <span class="status status-approved">
-                            Aprobado
-                        </span>
-
-                        <span>
-                            18 sep. 2026
-                        </span>
-
-                        <button
-                            class="row-action"
-                            type="button"
-                            aria-label="Ver activo"
-                            data-view-asset="Cuaderno de actividades"
-                        >
-
-                            <svg viewBox="0 0 24 24">
-                                <polyline points="9 18 15 12 9 6"></polyline>
-                            </svg>
-
-                        </button>
-
-                    </article>
-
-                </div>
-
-
-                <!-- =================================================
-                     SIN RESULTADOS
-                ================================================== -->
-
-                <div
-                    class="empty-state"
-                    id="emptyState"
-                >
-
-                    <div class="empty-icon">
-
-                        <svg viewBox="0 0 24 24">
-                            <circle cx="11" cy="11" r="7"></circle>
-                            <line x1="20" y1="20" x2="16.65" y2="16.65"></line>
-                        </svg>
-
                     </div>
 
-                    <strong>
-                        No se encontraron activos
-                    </strong>
-
-                    <span>
-                        Modifique los criterios de búsqueda o los filtros seleccionados.
-                    </span>
-
+                    <div class="project-grid" id="projectList"></div>
                 </div>
 
+                <!-- PESTAÑA ACTIVOS -->
+
+                <div class="management-panel" id="assetsPanel">
+                    <div class="management-section-header">
+                        <div>
+                            <span class="section-label">RECURSOS REGISTRADOS</span>
+                            <h2>Listado de activos</h2>
+                            <p>
+                                Consulte los activos asociados a
+                                los proyectos editoriales.
+                            </p>
+                        </div>
+                        <div class="result-count">
+                            <strong id="resultCount">0</strong>
+                            <span>resultados mostrados</span>
+                        </div>
+                    </div>
+
+                    <div class="filters">
+                        <div class="search-box">
+                            <svg viewBox="0 0 24 24">
+                                <circle cx="11" cy="11" r="7"></circle>
+                                <line x1="20" y1="20" x2="16.65" y2="16.65"></line>
+                            </svg>
+                            <input type="text" id="assetSearch"
+                                   placeholder="Buscar por nombre o responsable...">
+                        </div>
+
+                        <div class="select-wrapper">
+                            <select id="statusFilter">
+                                <option value="all">Todos los estados</option>
+                                <option value="registrado">Registrado</option>
+                                <option value="revision">En revisión</option>
+                                <option value="aprobado">Aprobado</option>
+                                <option value="publicado">Publicado</option>
+                            </select>
+                        </div>
+
+                        <div class="select-wrapper">
+                            <select id="typeFilter">
+                                <option value="all">Todos los tipos</option>
+                                <option value="libro">Libro</option>
+                                <option value="guia">Guía</option>
+                                <option value="material">Material educativo</option>
+                            </select>
+                        </div>
+
+                        <button class="clear-filters" id="clearFilters"
+                                type="button">
+                            Limpiar filtros
+                        </button>
+                    </div>
+
+                    <div class="asset-table-header">
+                        <span>ACTIVO EDITORIAL</span>
+                        <span>TIPO</span>
+                        <span>VERSIÓN</span>
+                        <span>RESPONSABLE</span>
+                        <span>ESTADO</span>
+                        <span>ACTUALIZACIÓN</span>
+                        <span></span>
+                    </div>
+
+                    <div class="asset-list" id="assetList"></div>
+
+                    <div class="management-empty" id="emptyState"
+                         style="display:none">
+                        <strong>No se encontraron activos</strong>
+                        <span>
+                            Modifique los filtros o registre un nuevo activo.
+                        </span>
+                    </div>
+                </div>
             </section>
 
-
-            <!-- =================================================
-                 FOOTER INTERNO
-            ================================================== -->
-
             <footer class="page-footer">
-
                 <div>
-
-                    <strong>
-                        SISCAE
-                    </strong>
-
+                    <strong>SISCAE</strong>
                     <span>
-                        Sistema Integral de Seguridad y Control de Activos Editoriales
+                        Sistema Integral de Seguridad y Control de
+                        Activos Editoriales
                     </span>
-
                 </div>
-
-                <span>
-                    Ministerio de Educación
-                </span>
-
+                <span>Ministerio de Educación</span>
             </footer>
-
         </div>
-
     </main>
 
+    <!-- MODAL CREAR / EDITAR PROYECTO -->
 
-    <!-- =====================================================
-         MODAL REGISTRAR ACTIVO
-    ====================================================== -->
+    <div class="management-modal" id="projectModal"
+         aria-hidden="true">
+        <div class="management-modal-overlay"
+             data-close-modal="projectModal"></div>
 
-    <div
-        class="modal"
-        id="assetModal"
-    >
+        <div class="management-modal-dialog wide"
+             role="dialog" aria-modal="true"
+             aria-labelledby="projectModalTitle">
 
-        <div
-            class="modal-overlay"
-            data-close-asset-modal
-        ></div>
-
-
-        <div class="modal-dialog asset-modal-dialog">
-
-            <div class="modal-heading">
-
+            <div class="management-modal-heading">
                 <div>
-
-                    <span class="section-label">
-                        NUEVO REGISTRO
-                    </span>
-
-                    <h2>
-                        Registrar activo editorial
-                    </h2>
-
+                    <span class="section-label">GESTIÓN DE PROYECTOS</span>
+                    <h2 id="projectModalTitle">Crear proyecto editorial</h2>
+                    <p>
+                        Defina el proyecto y sus responsables autorizados.
+                    </p>
                 </div>
-
-
-                <button
-                    class="modal-close"
-                    type="button"
-                    data-close-asset-modal
-                    aria-label="Cerrar"
-                >
-                    ×
-                </button>
-
+                <button class="management-modal-close" type="button"
+                        data-close-modal="projectModal"
+                        aria-label="Cerrar">&times;</button>
             </div>
 
+            <form class="management-form" id="projectForm">
+                <input type="hidden" id="editingProjectId">
 
-            <p class="modal-description">
-                Complete la información general del recurso editorial.
-            </p>
+                <div class="management-form-grid">
+                    <div class="management-field full">
+                        <label for="projectName">Nombre del proyecto *</label>
+                        <input type="text" id="projectName" required
+                               placeholder="Ej. Libros de Ciencias 2026">
+                    </div>
 
-
-            <form id="assetForm">
-
-                <div class="form-group">
-
-                    <label for="assetName">
-                        Nombre del activo
-                    </label>
-
-                    <input
-                        type="text"
-                        id="assetName"
-                        placeholder="Ej. Libro de Ciencias Naturales"
-                        required
-                    >
-
-                </div>
-
-
-                <div class="form-row">
-
-                    <div class="form-group">
-
-                        <label for="assetType">
-                            Tipo
-                        </label>
-
-                        <select
-                            id="assetType"
-                            required
-                        >
-
-                            <option value="">
-                                Seleccionar
-                            </option>
-
-                            <option>
-                                Libro
-                            </option>
-
-                            <option>
-                                Guía
-                            </option>
-
-                            <option>
-                                Material educativo
-                            </option>
-
+                    <div class="management-field">
+                        <label for="projectArea">Área educativa *</label>
+                        <select id="projectArea" required>
+                            <option value="">Seleccionar área</option>
+                            <option>Primera Infancia</option>
+                            <option>Primer Ciclo</option>
+                            <option>Segundo Ciclo</option>
+                            <option>Tercer Ciclo</option>
+                            <option>Educación Básica</option>
+                            <option>Formación docente</option>
                         </select>
-
                     </div>
 
+                    <div class="management-field">
+                        <label for="projectDate">Fecha de creación *</label>
+                        <input type="date" id="projectDate" required>
+                    </div>
 
-                    <div class="form-group">
-
-                        <label for="assetVersion">
-                            Versión
+                    <div class="management-field full">
+                        <label for="projectDescription">
+                            Descripción del proyecto *
                         </label>
-
-                        <input
-                            type="text"
-                            id="assetVersion"
-                            placeholder="Ej. v1.0"
-                            required
-                        >
-
+                        <textarea id="projectDescription" rows="3"
+                                  required
+                                  placeholder="Describa el objetivo del proyecto editorial."></textarea>
                     </div>
 
+                    <div class="management-field">
+                        <label for="projectStatus">Estado</label>
+                        <select id="projectStatus">
+                            <option value="activo">Activo</option>
+                            <option value="inactivo">Inactivo</option>
+                        </select>
+                    </div>
+
+                    <div class="management-field full">
+                        <label>Responsables autorizados *</label>
+                        <div class="responsible-selector"
+                             id="projectResponsibleList"></div>
+                        <small>
+                            Seleccione uno o varios usuarios. Solamente ellos
+                            podrán asignarse a los activos del proyecto.
+                        </small>
+                    </div>
                 </div>
 
-
-                <div class="form-group">
-
-                    <label for="assetResponsible">
-                        Responsable
-                    </label>
-
-                    <input
-                        type="text"
-                        id="assetResponsible"
-                        placeholder="Nombre del responsable"
-                        required
-                    >
-
+                <div class="management-note">
+                    El administrador podrá actualizar los responsables
+                    posteriormente. Cada proyecto tendrá su propio código.
                 </div>
 
-
-                <div class="modal-actions">
-
-                    <button
-                        class="btn-secondary"
-                        type="button"
-                        data-close-asset-modal
-                    >
+                <div class="management-modal-actions">
+                    <button class="management-button secondary"
+                            type="button"
+                            data-close-modal="projectModal">
                         Cancelar
                     </button>
-
-                    <button
-                        class="btn-primary"
-                        type="submit"
-                    >
-                        Registrar activo
+                    <button class="management-button" type="submit">
+                        Guardar proyecto
                     </button>
+                </div>
+            </form>
+        </div>
+    </div>
 
+    <!-- MODAL REGISTRAR ACTIVO -->
+
+    <div class="management-modal" id="assetModal"
+         aria-hidden="true">
+        <div class="management-modal-overlay"
+             data-close-modal="assetModal"></div>
+
+        <div class="management-modal-dialog wide"
+             role="dialog" aria-modal="true"
+             aria-labelledby="assetModalTitle">
+
+            <div class="management-modal-heading">
+                <div>
+                    <span class="section-label">REGISTRO EDITORIAL</span>
+                    <h2 id="assetModalTitle">Registrar activo editorial</h2>
+                    <p>
+                        Incorpore un recurso a un proyecto existente.
+                    </p>
+                </div>
+                <button class="management-modal-close" type="button"
+                        data-close-modal="assetModal"
+                        aria-label="Cerrar">&times;</button>
+            </div>
+
+            <form class="management-form" id="assetForm">
+                <div class="management-form-grid">
+                    <div class="management-field full">
+                        <label for="assetProject">Proyecto editorial *</label>
+                        <select id="assetProject" required>
+                            <option value="">Seleccionar proyecto</option>
+                        </select>
+                        <small>
+                            Se muestran únicamente proyectos activos.
+                        </small>
+                    </div>
+
+                    <div class="management-field full">
+                        <label for="assetName">Nombre del activo *</label>
+                        <input type="text" id="assetName" required
+                               placeholder="Ej. Libro de Ciencias Naturales">
+                    </div>
+
+                    <div class="management-field">
+                        <label for="assetType">Tipo de recurso *</label>
+                        <select id="assetType" required>
+                            <option value="">Seleccionar tipo</option>
+                            <option value="libro">Libro</option>
+                            <option value="guia">Guía</option>
+                            <option value="material">Material educativo</option>
+                        </select>
+                    </div>
+
+                    <div class="management-field">
+                        <label for="assetArea">Área educativa *</label>
+                        <select id="assetArea" required>
+                            <option value="">Seleccionar área</option>
+                            <option>Primera Infancia</option>
+                            <option>Primer Ciclo</option>
+                            <option>Segundo Ciclo</option>
+                            <option>Tercer Ciclo</option>
+                            <option>Educación Básica</option>
+                            <option>Formación docente</option>
+                        </select>
+                    </div>
+
+                    <div class="management-field">
+                        <label for="assetVersion">Versión inicial</label>
+                        <input type="text" id="assetVersion"
+                               value="v1.0" readonly>
+                    </div>
+
+                    <div class="management-field">
+                        <label for="assetResponsible">Responsable *</label>
+                        <select id="assetResponsible" required disabled>
+                            <option value="">
+                                Seleccione primero un proyecto
+                            </option>
+                        </select>
+                        <small>
+                            Usuarios asignados al proyecto seleccionado.
+                        </small>
+                    </div>
+
+                    <div class="management-field full">
+                        <label for="assetDescription">Descripción *</label>
+                        <textarea id="assetDescription" rows="3"
+                                  required
+                                  placeholder="Descripción del recurso editorial."></textarea>
+                    </div>
+
+                    <div class="management-field full">
+                        <label for="assetFile">Archivo inicial *</label>
+                        <input type="file" id="assetFile" required
+                               accept=".pdf,.doc,.docx,.ppt,.pptx,.jpg,.jpeg,.png">
+                        <small>
+                            Carga simulada: se registra el nombre del archivo,
+                            no su contenido.
+                        </small>
+                    </div>
                 </div>
 
+                <div class="management-note">
+                    El activo iniciará con estado Registrado y versión v1.0.
+                    Se generará un código y un evento de trazabilidad.
+                </div>
+
+                <div class="management-modal-actions">
+                    <button class="management-button secondary"
+                            type="button"
+                            data-close-modal="assetModal">
+                        Cancelar
+                    </button>
+                    <button class="management-button" type="submit">
+                        Registrar activo
+                    </button>
+                </div>
             </form>
-
         </div>
-
     </div>
 
+    <!-- MODAL DETALLE ACTIVO -->
 
-    <!-- =====================================================
-         MODAL DETALLE
-    ====================================================== -->
+    <div class="management-modal" id="detailModal"
+         aria-hidden="true">
+        <div class="management-modal-overlay"
+             data-close-modal="detailModal"></div>
 
-    <div
-        class="modal"
-        id="detailModal"
-    >
+        <div class="management-modal-dialog wide"
+             role="dialog" aria-modal="true"
+             aria-labelledby="detailAssetName">
 
-        <div
-            class="modal-overlay"
-            data-close-detail-modal
-        ></div>
-
-
-        <div class="modal-dialog detail-dialog">
-
-            <div class="detail-icon">
-
-                <svg viewBox="0 0 24 24">
-                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                    <polyline points="14 2 14 8 20 8"></polyline>
-                </svg>
-
+            <div class="management-modal-heading">
+                <div>
+                    <span class="section-label">ACTIVO EDITORIAL</span>
+                    <h2 id="detailAssetName">Detalle del activo</h2>
+                    <p id="detailAssetCode"></p>
+                </div>
+                <button class="management-modal-close" type="button"
+                        data-close-modal="detailModal"
+                        aria-label="Cerrar">&times;</button>
             </div>
 
+            <div class="management-form">
+                <div class="detail-info-grid">
+                    <div class="detail-info-item">
+                        <span>Proyecto</span>
+                        <strong id="detailProject">—</strong>
+                    </div>
+                    <div class="detail-info-item">
+                        <span>Tipo</span>
+                        <strong id="detailType">—</strong>
+                    </div>
+                    <div class="detail-info-item">
+                        <span>Área</span>
+                        <strong id="detailArea">—</strong>
+                    </div>
+                    <div class="detail-info-item">
+                        <span>Estado</span>
+                        <strong id="detailAssetStatus">—</strong>
+                    </div>
+                    <div class="detail-info-item">
+                        <span>Versión</span>
+                        <strong id="detailVersion">—</strong>
+                    </div>
+                    <div class="detail-info-item">
+                        <span>Última actualización</span>
+                        <strong id="detailUpdated">—</strong>
+                    </div>
+                </div>
 
-            <span class="section-label">
-                ACTIVO EDITORIAL
-            </span>
+                <div class="management-field" style="margin-top:20px">
+                    <label>Descripción</label>
+                    <p id="detailDescription">—</p>
+                </div>
 
-            <h2 id="detailAssetName">
-                Recurso editorial
-            </h2>
+                <div class="management-field">
+                    <label>Responsable actual</label>
+                    <strong id="detailResponsible">—</strong>
+                </div>
 
-            <p>
-                Esta vista permitirá consultar la información,
-                versiones, trazabilidad y acciones asociadas al activo.
-            </p>
+                <div class="management-field">
+                    <label for="detailResponsibleSelect">
+                        Reasignar responsable
+                    </label>
+                    <select id="detailResponsibleSelect"></select>
+                    <button class="management-button secondary"
+                            type="button" id="saveResponsibleButton">
+                        Guardar asignación
+                    </button>
+                </div>
 
+                <div class="management-field">
+                    <label>Historial de versiones</label>
+                    <div id="detailVersionHistory"></div>
+                </div>
 
-            <div class="modal-actions">
+                <div class="management-field">
+                    <label>Trazabilidad</label>
+                    <div id="detailTraceability"></div>
+                </div>
 
-                <button
-                    class="btn-primary"
-                    type="button"
-                    data-close-detail-modal
-                >
-                    Cerrar
+                <div class="management-note">
+                    La auditoría y las versiones se representan mediante
+                    registros simulados. No se realizan firmas ni
+                    verificaciones criptográficas reales.
+                </div>
+
+                <div class="management-modal-actions">
+                    <button class="management-button secondary"
+                            type="button" id="viewAuditButton">
+                        Ver auditoría
+                    </button>
+                    <button class="management-button" type="button"
+                            data-close-modal="detailModal">
+                        Cerrar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL CERRAR SESIÓN -->
+
+    <div class="management-modal" id="logoutModal"
+         aria-hidden="true">
+        <div class="management-modal-overlay"
+             data-close-modal="logoutModal"></div>
+
+        <div class="management-modal-dialog"
+             role="dialog" aria-modal="true"
+             aria-labelledby="logoutTitle">
+            <div class="management-modal-heading">
+                <div>
+                    <span class="section-label">SEGURIDAD</span>
+                    <h2 id="logoutTitle">Cerrar sesión</h2>
+                </div>
+                <button class="management-modal-close" type="button"
+                        data-close-modal="logoutModal">
+                    &times;
                 </button>
-
             </div>
-
-        </div>
-
-    </div>
-
-
-    <!-- =====================================================
-         MODAL CERRAR SESIÓN
-    ====================================================== -->
-
-    <div
-        class="modal"
-        id="logoutModal"
-    >
-
-        <div
-            class="modal-overlay"
-            data-close-logout-modal
-        ></div>
-
-
-        <div class="modal-dialog">
-
-            <h2>
-                Cerrar sesión
-            </h2>
-
-            <p class="modal-description">
-                ¿Desea finalizar su sesión actual en SISCAE?
+            <p style="margin:22px 0;color:#526b80">
+                ¿Está seguro de que desea cerrar su sesión?
             </p>
-
-
-            <div class="modal-actions">
-
-                <button
-                    class="btn-secondary"
-                    type="button"
-                    data-close-logout-modal
-                >
+            <div class="management-modal-actions">
+                <button class="management-button secondary"
+                        type="button"
+                        data-close-modal="logoutModal">
                     Cancelar
                 </button>
-
-                <button
-                    class="btn-primary"
-                    type="button"
-                    id="confirmLogout"
-                >
+                <button class="management-button"
+                        id="confirmLogout" type="button">
                     Cerrar sesión
                 </button>
-
             </div>
-
         </div>
-
     </div>
 
-
-    <!-- =====================================================
-         COMPONENTES COMPARTIDOS
-    ====================================================== -->
+    <div class="management-toast" id="managementToast"
+         role="status" aria-live="polite"></div>
 
     <script src="../js/components.js"></script>
 
     <script>
-        loadAdminSidebar();
+        if (typeof loadAdminSidebar === "function") {
+            loadAdminSidebar();
+        }
     </script>
 
+    <!-- LÓGICA INTEGRADA: NO CARGAR EL ACTIVOS.JS ANTERIOR -->
 
-    <!-- =====================================================
-         JAVASCRIPT DE ACTIVOS
-    ====================================================== -->
+    <script>
+    (() => {
+        "use strict";
 
-    <script src="../js/pages/activos.js"></script>
+        const $ = id => document.getElementById(id);
+
+        const STORAGE = "siscae_management_integrated_v1";
+
+        const usuarios = [
+            "María López",
+            "Carlos Hernández",
+            "Ana Martínez",
+            "José Ramírez",
+            "Sofía Castro",
+            "Laura Gómez"
+        ];
+
+        const proyectosBase = [
+            {
+                id: "PRY-2026-001",
+                nombre: "Libros de Ciencias - Tercer Ciclo 2026",
+                area: "Educación Básica",
+                descripcion: "Producción de recursos editoriales de Ciencias Naturales.",
+                fecha: "2026-09-01",
+                estado: "activo",
+                responsables: ["María López", "Ana Martínez", "José Ramírez"]
+            },
+            {
+                id: "PRY-2026-002",
+                nombre: "Formación Docente 2026",
+                area: "Formación docente",
+                descripcion: "Desarrollo de guías y recursos para formación docente.",
+                fecha: "2026-09-02",
+                estado: "activo",
+                responsables: ["Carlos Hernández", "María López"]
+            },
+            {
+                id: "PRY-2026-003",
+                nombre: "Matemática - Educación Básica 2026",
+                area: "Educación Básica",
+                descripcion: "Material educativo complementario de Matemática.",
+                fecha: "2026-09-03",
+                estado: "activo",
+                responsables: ["Ana Martínez", "Laura Gómez"]
+            },
+            {
+                id: "PRY-2026-004",
+                nombre: "Estudios Sociales - Segundo Ciclo 2026",
+                area: "Segundo Ciclo",
+                descripcion: "Guías de Estudios Sociales para Segundo Ciclo.",
+                fecha: "2026-09-04",
+                estado: "activo",
+                responsables: ["José Ramírez", "Carlos Hernández"]
+            },
+            {
+                id: "PRY-2026-005",
+                nombre: "Lenguaje - Primer Ciclo 2026",
+                area: "Primer Ciclo",
+                descripcion: "Producción editorial de materiales de Lenguaje.",
+                fecha: "2026-09-05",
+                estado: "activo",
+                responsables: ["Sofía Castro", "Carlos Hernández"]
+            },
+            {
+                id: "PRY-2026-006",
+                nombre: "Primera Infancia 2026",
+                area: "Primera Infancia",
+                descripcion: "Recursos educativos destinados a Primera Infancia.",
+                fecha: "2026-09-06",
+                estado: "activo",
+                responsables: ["Laura Gómez", "Sofía Castro"]
+            }
+        ];
+
+        const datosActivos = [
+            ["041", "Libro de Ciencias Naturales", 0, "libro",
+             "v3.2", "María López", "revision", "24 sep. 2026"],
+            ["037", "Guía metodológica", 1, "guia",
+             "v2.0", "Carlos Hernández", "publicado", "23 sep. 2026"],
+            ["034", "Material de apoyo de Matemática", 2, "material",
+             "v1.4", "Ana Martínez", "aprobado", "22 sep. 2026"],
+            ["031", "Guía de Estudios Sociales", 3, "guia",
+             "v1.7", "José Ramírez", "revision", "21 sep. 2026"],
+            ["025", "Libro de Lenguaje", 4, "libro",
+             "v4.1", "Sofía Castro", "publicado", "19 sep. 2026"],
+            ["019", "Cuaderno de actividades", 5, "material",
+             "v2.3", "Laura Gómez", "aprobado", "18 sep. 2026"]
+        ];
+
+        const activosBase = datosActivos.map(d => ({
+            id: "ACT-2026-" + d[0],
+            nombre: d[1],
+            proyectoId: proyectosBase[d[2]].id,
+            area: proyectosBase[d[2]].area,
+            tipo: d[3],
+            version: d[4],
+            responsable: d[5],
+            estado: d[6],
+            actualizado: d[7],
+            descripcion: "Recurso editorial del proyecto " +
+                         proyectosBase[d[2]].nombre + ".",
+            archivo: "",
+            historial: [{
+                version: d[4],
+                fecha: d[7],
+                autor: d[5],
+                accion: "Versión registrada"
+            }],
+            trazabilidad: [{
+                titulo: "Registro editorial",
+                descripcion: "Recurso incorporado al sistema.",
+                fecha: d[7]
+            }]
+        }));
+
+        let estado;
+
+        try {
+            const guardado = JSON.parse(localStorage.getItem(STORAGE));
+            estado = guardado &&
+                     Array.isArray(guardado.proyectos) &&
+                     Array.isArray(guardado.activos)
+                ? guardado
+                : null;
+        } catch (error) {
+            console.warn("Datos locales no disponibles:", error);
+        }
+
+        if (!estado) {
+            estado = {
+                proyectos: structuredClone(proyectosBase),
+                activos: structuredClone(activosBase)
+            };
+        }
+
+        let activoActual = null;
+        let avisoTimer = null;
+
+        function guardar() {
+            try {
+                localStorage.setItem(STORAGE, JSON.stringify(estado));
+                return true;
+            } catch (error) {
+                console.error("No se pudieron guardar los datos:", error);
+                avisar("No se pudo guardar en este navegador.");
+                return false;
+            }
+        }
+
+        function escapar(valor) {
+            return String(valor ?? "")
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;")
+                .replace(/'/g, "&#39;");
+        }
+
+        function normalizar(valor) {
+            return String(valor || "")
+                .normalize("NFD")
+                .replace(/[\u0300-\u036f]/g, "")
+                .toLowerCase();
+        }
+
+        function hoyISO() {
+            const d = new Date();
+            const y = d.getFullYear();
+            const m = String(d.getMonth() + 1).padStart(2, "0");
+            const day = String(d.getDate()).padStart(2, "0");
+            return `${y}-${m}-${day}`;
+        }
+
+        function fechaVisible(valor) {
+            if (!valor) return "—";
+            const partes = valor.split("-");
+            if (partes.length !== 3) return valor;
+            return `${partes[2]}/${partes[1]}/${partes[0]}`;
+        }
+
+        function ahora() {
+            return new Date().toLocaleString("es-SV");
+        }
+
+        function iniciales(nombre) {
+            return String(nombre || "")
+                .split(" ")
+                .filter(Boolean)
+                .slice(0, 2)
+                .map(p => p[0].toUpperCase())
+                .join("");
+        }
+
+        function nombreTipo(tipo) {
+            return {
+                libro: "Libro",
+                guia: "Guía",
+                material: "Material educativo"
+            }[tipo] || tipo;
+        }
+
+        function nombreEstado(estadoActivo) {
+            return {
+                registrado: "Registrado",
+                revision: "En revisión",
+                aprobado: "Aprobado",
+                publicado: "Publicado"
+            }[estadoActivo] || estadoActivo;
+        }
+
+        function claseEstado(valor) {
+            return {
+                registrado: "status-registered",
+                revision: "status-review",
+                aprobado: "status-approved",
+                publicado: "status-published"
+            }[valor] || "status-registered";
+        }
+
+        function buscarProyecto(id) {
+            return estado.proyectos.find(p => p.id === id);
+        }
+
+        function buscarActivo(id) {
+            return estado.activos.find(a => a.id === id);
+        }
+
+        function codigoNuevo(prefijo, registros) {
+            const anio = new Date().getFullYear();
+            const base = `${prefijo}-${anio}-`;
+            const numeros = registros
+                .filter(r => r.id.startsWith(base))
+                .map(r => Number(r.id.slice(base.length)) || 0);
+
+            const siguiente = Math.max(0, ...numeros) + 1;
+            return base + String(siguiente).padStart(3, "0");
+        }
+
+        function avisar(mensaje) {
+            const toast = $("managementToast");
+            toast.textContent = mensaje;
+            toast.classList.add("active");
+            clearTimeout(avisoTimer);
+            avisoTimer = setTimeout(
+                () => toast.classList.remove("active"),
+                3500
+            );
+        }
+
+        function abrirModal(id) {
+            const modal = $(id);
+            if (!modal) return;
+
+            modal.classList.add("active");
+            modal.setAttribute("aria-hidden", "false");
+            document.body.style.overflow = "hidden";
+        }
+
+        function cerrarModal(id) {
+            const modal = $(id);
+            if (!modal) return;
+
+            modal.classList.remove("active");
+            modal.setAttribute("aria-hidden", "true");
+
+            if (!document.querySelector(".management-modal.active")) {
+                document.body.style.removeProperty("overflow");
+            }
+        }
+
+        function activarPestana(id) {
+            document.querySelectorAll(".management-tab")
+                .forEach(boton => {
+                    const activa = boton.dataset.tab === id;
+                    boton.classList.toggle("active", activa);
+                    boton.setAttribute("aria-selected", String(activa));
+                });
+
+            document.querySelectorAll(".management-panel")
+                .forEach(panel => {
+                    panel.classList.toggle("active", panel.id === id);
+                });
+        }
+
+        function actualizarResumen() {
+            $("totalProjects").textContent = estado.proyectos.length;
+            $("totalAssets").textContent = estado.activos.length;
+
+            $("reviewAssets").textContent =
+                estado.activos.filter(a => a.estado === "revision").length;
+
+            $("publishedAssets").textContent =
+                estado.activos.filter(a => a.estado === "publicado").length;
+        }
+
+        function renderizarProyectos() {
+            const contenedor = $("projectList");
+            contenedor.replaceChildren();
+
+            $("projectCount").textContent = estado.proyectos.length;
+
+            if (!estado.proyectos.length) {
+                contenedor.innerHTML = `
+                    <div class="management-empty">
+                        <strong>No hay proyectos registrados</strong>
+                        <span>Creá el primer proyecto editorial.</span>
+                    </div>
+                `;
+                return;
+            }
+
+            estado.proyectos.forEach(proyecto => {
+                const cantidad = estado.activos.filter(
+                    a => a.proyectoId === proyecto.id
+                ).length;
+
+                const tarjeta = document.createElement("article");
+                tarjeta.className = "project-card";
+
+                tarjeta.innerHTML = `
+                    <div class="project-card-top">
+                        <div class="project-folder">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M3 7h7l2 2h9v11H3z"></path>
+                            </svg>
+                        </div>
+                        <span class="project-status ${
+                            proyecto.estado === "inactivo" ? "inactive" : ""
+                        }">
+                            ${proyecto.estado === "activo"
+                                ? "Activo" : "Inactivo"}
+                        </span>
+                    </div>
+
+                    <h3>${escapar(proyecto.nombre)}</h3>
+
+                    <p class="project-description">
+                        ${escapar(proyecto.descripcion)}
+                    </p>
+
+                    <div class="project-meta">
+                        <div class="project-meta-row">
+                            <span>Código</span>
+                            <strong>${escapar(proyecto.id)}</strong>
+                        </div>
+                        <div class="project-meta-row">
+                            <span>Área</span>
+                            <strong>${escapar(proyecto.area)}</strong>
+                        </div>
+                        <div class="project-meta-row">
+                            <span>Activos</span>
+                            <strong>${cantidad}</strong>
+                        </div>
+                        <div class="project-meta-row">
+                            <span>Creación</span>
+                            <strong>${fechaVisible(proyecto.fecha)}</strong>
+                        </div>
+                    </div>
+
+                    <div class="project-responsibles">
+                        <span>RESPONSABLES AUTORIZADOS</span>
+                        <div class="responsible-tags">
+                            ${proyecto.responsables.map(nombre => `
+                                <span class="responsible-tag">
+                                    ${escapar(nombre)}
+                                </span>
+                            `).join("")}
+                        </div>
+                    </div>
+
+                    <div class="project-card-actions">
+                        <button type="button"
+                                data-edit-project="${escapar(proyecto.id)}">
+                            Editar proyecto
+                        </button>
+                        <button type="button"
+                                data-project-assets="${escapar(proyecto.id)}">
+                            Ver activos
+                        </button>
+                    </div>
+                `;
+
+                contenedor.appendChild(tarjeta);
+            });
+        }
+
+        function renderizarUsuarios(seleccionados = []) {
+            $("projectResponsibleList").innerHTML = usuarios.map(
+                (nombre, indice) => `
+                    <label>
+                        <input type="checkbox"
+                               value="${escapar(nombre)}"
+                               id="projectUser${indice}"
+                               ${seleccionados.includes(nombre)
+                                   ? "checked" : ""}>
+                        <span>${escapar(nombre)}</span>
+                    </label>
+                `
+            ).join("");
+        }
+
+        function abrirCrearProyecto() {
+            $("projectForm").reset();
+            $("editingProjectId").value = "";
+            $("projectModalTitle").textContent =
+                "Crear proyecto editorial";
+            $("projectDate").value = hoyISO();
+            $("projectStatus").value = "activo";
+            renderizarUsuarios();
+            abrirModal("projectModal");
+        }
+
+        function abrirEditarProyecto(id) {
+            const proyecto = buscarProyecto(id);
+            if (!proyecto) return;
+
+            $("projectForm").reset();
+            $("editingProjectId").value = proyecto.id;
+            $("projectModalTitle").textContent =
+                "Editar proyecto editorial";
+            $("projectName").value = proyecto.nombre;
+            $("projectArea").value = proyecto.area;
+            $("projectDate").value = proyecto.fecha;
+            $("projectDescription").value = proyecto.descripcion;
+            $("projectStatus").value = proyecto.estado;
+
+            renderizarUsuarios(proyecto.responsables);
+            abrirModal("projectModal");
+        }
+
+        function guardarProyecto(evento) {
+            evento.preventDefault();
+
+            const nombre = $("projectName").value.trim();
+            const area = $("projectArea").value;
+            const fecha = $("projectDate").value;
+            const descripcion = $("projectDescription").value.trim();
+            const estadoProyecto = $("projectStatus").value;
+            const editando = $("editingProjectId").value;
+
+            const responsables = Array.from(
+                $("projectResponsibleList").querySelectorAll(
+                    'input[type="checkbox"]:checked'
+                )
+            ).map(input => input.value);
+
+            if (!responsables.length) {
+                avisar("Seleccioná al menos un responsable.");
+                return;
+            }
+
+            const repetido = estado.proyectos.some(
+                p => normalizar(p.nombre) === normalizar(nombre) &&
+                     p.id !== editando
+            );
+
+            if (repetido) {
+                avisar("Ya existe un proyecto con ese nombre.");
+                return;
+            }
+
+            if (editando) {
+                const proyecto = buscarProyecto(editando);
+                if (!proyecto) return;
+
+                proyecto.nombre = nombre;
+                proyecto.area = area;
+                proyecto.fecha = fecha;
+                proyecto.descripcion = descripcion;
+                proyecto.estado = estadoProyecto;
+                proyecto.responsables = responsables;
+
+                /*
+                 * No se borran activos al modificar un proyecto.
+                 * Las asignaciones existentes se conservan como
+                 * historial, aunque el usuario sea desautorizado.
+                 */
+            } else {
+                estado.proyectos.unshift({
+                    id: codigoNuevo("PRY", estado.proyectos),
+                    nombre,
+                    area,
+                    fecha,
+                    descripcion,
+                    estado: estadoProyecto,
+                    responsables
+                });
+            }
+
+            if (!guardar()) return;
+
+            renderizarTodo();
+            cerrarModal("projectModal");
+            activarPestana("projectsPanel");
+
+            avisar(editando
+                ? "Proyecto actualizado correctamente."
+                : "Proyecto creado correctamente.");
+        }
+
+        function cargarProyectosEnFormulario() {
+            const select = $("assetProject");
+
+            select.innerHTML =
+                '<option value="">Seleccionar proyecto</option>';
+
+            estado.proyectos
+                .filter(p => p.estado === "activo")
+                .forEach(p => {
+                    const opcion = document.createElement("option");
+                    opcion.value = p.id;
+                    opcion.textContent = p.nombre;
+                    select.appendChild(opcion);
+                });
+        }
+
+        function cargarResponsablesDeProyecto() {
+            const proyecto = buscarProyecto($("assetProject").value);
+            const select = $("assetResponsible");
+
+            select.innerHTML =
+                '<option value="">Seleccionar responsable</option>';
+
+            select.disabled = !proyecto;
+
+            if (!proyecto) return;
+
+            proyecto.responsables.forEach(nombre => {
+                const opcion = document.createElement("option");
+                opcion.value = nombre;
+                opcion.textContent = nombre;
+                select.appendChild(opcion);
+            });
+
+            $("assetArea").value = proyecto.area;
+        }
+
+        function abrirRegistroActivo() {
+            const activosDisponibles = estado.proyectos.some(
+                p => p.estado === "activo" && p.responsables.length
+            );
+
+            if (!activosDisponibles) {
+                avisar(
+                    "Primero creá un proyecto activo con responsables."
+                );
+                activarPestana("projectsPanel");
+                return;
+            }
+
+            $("assetForm").reset();
+            $("assetVersion").value = "v1.0";
+            cargarProyectosEnFormulario();
+            cargarResponsablesDeProyecto();
+            abrirModal("assetModal");
+        }
+
+        function registrarActivo(evento) {
+            evento.preventDefault();
+
+            const proyecto = buscarProyecto($("assetProject").value);
+            const responsable = $("assetResponsible").value;
+            const archivo = $("assetFile").files[0];
+
+            if (
+                !proyecto ||
+                proyecto.estado !== "activo" ||
+                !proyecto.responsables.includes(responsable) ||
+                !archivo
+            ) {
+                avisar("Revisá el proyecto, responsable y archivo.");
+                return;
+            }
+
+            const nombre = $("assetName").value.trim();
+            const tipo = $("assetType").value;
+            const area = $("assetArea").value;
+            const descripcion = $("assetDescription").value.trim();
+            const fecha = ahora();
+
+            const nuevo = {
+                id: codigoNuevo("ACT", estado.activos),
+                nombre,
+                proyectoId: proyecto.id,
+                area,
+                tipo,
+                version: "v1.0",
+                responsable,
+                estado: "registrado",
+                actualizado: fecha,
+                descripcion,
+                archivo: archivo.name,
+                historial: [{
+                    version: "v1.0",
+                    fecha,
+                    autor: responsable,
+                    accion: "Registro de versión inicial"
+                }],
+                trazabilidad: [
+                    {
+                        titulo: "Registro del activo",
+                        descripcion: "Activo incorporado al proyecto " +
+                                     proyecto.nombre + ".",
+                        fecha
+                    },
+                    {
+                        titulo: "Asignación de responsable",
+                        descripcion: responsable +
+                                     " fue asignado al activo.",
+                        fecha
+                    },
+                    {
+                        titulo: "Archivo inicial seleccionado",
+                        descripcion: "Archivo: " + archivo.name +
+                                     ". Carga simulada.",
+                        fecha
+                    }
+                ]
+            };
+
+            estado.activos.unshift(nuevo);
+
+            if (!guardar()) {
+                estado.activos.shift();
+                return;
+            }
+
+            renderizarTodo();
+            cerrarModal("assetModal");
+            activarPestana("assetsPanel");
+            avisar("Activo " + nuevo.id + " registrado correctamente.");
+        }
+
+        function renderizarActivos() {
+            const contenedor = $("assetList");
+            contenedor.replaceChildren();
+
+            estado.activos.forEach(activo => {
+                const fila = document.createElement("article");
+                fila.className = "asset-row";
+                fila.dataset.id = activo.id;
+                fila.dataset.status = activo.estado;
+                fila.dataset.type = activo.tipo;
+
+                const proyecto = buscarProyecto(activo.proyectoId);
+
+                fila.dataset.search = normalizar([
+                    activo.nombre,
+                    activo.responsable,
+                    activo.area,
+                    activo.id,
+                    proyecto?.nombre || ""
+                ].join(" "));
+
+                fila.innerHTML = `
+                    <div class="asset-name">
+                        <div class="file-icon">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                <polyline points="14 2 14 8 20 8"></polyline>
+                            </svg>
+                        </div>
+                        <div>
+                            <strong>${escapar(activo.nombre)}</strong>
+                            <span>${escapar(activo.area)}</span>
+                        </div>
+                    </div>
+
+                    <span>${escapar(nombreTipo(activo.tipo))}</span>
+                    <strong class="version">
+                        ${escapar(activo.version)}
+                    </strong>
+
+                    <div class="responsible">
+                        <span class="user-initials">
+                            ${escapar(iniciales(activo.responsable))}
+                        </span>
+                        <span>${escapar(activo.responsable)}</span>
+                    </div>
+
+                    <span class="status ${claseEstado(activo.estado)}">
+                        ${escapar(nombreEstado(activo.estado))}
+                    </span>
+
+                    <span>${escapar(activo.actualizado)}</span>
+
+                    <button class="row-action" type="button"
+                            data-view-id="${escapar(activo.id)}"
+                            aria-label="Ver detalles">
+                        <svg viewBox="0 0 24 24">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </button>
+                `;
+
+                contenedor.appendChild(fila);
+            });
+
+            aplicarFiltros();
+        }
+
+        function aplicarFiltros() {
+            const texto = normalizar($("assetSearch").value.trim());
+            const estadoFiltro = $("statusFilter").value;
+            const tipoFiltro = $("typeFilter").value;
+            let visibles = 0;
+
+            document.querySelectorAll("#assetList .asset-row")
+                .forEach(fila => {
+                    const coincide =
+                        (!texto || fila.dataset.search.includes(texto)) &&
+                        (estadoFiltro === "all" ||
+                         fila.dataset.status === estadoFiltro) &&
+                        (tipoFiltro === "all" ||
+                         fila.dataset.type === tipoFiltro);
+
+                    fila.hidden = !coincide;
+                    if (coincide) visibles++;
+                });
+
+            $("resultCount").textContent = visibles;
+            $("emptyState").style.display =
+                visibles ? "none" : "block";
+        }
+
+        function renderizarEventos(contenedorId, eventos, tipo) {
+            const contenedor = $(contenedorId);
+            contenedor.replaceChildren();
+
+            (eventos || []).forEach(evento => {
+                const bloque = document.createElement("div");
+                bloque.style.cssText =
+                    "border-bottom:1px solid #e7edf3;padding:12px 0";
+
+                const titulo = document.createElement("strong");
+                titulo.style.color = "#285579";
+                titulo.textContent = tipo === "version"
+                    ? `${evento.version} · ${evento.accion}`
+                    : evento.titulo;
+
+                const descripcion = document.createElement("p");
+                descripcion.style.cssText =
+                    "margin:6px 0;color:#60798e;font-size:13px";
+                descripcion.textContent = tipo === "version"
+                    ? evento.autor
+                    : evento.descripcion;
+
+                const fecha = document.createElement("small");
+                fecha.style.color = "#8a9aa8";
+                fecha.textContent = evento.fecha;
+
+                bloque.append(titulo, descripcion, fecha);
+                contenedor.appendChild(bloque);
+            });
+        }
+
+        function abrirDetalle(id) {
+            const activo = buscarActivo(id);
+            if (!activo) return;
+
+            activoActual = id;
+            const proyecto = buscarProyecto(activo.proyectoId);
+
+            $("detailAssetName").textContent = activo.nombre;
+            $("detailAssetCode").textContent = activo.id;
+            $("detailProject").textContent =
+                proyecto?.nombre || "Proyecto no disponible";
+            $("detailType").textContent = nombreTipo(activo.tipo);
+            $("detailArea").textContent = activo.area;
+            $("detailAssetStatus").textContent =
+                nombreEstado(activo.estado);
+            $("detailVersion").textContent = activo.version;
+            $("detailUpdated").textContent = activo.actualizado;
+            $("detailDescription").textContent = activo.descripcion;
+            $("detailResponsible").textContent = activo.responsable;
+
+            const selector = $("detailResponsibleSelect");
+            selector.replaceChildren();
+
+            const responsables = proyecto?.responsables || [];
+
+            /*
+             * Se incluye el responsable histórico aunque
+             * ya no esté autorizado, para mostrarlo.
+             */
+            const opciones = Array.from(new Set([
+                activo.responsable,
+                ...responsables
+            ]));
+
+            opciones.forEach(nombre => {
+                const opcion = document.createElement("option");
+                opcion.value = nombre;
+                opcion.textContent = responsables.includes(nombre)
+                    ? nombre
+                    : nombre + " (asignación anterior)";
+                selector.appendChild(opcion);
+            });
+
+            selector.value = activo.responsable;
+
+            renderizarEventos(
+                "detailVersionHistory",
+                activo.historial,
+                "version"
+            );
+
+            renderizarEventos(
+                "detailTraceability",
+                activo.trazabilidad,
+                "evento"
+            );
+
+            abrirModal("detailModal");
+        }
+
+        function guardarReasignacion() {
+            const activo = buscarActivo(activoActual);
+            if (!activo) return;
+
+            const proyecto = buscarProyecto(activo.proyectoId);
+            const nuevo = $("detailResponsibleSelect").value;
+
+            if (!proyecto?.responsables.includes(nuevo)) {
+                avisar(
+                    "Seleccioná un responsable autorizado en el proyecto."
+                );
+                return;
+            }
+
+            if (nuevo === activo.responsable) {
+                avisar("El responsable no ha cambiado.");
+                return;
+            }
+
+            const anterior = activo.responsable;
+            const fecha = ahora();
+
+            activo.responsable = nuevo;
+            activo.actualizado = fecha;
+            activo.trazabilidad.unshift({
+                titulo: "Reasignación de responsable",
+                descripcion: `Cambio de ${anterior} a ${nuevo}.`,
+                fecha
+            });
+
+            if (!guardar()) {
+                activo.responsable = anterior;
+                activo.trazabilidad.shift();
+                return;
+            }
+
+            renderizarTodo();
+            abrirDetalle(activo.id);
+            avisar("Responsable actualizado correctamente.");
+        }
+
+        function renderizarTodo() {
+            renderizarProyectos();
+            renderizarActivos();
+            actualizarResumen();
+        }
+
+        /* EVENTOS DE LOS BOTONES PRINCIPALES */
+
+        $("newProjectButton").addEventListener(
+            "click",
+            abrirCrearProyecto
+        );
+
+        $("newAssetButton").addEventListener(
+            "click",
+            abrirRegistroActivo
+        );
+
+        $("projectForm").addEventListener(
+            "submit",
+            guardarProyecto
+        );
+
+        $("assetForm").addEventListener(
+            "submit",
+            registrarActivo
+        );
+
+        $("assetProject").addEventListener(
+            "change",
+            cargarResponsablesDeProyecto
+        );
+
+        $("saveResponsibleButton").addEventListener(
+            "click",
+            guardarReasignacion
+        );
+
+        $("assetSearch").addEventListener(
+            "input",
+            aplicarFiltros
+        );
+
+        $("statusFilter").addEventListener(
+            "change",
+            aplicarFiltros
+        );
+
+        $("typeFilter").addEventListener(
+            "change",
+            aplicarFiltros
+        );
+
+        $("clearFilters").addEventListener("click", () => {
+            $("assetSearch").value = "";
+            $("statusFilter").value = "all";
+            $("typeFilter").value = "all";
+            aplicarFiltros();
+        });
+
+        $("profileButton").addEventListener("click", () => {
+            $("profile").classList.toggle("open");
+        });
+
+        $("profileLogout").addEventListener("click", () => {
+            $("profile").classList.remove("open");
+            abrirModal("logoutModal");
+        });
+
+        $("confirmLogout").addEventListener("click", () => {
+            window.location.href = "login.html";
+        });
+
+        $("notificationButton").addEventListener("click", () => {
+            window.location.href = "alertas.html";
+        });
+
+        $("viewAuditButton").addEventListener("click", () => {
+            if (activoActual) {
+                window.location.href =
+                    "auditoria.html?activo=" +
+                    encodeURIComponent(activoActual);
+            }
+        });
+
+        /* DELEGACIÓN DE EVENTOS */
+
+        document.addEventListener("click", evento => {
+            const cerrar = evento.target.closest(
+                "[data-close-modal]"
+            );
+
+            if (cerrar) {
+                cerrarModal(cerrar.dataset.closeModal);
+                return;
+            }
+
+            const pestana = evento.target.closest("[data-tab]");
+
+            if (pestana) {
+                activarPestana(pestana.dataset.tab);
+                return;
+            }
+
+            const editar = evento.target.closest(
+                "[data-edit-project]"
+            );
+
+            if (editar) {
+                abrirEditarProyecto(editar.dataset.editProject);
+                return;
+            }
+
+            const verProyecto = evento.target.closest(
+                "[data-project-assets]"
+            );
+
+            if (verProyecto) {
+                const proyecto = buscarProyecto(
+                    verProyecto.dataset.projectAssets
+                );
+
+                activarPestana("assetsPanel");
+
+                $("assetSearch").value = proyecto?.nombre || "";
+                $("statusFilter").value = "all";
+                $("typeFilter").value = "all";
+                aplicarFiltros();
+                return;
+            }
+
+            const verActivo = evento.target.closest(
+                "[data-view-id]"
+            );
+
+            if (verActivo) {
+                abrirDetalle(verActivo.dataset.viewId);
+                return;
+            }
+
+            const salirSidebar = evento.target.closest(
+                "#sidebarLogout, [data-logout]"
+            );
+
+            if (salirSidebar) {
+                evento.preventDefault();
+                abrirModal("logoutModal");
+            }
+        });
+
+        document.addEventListener("keydown", evento => {
+            if (evento.key !== "Escape") return;
+
+            document.querySelectorAll(
+                ".management-modal.active"
+            ).forEach(modal => cerrarModal(modal.id));
+        });
+
+        /* INICIALIZACIÓN */
+
+        renderizarTodo();
+
+        console.info(
+            "SISCAE: Proyectos y activos inicializados correctamente."
+        );
+
+    })();
+    </script>
 
 </body>
-
 </html>

@@ -1043,16 +1043,181 @@
 
 
     <!-- =====================================================
-         SCRIPTS
+         SCRIPTS Y COMPONENTES COMPARTIDOS
     ====================================================== -->
 
     <script src="../js/components.js"></script>
 
     <script>
-        loadAuditorSidebar();
+        document.addEventListener("DOMContentLoaded", async function () {
+
+            const contenedor = document.getElementById("sidebar-component");
+
+            if (!contenedor) {
+                console.error("No se encontró el contenedor del sidebar.");
+                return;
+            }
+
+            try {
+
+                // =============================================
+                // CARGAR SIDEBAR AUDITOR DESDE TXT
+                // =============================================
+
+                const respuesta = await fetch(
+                    "../components/sidebar_auditor.txt",
+                    { cache: "no-store" }
+                );
+
+                if (!respuesta.ok) {
+                    throw new Error(
+                        "No se pudo cargar el sidebar. Estado: " +
+                        respuesta.status
+                    );
+                }
+
+                contenedor.innerHTML = await respuesta.text();
+
+                // =============================================
+                // LOGO INSTITUCIONAL
+                // =============================================
+
+                const logo = contenedor.querySelector("#sidebarLogo");
+
+                if (logo) {
+                    logo.src = "../assets/img/logo.png";
+                    logo.alt = "Ministerio de Educación";
+                }
+
+                // =============================================
+                // NAVEGACIÓN Y PÁGINA ACTIVA
+                // =============================================
+
+                const paginaActual = window.location.pathname
+                    .split("/")
+                    .pop();
+
+                contenedor.querySelectorAll("[data-page]").forEach(enlace => {
+
+                    const destino = enlace.dataset.page;
+
+                    enlace.href = destino;
+
+                    const activo = destino === paginaActual;
+
+                    enlace.classList.toggle("active", activo);
+
+                    if (activo) {
+                        enlace.setAttribute("aria-current", "page");
+                    } else {
+                        enlace.removeAttribute("aria-current");
+                    }
+
+                });
+
+                // =============================================
+                // SIDEBAR RESPONSIVO
+                // =============================================
+
+                const sidebar = contenedor.querySelector("#sidebar");
+                const botonMenu = document.getElementById("menuButton");
+                const overlay = contenedor.querySelector("#mobileOverlay");
+
+                function cerrarSidebar() {
+
+                    sidebar?.classList.remove("open");
+                    overlay?.classList.remove("active");
+
+                    botonMenu?.setAttribute(
+                        "aria-expanded",
+                        "false"
+                    );
+
+                }
+
+                botonMenu?.addEventListener("click", function () {
+
+                    if (!sidebar) return;
+
+                    const abierto = sidebar.classList.toggle("open");
+
+                    overlay?.classList.toggle("active", abierto);
+
+                    botonMenu.setAttribute(
+                        "aria-expanded",
+                        String(abierto)
+                    );
+
+                });
+
+                overlay?.addEventListener("click", cerrarSidebar);
+
+                // CERRAR MENÚ AL NAVEGAR
+                contenedor.querySelectorAll(".nav-item").forEach(enlace => {
+
+                    enlace.addEventListener("click", cerrarSidebar);
+
+                });
+
+                // CERRAR MENÚ CON ESCAPE
+                document.addEventListener("keydown", function (evento) {
+
+                    if (evento.key === "Escape") {
+                        cerrarSidebar();
+                    }
+
+                });
+
+                // =============================================
+                // CERRAR SESIÓN DESDE SIDEBAR
+                // =============================================
+
+                const botonCerrarSesion = contenedor.querySelector(
+                    "#sidebarLogout"
+                );
+
+                const modalCerrarSesion = document.getElementById(
+                    "logoutModal"
+                );
+
+                botonCerrarSesion?.addEventListener("click", function () {
+
+                    if (!modalCerrarSesion) return;
+
+                    modalCerrarSesion.classList.add("active");
+
+                    modalCerrarSesion.setAttribute(
+                        "aria-hidden",
+                        "false"
+                    );
+
+                });
+
+                console.log(
+                    "Sidebar Auditor cargado correctamente en Auditoría."
+                );
+
+            } catch (error) {
+
+                console.error(
+                    "Error al cargar el sidebar del Auditor:",
+                    error
+                );
+
+            }
+
+        });
     </script>
 
+    <!-- =====================================================
+         JS DE AUDITORÍA
+    ====================================================== -->
+
     <script src="../js/auditoriaAuditor.js"></script>
+
+</body>
+</html>
+
 
 </body>
 

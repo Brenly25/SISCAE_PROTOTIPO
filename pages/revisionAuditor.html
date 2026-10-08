@@ -1334,17 +1334,94 @@
 
     <script src="../js/components.js"></script>
 
-
     <script>
-        loadAuditorSidebar();
-    </script>
+        document.addEventListener("DOMContentLoaded", async function () {
 
+            const contenedor = document.getElementById("sidebar-component");
+
+            try {
+                const respuesta = await fetch("../components/sidebar_auditor.txt");
+
+                if (!respuesta.ok) {
+                    throw new Error("No se pudo cargar el sidebar del Auditor");
+                }
+
+                contenedor.innerHTML = await respuesta.text();
+
+                // LOGO INSTITUCIONAL
+                const logo = contenedor.querySelector("#sidebarLogo");
+
+                if (logo) {
+                    logo.src = "../assets/img/logo.png";
+                }
+
+                // NAVEGACIÓN
+                const paginaActual = window.location.pathname.split("/").pop();
+
+                contenedor.querySelectorAll("[data-page]").forEach(enlace => {
+                    const destino = enlace.dataset.page;
+
+                    enlace.href = destino;
+
+                    enlace.classList.toggle(
+                        "active",
+                        destino === paginaActual
+                    );
+                });
+
+                // SIDEBAR MÓVIL
+                const sidebar = contenedor.querySelector("#sidebar");
+                const botonMenu = document.getElementById("menuButton");
+                const overlay = document.getElementById("mobileOverlay");
+
+                function cerrarSidebar() {
+                    sidebar?.classList.remove("open");
+                    overlay?.classList.remove("active");
+                    botonMenu?.setAttribute("aria-expanded", "false");
+                }
+
+                botonMenu?.addEventListener("click", function () {
+                    const abierto = sidebar.classList.toggle("open");
+
+                    overlay?.classList.toggle("active", abierto);
+                    botonMenu.setAttribute("aria-expanded", String(abierto));
+                });
+
+                overlay?.addEventListener("click", cerrarSidebar);
+
+                contenedor.querySelectorAll(".nav-item").forEach(enlace => {
+                    enlace.addEventListener("click", cerrarSidebar);
+                });
+
+                // CERRAR SESIÓN DESDE EL SIDEBAR
+                const botonCerrarSesion = contenedor.querySelector("#sidebarLogout");
+                const modalCerrarSesion = document.getElementById("logoutModal");
+
+                botonCerrarSesion?.addEventListener("click", function () {
+                    if (modalCerrarSesion) {
+                        modalCerrarSesion.classList.add("active");
+                        modalCerrarSesion.setAttribute("aria-hidden", "false");
+                    }
+                });
+
+                console.log("Sidebar Auditor cargado correctamente");
+
+            } catch (error) {
+                console.error("Error al cargar el sidebar Auditor:", error);
+            }
+
+        });
+    </script>
 
     <!-- =====================================================
          JS DE LA PÁGINA
     ====================================================== -->
 
     <script src="../js/revisionAuditor.js"></script>
+
+</body>
+</html>
+
 
 
 </body>

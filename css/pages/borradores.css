@@ -571,3 +571,52 @@ small {
     gap: 6px;
   }
 }
+
+/* Lista de borradores con desplazamiento interno */
+
+#draftList {
+  max-height: 520px;
+  overflow-y: auto;
+  padding: 0 10px 8px 0;
+  margin-top: 16px;
+
+  /* Evita desplazar la página al llegar al final de la lista */
+  overscroll-behavior-y: contain;
+
+  /* Reserva espacio para la barra */
+  scrollbar-gutter: stable;
+
+  /* Barra de desplazamiento */
+  scrollbar-width: thin;
+  scrollbar-color: #8da6cf #edf2f9;
+}
+
+#draftList .draft-card:first-child {
+  margin-top: 0;
+}
+
+#draftList::-webkit-scrollbar {
+  width: 8px;
+}
+
+#draftList::-webkit-scrollbar-track {
+  background: #edf2f9;
+  border-radius: 10px;
+}
+
+#draftList::-webkit-scrollbar-thumb {
+  background: #8da6cf;
+  border-radius: 10px;
+}
+
+#draftList::-webkit-scrollbar-thumb:hover {
+  background: #06246a;
+}
+
+/* Ajuste para celulares */
+
+@media (max-width: 600px) {
+  #draftList {
+    max-height: 420px;
+  }
+}

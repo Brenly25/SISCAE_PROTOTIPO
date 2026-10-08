@@ -1,180 +1,151 @@
+
 <!-- =====================================================
-     SIDEBAR SISCAE - REVISOR
-     Se carga con loadRevisorSidebar() (js/components.js)
+     SISCAE - SIDEBAR REVISOR
+     Componente reutilizable
 ====================================================== -->
 
 <aside class="sidebar" id="sidebar">
 
-    <!-- =================================================
-         LOGO
-    ================================================== -->
-
+    <!-- LOGO -->
     <div class="sidebar-logo">
-
-        <img
-            src=""
-            alt="Ministerio de Educación"
-            id="sidebarLogo"
-        >
-
+        <a href="dashboardRevisor.html" aria-label="Inicio del Revisor">
+            <img
+                src="../assets/img/logo.png"
+                alt="Ministerio de Educación"
+                id="sidebarLogo"
+            >
+        </a>
     </div>
 
+    <!-- NAVEGACIÓN -->
+    <nav class="sidebar-nav" aria-label="Menú del Revisor">
 
-    <!-- =================================================
-         NAVEGACIÓN
-    ================================================== -->
-
-    <nav class="sidebar-nav">
-
-
-        <!-- ================= GENERAL ================= -->
-
-        <span class="nav-title">
-            GENERAL
-        </span>
-
-
-        <!-- INICIO -->
+        <!-- GENERAL -->
+        <span class="nav-title">GENERAL</span>
 
         <a
-            href=""
+            href="dashboardRevisor.html"
             class="nav-item"
             data-page="dashboardRevisor.html"
         >
-
             <span class="nav-icon">
-
                 <svg viewBox="0 0 24 24" aria-hidden="true">
                     <rect x="3" y="3" width="7" height="7"></rect>
                     <rect x="14" y="3" width="7" height="7"></rect>
                     <rect x="3" y="14" width="7" height="7"></rect>
                     <rect x="14" y="14" width="7" height="7"></rect>
                 </svg>
-
             </span>
 
-            <span>
-                Inicio
-            </span>
-
+            <span>Inicio</span>
         </a>
 
-
-        <!-- ================= REVISIÓN ================= -->
-
+        <!-- REVISIÓN -->
         <span class="nav-title nav-title-space">
-            REVISIÓN
+            REVISIÓN EDITORIAL
         </span>
 
-
-        <!-- COLA DE REVISIÓN -->
-
+        <!-- OBSERVACIONES -->
         <a
-            href=""
+            href="observacionesRevisor.html"
             class="nav-item"
-            data-page="dashboardRevisor.html#cola"
+            data-page="observacionesRevisor.html"
         >
-
             <span class="nav-icon">
-
-                <svg viewBox="0 0 24 24" aria-hidden="true">
-                    <path d="M9 4H7a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-2"></path>
-                    <rect x="9" y="2.5" width="6" height="3.5" rx="1"></rect>
-                    <path d="m9 13 2 2 4-4"></path>
-                </svg>
-
-            </span>
-
-            <span>
-                Cola de revisión
-            </span>
-
-            <!-- El número lo actualiza js/dashboardRevisor.js -->
-            <span class="nav-count" data-sidebar-count="cola">
-                0
-            </span>
-
-        </a>
-
-
-        <!-- ESPERANDO AL AUTOR -->
-
-        <a
-            href=""
-            class="nav-item"
-            data-page="dashboardRevisor.html#seguimiento"
-        >
-
-            <span class="nav-icon">
-
                 <svg viewBox="0 0 24 24" aria-hidden="true">
                     <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
                     <line x1="8" y1="9" x2="16" y2="9"></line>
                     <line x1="8" y1="13" x2="13" y2="13"></line>
                 </svg>
-
             </span>
 
-            <span>
-                Esperando al autor
-            </span>
+            <span>Observaciones</span>
 
-            <span class="nav-count nav-count--muted" data-sidebar-count="seguimiento">
-                0
-            </span>
-
+            <span
+                class="nav-count nav-count--muted"
+                data-sidebar-count="seguimiento"
+                data-empty="true"
+            >0</span>
         </a>
 
-
-        <!-- HISTORIAL DE REVISIÓN -->
-
+        <!-- APROBACIÓN -->
         <a
-            href=""
+            href="aprobacionRevisor.html"
             class="nav-item"
-            data-page="dashboardRevisor.html#historial"
+            data-page="aprobacionRevisor.html"
         >
-
             <span class="nav-icon">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M9 4H7a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-2"></path>
+                    <rect x="9" y="2.5" width="6" height="3.5" rx="1"></rect>
+                    <path d="m9 13 2 2 4-4"></path>
+                </svg>
+            </span>
 
+            <span>Aprobación</span>
+
+            <span
+                class="nav-count"
+                data-sidebar-count="cola"
+                data-empty="true"
+            >0</span>
+        </a>
+
+        <!-- SUPERVISIÓN -->
+        <span class="nav-title nav-title-space">
+            SUPERVISIÓN
+        </span>
+
+        <!-- AUDITORÍA -->
+        <a
+            href="auditoriaRevisor.html"
+            class="nav-item"
+            data-page="auditoriaRevisor.html"
+        >
+            <span class="nav-icon">
                 <svg viewBox="0 0 24 24" aria-hidden="true">
                     <path d="M3 3v5h5"></path>
                     <path d="M3.05 13A9 9 0 1 0 6 5.3L3 8"></path>
                     <path d="M12 7v5l4 2"></path>
                 </svg>
-
             </span>
 
-            <span>
-                Historial de revisión
+            <span>Auditoría</span>
+        </a>
+
+        <!-- ALERTAS -->
+        <a
+            href="alertasRevisor.html"
+            class="nav-item"
+            data-page="alertasRevisor.html"
+        >
+            <span class="nav-icon">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9"></path>
+                    <path d="M10 21h4"></path>
+                </svg>
             </span>
 
+            <span>Alertas</span>
+
+            <span
+                class="nav-count"
+                data-sidebar-count="urgentes"
+                data-empty="true"
+            >0</span>
         </a>
 
     </nav>
 
-
-    <!-- =================================================
-         USUARIO
-    ================================================== -->
-
+    <!-- USUARIO Y CIERRE DE SESIÓN -->
     <div class="sidebar-footer">
-
         <div class="sidebar-user">
 
-            <div class="sidebar-avatar">
-                CP
-            </div>
+            <div class="sidebar-avatar">CP</div>
 
             <div class="sidebar-user-info">
-
-                <strong>
-                    Carlos Pérez
-                </strong>
-
-                <span>
-                    Revisor editorial
-                </span>
-
+                <strong>Carlos Pérez</strong>
+                <span>Revisor editorial</span>
             </div>
 
             <button
@@ -182,28 +153,28 @@
                 id="sidebarLogout"
                 type="button"
                 aria-label="Cerrar sesión"
+                title="Cerrar sesión"
             >
-
                 <svg viewBox="0 0 24 24" aria-hidden="true">
                     <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
                     <polyline points="16 17 21 12 16 7"></polyline>
                     <line x1="21" y1="12" x2="9" y2="12"></line>
                 </svg>
-
             </button>
 
         </div>
-
     </div>
 
 </aside>
 
+<!-- OVERLAY MÓVIL -->
+<div class="mobile-overlay" id="mobileOverlay"></div>
 
-<!-- =====================================================
-     OVERLAY MÓVIL
-====================================================== -->
-
-<div
-    class="mobile-overlay"
-    id="mobileOverlay"
-></div>
+<script>
+/*
+  Este bloque es informativo:
+  los scripts incluidos mediante innerHTML no se ejecutan.
+  La inicialización del sidebar debe realizarse desde
+  js/components.js después de cargar este componente.
+*/
+</script>
